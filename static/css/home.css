@@ -1,0 +1,653 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+.header {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-brand .logo {
+    width: 40px;
+    height: 40px;
+    background-color: #c53856;
+    border-radius: 50%;
+    position: relative;
+}
+
+.nav-brand .logo::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #666;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-link.active {
+    color: #333;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #c53856;
+}
+
+.nav-link:hover {
+    color: #c53856;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    content: '▼';
+    margin-left: 5px;
+    font-size: 0.8em;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    min-width: 150px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #666;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #c53856;
+}
+
+.login-btn {
+    background: transparent;
+    border: 2px solid #666;
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #c53856;
+    border-color: #c53856;
+    color: white;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    min-height: 70vh;
+    background: linear-gradient(135deg, #c53856 0%, #8b1538 100%);
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.hero-shape {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(135deg, #c53856 0%, #7d1d3f 100%);
+    clip-path: ellipse(80% 100% at 0% 50%);
+    z-index: 1;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2;
+    max-width: 50%;
+    margin-left: auto;
+    color: white;
+    text-align: left;
+    padding: 2rem;
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.hero-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    max-width: 500px;
+}
+
+.cta-btn {
+    background-color: #333;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Mission Section */
+.mission {
+    padding: 4rem 0;
+    background-color: white;
+}
+
+.mission h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.mission p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #666;
+    max-width: 800px;
+}
+
+/* Collaborators Section */
+.collaborators {
+    padding: 4rem 0;
+    background-color: #f8f9fa;
+}
+
+.collaborators h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #333;
+    font-weight: bold;
+    text-align: left;
+}
+
+.collaborators-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    align-items: center;
+}
+
+.collaborator-item {
+    text-align: center;
+    padding: 2rem;
+}
+
+.collaborator-name {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ccc;
+    letter-spacing: 3px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .hero-text {
+        max-width: 90%;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-shape {
+        width: 100%;
+        clip-path: ellipse(100% 70% at 50% 0%);
+    }
+
+    .collaborators-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .hero-text p {
+        font-size: 0.9rem;
+    }
+
+    .mission h2,
+    .collaborators h2 {
+        font-size: 2rem;
+    }
+}
+/* Hero Section */
+.hero {
+    position: relative;
+    min-height: 70vh;
+    background: linear-gradient(135deg, #c53856 0%, #8b1538 100%);
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.hero-shape {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(135deg, #c53856 0%, #7d1d3f 100%);
+    clip-path: ellipse(80% 100% at 0% 50%);
+    z-index: 1;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2;
+    max-width: 50%;
+    margin-left: auto;
+    color: white;
+    text-align: left;
+    padding: 2rem;
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.hero-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    max-width: 500px;
+}
+
+.cta-btn {
+    background-color: #333;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* How to get Blood Section */
+.how-to-get-blood {
+    padding: 5rem 0;
+    background-color: #f8f9fa;
+}
+
+.how-to-get-blood h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #333;
+    font-weight: bold;
+    text-align: left;
+}
+
+.steps-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.heart-section {
+    position: relative;
+    margin-bottom: 4rem;
+}
+
+.ekg-line {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heartbeat {
+    width: 100%;
+    height: 60px;
+    max-width: 600px;
+}
+
+.heart-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    animation: heartbeat-pulse 2s ease-in-out infinite;
+}
+
+.heart-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+@keyframes heartbeat-pulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.step-item {
+    text-align: center;
+    position: relative;
+}
+
+.step-number {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border: 3px solid #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    z-index: 2;
+}
+
+.step-icon {
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.step-icon:hover {
+    border-color: #c53856;
+    color: #c53856;
+    transform: translateY(-5px);
+}
+
+.step-icon svg {
+    width: 30px;
+    height: 30px;
+}
+
+.step-item p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+/* Mission Section */
+.mission {
+    padding: 4rem 0;
+    background-color: white;
+}
+
+.mission h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.mission p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #666;
+    max-width: 800px;
+}
+
+/* Collaborators Section */
+.collaborators {
+    padding: 4rem 0;
+    background-color: #f8f9fa;
+}
+
+.collaborators h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #333;
+    font-weight: bold;
+    text-align: left;
+}
+
+.collaborators-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    align-items: center;
+}
+
+.collaborator-item {
+    text-align: center;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.collaborator-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.collaborator-name {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ccc;
+    letter-spacing: 3px;
+    transition: color 0.3s ease;
+}
+
+.collaborator-item:hover .collaborator-name {
+    color: #c53856;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-text {
+        max-width: 90%;
+        text-align: center;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-shape {
+        width: 100%;
+        clip-path: ellipse(100% 70% at 50% 0%);
+    }
+
+    .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .step-number {
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .collaborators-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .how-to-get-blood h2,
+    .mission h2,
+    .collaborators h2 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .heartbeat {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .hero-text p {
+        font-size: 0.9rem;
+    }
+
+    .step-item p {
+        font-size: 0.8rem;
+    }
+
+    .collaborator-name {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+    }
+}
