@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Blood Donation - Save Lives{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Main Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-shape"></div>
+        <div class="container">
+            <div class="hero-text">
+                <h1>Save Life Donate Blood</h1>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                <button class="cta-btn">Get Blood Now</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How to get Blood Section -->
+<section class="how-to-get-blood">
+    <div class="container">
+        <h2>How to get Blood?</h2>
+
+        <div class="steps-container">
+            <!-- Heart with EKG line -->
+            <div class="heart-section">
+                <div class="ekg-line">
+                    <svg class="heartbeat" viewBox="0 0 500 100">
+                        <path d="M0,50 L100,50 L110,20 L120,80 L130,20 L140,50 L180,50 L190,30 L200,70 L210,30 L220,50 L260,50 L270,35 L280,65 L290,35 L300,50 L500,50"
+                              stroke="#c53856" stroke-width="2" fill="none"/>
+                    </svg>
+                    <div class="heart-icon">
+                        <svg viewBox="0 0 24 24" fill="#8b1538">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Steps -->
+            <div class="steps-grid">
+                <!-- Step 1 -->
+                <div class="step-item step-1">
+                    <div class="step-number">
+                        <span>1</span>
+                    </div>
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                    </div>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-item step-2">
+                    <div class="step-number">
+                        <span>2</span>
+                    </div>
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                    </div>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step-item step-3">
+                    <div class="step-number">
+                        <span>3</span>
+                    </div>
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                    </div>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mission Section -->
+<section class="mission">
+    <div class="container">
+        <h2>Our Mission</h2>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+    </div>
+</section>
+
+<!-- Collaborators Section -->
+<section class="collaborators">
+    <div class="container">
+        <h2>Our Collaborators</h2>
+        <div class="collaborators-grid">
+            <div class="collaborator-item">
+                <span class="collaborator-name">NCC</span>
+            </div>
+            <div class="collaborator-item">
+                <span class="collaborator-name">NSS</span>
+            </div>
+            <div class="collaborator-item">
+                <span class="collaborator-name">YMCA</span>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
