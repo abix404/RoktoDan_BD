@@ -1,4 +1,5 @@
 <!-- navbar.html -->
+{% load static %}
 <nav class="navbar">
     <div class="navbar-container">
         <div class="nav-brand">
@@ -7,12 +8,12 @@
         <div class="nav-menu-container">
             <ul class="nav-menu">
                 <li><a href="/" class="nav-link active">Home</a></li>
-                <li><a href="/about/" class="nav-link">About Us</a></li>
+                <li><a href="{% url 'about_us' %}" class="nav-link">About Us</a></li>
                 <li><a href="/find-blood/" class="nav-link">Find Blood</a></li>
                 <li class="dropdown">
                     <a href="#" class="nav-link dropdown-toggle">Register Now</a>
                     <div class="dropdown-menu">
-                        <a href="/register/register_donor/" class="dropdown-item">As Donor</a>
+                        <a href="{% url 'as_donor' %}" class="dropdown-item">As Donor</a>
                         <a href="/register/recipient/" class="dropdown-item">As Recipient</a>
                     </div>
                 </li>
