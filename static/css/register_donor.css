@@ -1,0 +1,132 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.registration-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+}
+
+h1 {
+    color: #d32f2f;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.donor-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.address-group {
+    flex: 2;
+}
+
+.age-group {
+    flex: 1;
+}
+
+.donation-date {
+    display: flex;
+    gap: 10px;
+}
+
+.donation-date input {
+    flex: 1;
+}
+
+.image-upload {
+    display: flex;
+    justify-content: center;
+}
+
+.upload-btn {
+    background-color: #f8f8f8;
+    border: 1px dashed #ccc;
+    padding: 15px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #666;
+    font-size: 14px;
+    width: 100%;
+}
+
+.upload-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.disclaimer {
+    color: #666;
+    font-size: 12px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.submit-btn {
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #b71c1c;
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .donation-date {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
