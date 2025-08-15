@@ -20,7 +20,12 @@ from roktodanbdweb import views as views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('', views.home, name='home'),
+
     path('about_us/', views.about_us, name='about_us'),
-    path('registration/as_donor/', views.as_donor, name='as_donor'),
+
+    path('register_donor/', views.register_donor, name='register_donor'),
+
+    path('sucess/', views.registration_success, name='success'),
 ]
