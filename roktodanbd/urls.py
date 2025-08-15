@@ -28,4 +28,6 @@ urlpatterns = [
     path('register_donor/', views.register_donor, name='register_donor'),
 
     path('sucess/', views.registration_success, name='success'),
+
+    path('login/', views.user_login, name='login'),
 ]

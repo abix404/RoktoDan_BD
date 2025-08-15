@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import DonorRegistrationForm
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
 from .models import Donor
 
 def home(request):
@@ -24,3 +26,19 @@ def register_donor(request):
 
 def registration_success(request):
     return render(request, 'success.html')
+
+
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)  # Correctly passing both request and user
+            return redirect('/')
+        else:
+            messages.error(request, 'Invalid username or password')
+            return render(request, 'login.html')
+
+    return render(request, 'login.html')
