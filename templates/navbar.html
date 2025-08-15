@@ -1,36 +1,34 @@
-<!-- navbar.html -->
 {% load static %}
-<nav class="navbar">
-    <div class="navbar-container">
-        <div class="nav-brand">
-            <div class="logo"></div>
+<nav class="rd-navbar">
+    <div class="rd-navbar-container">
+        <div class="rd-nav-brand">
+            <div class="rd-logo"></div>
         </div>
-        <div class="nav-menu-container">
-            <ul class="nav-menu">
-                <li><a href="/" class="nav-link active">Home</a></li>
-                <li><a href="{% url 'about_us' %}" class="nav-link">About Us</a></li>
-                <li><a href="/find-blood/" class="nav-link">Find Blood</a></li>
-                <li class="dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">Register Now</a>
-                    <div class="dropdown-menu">
-                        <a href="{% url 'as_donor' %}" class="dropdown-item">As Donor</a>
-                        <a href="/register/recipient/" class="dropdown-item">As Recipient</a>
+        <div class="rd-nav-menu-container">
+            <ul class="rd-nav-menu">
+                <li><a href="/" class="rd-nav-link active">Home</a></li>
+                <li><a href="{% url 'about_us' %}" class="rd-nav-link">About Us</a></li>
+                <li><a href="/find-blood/" class="rd-nav-link">Find Blood</a></li>
+                <li class="rd-dropdown">
+                    <a href="#" class="rd-nav-link rd-dropdown-toggle">Register Now</a>
+                    <div class="rd-dropdown-menu">
+                        <a href="{% url 'register_donor' %}" class="rd-dropdown-item">As Donor</a>
+                        <a href="/register/recipient/" class="rd-dropdown-item">As Recipient</a>
                     </div>
                 </li>
             </ul>
-            <button class="login-btn">Log In</button>
+            <button class="rd-login-btn">Log In</button>
         </div>
-        <div class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+        <div class="rd-hamburger">
+            <span class="rd-bar"></span>
+            <span class="rd-bar"></span>
+            <span class="rd-bar"></span>
         </div>
     </div>
 </nav>
 
 <style>
-/* Navbar Styles */
-.navbar {
+.rd-navbar {
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: relative;
@@ -38,7 +36,7 @@
     width: 100%;
 }
 
-.navbar-container {
+.rd-navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -48,7 +46,7 @@
     box-sizing: border-box;
 }
 
-.nav-brand .logo {
+.rd-nav-brand .rd-logo {
     width: 40px;
     height: 40px;
     background-color: #c53856;
@@ -56,8 +54,7 @@
     position: relative;
     cursor: pointer;
 }
-
-.nav-brand .logo::after {
+.rd-nav-brand .rd-logo::after {
     content: '';
     position: absolute;
     top: 50%;
@@ -69,13 +66,12 @@
     border-radius: 50%;
 }
 
-.nav-menu-container {
+.rd-nav-menu-container {
     display: flex;
     align-items: center;
     gap: 2rem;
 }
-
-.nav-menu {
+.rd-nav-menu {
     display: flex;
     list-style: none;
     gap: 2rem;
@@ -84,7 +80,7 @@
     padding: 0;
 }
 
-.nav-link {
+.rd-nav-link {
     text-decoration: none;
     color: #666;
     font-weight: 500;
@@ -93,12 +89,10 @@
     padding: 0.5rem 0;
     white-space: nowrap;
 }
-
-.nav-link.active {
+.rd-nav-link.active {
     color: #333;
 }
-
-.nav-link.active::after {
+.rd-nav-link.active::after {
     content: '';
     position: absolute;
     bottom: -5px;
@@ -107,22 +101,19 @@
     height: 2px;
     background-color: #c53856;
 }
-
-.nav-link:hover {
+.rd-nav-link:hover {
     color: #c53856;
 }
 
-.dropdown {
+.rd-dropdown {
     position: relative;
 }
-
-.dropdown-toggle::after {
+.rd-dropdown-toggle::after {
     content: '▼';
     margin-left: 5px;
     font-size: 0.8em;
 }
-
-.dropdown-menu {
+.rd-dropdown-menu {
     position: absolute;
     top: 100%;
     left: 0;
@@ -136,27 +127,24 @@
     transition: all 0.3s ease;
     z-index: 1001;
 }
-
-.dropdown:hover .dropdown-menu {
+.rd-dropdown:hover .rd-dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
-
-.dropdown-item {
+.rd-dropdown-item {
     display: block;
     padding: 10px 15px;
     text-decoration: none;
     color: #666;
     transition: background-color 0.3s ease;
 }
-
-.dropdown-item:hover {
+.rd-dropdown-item:hover {
     background-color: #f8f9fa;
     color: #c53856;
 }
 
-.login-btn {
+.rd-login-btn {
     background: transparent;
     border: 2px solid #666;
     padding: 10px 25px;
@@ -167,19 +155,17 @@
     font-size: 1rem;
     white-space: nowrap;
 }
-
-.login-btn:hover {
+.rd-login-btn:hover {
     background-color: #c53856;
     border-color: #c53856;
     color: white;
 }
 
-.hamburger {
+.rd-hamburger {
     display: none;
     cursor: pointer;
 }
-
-.bar {
+.rd-bar {
     display: block;
     width: 25px;
     height: 3px;
@@ -190,7 +176,7 @@
 
 /* Mobile Responsive */
 @media (max-width: 992px) {
-    .nav-menu-container {
+    .rd-nav-menu-container {
         position: fixed;
         left: -100%;
         top: 70px;
@@ -204,21 +190,17 @@
         padding: 1rem 0;
         z-index: 999;
     }
-
-    .nav-menu-container.active {
+    .rd-nav-menu-container.active {
         left: 0;
     }
-
-    .nav-menu {
+    .rd-nav-menu {
         flex-direction: column;
         width: 100%;
     }
-
-    .nav-menu li {
+    .rd-nav-menu li {
         margin: 1rem 0;
     }
-
-    .dropdown-menu {
+    .rd-dropdown-menu {
         position: static;
         display: none;
         width: 100%;
@@ -228,40 +210,33 @@
         transform: none;
         transition: none;
     }
-
-    .dropdown:hover .dropdown-menu {
+    .rd-dropdown:hover .rd-dropdown-menu {
         display: block;
     }
-
-    .login-btn {
+    .rd-login-btn {
         margin: 1rem auto;
         display: block;
         width: fit-content;
     }
-
-    .hamburger {
+    .rd-hamburger {
         display: block;
     }
-
-    .hamburger.active .bar:nth-child(2) {
+    .rd-hamburger.active .rd-bar:nth-child(2) {
         opacity: 0;
     }
-
-    .hamburger.active .bar:nth-child(1) {
+    .rd-hamburger.active .rd-bar:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
     }
-
-    .hamburger.active .bar:nth-child(3) {
+    .rd-hamburger.active .rd-bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
 }
 
 @media (min-width: 993px) and (max-width: 1200px) {
-    .navbar-container {
+    .rd-navbar-container {
         padding: 1rem 3%;
     }
-
-    .nav-menu {
+    .rd-nav-menu {
         gap: 1rem;
     }
 }
@@ -269,16 +244,15 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu-container');
+    const hamburger = document.querySelector('.rd-hamburger');
+    const navMenu = document.querySelector('.rd-nav-menu-container');
 
     hamburger.addEventListener('click', function() {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
 
-    // Close menu when clicking on a link
-    document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+    document.querySelectorAll('.rd-nav-link').forEach(n => n.addEventListener('click', () => {
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
     }));
