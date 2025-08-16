@@ -1,12 +1,78 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}About us - RoktoDan BD{% endblock %}
+{% block title %}About Us - RoktoDan BD{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/about_us.css' %}">
 {% endblock %}
 
 {% block content %}
-<h3 align="central">About Us</h3>
+<div class="main_wrapper">
+        <section class="about-us-section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="text-content">
+                        <h1 class="section-title">Roktodan BD</h1>
+                        <div class="title-underline"></div>
+
+                        <p class="description">
+                            WE connects blood donors with
+                            recipients, saving lives through a seamless digital platform across Bangladesh.
+                            Where instantly matches donors to patients, ensuring timely blood access. Join our
+                            lifesaving mission today!
+                        </p>
+
+                        <a href="#" class="learn-more-btn">LEARN MORE</a>
+                    </div>
+
+                    <div class="illustration-content">
+                        <div class="background-shapes">
+                            <div class="shape shape-1"></div>
+                            <div class="shape shape-2"></div>
+                            <div class="shape shape-3"></div>
+                        </div>
+
+                        <div class="people-group">
+                            <!-- Person 1 -->
+                            <div class="person person-1">
+                                <div class="person-body"></div>
+                                <div class="person-head"></div>
+                                <div class="person-hair hair-1"></div>
+                            </div>
+
+                            <!-- Person 2 -->
+                            <div class="person person-2">
+                                <div class="person-body"></div>
+                                <div class="person-head"></div>
+                                <div class="person-hair hair-2"></div>
+                            </div>
+
+                            <!-- Person 3 -->
+                            <div class="person person-3">
+                                <div class="person-body"></div>
+                                <div class="person-head"></div>
+                                <div class="person-hair hair-3"></div>
+                            </div>
+
+                            <!-- Person 4 -->
+                            <div class="person person-4">
+                                <div class="person-body"></div>
+                                <div class="person-head"></div>
+                                <div class="person-hair hair-4"></div>
+                            </div>
+                        </div>
+
+                        <div class="decorative-leaves">
+                            <div class="leaf leaf-1"></div>
+                            <div class="leaf leaf-2"></div>
+                            <div class="leaf leaf-3"></div>
+                            <div class="leaf leaf-4"></div>
+                            <div class="leaf leaf-5"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 {%endblock%}
