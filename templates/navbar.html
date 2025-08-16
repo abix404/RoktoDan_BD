@@ -6,18 +6,18 @@
         </div>
         <div class="rd-nav-menu-container">
             <ul class="rd-nav-menu">
-                <li><a href="/" class="rd-nav-link active">Home</a></li>
-                <li><a href="{% url 'about_us' %}" class="rd-nav-link">About Us</a></li>
-                <li><a href="/find-blood/" class="rd-nav-link">Find Blood</a></li>
+                <li><a href="/" class="rd-nav-link {% if request.resolver_match.url_name == 'home' or request.resolver_match.url_name == None %}active{% endif %}">Home</a></li>
+                <li><a href="{% url 'about_us' %}" class="rd-nav-link {% if request.resolver_match.url_name == 'about_us' %}active{% endif %}">About Us</a></li>
+                <li><a href="{% url 'quick_register_recipient' %}" class="rd-nav-link {% if request.resolver_match.url_name == 'quick_register_recipient' %}active{% endif %}">Find Blood</a></li>
                 <li class="rd-dropdown">
-                    <a href="#" class="rd-nav-link rd-dropdown-toggle">Register Now</a>
+                    <a href="#" class="rd-nav-link rd-dropdown-toggle {% if request.resolver_match.url_name == 'register_donor' or request.path == '/register/recipient/' %}active{% endif %}">Register Now</a>
                     <div class="rd-dropdown-menu">
-                        <a href="{% url 'register_donor' %}" class="rd-dropdown-item">As Donor</a>
-                        <a href="/register/recipient/" class="rd-dropdown-item">As Recipient</a>
+                        <a href="{% url 'register_donor' %}" class="rd-dropdown-item {% if request.resolver_match.url_name == 'register_donor' %}active{% endif %}">As Donor</a>
+                        <a href="/register/recipient/" class="rd-dropdown-item {% if request.path == '/register/recipient/' %}active{% endif %}">As Recipient</a>
                     </div>
                 </li>
             </ul>
-            <button  class="rd-login-btn"><a href="{% url 'login' %}">Log In</a></button>
+           <a href="{% url 'login' %}" class="rd-login-btn">Log In</a>
         </div>
         <div class="rd-hamburger">
             <span class="rd-bar"></span>
@@ -29,6 +29,7 @@
 
 <style>
 .rd-navbar {
+    font-family: 'Arial', sans-serif;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: relative;
@@ -89,18 +90,24 @@
     padding: 0.5rem 0;
     white-space: nowrap;
 }
+
 .rd-nav-link.active {
     color: #333;
 }
+
+/* Centered underline for nav links */
 .rd-nav-link.active::after {
     content: '';
     position: absolute;
     bottom: -5px;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 10px);
     height: 2px;
     background-color: #c53856;
+    border-radius: 1px;
 }
+
 .rd-nav-link:hover {
     color: #c53856;
 }
@@ -138,14 +145,33 @@
     text-decoration: none;
     color: #666;
     transition: background-color 0.3s ease;
+    position: relative;
 }
 .rd-dropdown-item:hover {
     background-color: #f8f9fa;
     color: #c53856;
 }
 
+/* Active state for dropdown items */
+.rd-dropdown-item.active {
+    background-color: #f8f9fa;
+    color: #c53856;
+    font-weight: 600;
+}
+
+.rd-dropdown-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background-color: #c53856;
+}
+
 .rd-login-btn {
     background: transparent;
+    color: #000000;
     border: 2px solid #666;
     padding: 10px 25px;
     border-radius: 25px;
@@ -154,6 +180,7 @@
     transition: all 0.3s ease;
     font-size: 1rem;
     white-space: nowrap;
+    text-decoration: none;
 }
 .rd-login-btn:hover {
     background-color: #c53856;
@@ -229,6 +256,11 @@
     }
     .rd-hamburger.active .rd-bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Mobile underline adjustment */
+    .rd-nav-link.active::after {
+        width: 60%;
     }
 }
 
