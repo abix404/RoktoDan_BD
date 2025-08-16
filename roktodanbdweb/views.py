@@ -42,3 +42,6 @@ def user_login(request):
             return render(request, 'login.html')
 
     return render(request, 'login.html')
+
+def quick_register_recipient(request):
+    return render(request, 'quick_register_recipient.html')
