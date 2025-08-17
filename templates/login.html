@@ -53,9 +53,10 @@
                 <span class="login-divider-text">or</span>
             </div>
 
-            <button type="button" class="login-social-btn btn btn-outline-secondary">
+                <a href="{% url 'social:begin' 'google-oauth2' %}"
+                class="login-social-btn btn btn-outline-secondary">
                 <i class="bi bi-google"></i> Login with Google
-            </button>
+              </a>
 
             <button type="button" class="login-social-btn btn btn-outline-secondary mb-4">
                 <i class="bi bi-facebook"></i> Login with Facebook

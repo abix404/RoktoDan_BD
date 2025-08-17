@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'roktodanbdweb.apps.RoktodanbdwebConfig'
+    'roktodanbdweb.apps.RoktodanbdwebConfig', # our app
+    'social_django' # for auth
 ]
 
 MIDDLEWARE = [
@@ -129,3 +130,17 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = '/'   # page after successful login (Home)
+LOGOUT_REDIRECT_URL = '/'  # after logout (Home)
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',   # Google OAuth
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "292748591574-gq26c29qj6o6cllo566u89ofa4derc5a.apps.googleusercontent.com"
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "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"
