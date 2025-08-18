@@ -4,12 +4,22 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .models import Donor
 
+
 def home(request):
     return render(request, 'home.html')
 # Create your views here.
 
 def about_us(request):
     return render(request, 'about_us.html')
+
+def donor_credit(request):
+    return render(request, 'donor_credit.html')
+
+def logout(request):
+    return render(request, 'logout.html')
+
+def donation_history(request):
+    return render(request, 'donation_history.html')
 
 
 def register_donor(request):
@@ -45,3 +55,4 @@ def user_login(request):
 
 def quick_register_recipient(request):
     return render(request, 'quick_register_recipient.html')
+

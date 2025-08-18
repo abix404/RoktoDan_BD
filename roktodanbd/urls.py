@@ -34,4 +34,10 @@ urlpatterns = [
     path('login/', views.user_login, name='login'),
 
     path('quick_register_recipient/', views.quick_register_recipient, name='quick_register_recipient'),
+
+    path('donor_credit/', views.donor_credit, name='donor_credit'),
+
+    path('donation_history/', views.donation_history, name='donation_history'),
+
+    path('logout/', views.logout, name='logout'),
 ]
