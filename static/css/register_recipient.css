@@ -1,0 +1,318 @@
+/* register_recipient.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-wrapper {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registration-container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px;
+}
+
+.registration-container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+.recipient-form {
+    width: 100%;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.form-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.required {
+    color: #e74c3c;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e1e8ed;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #999;
+}
+
+.address-group {
+    flex: 2;
+}
+
+.age-group {
+    flex: 1;
+    min-width: 120px;
+}
+
+/* Password-specific styling */
+.password-group {
+    position: relative;
+}
+
+.password-group input {
+    padding-right: 45px; /* Make room for toggle button */
+    box-sizing: border-box;
+}
+
+.password-strength {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.password-strength.weak {
+    color: #e74c3c;
+}
+
+.password-strength.medium {
+    color: #f39c12;
+}
+
+.password-strength.strong {
+    color: #27ae60;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0;
+    z-index: 1;
+}
+
+.password-toggle:hover {
+    color: #667eea;
+}
+
+.password-requirements {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.password-requirements ul {
+    margin: 5px 0 0 0;
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.password-requirements li {
+    margin-bottom: 3px;
+}
+
+.password-requirements li.valid {
+    color: #27ae60;
+}
+
+.password-requirements li.invalid {
+    color: #e74c3c;
+}
+
+.password-match {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.password-match.valid {
+    color: #27ae60;
+}
+
+.password-match.invalid {
+    color: #e74c3c;
+}
+
+.image-upload {
+    position: relative;
+}
+
+.upload-btn {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px dashed #667eea;
+    background-color: #f8f9ff;
+    color: #667eea;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.upload-btn:hover {
+    background-color: #667eea;
+    color: white;
+    border-style: solid;
+}
+
+.file-name {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+.disclaimer {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+    text-align: center;
+    margin: 0;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-wrapper {
+        padding: 10px;
+    }
+
+    .registration-container {
+        padding: 30px 20px;
+        margin: 10px;
+    }
+
+    .registration-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .form-group {
+        min-width: unset;
+    }
+
+    .address-group,
+    .age-group {
+        flex: 1;
+        min-width: unset;
+    }
+
+    .password-group input {
+        padding-right: 40px;
+    }
+
+    .password-toggle {
+        right: 12px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .registration-container {
+        padding: 20px 15px;
+    }
+
+    .registration-container h1 {
+        font-size: 1.6rem;
+        margin-bottom: 25px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .upload-btn {
+        padding: 10px 12px;
+        font-size: 0.95rem;
+    }
+
+    .password-group input {
+        padding-right: 38px;
+    }
+
+    .submit-btn {
+        padding: 12px;
+        font-size: 1rem;
+    }
+
+    .password-requirements,
+    .password-strength,
+    .password-match {
+        font-size: 0.8rem;
+    }
+}

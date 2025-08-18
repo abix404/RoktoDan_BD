@@ -1,8 +1,7 @@
-# forms.py - Updated for your exact Donor model
 from django import forms
 from django.contrib.auth.models import User
-from .models import Donor
 from datetime import datetime
+from .models import *
 
 
 class DonorRegistrationForm(forms.ModelForm):
@@ -286,3 +285,131 @@ class DonorBasicUpdateForm(forms.ModelForm):
             'pincode': forms.TextInput(attrs={'class': 'form-control'}),
             'profile_image': forms.FileInput(attrs={'class': 'form-control', 'accept': 'image/*'})
         }
+
+
+class RecipientRegistrationForm(forms.ModelForm):
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Password',
+            'required': True
+        }),
+        min_length=8,
+        help_text="Password must be at least 8 characters long."
+    )
+
+    confirm_password = forms.CharField(
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Confirm Password',
+            'required': True
+        }),
+        help_text="Enter the same password as before, for verification."
+    )
+
+    class Meta:
+        model = Recipient
+        fields = [
+            'first_name', 'last_name', 'phone_number', 'blood_group',
+            'email', 'house_holding_no', 'road_block', 'thana',
+            'post_office', 'district', 'age', 'image'
+        ]
+
+        widgets = {
+            'first_name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'First Name',
+                'required': True
+            }),
+            'last_name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Last Name',
+                'required': True
+            }),
+            'phone_number': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Phone Number',
+                'required': True
+            }),
+            'blood_group': forms.Select(attrs={
+                'class': 'form-control',
+                'required': True
+            }),
+            'email': forms.EmailInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Email Address',
+                'required': True
+            }),
+            'house_holding_no': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'House Holding No',
+                'required': True
+            }),
+            'road_block': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Road/Block',
+                'required': True
+            }),
+            'thana': forms.Select(attrs={
+                'class': 'form-control',
+                'required': True
+            }),
+            'post_office': forms.Select(attrs={
+                'class': 'form-control',
+                'required': True
+            }),
+            'district': forms.Select(attrs={
+                'class': 'form-control',
+                'required': True
+            }),
+            'age': forms.NumberInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Age',
+                'min': 1,
+                'max': 120
+            }),
+            'image': forms.FileInput(attrs={
+                'class': 'form-control',
+                'accept': 'image/*'
+            }),
+        }
+
+    def clean_phone_number(self):
+        phone = self.cleaned_data.get('phone_number')
+        if phone:
+            # Remove any spaces, dashes, or parentheses
+            phone = ''.join(filter(str.isdigit, phone))
+            if len(phone) < 10:
+                raise forms.ValidationError("Phone number must be at least 10 digits.")
+        return phone
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if email:
+            if Recipient.objects.filter(email=email).exists():
+                raise forms.ValidationError("A recipient with this email already exists.")
+        return email
+
+    def clean_age(self):
+        age = self.cleaned_data.get('age')
+        if age is not None and (age < 1 or age > 120):
+            raise forms.ValidationError("Please enter a valid age between 1 and 120.")
+        return age
+
+    def clean_confirm_password(self):
+        password = self.cleaned_data.get('password')
+        confirm_password = self.cleaned_data.get('confirm_password')
+
+        if password and confirm_password:
+            if password != confirm_password:
+                raise forms.ValidationError("Passwords don't match.")
+        return confirm_password
+
+    def clean_password(self):
+        password = self.cleaned_data.get('password')
+        if password:
+            # Add additional password validation if needed
+            if len(password) < 8:
+                raise forms.ValidationError("Password must be at least 8 characters long.")
+            # You can add more validation rules here (e.g., uppercase, numbers, special chars)
+        return password

@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 from roktodanbdweb import views as views
 
+app_name = 'registration'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -40,4 +42,8 @@ urlpatterns = [
     path('donation_history/', views.donation_history, name='donation_history'),
 
     path('logout/', views.logout, name='logout'),
+
+    path('register_recipient/', views.register_recipient, name='register_recipient'),
+
+    path('success/', views.recipient_success, name='recipient_success'),
 ]
