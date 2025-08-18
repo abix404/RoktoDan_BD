@@ -3,7 +3,9 @@ from .forms import DonorRegistrationForm
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .models import Donor
-
+from django.shortcuts import render, redirect
+from django.contrib.auth import logout as auth_logout
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     return render(request, 'home.html')
@@ -15,12 +17,17 @@ def about_us(request):
 def donor_credit(request):
     return render(request, 'donor_credit.html')
 
-def logout(request):
-    return render(request, 'logout.html')
-
 def donation_history(request):
     return render(request, 'donation_history.html')
 
+
+@login_required
+def logout(request):
+    """
+    Logs out the user and shows the animated logout page
+    """
+    auth_logout(request)
+    return render(request, 'logout.html')
 
 def register_donor(request):
     if request.method == 'POST':
