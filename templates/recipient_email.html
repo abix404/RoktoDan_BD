@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #667eea;
+            margin: 0;
+        }
+        .content {
+            margin-bottom: 30px;
+        }
+        .details-box {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            margin: 20px 0;
+        }
+        .detail-item {
+            margin: 10px 0;
+            padding: 5px 0;
+        }
+        .detail-label {
+            font-weight: bold;
+            color: #555;
+        }
+        .blood-group {
+            background: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: bold;
+        }
+        .next-steps {
+            background: #e8f5e8;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #27ae60;
+        }
+        .footer {
+            text-align: center;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>{{ site_name }}</h1>
+            <p>Blood Donation Platform</p>
+        </div>
+
+        <div class="content">
+            <h2>Registration Successful!</h2>
+            <p>Dear {{ recipient.full_name }},</p>
+            <p>Thank you for registering as a blood recipient with {{ site_name }}. Your registration has been confirmed and is now active.</p>
+
+            <div class="details-box">
+                <h3>Your Registration Details:</h3>
+                <div class="detail-item">
+                    <span class="detail-label">Name:</span> {{ recipient.full_name }}
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Required Blood Group:</span>
+                    <span class="blood-group">{{ recipient.blood_group }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Phone:</span> {{ recipient.phone_number }}
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Email:</span> {{ recipient.email }}
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Address:</span> {{ recipient.full_address }}
+                </div>
+                {% if recipient.age %}
+                <div class="detail-item">
+                    <span class="detail-label">Age:</span> {{ recipient.age }}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="next-steps">
+                <h3>What Happens Next?</h3>
+                <ul>
+                    <li>✓ Your registration is now active in our system</li>
+                    <li>✓ We will search for compatible donors in your area</li>
+                    <li>✓ You'll receive notifications when donors are available</li>
+                    <li>✓ Keep your phone accessible for urgent requests</li>
+                </ul>
+            </div>
+
+            <p><strong>Important:</strong> Please ensure your contact information is always up to date. Response time is crucial in emergency situations.</p>
+        </div>
+
+        <div class="footer">
+            <p>{{ site_name }} - Supporting Life, One Drop at a Time</p>
+            <p>This is an automated message. Please do not reply to this email.</p>
+        </div>
+    </div>
+</body>
+</html>

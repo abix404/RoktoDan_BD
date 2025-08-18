@@ -1,0 +1,272 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Register as Recipient - RoktoDan BD{% endblock %}
+
+{% block extra_css %}
+     <link rel="stylesheet" href="{% static 'css/register_recipient.css' %}">
+{% endblock %}
+
+{% block content %}
+   <div class="main-wrapper">
+    <div class="registration-container">
+        <h1>Register As Recipient</h1>
+
+        <form class="recipient-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">First Name <span class="required">*</span></label>
+                    <input type="text" id="firstName" name="first_name" placeholder="First Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name <span class="required">*</span></label>
+                    <input type="text" id="lastName" name="last_name" placeholder="Last Name" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phone">Phone Number <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone_number" placeholder="Phone Number" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="bloodGroup">Required Blood Group <span class="required">*</span></label>
+                    <select id="bloodGroup" name="blood_group" required>
+                        <option value="">Select Required Blood Group</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Email <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="Email Address" required>
+                </div>
+            </div>
+
+            <!-- Password Fields -->
+            <div class="form-row">
+                <div class="form-group password-group">
+                    <label for="password">Password <span class="required">*</span></label>
+                    <input type="password" id="password" name="password" placeholder="Create Password" required>
+                    <button type="button" class="password-toggle" onclick="togglePassword('password')">👁️</button>
+                    <div class="password-strength" id="passwordStrength"></div>
+                    <div class="password-requirements">
+                        <ul id="passwordReqs">
+                            <li id="lengthReq" class="invalid">At least 8 characters</li>
+                            <li id="upperReq" class="invalid">One uppercase letter</li>
+                            <li id="lowerReq" class="invalid">One lowercase letter</li>
+                            <li id="numberReq" class="invalid">One number</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group password-group">
+                    <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+                    <input type="password" id="confirmPassword" name="confirm_password" placeholder="Confirm Password" required>
+                    <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">👁️</button>
+                    <div class="password-match" id="passwordMatch"></div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="houseHolding">House Holding No <span class="required">*</span></label>
+                    <input type="text" id="houseHolding" name="house_holding_no" placeholder="House Holding No" required>
+                </div>
+                <div class="form-group">
+                    <label for="roadBlock">Road/Block <span class="required">*</span></label>
+                    <input type="text" id="roadBlock" name="road_block" placeholder="Road/Block" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="thana">Thana <span class="required">*</span></label>
+                    <select id="thana" name="thana" required>
+                        <option value="">Select Thana</option>
+                        <option value="Adabar">Adabar</option>
+                        <option value="Badda">Badda</option>
+                        <option value="Banani">Banani</option>
+                        <option value="Baridhara">Baridhara</option>
+                        <option value="Dhanmondi">Dhanmondi</option>
+                        <option value="Gulshan">Gulshan</option>
+                        <option value="Hatirjheel">Hatirjheel</option>
+                        <option value="Kafrul">Kafrul</option>
+                        <option value="Kalabagan">Kalabagan</option>
+                        <option value="Khilgaon">Khilgaon</option>
+                        <option value="Khilkhet">Khilkhet</option>
+                        <option value="Mirpur">Mirpur</option>
+                        <option value="Mohammadpur">Mohammadpur</option>
+                        <option value="Motijheel">Motijheel</option>
+                        <option value="New Market">New Market</option>
+                        <option value="Old Dhaka">Old Dhaka</option>
+                        <option value="Pallabi">Pallabi</option>
+                        <option value="Ramna">Ramna</option>
+                        <option value="Rampura">Rampura</option>
+                        <option value="Sabujbagh">Sabujbagh</option>
+                        <option value="Shah Ali">Shah Ali</option>
+                        <option value="Sher-e-Bangla Nagar">Sher-e-Bangla Nagar</option>
+                        <option value="Tejgaon">Tejgaon</option>
+                        <option value="Uttara">Uttara</option>
+                        <option value="Wari">Wari</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="postOffice">Post Office <span class="required">*</span></label>
+                    <select id="postOffice" name="post_office" required>
+                        <option value="">Select Post Office</option>
+                        <option value="Dhaka GPO">Dhaka GPO</option>
+                        <option value="Banani">Banani</option>
+                        <option value="Dhanmondi">Dhanmondi</option>
+                        <option value="Gulshan">Gulshan</option>
+                        <option value="Mirpur">Mirpur</option>
+                        <option value="Mohammadpur">Mohammadpur</option>
+                        <option value="Motijheel">Motijheel</option>
+                        <option value="New Market">New Market</option>
+                        <option value="Old Dhaka">Old Dhaka</option>
+                        <option value="Ramna">Ramna</option>
+                        <option value="Tejgaon">Tejgaon</option>
+                        <option value="Uttara">Uttara</option>
+                        <option value="Wari">Wari</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="district">District <span class="required">*</span></label>
+                    <select id="district" name="district" required>
+                        <option value="">Select District</option>
+                        <option value="Dhaka" selected>Dhaka</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" placeholder="Age" min="1" max="120">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="image">Upload Image</label>
+                    <div class="image-upload">
+                        <input type="file" id="image" name="image" accept="image/*" style="display: none;">
+                        <button type="button" class="upload-btn" onclick="document.getElementById('image').click();">+ Upload your image</button>
+                        <span class="file-name" id="fileName"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <p class="disclaimer">
+                    By registering as a recipient, you agree to provide accurate information and understand that this platform connects you with potential blood donors.
+                </p>
+            </div>
+
+            <div class="form-row">
+                <button type="submit" class="submit-btn">Register as Recipient</button>
+            </div>
+        </form>
+    </div>
+   </div>
+
+   <script>
+       // Display selected file name
+       document.getElementById('image').addEventListener('change', function(e) {
+           const fileName = e.target.files[0]?.name || '';
+           document.getElementById('fileName').textContent = fileName;
+       });
+
+       // Toggle password visibility
+       function togglePassword(fieldId) {
+           const field = document.getElementById(fieldId);
+           const button = field.nextElementSibling;
+
+           if (field.type === 'password') {
+               field.type = 'text';
+               button.textContent = '🙈';
+           } else {
+               field.type = 'password';
+               button.textContent = '👁️';
+           }
+       }
+
+       // Password strength checker
+       function checkPasswordStrength(password) {
+           let strength = 0;
+           const checks = {
+               length: password.length >= 8,
+               upper: /[A-Z]/.test(password),
+               lower: /[a-z]/.test(password),
+               number: /\d/.test(password),
+               special: /[!@#$%^&*(),.?":{}|<>]/.test(password)
+           };
+
+           // Update requirement indicators
+           document.getElementById('lengthReq').className = checks.length ? 'valid' : 'invalid';
+           document.getElementById('upperReq').className = checks.upper ? 'valid' : 'invalid';
+           document.getElementById('lowerReq').className = checks.lower ? 'valid' : 'invalid';
+           document.getElementById('numberReq').className = checks.number ? 'valid' : 'invalid';
+
+           // Calculate strength
+           strength = Object.values(checks).filter(Boolean).length;
+
+           const strengthIndicator = document.getElementById('passwordStrength');
+           if (password.length === 0) {
+               strengthIndicator.textContent = '';
+               strengthIndicator.className = 'password-strength';
+           } else if (strength < 3) {
+               strengthIndicator.textContent = 'Weak Password';
+               strengthIndicator.className = 'password-strength weak';
+           } else if (strength < 4) {
+               strengthIndicator.textContent = 'Medium Password';
+               strengthIndicator.className = 'password-strength medium';
+           } else {
+               strengthIndicator.textContent = 'Strong Password';
+               strengthIndicator.className = 'password-strength strong';
+           }
+       }
+
+       // Check password match
+       function checkPasswordMatch() {
+           const password = document.getElementById('password').value;
+           const confirmPassword = document.getElementById('confirmPassword').value;
+           const matchIndicator = document.getElementById('passwordMatch');
+
+           if (confirmPassword.length === 0) {
+               matchIndicator.textContent = '';
+               matchIndicator.className = 'password-match';
+           } else if (password === confirmPassword) {
+               matchIndicator.textContent = 'Passwords match ✓';
+               matchIndicator.className = 'password-match valid';
+           } else {
+               matchIndicator.textContent = 'Passwords do not match ✗';
+               matchIndicator.className = 'password-match invalid';
+           }
+       }
+
+       // Add event listeners
+       document.getElementById('password').addEventListener('input', function() {
+           checkPasswordStrength(this.value);
+           checkPasswordMatch();
+       });
+
+       document.getElementById('confirmPassword').addEventListener('input', checkPasswordMatch);
+   </script>
+{% endblock %}

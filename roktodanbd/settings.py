@@ -144,3 +144,16 @@ AUTHENTICATION_BACKENDS = (
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "292748591574-gq26c29qj6o6cllo566u89ofa4derc5a.apps.googleusercontent.com"
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "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"
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# For Gmail SMTP (recommended for development)
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'abidmuhammad206@gmail.com'  # our Gmail address (btw mine)
+EMAIL_HOST_PASSWORD = 'nouq aeva gxne umgr'  # Gmail App Password (yoh bro this isn't regular password)
+
+# Default sender email
+DEFAULT_FROM_EMAIL = 'RoktoDan BD <abidmuhammad206@gmail.com>'
+ADMIN_EMAIL = 'bokhtearmdabid@gmail.com'

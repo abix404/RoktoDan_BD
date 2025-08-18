@@ -13,7 +13,7 @@
                     <a href="#" class="rd-nav-link rd-dropdown-toggle {% if request.resolver_match.url_name == 'register_donor' or request.path == '/register/recipient/' %}active{% endif %}">Register Now</a>
                     <div class="rd-dropdown-menu">
                         <a href="{% url 'register_donor' %}" class="rd-dropdown-item {% if request.resolver_match.url_name == 'register_donor' %}active{% endif %}">As Donor</a>
-                        <a href="/register/recipient/" class="rd-dropdown-item {% if request.path == '/register/recipient/' %}active{% endif %}">As Recipient</a>
+                        <a href="{% url 'register_recipient' %}" class="rd-dropdown-item {% if request.path == '/register/recipient/' %}active{% endif %}">As Recipient</a>
                     </div>
                 </li>
             </ul>

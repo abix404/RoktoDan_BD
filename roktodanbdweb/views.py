@@ -1,11 +1,20 @@
-from django.shortcuts import render, redirect
 from .forms import DonorRegistrationForm
 from django.contrib.auth import authenticate, login
-from django.contrib import messages
 from .models import Donor
-from django.shortcuts import render, redirect
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.views import View
+from django.http import JsonResponse
+from .forms import RecipientRegistrationForm
+from .models import Recipient
+from .utils import send_registration_email, send_admin_notification
+import logging
+from django.contrib.auth.hashers import make_password
+
+
+logger = logging.getLogger(__name__)
 
 def home(request):
     return render(request, 'home.html')
@@ -63,3 +72,106 @@ def user_login(request):
 def quick_register_recipient(request):
     return render(request, 'quick_register_recipient.html')
 
+
+# Function-based view alternative
+from django.contrib.auth.hashers import make_password
+
+
+def register_recipient(request):
+    if request.method == 'POST':
+        form = RecipientRegistrationForm(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                # Save the form but don't commit to database yet
+                recipient = form.save(commit=False)
+
+                # Hash the password before saving
+                password = form.cleaned_data.get('password')
+                if password:
+                    recipient.password = make_password(password)
+
+                # Now save to database
+                recipient.save()
+
+                messages.success(
+                    request,
+                    f'Registration successful! Welcome {recipient.full_name}.'
+                )
+                return redirect('success')  # Fixed typo: 'uccess' -> 'success'
+            except Exception as e:
+                messages.error(request, 'Registration failed. Please try again.')
+        else:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    # Handle password field display names better
+                    field_name = field.replace("_", " ").title()
+                    if field == 'confirm_password':
+                        field_name = 'Confirm Password'
+                    messages.error(request, f'{field_name}: {error}')
+    else:
+        form = RecipientRegistrationForm()
+
+    return render(request, 'register_recipient.html', {'form': form})
+
+
+# Success page view
+def recipient_success(request):
+    return render(request, 'success.html')
+
+
+class RecipientRegistrationView(View):
+    template_name = 'register_recipient.html'
+    form_class = RecipientRegistrationForm
+
+    def get(self, request):
+        form = self.form_class()
+        context = {
+            'form': form,
+            'title': 'Register as Recipient'
+        }
+        return render(request, self.template_name, context)
+
+    def post(self, request):
+        form = self.form_class(request.POST, request.FILES)
+
+        if form.is_valid():
+            try:
+                recipient = form.save()
+
+                # Send confirmation email to recipient
+                email_sent = send_registration_email(recipient)
+
+                # Send notification to admin
+                send_admin_notification(recipient)
+
+                # Success message
+                if email_sent:
+                    messages.success(
+                        request,
+                        f'Registration successful! Welcome {recipient.full_name}. '
+                        f'A confirmation email has been sent to {recipient.email}.'
+                    )
+                else:
+                    messages.success(
+                        request,
+                        f'Registration successful! Welcome {recipient.full_name}. '
+                        f'However, we could not send the confirmation email. Please check your email address.'
+                    )
+
+                logger.info(f"New recipient registered: {recipient.full_name} ({recipient.email})")
+                return redirect('recipient_success')
+
+            except Exception as e:
+                logger.error(f"Registration failed: {str(e)}")
+                messages.error(request, 'An error occurred during registration. Please try again.')
+        else:
+            # Form has validation errors
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f'{field.replace("_", " ").title()}: {error}')
+
+        context = {
+            'form': form,
+            'title': 'Register as Recipient'
+        }
+        return render(request, self.template_name, context)
