@@ -17,7 +17,40 @@
                     </div>
                 </li>
             </ul>
-           <a href="{% url 'login' %}" class="rd-login-btn">Log In</a>
+
+            <!-- User Authentication Section -->
+            {% if user.is_authenticated %}
+                <div class="rd-user-dropdown">
+                    <div class="rd-user-icon">
+                        <div class="rd-avatar">
+                            <span class="rd-user-initial">{{ user.first_name.0|default:user.username.0|upper }}</span>
+                        </div>
+                        <span class="rd-dropdown-arrow">▼</span>
+                    </div>
+                    <div class="rd-user-menu">
+                        <div class="rd-user-info">
+                            <span class="rd-username">{{ user.get_full_name|default:user.username }}</span>
+                            <span class="rd-user-role">Dashboard</span>
+                        </div>
+                        <div class="rd-menu-divider"></div>
+                        <a href="{% url 'donation_history' %}" class="rd-user-menu-item">
+                            <span class="rd-menu-icon">📋</span>
+                            Donation History
+                        </a>
+                        <a href="{% url 'donor_credit' %}" class="rd-user-menu-item">
+                            <span class="rd-menu-icon">💳</span>
+                            Credit
+                        </a>
+                        <div class="rd-menu-divider"></div>
+                        <a href="{% url 'logout' %}" class="rd-user-menu-item rd-logout">
+                            <span class="rd-menu-icon">🚪</span>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            {% else %}
+                <a href="{% url 'login' %}" class="rd-login-btn">Log In</a>
+            {% endif %}
         </div>
         <div class="rd-hamburger">
             <span class="rd-bar"></span>
@@ -188,6 +221,121 @@
     color: white;
 }
 
+/* User Dropdown Styles */
+.rd-user-dropdown {
+    position: relative;
+}
+
+.rd-user-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+}
+
+.rd-user-icon:hover {
+    background-color: #f8f9fa;
+}
+
+.rd-avatar {
+    width: 35px;
+    height: 35px;
+    background-color: #c53856;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.rd-dropdown-arrow {
+    font-size: 0.8em;
+    color: #666;
+    transition: transform 0.3s ease;
+}
+
+.rd-user-dropdown:hover .rd-dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.rd-user-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    min-width: 200px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1002;
+    padding: 8px 0;
+}
+
+.rd-user-dropdown:hover .rd-user-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.rd-user-info {
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.rd-username {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.rd-user-role {
+    display: block;
+    color: #666;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.rd-menu-divider {
+    height: 1px;
+    background-color: #eee;
+    margin: 4px 0;
+}
+
+.rd-user-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #666;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.rd-user-menu-item:hover {
+    background-color: #f8f9fa;
+    color: #c53856;
+}
+
+.rd-menu-icon {
+    width: 16px;
+    text-align: center;
+}
+
+.rd-logout:hover {
+    background-color: #fee;
+    color: #dc3545;
+}
+
 .rd-hamburger {
     display: none;
     cursor: pointer;
@@ -245,6 +393,31 @@
         display: block;
         width: fit-content;
     }
+
+    /* Mobile User Menu */
+    .rd-user-dropdown {
+        margin: 1rem auto;
+        width: fit-content;
+    }
+
+    .rd-user-menu {
+        position: static;
+        display: none;
+        width: 100%;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: none;
+        background: #f8f9fa;
+        border-radius: 0;
+        margin-top: 10px;
+    }
+
+    .rd-user-dropdown:hover .rd-user-menu {
+        display: block;
+    }
+
     .rd-hamburger {
         display: block;
     }

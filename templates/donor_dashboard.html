@@ -1,0 +1,381 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Donor Dashboard - RoktoDan BD{% endblock %}
+
+{% block extra_css %}
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="{% static 'css/donor_dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="dashboard-wrapper">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h2>RoktoDan BD</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="#profile"><i class="fas fa-user"></i> My Profile</a></li>
+                    <li><a href="#donations"><i class="fas fa-tint"></i> Donation History</a></li>
+                    <li><a href="#requests"><i class="fas fa-bell"></i> Blood Requests</a></li>
+                    <li><a href="#settings"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="header-left">
+                    <h1>Dashboard</h1>
+                    <p>Welcome back, {{ profile.user.first_name }} {{ profile.user.last_name }}</p>
+                </div>
+                <div class="header-right">
+                    <div class="notification-icon">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">3</span>
+                    </div>
+                    <div class="user-avatar">
+                        <img src="https://via.placeholder.com/40" alt="User Avatar" id="headerAvatar">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>12</h3>
+                        <p>Total Donations</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>48</h3>
+                        <p>Lives Saved</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>45</h3>
+                        <p>Days Since Last Donation</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Available</h3>
+                        <p>Status</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Section -->
+            <div class="profile-section">
+                <div class="section-header">
+                    <h2>My Profile</h2>
+                    <button class="edit-btn" id="editProfileBtn">
+                        <i class="fas fa-edit"></i> Edit Profile
+                    </button>
+                </div>
+
+                <div class="profile-content">
+                    <!-- Profile Image Section -->
+                    <div class="profile-image-section">
+                        <div class="profile-image">
+                            <img src="https://via.placeholder.com/150" alt="Profile Picture" id="profileImg">
+                            <div class="image-overlay" id="imageOverlay">
+                                <i class="fas fa-camera"></i>
+                                <p>Change Photo</p>
+                            </div>
+                            <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                        </div>
+                    </div>
+
+                    <!-- Profile Form -->
+                    <form class="profile-form" id="profileForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" value="John" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" value="Doe" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" value="+880 1712-345678" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Age</label>
+                                <input type="number" id="age" value="28" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label for="email">Email (Cannot be changed)</label>
+                                <input type="email" id="email" value="john.doe@example.com" readonly class="email-readonly">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bloodGroup">Blood Group</label>
+                                <select id="bloodGroup" disabled>
+                                    <option value="A+" selected>A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="district">District</label>
+                                <input type="text" id="district" value="Dhaka" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="state">Division</label>
+                                <input type="text" id="state" value="Dhaka Division" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="pincode">Postal Code</label>
+                                <input type="text" id="pincode" value="1000" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label for="address">Address</label>
+                                <input type="text" id="address" value="House 123, Road 45, Dhanmondi, Dhaka" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Last Donation</label>
+                                <div class="donation-date">
+                                    <select id="lastDonationMonth" disabled>
+                                        <option value="">Month</option>
+                                        <option value="1">January</option>
+                                        <option value="2">February</option>
+                                        <option value="3">March</option>
+                                        <option value="4">April</option>
+                                        <option value="5">May</option>
+                                        <option value="6" selected>June</option>
+                                        <option value="7">July</option>
+                                        <option value="8">August</option>
+                                        <option value="9">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                    </select>
+                                    <select id="lastDonationYear" disabled>
+                                        <option value="">Year</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2024" selected>2024</option>
+                                        <option value="2025">2025</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions" id="formActions" style="display: none;">
+                            <button type="button" class="cancel-btn" id="cancelBtn">Cancel</button>
+                            <button type="submit" class="save-btn">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Recent Activities -->
+            <div class="activities-section">
+                <h2>Recent Activities</h2>
+                <div class="activities-list">
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="activity-info">
+                            <h4>Blood Donation</h4>
+                            <p>Successfully donated blood at Dhaka Medical College Hospital</p>
+                            <span class="activity-date">June 15, 2024</span>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <div class="activity-info">
+                            <h4>Blood Request Received</h4>
+                            <p>New blood request from nearby location</p>
+                            <span class="activity-date">June 10, 2024</span>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-user-edit"></i>
+                        </div>
+                        <div class="activity-info">
+                            <h4>Profile Updated</h4>
+                            <p>Updated contact information</p>
+                            <span class="activity-date">May 28, 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Edit profile functionality
+        const editBtn = document.getElementById('editProfileBtn');
+        const formInputs = document.querySelectorAll('#profileForm input:not(.email-readonly), #profileForm select');
+        const formActions = document.getElementById('formActions');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const profileForm = document.getElementById('profileForm');
+        const imageOverlay = document.getElementById('imageOverlay');
+        const imageInput = document.getElementById('imageInput');
+        const profileImg = document.getElementById('profileImg');
+        const headerAvatar = document.getElementById('headerAvatar');
+
+        let originalValues = {};
+        let isEditing = false;
+
+        editBtn.addEventListener('click', function() {
+            if (!isEditing) {
+                // Start editing
+                isEditing = true;
+                editBtn.innerHTML = '<i class="fas fa-times"></i> Cancel Edit';
+                editBtn.classList.add('cancel-mode');
+
+                // Store original values
+                formInputs.forEach(input => {
+                    if (input.type !== 'file') {
+                        originalValues[input.id] = input.value;
+                    }
+                });
+
+                // Enable inputs
+                formInputs.forEach(input => {
+                    input.removeAttribute('readonly');
+                    input.removeAttribute('disabled');
+                });
+
+                formActions.style.display = 'flex';
+                imageOverlay.style.display = 'flex';
+            } else {
+                // Cancel editing
+                cancelEdit();
+            }
+        });
+
+        cancelBtn.addEventListener('click', cancelEdit);
+
+        function cancelEdit() {
+            isEditing = false;
+            editBtn.innerHTML = '<i class="fas fa-edit"></i> Edit Profile';
+            editBtn.classList.remove('cancel-mode');
+
+            // Restore original values
+            formInputs.forEach(input => {
+                if (originalValues[input.id] !== undefined) {
+                    input.value = originalValues[input.id];
+                }
+                input.setAttribute('readonly', true);
+                if (input.tagName === 'SELECT') {
+                    input.setAttribute('disabled', true);
+                }
+            });
+
+            formActions.style.display = 'none';
+            imageOverlay.style.display = 'none';
+        }
+
+        // Image upload functionality
+        imageOverlay.addEventListener('click', function() {
+            if (isEditing) {
+                imageInput.click();
+            }
+        });
+
+        imageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    profileImg.src = e.target.result;
+                    headerAvatar.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Form submission
+        profileForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Simulate saving
+            setTimeout(() => {
+                alert('Profile updated successfully!');
+
+                // Update original values
+                formInputs.forEach(input => {
+                    if (input.type !== 'file') {
+                        originalValues[input.id] = input.value;
+                    }
+                });
+
+                // Disable editing mode
+                isEditing = false;
+                editBtn.innerHTML = '<i class="fas fa-edit"></i> Edit Profile';
+                editBtn.classList.remove('cancel-mode');
+
+                formInputs.forEach(input => {
+                    input.setAttribute('readonly', true);
+                    if (input.tagName === 'SELECT') {
+                        input.setAttribute('disabled', true);
+                    }
+                });
+
+                formActions.style.display = 'none';
+                imageOverlay.style.display = 'none';
+            }, 1000);
+        });
+
+        // Sidebar navigation
+        document.querySelectorAll('.sidebar-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.sidebar-nav li').forEach(li => li.classList.remove('active'));
+                this.parentElement.classList.add('active');
+            });
+        });
+    </script>
+{% endblock %}
