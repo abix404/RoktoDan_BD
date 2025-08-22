@@ -29,7 +29,7 @@
             <div class="form-row">
                 <div class="form-group">
                     <label for="phone">Phone Number <span class="required">*</span></label>
-                    <input type="tel" id="phone" name="phone_number" placeholder="Phone Number" required>
+                    <input type="tel" id="phone" name="phone_number" placeholder="Phone Number (+880)" required>
                 </div>
             </div>
 
@@ -183,6 +183,13 @@
                 <button type="submit" class="submit-btn">Register as Recipient</button>
             </div>
         </form>
+                    {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <div class="message {{ message.tags }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
     </div>
    </div>
 
