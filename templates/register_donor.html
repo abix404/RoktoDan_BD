@@ -12,48 +12,150 @@
     <div class="registration-container">
         <h1>Register As Donor</h1>
 
-        <form class="donor-form">
+        <form class="donor-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
             <div class="form-row">
                 <div class="form-group">
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" placeholder="First">
+                    <label for="firstName">First Name <span class="required">*</span></label>
+                    <input type="text" id="firstName" name="first_name" placeholder="First Name" required>
                 </div>
                 <div class="form-group">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" placeholder="Last Name">
+                    <label for="lastName">Last Name <span class="required">*</span></label>
+                    <input type="text" id="lastName" name="last_name" placeholder="Last Name" required>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" placeholder="Number">
+                    <label for="phone">Phone Number <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone_number" placeholder="Phone Number" required>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Mail_id">
+                    <label for="email">Email <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="Email Address" required>
+                </div>
+            </div>
+
+            <!-- Password Fields -->
+            <div class="form-row">
+                <div class="form-group password-group">
+                    <label for="password">Password <span class="required">*</span></label>
+                    <input type="password" id="password" name="password" placeholder="Create Password" required>
+                    <button type="button" class="password-toggle" onclick="togglePassword('password')">👁️</button>
+                    <div class="password-strength" id="passwordStrength"></div>
+                    <div class="password-requirements">
+                        <ul id="passwordReqs">
+                            <li id="lengthReq" class="invalid">At least 8 characters</li>
+                            <li id="upperReq" class="invalid">One uppercase letter</li>
+                            <li id="lowerReq" class="invalid">One lowercase letter</li>
+                            <li id="numberReq" class="invalid">One number</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
             <div class="form-row">
-                <div class="form-group address-group">
-                    <label for="address">Address</label>
-                    <input type="text" id="address" placeholder="Choose your current location">
-                </div>
-                <div class="form-group age-group">
-                    <label for="age">Age</label>
-                    <input type="number" id="age" placeholder="Age">
+                <div class="form-group password-group">
+                    <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+                    <input type="password" id="confirmPassword" name="confirm_password" placeholder="Confirm Password" required>
+                    <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">👁️</button>
+                    <div class="password-match" id="passwordMatch"></div>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
-                    <label for="bloodGroup">Blood Group</label>
-                    <select id="bloodGroup">
-                        <option value="">Select Blood Group</option>
+                    <label for="houseHolding">House Holding No <span class="required">*</span></label>
+                    <input type="text" id="houseHolding" name="house_holding_no" placeholder="House Holding No" required>
+                </div>
+                <div class="form-group">
+                    <label for="roadBlock">Road/Block <span class="required">*</span></label>
+                    <input type="text" id="roadBlock" name="road_block" placeholder="Road/Block" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="thana">Thana <span class="required">*</span></label>
+                    <select id="thana" name="thana" required>
+                        <option value="">Select Thana</option>
+                        <option value="Adabar">Adabar</option>
+                        <option value="Badda">Badda</option>
+                        <option value="Banani">Banani</option>
+                        <option value="Baridhara">Baridhara</option>
+                        <option value="Dhanmondi">Dhanmondi</option>
+                        <option value="Gulshan">Gulshan</option>
+                        <option value="Hatirjheel">Hatirjheel</option>
+                        <option value="Kafrul">Kafrul</option>
+                        <option value="Kalabagan">Kalabagan</option>
+                        <option value="Khilgaon">Khilgaon</option>
+                        <option value="Khilkhet">Khilkhet</option>
+                        <option value="Mirpur">Mirpur</option>
+                        <option value="Mohammadpur">Mohammadpur</option>
+                        <option value="Motijheel">Motijheel</option>
+                        <option value="New Market">New Market</option>
+                        <option value="Old Dhaka">Old Dhaka</option>
+                        <option value="Pallabi">Pallabi</option>
+                        <option value="Ramna">Ramna</option>
+                        <option value="Rampura">Rampura</option>
+                        <option value="Sabujbagh">Sabujbagh</option>
+                        <option value="Shah Ali">Shah Ali</option>
+                        <option value="Sher-e-Bangla Nagar">Sher-e-Bangla Nagar</option>
+                        <option value="Tejgaon">Tejgaon</option>
+                        <option value="Uttara">Uttara</option>
+                        <option value="Wari">Wari</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="postOffice">Post Office <span class="required">*</span></label>
+                    <select id="postOffice" name="post_office" required>
+                        <option value="">Select Post Office</option>
+                        <option value="Dhaka GPO">Dhaka GPO</option>
+                        <option value="Banani">Banani</option>
+                        <option value="Dhanmondi">Dhanmondi</option>
+                        <option value="Gulshan">Gulshan</option>
+                        <option value="Mirpur">Mirpur</option>
+                        <option value="Mohammadpur">Mohammadpur</option>
+                        <option value="Motijheel">Motijheel</option>
+                        <option value="New Market">New Market</option>
+                        <option value="Old Dhaka">Old Dhaka</option>
+                        <option value="Ramna">Ramna</option>
+                        <option value="Tejgaon">Tejgaon</option>
+                        <option value="Uttara">Uttara</option>
+                        <option value="Wari">Wari</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="district">District <span class="required">*</span></label>
+                    <select id="district" name="district" required>
+                        <option value="">Select District</option>
+                        <option value="Dhaka" selected>Dhaka</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age <span class="required">*</span></label>
+                    <input type="number" id="age" name="age" placeholder="Age (18-65)" min="18" max="65" required>
+                    <small class="form-text">Must be between 18 and 65 years old</small>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="weight">Weight (kg) <span class="required">*</span></label>
+                    <input type="number" id="weight" name="weight" placeholder="Weight in kg" min="50" step="0.1" required>
+                    <small class="form-text">Minimum 50 kg required for donation</small>
+                </div>
+                <div class="form-group">
+                    <label for="bloodGroup">Blood Group <span class="required">*</span></label>
+                    <select id="bloodGroup" name="blood_group" required>
+                        <option value="">Select Your Blood Group</option>
                         <option value="A+">A+</option>
                         <option value="A-">A-</option>
                         <option value="B+">B+</option>
@@ -68,51 +170,214 @@
 
             <div class="form-row">
                 <div class="form-group">
-                    <label for="district">District</label>
-                    <input type="text" id="district">
-                </div>
-                <div class="form-group">
-                    <label for="state">State</label>
-                    <input type="text" id="state">
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="pincode">PinCode</label>
-                    <input type="text" id="pincode">
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Last Donation</label>
+                    <label>Last Donation (Optional)</label>
                     <div class="donation-date">
-                        <input type="text" placeholder="Month">
-                        <input type="text" placeholder="Year">
+                        <select name="last_donation_month" id="lastDonationMonth">
+                            <option value="">Select Month</option>
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
+                        <select name="last_donation_year" id="lastDonationYear">
+                            <option value="">Select Year</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                            <option value="2018">2018</option>
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+                        </select>
+                    </div>
+                    <small class="form-text">Leave blank if this is your first donation</small>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="profileImage">Upload Profile Image</label>
+                    <div class="image-upload">
+                        <input type="file" id="profileImage" name="profile_image" accept="image/*" style="display: none;">
+                        <button type="button" class="upload-btn" onclick="document.getElementById('profileImage').click();">+ Upload your image</button>
+                        <span class="file-name" id="donorFileName"></span>
                     </div>
                 </div>
             </div>
 
+            <!-- Health Declaration -->
             <div class="form-row">
                 <div class="form-group">
-                    <label >Upload Image</label>
-                    <div class="image-upload">
-                        <button type="button" class="upload-btn">+ Upload your image</button>
+                    <div class="health-declaration">
+                        <h4>Health Declaration</h4>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="health_declaration" required>
+                                <span class="checkmark"></span>
+                                I declare that I am in good health and have not suffered from any serious illness in the past 3 months.
+                            </label>
+                        </div>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="medication_declaration" required>
+                                <span class="checkmark"></span>
+                                I am not currently taking any medications that would affect blood donation.
+                            </label>
+                        </div>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="consent_declaration" required>
+                                <span class="checkmark"></span>
+                                I consent to donate blood and understand the donation process.
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="form-row">
                 <p class="disclaimer">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    By registering as a blood donor, you agree to provide accurate information and understand that your details will be used to connect you with recipients in need. All information provided will be kept confidential and used only for blood donation purposes.
                 </p>
             </div>
 
             <div class="form-row">
-                <button type="submit" class="submit-btn">Submit</button>
+                <button type="submit" class="submit-btn">Register as Donor</button>
             </div>
         </form>
     </div>
    </div>
+
+   <script>
+       // Display selected file name
+       document.getElementById('profileImage').addEventListener('change', function(e) {
+           const fileName = e.target.files[0]?.name || '';
+           document.getElementById('donorFileName').textContent = fileName;
+       });
+
+       // Toggle password visibility
+       function togglePassword(fieldId) {
+           const field = document.getElementById(fieldId);
+           const button = field.nextElementSibling;
+
+           if (field.type === 'password') {
+               field.type = 'text';
+               button.textContent = '🙈';
+           } else {
+               field.type = 'password';
+               button.textContent = '👁️';
+           }
+       }
+
+       // Password strength checker
+       function checkPasswordStrength(password) {
+           let strength = 0;
+           const checks = {
+               length: password.length >= 8,
+               upper: /[A-Z]/.test(password),
+               lower: /[a-z]/.test(password),
+               number: /\d/.test(password),
+               special: /[!@#$%^&*(),.?":{}|<>]/.test(password)
+           };
+
+           // Update requirement indicators
+           document.getElementById('lengthReq').className = checks.length ? 'valid' : 'invalid';
+           document.getElementById('upperReq').className = checks.upper ? 'valid' : 'invalid';
+           document.getElementById('lowerReq').className = checks.lower ? 'valid' : 'invalid';
+           document.getElementById('numberReq').className = checks.number ? 'valid' : 'invalid';
+
+           // Calculate strength
+           strength = Object.values(checks).filter(Boolean).length;
+
+           const strengthIndicator = document.getElementById('passwordStrength');
+           if (password.length === 0) {
+               strengthIndicator.textContent = '';
+               strengthIndicator.className = 'password-strength';
+           } else if (strength < 3) {
+               strengthIndicator.textContent = 'Weak Password';
+               strengthIndicator.className = 'password-strength weak';
+           } else if (strength < 4) {
+               strengthIndicator.textContent = 'Medium Password';
+               strengthIndicator.className = 'password-strength medium';
+           } else {
+               strengthIndicator.textContent = 'Strong Password';
+               strengthIndicator.className = 'password-strength strong';
+           }
+       }
+
+       // Check password match
+       function checkPasswordMatch() {
+           const password = document.getElementById('password').value;
+           const confirmPassword = document.getElementById('confirmPassword').value;
+           const matchIndicator = document.getElementById('passwordMatch');
+
+           if (confirmPassword.length === 0) {
+               matchIndicator.textContent = '';
+               matchIndicator.className = 'password-match';
+           } else if (password === confirmPassword) {
+               matchIndicator.textContent = 'Passwords match ✓';
+               matchIndicator.className = 'password-match valid';
+           } else {
+               matchIndicator.textContent = 'Passwords do not match ✗';
+               matchIndicator.className = 'password-match invalid';
+           }
+       }
+
+       // Add event listeners
+       document.getElementById('password').addEventListener('input', function() {
+           checkPasswordStrength(this.value);
+           checkPasswordMatch();
+       });
+
+       document.getElementById('confirmPassword').addEventListener('input', checkPasswordMatch);
+
+       // Age validation
+       document.getElementById('age').addEventListener('input', function() {
+           const age = parseInt(this.value);
+           const ageGroup = this.closest('.form-group');
+           const existingError = ageGroup.querySelector('.age-error');
+
+           if (existingError) {
+               existingError.remove();
+           }
+
+           if (age && (age < 18 || age > 65)) {
+               const errorMsg = document.createElement('small');
+               errorMsg.className = 'form-text age-error';
+               errorMsg.style.color = 'red';
+               errorMsg.textContent = 'Age must be between 18 and 65 years for blood donation';
+               ageGroup.appendChild(errorMsg);
+           }
+       });
+
+       // Weight validation
+       document.getElementById('weight').addEventListener('input', function() {
+           const weight = parseFloat(this.value);
+           const weightGroup = this.closest('.form-group');
+           const existingError = weightGroup.querySelector('.weight-error');
+
+           if (existingError) {
+               existingError.remove();
+           }
+
+           if (weight && weight < 50) {
+               const errorMsg = document.createElement('small');
+               errorMsg.className = 'form-text weight-error';
+               errorMsg.style.color = 'red';
+               errorMsg.textContent = 'Minimum weight of 50kg is required for safe blood donation';
+               weightGroup.appendChild(errorMsg);
+           }
+       });
+   </script>
 {% endblock %}
