@@ -1,18 +1,15 @@
 from .forms import DonorRegistrationForm
-from django.contrib.auth import authenticate, login
-from .models import Donor
+from .models import *
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from django.contrib import messages
 from django.views import View
-from django.http import JsonResponse
-from .forms import RecipientRegistrationForm
-from .models import Recipient
 from .utils import send_registration_email, send_admin_notification
 import logging
-from django.contrib.auth.hashers import make_password
-
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import RecipientRegistrationForm
+from .models import Recipient
 
 logger = logging.getLogger(__name__)
 
@@ -56,16 +53,42 @@ def registration_success(request):
 
 def user_login(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
+        username = request.POST.get('username')  # This will be email or phone
         password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
+
+        print(f"Login attempt with: {username}")  # Debug
+
+        user = None
+
+        # Try to authenticate with email (most common)
+        if '@' in username:
+            user = authenticate(request, username=username, password=password)
+            print(f"Email authentication result: {user}")
+        else:
+            # If it's not an email, try to find user by phone number
+            try:
+                recipient = Recipient.objects.get(phone_number=username)
+                user = authenticate(request, username=recipient.user.email, password=password)
+                print(f"Phone authentication result: {user}")
+            except Recipient.DoesNotExist:
+                print("No recipient found with this phone number")
+                # Try direct username authentication as fallback
+                user = authenticate(request, username=username, password=password)
 
         if user is not None:
-            login(request, user)  # Correctly passing both request and user
-            return redirect('/')
+            login(request, user)
+            print(f"Login successful for user: {user}")
+
+            # Check if user has a recipient profile
+            if hasattr(user, 'recipient_profile'):
+                messages.success(request, f'Welcome back, {user.recipient_profile.full_name}!')
+                return redirect('/')  # or recipient dashboard
+            else:
+                messages.success(request, f'Welcome back, {user.first_name}!')
+                return redirect('/')  # regular user/donor dashboard
         else:
-            messages.error(request, 'Invalid username or password')
-            return render(request, 'login.html')
+            print("Authentication failed")
+            messages.error(request, 'Invalid email/phone or password')
 
     return render(request, 'login.html')
 
@@ -73,46 +96,29 @@ def quick_register_recipient(request):
     return render(request, 'quick_register_recipient.html')
 
 
-# Function-based view alternative
-from django.contrib.auth.hashers import make_password
-
-
 def register_recipient(request):
     if request.method == 'POST':
         form = RecipientRegistrationForm(request.POST, request.FILES)
         if form.is_valid():
             try:
-                # Save the form but don't commit to database yet
-                recipient = form.save(commit=False)
-
-                # Hash the password before saving
-                password = form.cleaned_data.get('password')
-                if password:
-                    recipient.password = make_password(password)
-
-                # Now save to database
-                recipient.save()
-
+                recipient = form.save()
                 messages.success(
                     request,
-                    f'Registration successful! Welcome {recipient.full_name}.'
+                    f'Registration successful! Welcome {recipient.full_name}. You can now log in.'
                 )
-                return redirect('success')  # Fixed typo: 'uccess' -> 'success'
+                return redirect('login')  # Redirect to login page
             except Exception as e:
-                messages.error(request, 'Registration failed. Please try again.')
+                messages.error(request, f'Registration failed: {str(e)}')
         else:
+            # Display form errors
             for field, errors in form.errors.items():
                 for error in errors:
-                    # Handle password field display names better
                     field_name = field.replace("_", " ").title()
-                    if field == 'confirm_password':
-                        field_name = 'Confirm Password'
                     messages.error(request, f'{field_name}: {error}')
     else:
         form = RecipientRegistrationForm()
 
     return render(request, 'register_recipient.html', {'form': form})
-
 
 # Success page view
 def recipient_success(request):

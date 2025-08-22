@@ -1,5 +1,8 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator, RegexValidator
+from django.contrib.auth.models import User
+
+user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='recipient_profile', null=True, blank=True)
 
 class Donor(models.Model):
     BLOOD_GROUP_CHOICES = [
@@ -95,17 +98,23 @@ class Recipient(models.Model):
     ]
 
     # Phone number validator
+    # Phone number validator
     phone_regex = RegexValidator(
         regex=r'^\+?1?\d{9,15}$',
         message="Phone number must be entered in the format: '+880199999'. Up to 15 digits allowed."
     )
 
-    # Required fields
+    # Link to Django User model - NOW NULLABLE
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='recipient_profile',
+                                null=True, blank=True)
+
+    # Keep these fields for backward compatibility during migration
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+
     phone_number = models.CharField(validators=[phone_regex], max_length=17, unique=True)
     blood_group = models.CharField(max_length=3, choices=BLOOD_GROUP_CHOICES)
-    email = models.EmailField(unique=True)
     house_holding_no = models.CharField(max_length=100)
     road_block = models.CharField(max_length=200)
     thana = models.CharField(max_length=50, choices=THANA_CHOICES)
@@ -127,11 +136,24 @@ class Recipient(models.Model):
         verbose_name_plural = 'Recipients'
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name} - {self.blood_group}"
+        if self.user:
+            return f"{self.user.first_name} {self.user.last_name} - {self.blood_group}"
+        else:
+            return f"{self.first_name} {self.last_name} - {self.blood_group}"
 
     @property
     def full_name(self):
-        return f"{self.first_name} {self.last_name}"
+        if self.user:
+            return f"{self.user.first_name} {self.user.last_name}"
+        else:
+            return f"{self.first_name} {self.last_name}"
+
+    @property
+    def user_email(self):
+        if self.user:
+            return self.user.email
+        else:
+            return self.email
 
     @property
     def full_address(self):
