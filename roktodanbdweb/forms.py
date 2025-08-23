@@ -7,100 +7,266 @@ from django.core.exceptions import ValidationError
 
 
 class DonorRegistrationForm(forms.ModelForm):
-    # Add password fields for user creation
-    password1 = forms.CharField(
-        label="Password",
-        widget=forms.PasswordInput(attrs={'placeholder': 'Password', 'class': 'form-control'})
+    first_name = forms.CharField(
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            'placeholder': 'First Name',
+            'class': 'form-control',
+            'id': 'firstName'
+        })
     )
-    password2 = forms.CharField(
+    last_name = forms.CharField(
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Last Name',
+            'class': 'form-control',
+            'id': 'lastName'
+        })
+    )
+    email = forms.EmailField(
+        required=True,
+        widget=forms.EmailInput(attrs={
+            'placeholder': 'Email Address',
+            'class': 'form-control',
+            'id': 'email'
+        })
+    )
+
+    # Password fields
+    password = forms.CharField(
+        label="Password",
+        widget=forms.PasswordInput(attrs={
+            'placeholder': 'Create Password',
+            'class': 'form-control',
+            'id': 'password'
+        }),
+        min_length=8
+    )
+    confirm_password = forms.CharField(
         label="Confirm Password",
-        widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password', 'class': 'form-control'})
+        widget=forms.PasswordInput(attrs={
+            'placeholder': 'Confirm Password',
+            'class': 'form-control',
+            'id': 'confirmPassword'
+        })
+    )
+
+    # Address fields that match HTML
+    house_holding_no = forms.CharField(
+        max_length=50,
+        required=True,
+        widget=forms.TextInput(attrs={
+            'placeholder': 'House Holding No',
+            'class': 'form-control',
+            'id': 'houseHolding'
+        })
+    )
+    road_block = forms.CharField(
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Road/Block',
+            'class': 'form-control',
+            'id': 'roadBlock'
+        })
+    )
+    thana = forms.ChoiceField(
+        choices=[
+            ('', 'Select Thana'),
+            ('Adabar', 'Adabar'),
+            ('Badda', 'Badda'),
+            ('Banani', 'Banani'),
+            ('Baridhara', 'Baridhara'),
+            ('Dhanmondi', 'Dhanmondi'),
+            ('Gulshan', 'Gulshan'),
+            ('Hatirjheel', 'Hatirjheel'),
+            ('Kafrul', 'Kafrul'),
+            ('Kalabagan', 'Kalabagan'),
+            ('Khilgaon', 'Khilgaon'),
+            ('Khilkhet', 'Khilkhet'),
+            ('Mirpur', 'Mirpur'),
+            ('Mohammadpur', 'Mohammadpur'),
+            ('Motijheel', 'Motijheel'),
+            ('New Market', 'New Market'),
+            ('Old Dhaka', 'Old Dhaka'),
+            ('Pallabi', 'Pallabi'),
+            ('Ramna', 'Ramna'),
+            ('Rampura', 'Rampura'),
+            ('Sabujbagh', 'Sabujbagh'),
+            ('Shah Ali', 'Shah Ali'),
+            ('Sher-e-Bangla Nagar', 'Sher-e-Bangla Nagar'),
+            ('Tejgaon', 'Tejgaon'),
+            ('Uttara', 'Uttara'),
+            ('Wari', 'Wari'),
+        ],
+        required=True,
+        widget=forms.Select(attrs={
+            'class': 'form-control',
+            'id': 'thana'
+        })
+    )
+    post_office = forms.ChoiceField(
+        choices=[
+            ('', 'Select Post Office'),
+            ('Dhaka GPO', 'Dhaka GPO'),
+            ('Banani', 'Banani'),
+            ('Dhanmondi', 'Dhanmondi'),
+            ('Gulshan', 'Gulshan'),
+            ('Mirpur', 'Mirpur'),
+            ('Mohammadpur', 'Mohammadpur'),
+            ('Motijheel', 'Motijheel'),
+            ('New Market', 'New Market'),
+            ('Old Dhaka', 'Old Dhaka'),
+            ('Ramna', 'Ramna'),
+            ('Tejgaon', 'Tejgaon'),
+            ('Uttara', 'Uttara'),
+            ('Wari', 'Wari'),
+        ],
+        required=True,
+        widget=forms.Select(attrs={
+            'class': 'form-control',
+            'id': 'postOffice'
+        })
+    )
+    district = forms.CharField(
+        max_length=50,
+        initial='Dhaka',
+        required=True,
+        widget=forms.Select(
+            choices=[('', 'Select District'), ('Dhaka', 'Dhaka')],
+            attrs={
+                'class': 'form-control',
+                'id': 'district'
+            }
+        )
+    )
+
+    # Weight field (added as it's in HTML but not in original form)
+    weight = forms.DecimalField(
+        max_digits=5,
+        decimal_places=1,
+        min_value=50,
+        required=True,
+        widget=forms.NumberInput(attrs={
+            'placeholder': 'Weight in kg',
+            'min': '50',
+            'step': '0.1',
+            'class': 'form-control',
+            'id': 'weight'
+        })
+    )
+
+    # Health declaration fields
+    health_declaration = forms.BooleanField(
+        required=True,
+        widget=forms.CheckboxInput()
+    )
+    medication_declaration = forms.BooleanField(
+        required=True,
+        widget=forms.CheckboxInput()
+    )
+    consent_declaration = forms.BooleanField(
+        required=True,
+        widget=forms.CheckboxInput()
     )
 
     class Meta:
         model = Donor
         fields = [
-            'first_name', 'last_name', 'phone_number', 'email', 'address',
-            'age', 'blood_group', 'district', 'state', 'pincode',
+            'phone_number', 'age', 'blood_group',
             'last_donation_month', 'last_donation_year', 'profile_image'
         ]
         widgets = {
-            'first_name': forms.TextInput(attrs={
-                'placeholder': 'First',
-                'class': 'form-control',
-                'required': True
-            }),
-            'last_name': forms.TextInput(attrs={
-                'placeholder': 'Last Name',
-                'class': 'form-control',
-                'required': True
-            }),
             'phone_number': forms.TextInput(attrs={
-                'placeholder': 'Number',
+                'placeholder': 'Phone Number',
                 'class': 'form-control',
-                'required': True
-            }),
-            'email': forms.EmailInput(attrs={
-                'placeholder': 'Mail_id',
-                'class': 'form-control',
-                'required': True
-            }),
-            'address': forms.TextInput(attrs={
-                'placeholder': 'Choose your current location',
-                'class': 'form-control',
-                'required': True
+                'id': 'phone'
             }),
             'age': forms.NumberInput(attrs={
-                'placeholder': 'Age',
+                'placeholder': 'Age (18-65)',
                 'class': 'form-control',
                 'min': 18,
                 'max': 65,
-                'required': True
+                'id': 'age'
             }),
-            'blood_group': forms.Select(attrs={
-                'class': 'form-control',
-                'required': True
-            }),
-            'district': forms.TextInput(attrs={
-                'placeholder': 'District',
-                'class': 'form-control',
-                'required': True
-            }),
-            'state': forms.TextInput(attrs={
-                'placeholder': 'State/Division',
-                'class': 'form-control',
-                'required': True
-            }),
-            'pincode': forms.TextInput(attrs={
-                'placeholder': 'Postal Code',
-                'class': 'form-control',
-                'required': True
-            }),
-            'last_donation_month': forms.TextInput(attrs={
-                'placeholder': 'Month',
-                'class': 'form-control'
-            }),
-            'last_donation_year': forms.TextInput(attrs={
-                'placeholder': 'Year',
-                'class': 'form-control'
-            }),
+            'blood_group': forms.Select(
+                choices=[
+                    ('', 'Select Your Blood Group'),
+                    ('A+', 'A+'),
+                    ('A-', 'A-'),
+                    ('B+', 'B+'),
+                    ('B-', 'B-'),
+                    ('AB+', 'AB+'),
+                    ('AB-', 'AB-'),
+                    ('O+', 'O+'),
+                    ('O-', 'O-'),
+                ],
+                attrs={
+                    'class': 'form-control',
+                    'id': 'bloodGroup'
+                }
+            ),
+            'last_donation_month': forms.Select(
+                choices=[
+                    ('', 'Select Month'),
+                    ('January', 'January'),
+                    ('February', 'February'),
+                    ('March', 'March'),
+                    ('April', 'April'),
+                    ('May', 'May'),
+                    ('June', 'June'),
+                    ('July', 'July'),
+                    ('August', 'August'),
+                    ('September', 'September'),
+                    ('October', 'October'),
+                    ('November', 'November'),
+                    ('December', 'December'),
+                ],
+                attrs={
+                    'class': 'form-control',
+                    'id': 'lastDonationMonth'
+                }
+            ),
+            'last_donation_year': forms.Select(
+                choices=[
+                    ('', 'Select Year'),
+                    ('2024', '2024'),
+                    ('2023', '2023'),
+                    ('2022', '2022'),
+                    ('2021', '2021'),
+                    ('2020', '2020'),
+                    ('2019', '2019'),
+                    ('2018', '2018'),
+                    ('2017', '2017'),
+                    ('2016', '2016'),
+                    ('2015', '2015'),
+                ],
+                attrs={
+                    'class': 'form-control',
+                    'id': 'lastDonationYear'
+                }
+            ),
             'profile_image': forms.FileInput(attrs={
                 'class': 'form-control',
-                'accept': 'image/*'
+                'accept': 'image/*',
+                'id': 'profileImage',
+                'style': 'display: none;'
             })
         }
 
-    def clean_password2(self):
-        password1 = self.cleaned_data.get("password1")
-        password2 = self.cleaned_data.get("password2")
-        if password1 and password2 and password1 != password2:
+    def clean_confirm_password(self):
+        password = self.cleaned_data.get("password")
+        confirm_password = self.cleaned_data.get("confirm_password")
+        if password and confirm_password and password != confirm_password:
             raise forms.ValidationError("Passwords don't match")
-        return password2
+        return confirm_password
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
-        if Donor.objects.filter(email=email).exists():
-            raise forms.ValidationError("A donor with this email already exists.")
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError("A user with this email already exists.")
         return email
 
     def clean_phone_number(self):
@@ -124,6 +290,12 @@ class DonorRegistrationForm(forms.ModelForm):
             raise forms.ValidationError("Age must be between 18 and 65 years.")
         return age
 
+    def clean_weight(self):
+        weight = self.cleaned_data.get('weight')
+        if weight and weight < 50:
+            raise forms.ValidationError("Minimum weight of 50kg is required for safe blood donation.")
+        return weight
+
     def clean_last_donation_year(self):
         year = self.cleaned_data.get('last_donation_year')
         if year:
@@ -136,27 +308,60 @@ class DonorRegistrationForm(forms.ModelForm):
                 raise forms.ValidationError("Year must be a number.")
         return year
 
+    def save(self, commit=True):
+        if commit:
+            # Create the User first
+            user = User.objects.create_user(
+                username=self.cleaned_data['email'],  # Use email as username
+                email=self.cleaned_data['email'],
+                password=self.cleaned_data['password'],
+                first_name=self.cleaned_data['first_name'],
+                last_name=self.cleaned_data['last_name']
+            )
+
+            # Create the Donor profile
+            donor = super().save(commit=False)
+            donor.user = user
+
+            # Set additional fields from form that aren't in the model's Meta fields
+            if hasattr(donor, 'weight'):
+                donor.weight = self.cleaned_data['weight']
+            if hasattr(donor, 'house_holding_no'):
+                donor.house_holding_no = self.cleaned_data['house_holding_no']
+            if hasattr(donor, 'road_block'):
+                donor.road_block = self.cleaned_data['road_block']
+            if hasattr(donor, 'thana'):
+                donor.thana = self.cleaned_data['thana']
+            if hasattr(donor, 'post_office'):
+                donor.post_office = self.cleaned_data['post_office']
+            if hasattr(donor, 'district'):
+                donor.district = self.cleaned_data['district']
+
+            donor.save()
+            return donor
+        else:
+            return super().save(commit=False)
 
 class DonorProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Donor
         fields = [
-            'first_name', 'last_name', 'phone_number', 'address',
-            'age', 'blood_group', 'district', 'state', 'pincode',
-            'last_donation_month', 'last_donation_year', 'profile_image'
+            'phone_number', 'age', 'blood_group',
+            'house_holding_no', 'road_block', 'thana', 'post_office', 'district',
+            'last_donation_month', 'last_donation_year', 'profile_image', 'weight'
         ]
-        # Exclude email from update form as mentioned in requirements
+        # Removed non-existent fields: first_name, last_name, address, state, pincode
 
         widgets = {
-            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
             'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
-            'address': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
             'age': forms.NumberInput(attrs={'class': 'form-control', 'min': 18, 'max': 65}),
             'blood_group': forms.Select(attrs={'class': 'form-control'}),
+            'house_holding_no': forms.TextInput(attrs={'class': 'form-control'}),
+            'road_block': forms.TextInput(attrs={'class': 'form-control'}),
+            'thana': forms.Select(attrs={'class': 'form-control'}),
+            'post_office': forms.Select(attrs={'class': 'form-control'}),
             'district': forms.TextInput(attrs={'class': 'form-control'}),
-            'state': forms.TextInput(attrs={'class': 'form-control'}),
-            'pincode': forms.TextInput(attrs={'class': 'form-control'}),
+            'weight': forms.NumberInput(attrs={'class': 'form-control', 'min': 50, 'step': 0.1}),
             'last_donation_month': forms.Select(attrs={'class': 'form-control'}),
             'last_donation_year': forms.Select(attrs={'class': 'form-control'}),
             'profile_image': forms.FileInput(attrs={'class': 'form-control', 'accept': 'image/*'})
@@ -188,6 +393,82 @@ class DonorProfileUpdateForm(forms.ModelForm):
             attrs={'class': 'form-control'}
         )
 
+        # Add thana choices
+        thana_choices = [
+            ('', 'Select Thana'),
+            ('Adabar', 'Adabar'),
+            ('Badda', 'Badda'),
+            ('Banani', 'Banani'),
+            ('Baridhara', 'Baridhara'),
+            ('Dhanmondi', 'Dhanmondi'),
+            ('Gulshan', 'Gulshan'),
+            ('Hatirjheel', 'Hatirjheel'),
+            ('Kafrul', 'Kafrul'),
+            ('Kalabagan', 'Kalabagan'),
+            ('Khilgaon', 'Khilgaon'),
+            ('Khilkhet', 'Khilkhet'),
+            ('Mirpur', 'Mirpur'),
+            ('Mohammadpur', 'Mohammadpur'),
+            ('Motijheel', 'Motijheel'),
+            ('New Market', 'New Market'),
+            ('Old Dhaka', 'Old Dhaka'),
+            ('Pallabi', 'Pallabi'),
+            ('Ramna', 'Ramna'),
+            ('Rampura', 'Rampura'),
+            ('Sabujbagh', 'Sabujbagh'),
+            ('Shah Ali', 'Shah Ali'),
+            ('Sher-e-Bangla Nagar', 'Sher-e-Bangla Nagar'),
+            ('Tejgaon', 'Tejgaon'),
+            ('Uttara', 'Uttara'),
+            ('Wari', 'Wari'),
+        ]
+
+        self.fields['thana'].widget = forms.Select(
+            choices=thana_choices,
+            attrs={'class': 'form-control'}
+        )
+
+        # Add post office choices
+        post_office_choices = [
+            ('', 'Select Post Office'),
+            ('Dhaka GPO', 'Dhaka GPO'),
+            ('Banani', 'Banani'),
+            ('Dhanmondi', 'Dhanmondi'),
+            ('Gulshan', 'Gulshan'),
+            ('Mirpur', 'Mirpur'),
+            ('Mohammadpur', 'Mohammadpur'),
+            ('Motijheel', 'Motijheel'),
+            ('New Market', 'New Market'),
+            ('Old Dhaka', 'Old Dhaka'),
+            ('Ramna', 'Ramna'),
+            ('Tejgaon', 'Tejgaon'),
+            ('Uttara', 'Uttara'),
+            ('Wari', 'Wari'),
+        ]
+
+        self.fields['post_office'].widget = forms.Select(
+            choices=post_office_choices,
+            attrs={'class': 'form-control'}
+        )
+
+        # Add blood group choices
+        blood_group_choices = [
+            ('', 'Select Your Blood Group'),
+            ('A+', 'A+'),
+            ('A-', 'A-'),
+            ('B+', 'B+'),
+            ('B-', 'B-'),
+            ('AB+', 'AB+'),
+            ('AB-', 'AB-'),
+            ('O+', 'O+'),
+            ('O-', 'O-'),
+        ]
+
+        self.fields['blood_group'].widget = forms.Select(
+            choices=blood_group_choices,
+            attrs={'class': 'form-control'}
+        )
+
     def clean_phone_number(self):
         phone = self.cleaned_data.get('phone_number')
         # Exclude current instance from duplicate check
@@ -214,6 +495,12 @@ class DonorProfileUpdateForm(forms.ModelForm):
             raise forms.ValidationError("Age must be between 18 and 65 years.")
         return age
 
+    def clean_weight(self):
+        weight = self.cleaned_data.get('weight')
+        if weight and weight < 50:
+            raise forms.ValidationError("Minimum weight of 50kg is required for safe blood donation.")
+        return weight
+
     def clean_last_donation_year(self):
         year = self.cleaned_data.get('last_donation_year')
         if year:
@@ -225,68 +512,6 @@ class DonorProfileUpdateForm(forms.ModelForm):
             except ValueError:
                 raise forms.ValidationError("Year must be a number.")
         return year
-
-
-# Form for searching donors
-class DonorSearchForm(forms.Form):
-    blood_group = forms.ChoiceField(
-        choices=[('', 'All Blood Groups')] + Donor.BLOOD_GROUP_CHOICES,
-        required=False,
-        widget=forms.Select(attrs={'class': 'form-control'})
-    )
-    district = forms.CharField(
-        required=False,
-        widget=forms.TextInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'Enter district'
-        })
-    )
-    state = forms.CharField(
-        required=False,
-        widget=forms.TextInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'Enter state/division'
-        })
-    )
-
-
-# Custom login form using email
-class DonorLoginForm(forms.Form):
-    email = forms.EmailField(
-        widget=forms.EmailInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'Email Address',
-            'required': True
-        })
-    )
-    password = forms.CharField(
-        widget=forms.PasswordInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'Password',
-            'required': True
-        })
-    )
-
-
-# Form for updating just basic info (without sensitive fields)
-class DonorBasicUpdateForm(forms.ModelForm):
-    class Meta:
-        model = Donor
-        fields = [
-            'first_name', 'last_name', 'phone_number', 'address',
-            'age', 'district', 'state', 'pincode', 'profile_image'
-        ]
-        widgets = {
-            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
-            'address': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
-            'age': forms.NumberInput(attrs={'class': 'form-control', 'min': 18, 'max': 65}),
-            'district': forms.TextInput(attrs={'class': 'form-control'}),
-            'state': forms.TextInput(attrs={'class': 'form-control'}),
-            'pincode': forms.TextInput(attrs={'class': 'form-control'}),
-            'profile_image': forms.FileInput(attrs={'class': 'form-control', 'accept': 'image/*'})
-        }
 
 
 class RecipientRegistrationForm(forms.ModelForm):
