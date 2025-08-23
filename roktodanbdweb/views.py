@@ -40,7 +40,7 @@ def register_donor(request):
         form = DonorRegistrationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('registration_success')
+            return redirect('success')
     else:
         form = DonorRegistrationForm()
 
