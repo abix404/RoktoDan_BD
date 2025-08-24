@@ -2,7 +2,9 @@
 <nav class="rd-navbar">
     <div class="rd-navbar-container">
         <div class="rd-nav-brand">
-            <div class="rd-logo"></div>
+            <a href="/" class="rd-logo-link">
+                <img src="{% static 'images/logo.png' %}" alt="RoktoDan BD Logo" class="rd-logo">
+            </a>
         </div>
         <div class="rd-nav-menu-container">
             <ul class="rd-nav-menu">
@@ -27,6 +29,7 @@
                     <li><a href="{% url 'quick_register_recipient' %}" class="rd-nav-link {% if request.resolver_match.url_name == 'quick_register_recipient' %}active{% endif %}">Find Blood</a></li>
                 {% endif %}
 
+                {% if not user.is_authenticated %}
                 <li class="rd-dropdown">
                     <a href="#" class="rd-nav-link rd-dropdown-toggle {% if request.resolver_match.url_name == 'register_donor' or request.path == '/register/recipient/' %}active{% endif %}">Register Now</a>
                     <div class="rd-dropdown-menu">
@@ -34,6 +37,7 @@
                         <a href="{% url 'register_recipient' %}" class="rd-dropdown-item {% if request.path == '/register/recipient/' %}active{% endif %}">As Recipient</a>
                     </div>
                 </li>
+                {% endif %}
             </ul>
 
             <!-- User Authentication Section -->
@@ -99,23 +103,25 @@
 }
 
 .rd-nav-brand .rd-logo {
-    width: 40px;
-    height: 40px;
-    background-color: #c53856;
-    border-radius: 50%;
-    position: relative;
+    width: 110px;
+    height: 50px;
     cursor: pointer;
+    object-fit: cover;
+    display: block;
 }
-.rd-nav-brand .rd-logo::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 20px;
-    height: 20px;
-    background-color: white;
-    border-radius: 50%;
+
+.rd-nav-brand .rd-logo-link {
+    display: inline-block;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.rd-nav-brand .rd-logo-link:hover {
+    transform: scale(1.05);
+}
+
+.rd-nav-brand .rd-logo:hover {
+    box-shadow: 0 2px 8px rgba(197, 56, 86, 0.3);
 }
 
 .rd-nav-menu-container {
