@@ -10,30 +10,31 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import RecipientRegistrationForm
 from .models import Recipient
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.utils import timezone
+from datetime import datetime, timedelta
+from .models import Donor
 
 logger = logging.getLogger(__name__)
 
+# Create your views here.
 def home(request):
     return render(request, 'home.html')
-# Create your views here.
 
 def about_us(request):
     return render(request, 'about_us.html')
 
-def donor_credit(request):
-    return render(request, 'donor_credit.html')
 
-def donation_history(request):
-    return render(request, 'donation_history.html')
-
-
-@login_required
-def logout(request):
-    """
-    Logs out the user and shows the animated logout page
-    """
-    auth_logout(request)
-    return render(request, 'logout.html')
+def matching(request):
+    return render(request, 'matching.html')
+def registration(request):
+    return render(request, 'registration.html')
+def track_requests(request):
+     return render(request, 'track-requests.html')
+def rewards(request):
+    return render(request, 'rewards.html')
 
 def register_donor(request):
     if request.method == 'POST':
@@ -50,6 +51,199 @@ def register_donor(request):
 def registration_success(request):
     return render(request, 'success.html')
 
+@login_required
+def donor_dashboard(request):
+    """
+    Donor dashboard view - shows donor profile and stats
+    """
+    try:
+        # Get the donor profile for the logged-in user
+        donor = get_object_or_404(Donor, user=request.user)
+    except Donor.DoesNotExist:
+        messages.error(request, "Donor profile not found. Please complete your registration.")
+        return redirect('donor_registration')
+
+    # Calculate donation statistics
+    total_donations = calculate_total_donations(donor)
+    lives_saved = total_donations * 3  # Assuming each donation saves 3 lives
+
+    # Get recent activities (you can implement this based on your activity model)
+    recent_activities = get_recent_activities(donor)
+
+    context = {
+        'donor': donor,
+        'total_donations': total_donations,
+        'lives_saved': lives_saved,
+        'recent_activities': recent_activities,
+    }
+
+    return render(request, 'donors/donor_dashboard.html', context)
+
+
+def calculate_total_donations(donor):
+    """
+    Calculate total number of donations based on donation history
+    This is a simple calculation - you might want to implement a more sophisticated system
+    """
+    if not donor.last_donation_month or not donor.last_donation_year:
+        return 0
+
+    try:
+        # This is a simplified calculation
+        # In a real system, you'd have a separate DonationHistory model
+        current_year = datetime.now().year
+        last_donation_year = int(donor.last_donation_year)
+
+        # Rough estimate based on eligibility (can donate every 3 months)
+        years_since_first_donation = current_year - last_donation_year + 1
+        estimated_donations = min(years_since_first_donation * 4, 20)  # Cap at 20
+
+        return max(1, estimated_donations) if donor.last_donation_year else 0
+    except (ValueError, TypeError):
+        return 0
+
+
+def get_recent_activities(donor):
+    """
+    Get recent activities for the donor
+    This is a placeholder - implement based on your activity tracking system
+    """
+    activities = []
+
+    # Example activities - replace with actual data from your models
+    if donor.last_updated:
+        time_diff = timezone.now() - donor.last_updated
+        if time_diff.days < 7:
+            activities.append({
+                'icon': 'fa-edit',
+                'message': 'Profile updated',
+                'timestamp': donor.last_updated
+            })
+
+    if donor.registration_date:
+        activities.append({
+            'icon': 'fa-user-plus',
+            'message': 'Joined RoktoDan BD',
+            'timestamp': donor.registration_date
+        })
+
+    # You can add more activities like:
+    # - Blood donation requests responded to
+    # - Emergency requests
+    # - Profile views
+    # - etc.
+
+    return activities[:5]  # Return last 5 activities
+
+
+@login_required
+def donor_profile_update(request):
+    """
+    Handle donor profile updates
+    """
+    try:
+        donor = get_object_or_404(Donor, user=request.user)
+    except Donor.DoesNotExist:
+        messages.error(request, "Donor profile not found.")
+        return redirect('donor_registration')
+
+    if request.method == 'POST':
+        # Handle form submission
+        from .forms import DonorProfileUpdateForm
+        form = DonorProfileUpdateForm(request.POST, request.FILES, instance=donor)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Profile updated successfully!")
+            return redirect('donor_dashboard')
+        else:
+            messages.error(request, "Please correct the errors below.")
+    else:
+        from .forms import DonorProfileUpdateForm
+        form = DonorProfileUpdateForm(instance=donor)
+
+    context = {
+        'form': form,
+        'donor': donor,
+    }
+
+    return render(request, 'donors/profile_update.html', context)
+
+
+@login_required
+def blood_request_list(request):
+    """
+    Show blood requests that match donor's blood group
+    """
+    try:
+        donor = get_object_or_404(Donor, user=request.user)
+    except Donor.DoesNotExist:
+        messages.error(request, "Donor profile not found.")
+        return redirect('donor_registration')
+
+    # This would fetch blood requests from a BloodRequest model
+    # For now, it's a placeholder
+    context = {
+        'donor': donor,
+        'requests': [],  # Replace with actual blood requests
+    }
+
+    return render(request, 'donors/blood_requests.html', context)
+
+
+@login_required
+def donation_history(request):
+    """
+    Show donor's donation history
+    """
+    try:
+        donor = get_object_or_404(Donor, user=request.user)
+    except Donor.DoesNotExist:
+        messages.error(request, "Donor profile not found.")
+        return redirect('donor_registration')
+
+    # This would fetch actual donation records from a DonationHistory model
+    # For now, using the basic last donation info
+    donation_records = []
+
+    if donor.last_donation_month and donor.last_donation_year:
+        donation_records.append({
+            'date': f"{donor.last_donation_month} {donor.last_donation_year}",
+            'location': 'Blood Bank',  # Placeholder
+            'blood_group': donor.blood_group,
+            'status': 'Completed'
+        })
+
+    context = {
+        'donor': donor,
+        'donation_records': donation_records,
+        'total_donations': len(donation_records),
+    }
+
+    return render(request, 'donors/donation_history.html', context)
+
+
+@login_required
+def emergency_requests(request):
+    """
+    Show emergency blood requests
+    """
+    try:
+        donor = get_object_or_404(Donor, user=request.user)
+    except Donor.DoesNotExist:
+        messages.error(request, "Donor profile not found.")
+        return redirect('donor_registration')
+
+    # This would fetch urgent blood requests from database
+    # Filter by compatible blood groups and location
+    emergency_requests = []  # Replace with actual emergency requests
+
+    context = {
+        'donor': donor,
+        'emergency_requests': emergency_requests,
+    }
+
+    return render(request, 'donors/emergency_requests.html', context)
 
 def user_login(request):
     if request.method == 'POST':
@@ -91,6 +285,15 @@ def user_login(request):
             messages.error(request, 'Invalid email/phone or password')
 
     return render(request, 'login.html')
+
+
+@login_required
+def logout(request):
+    """
+    Logs out the user and shows the animated logout page
+    """
+    auth_logout(request)
+    return render(request, 'logout.html')
 
 def quick_register_recipient(request):
     return render(request, 'quick_register_recipient.html')

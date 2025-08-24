@@ -37,8 +37,6 @@ urlpatterns = [
 
     path('quick_register_recipient/', views.quick_register_recipient, name='quick_register_recipient'),
 
-    path('donor_credit/', views.donor_credit, name='donor_credit'),
-
     path('donation_history/', views.donation_history, name='donation_history'),
 
     path('logout/', views.logout, name='logout'),
@@ -46,4 +44,19 @@ urlpatterns = [
     path('register_recipient/', views.register_recipient, name='register_recipient'),
 
     path('success/', views.recipient_success, name='recipient_success'),
+
+    path('dashboard/', views.donor_dashboard, name='donor_dashboard'),
+
+    path('profile/update/', views.donor_profile_update, name='donor_profile_update'),
+
+    path('blood-requests/', views.blood_request_list, name='blood_request_list'),
+
+    path('emergency-requests/', views.emergency_requests, name='emergency_requests'),
+
+    #not setup yet
+    path('matching/', views.matching, name='matching'),
+
+    path('rewards/', views.rewards, name='rewards'),
+
+    path('track-requests/', views.track_requests, name='track_requests'),
 ]
