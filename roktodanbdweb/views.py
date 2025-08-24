@@ -295,8 +295,82 @@ def logout(request):
     auth_logout(request)
     return render(request, 'logout.html')
 
-def quick_register_recipient(request):
-    return render(request, 'quick_register_recipient.html')
+
+def find_blood(request):
+    """
+    Handle Find Blood functionality:
+    - Show quick login for non-authenticated users
+    - Show search form and results for authenticated users
+    """
+
+    # For non-authenticated users, show the login page
+    if not request.user.is_authenticated:
+        return render(request, 'find_blood.html')
+
+    # For authenticated users, handle blood search
+    donors = None
+
+    # Check if search parameters are provided
+    blood_group = request.GET.get('blood_group')
+    thana = request.GET.get('thana')
+    post_office = request.GET.get('post_office')
+    district = request.GET.get('district')
+
+    # If all search parameters are provided, search for donors
+    if all([blood_group, thana, post_office, district]):
+        donors = Donor.objects.filter(
+            blood_group=blood_group,
+            thana=thana,
+            post_office=post_office,
+            district=district,
+            is_active=True,
+            is_available=True
+        ).select_related('user').order_by('-registration_date')
+
+        # Optional: Filter by donors who can actually donate (based on last donation date)
+        # available_donors = [donor for donor in donors if donor.can_donate]
+        # donors = available_donors
+
+        # Add success message if donors found
+        if donors.exists():
+            messages.success(request, f'Found {donors.count()} available donor(s) in your area!')
+        else:
+            messages.warning(request, 'No donors found matching your criteria. Try searching in nearby areas.')
+
+    # If user just logged in via social auth, create recipient profile automatically
+    if request.user.is_authenticated and not hasattr(request.user, 'recipient_profile'):
+        try:
+            from .models import Recipient
+            # Auto-create recipient profile for quick login users
+            recipient = Recipient.objects.create(
+                user=request.user,
+                first_name=request.user.first_name or 'User',
+                last_name=request.user.last_name or '',
+                email=request.user.email,
+                phone_number='',  # Will need to be updated later
+                blood_group='',  # Will be filled when they search
+                house_holding_no='',
+                road_block='',
+                thana='',
+                post_office='',
+                district='Dhaka'
+            )
+            messages.info(request, 'Welcome! Your recipient profile has been created. You can update it later.')
+        except Exception as e:
+            # Handle any errors in profile creation
+            pass
+
+    context = {
+        'donors': donors,
+        'search_params': {
+            'blood_group': blood_group,
+            'thana': thana,
+            'post_office': post_office,
+            'district': district,
+        }
+    }
+
+    return render(request, 'find_blood.html', context)
 
 
 def register_recipient(request):

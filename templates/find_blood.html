@@ -1,0 +1,432 @@
+<!-- find_blood.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Find Blood - RoktoDan BD{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/find_blood.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="find-blood-container">
+    {% if not user.is_authenticated %}
+        <!-- Quick Login Section for Non-authenticated Users -->
+        <div class="quick-login-section">
+            <div class="quick-login-card">
+                <div class="text-center mb-4">
+                    <img src="{% static 'images/logo_2.png' %}" alt="RoktoDan BD Logo" class="login-logo">
+                    <h3 class="login-title">Find Blood Donors</h3>
+                    <p class="login-subtitle">Quick login to search for blood donors in your area</p>
+                </div>
+
+                <div class="social-login-buttons">
+                    <a href="{% url 'social:begin' 'google-oauth2' %}?next={% url 'find_blood' %}"
+                       class="social-btn google-btn">
+                        <i class="bi bi-google"></i>
+                        Continue with Google
+                    </a>
+
+                    <button type="button" class="social-btn facebook-btn" disabled>
+                        <i class="bi bi-facebook"></i>
+                        Continue with Facebook
+                        <small>(Coming Soon)</small>
+                    </button>
+                </div>
+
+                <div class="login-divider">
+                    <span>or</span>
+                </div>
+
+                <div class="text-center">
+                    <p class="register-text">Don't have an account?</p>
+                    <a href="{% url 'register_recipient' %}" class="register-link">Register as Recipient</a>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+        <!-- Blood Search Section for Authenticated Users -->
+        <div class="blood-search-section">
+            <div class="search-header">
+                <h2>Find Blood Donors</h2>
+                <p>Search for blood donors in your area</p>
+            </div>
+
+            <div class="search-form-card">
+                <form method="GET" action="{% url 'find_blood' %}" class="blood-search-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="blood_group">Blood Group *</label>
+                            <select name="blood_group" id="blood_group" class="form-select" required aria-describedby="blood_group_help">
+                                <option value="">Select Blood Group</option>
+                                {% if request.GET.blood_group == 'A+' %}
+                                    <option value="A+" selected>A+</option>
+                                {% else %}
+                                    <option value="A+">A+</option>
+                                {% endif %}
+                                {% if request.GET.blood_group == 'A-' %}
+                                    <option value="A-" selected>A-</option>
+                                {% else %}
+                                    <option value="A-">A-</option>
+                                {% endif %}
+                                {% if request.GET.blood_group == 'B+' %}
+                                    <option value="B+" selected>B+</option>
+                                {% else %}
+                                    <option value="B+">B+</option>
+                                {% endif %}
+                                {% if request.GET.blood_group == 'B-' %}
+                                    <option value="B-" selected>B-</option>
+                                {% else %}
+                                    <option value="B-">B-</option>
+                                {% endif %}
+                                {% if request.GET.blood_group == 'AB+' %}
+                                    <option value="AB+" selected>AB+</option>
+                                {% else %}
+                                    <option value="AB+">AB+</option>
+                                {% endif %}
+                                {% if request.GET.blood_group == 'AB-' %}
+                                    <option value="AB-" selected>AB-</option>
+                                {% else %}
+                                    <option value="AB-">AB-</option>
+                                {% endif %}
+                                {% if request.GET.blood_group == 'O+' %}
+                                    <option value="O+" selected>O+</option>
+                                {% else %}
+                                    <option value="O+">O+</option>
+                                {% endif %}
+                                {% if request.GET.blood_group == 'O-' %}
+                                    <option value="O-" selected>O-</option>
+                                {% else %}
+                                    <option value="O-">O-</option>
+                                {% endif %}
+                            </select>
+                            <small id="blood_group_help" class="form-text text-muted">
+                                Select the blood group you are looking for
+                            </small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="thana">Thana/Upazila *</label>
+                            <select name="thana" id="thana" class="form-select" required aria-describedby="thana_help">
+                                <option value="">Select Thana</option>
+                                {% if request.GET.thana == 'Adabar' %}
+                                    <option value="Adabar" selected>Adabar</option>
+                                {% else %}
+                                    <option value="Adabar">Adabar</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Badda' %}
+                                    <option value="Badda" selected>Badda</option>
+                                {% else %}
+                                    <option value="Badda">Badda</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Banani' %}
+                                    <option value="Banani" selected>Banani</option>
+                                {% else %}
+                                    <option value="Banani">Banani</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Baridhara' %}
+                                    <option value="Baridhara" selected>Baridhara</option>
+                                {% else %}
+                                    <option value="Baridhara">Baridhara</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Dhanmondi' %}
+                                    <option value="Dhanmondi" selected>Dhanmondi</option>
+                                {% else %}
+                                    <option value="Dhanmondi">Dhanmondi</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Gulshan' %}
+                                    <option value="Gulshan" selected>Gulshan</option>
+                                {% else %}
+                                    <option value="Gulshan">Gulshan</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Hatirjheel' %}
+                                    <option value="Hatirjheel" selected>Hatirjheel</option>
+                                {% else %}
+                                    <option value="Hatirjheel">Hatirjheel</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Kafrul' %}
+                                    <option value="Kafrul" selected>Kafrul</option>
+                                {% else %}
+                                    <option value="Kafrul">Kafrul</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Kalabagan' %}
+                                    <option value="Kalabagan" selected>Kalabagan</option>
+                                {% else %}
+                                    <option value="Kalabagan">Kalabagan</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Khilgaon' %}
+                                    <option value="Khilgaon" selected>Khilgaon</option>
+                                {% else %}
+                                    <option value="Khilgaon">Khilgaon</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Khilkhet' %}
+                                    <option value="Khilkhet" selected>Khilkhet</option>
+                                {% else %}
+                                    <option value="Khilkhet">Khilkhet</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Mirpur' %}
+                                    <option value="Mirpur" selected>Mirpur</option>
+                                {% else %}
+                                    <option value="Mirpur">Mirpur</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Mohammadpur' %}
+                                    <option value="Mohammadpur" selected>Mohammadpur</option>
+                                {% else %}
+                                    <option value="Mohammadpur">Mohammadpur</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Motijheel' %}
+                                    <option value="Motijheel" selected>Motijheel</option>
+                                {% else %}
+                                    <option value="Motijheel">Motijheel</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'New Market' %}
+                                    <option value="New Market" selected>New Market</option>
+                                {% else %}
+                                    <option value="New Market">New Market</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Old Dhaka' %}
+                                    <option value="Old Dhaka" selected>Old Dhaka</option>
+                                {% else %}
+                                    <option value="Old Dhaka">Old Dhaka</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Pallabi' %}
+                                    <option value="Pallabi" selected>Pallabi</option>
+                                {% else %}
+                                    <option value="Pallabi">Pallabi</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Ramna' %}
+                                    <option value="Ramna" selected>Ramna</option>
+                                {% else %}
+                                    <option value="Ramna">Ramna</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Rampura' %}
+                                    <option value="Rampura" selected>Rampura</option>
+                                {% else %}
+                                    <option value="Rampura">Rampura</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Sabujbagh' %}
+                                    <option value="Sabujbagh" selected>Sabujbagh</option>
+                                {% else %}
+                                    <option value="Sabujbagh">Sabujbagh</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Shah Ali' %}
+                                    <option value="Shah Ali" selected>Shah Ali</option>
+                                {% else %}
+                                    <option value="Shah Ali">Shah Ali</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Sher-e-Bangla Nagar' %}
+                                    <option value="Sher-e-Bangla Nagar" selected>Sher-e-Bangla Nagar</option>
+                                {% else %}
+                                    <option value="Sher-e-Bangla Nagar">Sher-e-Bangla Nagar</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Tejgaon' %}
+                                    <option value="Tejgaon" selected>Tejgaon</option>
+                                {% else %}
+                                    <option value="Tejgaon">Tejgaon</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Uttara' %}
+                                    <option value="Uttara" selected>Uttara</option>
+                                {% else %}
+                                    <option value="Uttara">Uttara</option>
+                                {% endif %}
+                                {% if request.GET.thana == 'Wari' %}
+                                    <option value="Wari" selected>Wari</option>
+                                {% else %}
+                                    <option value="Wari">Wari</option>
+                                {% endif %}
+                            </select>
+                            <small id="thana_help" class="form-text text-muted">
+                                Choose the area where you need blood donors
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="post_office">Post Office *</label>
+                            <select name="post_office" id="post_office" class="form-select" required aria-describedby="post_office_help">
+                                <option value="">Select Post Office</option>
+                                {% if request.GET.post_office == 'Dhaka GPO' %}
+                                    <option value="Dhaka GPO" selected>Dhaka GPO</option>
+                                {% else %}
+                                    <option value="Dhaka GPO">Dhaka GPO</option>
+                                {% endif %}
+                                {% if request.GET.post_office == 'Banani' %}
+                                    <option value="Banani" selected>Banani</option>
+                                {% else %}
+                                    <option value="Banani">Banani</option>
+                                {% endif %}
+                                {% if request.GET.post_office == 'Dhanmondi' %}
+                                    <option value="Dhanmondi" selected>Dhanmondi</option>
+                                {% else %}
+                                    <option value="Dhanmondi">Dhanmondi</option>
+                                {% endif %}
+                                {% if request.GET.post_office == 'Gulshan' %}
+                                    <option value="Gulshan" selected>Gulshan</option>
+                                {% else %}
+                                    <option value="Gulshan">Gulshan</option>
+                                {% endif %}
+                                {% if request.GET.post_office == 'Mirpur' %}
+                                    <option value="Mirpur" selected>Mirpur</option>
+                                {% else %}
+                                    <option value="Mirpur">Mirpur</option>
+                                {% endif %}
+                                {% if request.GET.post_office == 'Mohammadpur' %}
+                                    <option value="Mohammadpur" selected>Mohammadpur</option>
+                                {% else %}
+                                    <option value="Mohammadpur">Mohammadpur</option>
+                                {% endif %}
+                                {% if request.GET.post_office == 'Motijheel' %}
+                                    <option value="Motijheel" selected>Motijheel</option>
+                                {% else %}
+                                    <option value="Motijheel">Motijheel</option>
+                                {% endif %}
+                                {% if request.GET.post_office == 'New Market' %}
+                                    <option value="New Market" selected>New Market</option>
+                                {% else %}
+                                    <option value="New Market">New Market</option>
+                                {% endif %}
+                                {% if request.GET.post_office == 'Old Dhaka' %}
+                                    <option value="Old Dhaka" selected>Old Dhaka</option>
+                                {% else %}
+                                    <option value="Old Dhaka">Old Dhaka</option>
+                                {% endif %}
+                                {% if request.GET.post_office == 'Ramna' %}
+                                    <option value="Ramna" selected>Ramna</option>
+                                {% else %}
+                                    <option value="Ramna">Ramna</option>
+                                {% endif %}
+                                {% if request.GET.post_office == 'Tejgaon' %}
+                                    <option value="Tejgaon" selected>Tejgaon</option>
+                                {% else %}
+                                    <option value="Tejgaon">Tejgaon</option>
+                                {% endif %}
+                                {% if request.GET.post_office == 'Uttara' %}
+                                    <option value="Uttara" selected>Uttara</option>
+                                {% else %}
+                                    <option value="Uttara">Uttara</option>
+                                {% endif %}
+                                {% if request.GET.post_office == 'Wari' %}
+                                    <option value="Wari" selected>Wari</option>
+                                {% else %}
+                                    <option value="Wari">Wari</option>
+                                {% endif %}
+                            </select>
+                            <small id="post_office_help" class="form-text text-muted">
+                                Select the nearest post office
+                            </small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="district">District *</label>
+                            <select name="district" id="district" class="form-select" required aria-describedby="district_help">
+                                <option value="">Select District</option>
+                                {% if request.GET.district == 'Dhaka' %}
+                                    <option value="Dhaka" selected>Dhaka</option>
+                                {% else %}
+                                    <option value="Dhaka">Dhaka</option>
+                                {% endif %}
+                            </select>
+                            <small id="district_help" class="form-text text-muted">
+                                Currently supporting Dhaka district only
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="search-button-container">
+                        <button type="submit" class="search-btn">
+                            <i class="bi bi-search"></i>
+                            Search Donors
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Search Results Section -->
+            {% if donors %}
+            <div class="search-results-section">
+                <div class="results-header">
+                    <h3>Available Donors</h3>
+                    <p>Found {{ donors.count }} donor(s) matching your criteria</p>
+                </div>
+
+                <div class="donors-grid">
+                    {% for donor in donors %}
+                    <div class="donor-card">
+                        <div class="donor-avatar">
+                            {% if donor.profile_image %}
+                                <img src="{{ donor.profile_image.url }}" alt="{{ donor.full_name }}" class="avatar-img">
+                            {% else %}
+                                <div class="avatar-placeholder">
+                                    <span>{{ donor.first_name.0|upper }}{{ donor.last_name.0|upper }}</span>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="donor-info">
+                            <h4 class="donor-name">{{ donor.full_name }}</h4>
+                            <div class="donor-details">
+                                <span class="blood-group-badge">{{ donor.blood_group }}</span>
+                                <span class="location"><i class="bi bi-geo-alt"></i> {{ donor.thana }}</span>
+                            </div>
+                            <div class="contact-info">
+                                <span class="phone"><i class="bi bi-telephone"></i> {{ donor.phone_number }}</span>
+                            </div>
+                            {% if donor.can_donate %}
+                                <span class="availability-status available">Available Now</span>
+                            {% else %}
+                                <span class="availability-status unavailable">Next: {{ donor.next_donation_date }}</span>
+                            {% endif %}
+                        </div>
+
+                        <div class="donor-actions">
+                            <button class="chat-btn" onclick="openChat('{{ donor.id }}', '{{ donor.full_name }}')">
+                                <i class="bi bi-chat-dots"></i>
+                                Chat Now
+                            </button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            {% elif request.GET.blood_group %}
+            <!-- No Results Found -->
+            <div class="no-results-section">
+                <div class="no-results-card">
+                    <i class="bi bi-search no-results-icon"></i>
+                    <h3>No Donors Found</h3>
+                    <p>Sorry, we couldn't find any donors matching your criteria in the selected area.</p>
+                    <p>Try searching in nearby areas or different blood groups.</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+
+<script>
+// Placeholder function for chat functionality
+function openChat(donorId, donorName) {
+    alert(`Chat feature coming soon!\nWould open chat with: ${donorName} (ID: ${donorId})`);
+    // Future implementation: Open chat modal or redirect to chat page
+}
+
+// Form enhancement
+document.addEventListener('DOMContentLoaded', function() {
+    // Add loading state to search button
+    const searchForm = document.querySelector('.blood-search-form');
+    const searchBtn = document.querySelector('.search-btn');
+
+    if (searchForm && searchBtn) {
+        searchForm.addEventListener('submit', function() {
+            searchBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> Searching...';
+            searchBtn.disabled = true;
+        });
+    }
+});
+</script>
+{% endblock %}

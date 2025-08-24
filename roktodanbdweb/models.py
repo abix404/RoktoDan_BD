@@ -397,7 +397,7 @@ class Recipient(models.Model):
     # Phone number validator
     phone_regex = RegexValidator(
         regex=r'^\+?1?\d{9,15}$',
-        message="Phone number must be entered in the format: '+880199999'. Up to 15 digits allowed."
+        message="Phone number must be entered in the format: '+8801567890123'. Up to 15 digits allowed."
     )
 
     # Link to Django User model - NOW NULLABLE
