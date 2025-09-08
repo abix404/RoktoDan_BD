@@ -192,35 +192,60 @@ def blood_request_list(request):
 
 
 @login_required
-def donation_history(request):
+def donor_history(request):
     """
-    Show donor's donation history
+    Display donor's blood donation history
     """
     try:
         donor = get_object_or_404(Donor, user=request.user)
     except Donor.DoesNotExist:
-        messages.error(request, "Donor profile not found.")
+        # Redirect to donor registration if no donor profile exists
         return redirect('donor_registration')
 
-    # This would fetch actual donation records from a DonationHistory model
-    # For now, using the basic last donation info
-    donation_records = []
+    # Get all donation history for this donor
+    donation_history = DonationHistory.objects.filter(donor=donor)
 
-    if donor.last_donation_month and donor.last_donation_year:
-        donation_records.append({
-            'date': f"{donor.last_donation_month} {donor.last_donation_year}",
-            'location': 'Blood Bank',  # Placeholder
-            'blood_group': donor.blood_group,
-            'status': 'Completed'
-        })
+    # Apply filters if provided
+    from_date = request.GET.get('from_date')
+    to_date = request.GET.get('to_date')
+    status_filter = request.GET.get('status')
+
+    if from_date:
+        try:
+            from_date = datetime.strptime(from_date, '%Y-%m-%d').date()
+            donation_history = donation_history.filter(donation_date__date__gte=from_date)
+        except ValueError:
+            pass
+
+    if to_date:
+        try:
+            to_date = datetime.strptime(to_date, '%Y-%m-%d').date()
+            donation_history = donation_history.filter(donation_date__date__lte=to_date)
+        except ValueError:
+            pass
+
+    if status_filter:
+        donation_history = donation_history.filter(status=status_filter)
+
+    # Calculate statistics
+    total_donations = donation_history.filter(status='completed').count()
+    lives_saved = total_donations * 3  # Typically 1 donation saves 3 lives
+
+    # Calculate days since last donation
+    last_donation = donation_history.filter(status='completed').first()
+    days_since_last = None
+    if last_donation:
+        days_since_last = (timezone.now().date() - last_donation.donation_date.date()).days
 
     context = {
         'donor': donor,
-        'donation_records': donation_records,
-        'total_donations': len(donation_records),
+        'donation_history': donation_history,
+        'total_donations': total_donations,
+        'lives_saved': lives_saved,
+        'days_since_last': days_since_last,
     }
 
-    return render(request, 'donors/donation_history.html', context)
+    return render(request, 'donor_history.html', context)
 
 
 @login_required

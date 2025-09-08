@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Donation History - Blood Donation{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/donor_history.css' %}" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="history-container">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="history-card">
+                    <!-- Header -->
+                    <div class="history-header">
+                        <h2><i class="fas fa-heart me-3"></i>My Donation History</h2>
+                        <p>Track your life-saving contributions</p>
+                    </div>
+
+                    <!-- Statistics Row -->
+                    <div class="p-4">
+                        <div class="stats-row">
+                            <div class="row">
+                                <div class="col-md-3 col-6">
+                                    <div class="stat-item">
+                                        <span class="stat-number">{{ total_donations|default:0 }}</span>
+                                        <span class="stat-label">Total Donations</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <div class="stat-item">
+                                        <span class="stat-number">{{ lives_saved|default:0 }}</span>
+                                        <span class="stat-label">Lives Potentially Saved</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <div class="stat-item">
+                                        <span class="stat-number">{{ donor.blood_group|default:"N/A" }}</span>
+                                        <span class="stat-label">Blood Group</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <div class="stat-item">
+                                        <span class="stat-number">{{ days_since_last|default:"N/A" }}</span>
+                                        <span class="stat-label">Days Since Last</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Filter Section -->
+                        <div class="filter-section">
+                            <div class="row align-items-end">
+                                <div class="col-md-3">
+                                    <label class="form-label">From Date</label>
+                                    <input type="date" class="form-control" id="fromDate">
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">To Date</label>
+                                    <input type="date" class="form-control" id="toDate">
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">Status</label>
+                                    <select class="form-control" id="statusFilter">
+                                        <option value="">All Status</option>
+                                        <option value="completed">Completed</option>
+                                        <option value="pending">Pending</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <button class="btn btn-filter w-100">
+                                        <i class="fas fa-filter me-2"></i>Filter
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Donation Records -->
+                        {% if donation_history %}
+                            <div class="donation-records" style="position: relative;">
+                                {% for donation in donation_history %}
+                                    <div class="donation-record">
+                                        <div class="record-header">
+                                            <div class="donation-date">
+                                                <i class="fas fa-calendar-alt me-2"></i>
+                                                {{ donation.donation_date|date:"F d, Y" }}
+                                            </div>
+                                            <div class="blood-group-badge">
+                                                {{ donation.blood_group }}
+                                            </div>
+                                        </div>
+
+                                        <div class="record-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="info-row">
+                                                        <div class="info-label">
+                                                            <i class="fas fa-user-injured"></i>
+                                                            Recipient:
+                                                        </div>
+                                                        <div class="info-value">{{ donation.recipient_name|default:"Anonymous" }}</div>
+                                                    </div>
+
+                                                    <div class="info-row">
+                                                        <div class="info-label">
+                                                            <i class="fas fa-hospital"></i>
+                                                            Hospital:
+                                                        </div>
+                                                        <div class="info-value">{{ donation.hospital_name|default:"Not specified" }}</div>
+                                                    </div>
+
+                                                    <div class="info-row">
+                                                        <div class="info-label">
+                                                            <i class="fas fa-map-marker-alt"></i>
+                                                            Location:
+                                                        </div>
+                                                        <div class="info-value">{{ donation.location|default:"Dhaka, Bangladesh" }}</div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="info-row">
+                                                        <div class="info-label">
+                                                            <i class="fas fa-tint"></i>
+                                                            Amount:
+                                                        </div>
+                                                        <div class="info-value">{{ donation.amount|default:"450" }} ml</div>
+                                                    </div>
+
+                                                    <div class="info-row">
+                                                        <div class="info-label">
+                                                            <i class="fas fa-phone"></i>
+                                                            Contact:
+                                                        </div>
+                                                        <div class="info-value">{{ donation.contact_number|default:"Not provided" }}</div>
+                                                    </div>
+
+                                                    <div class="info-row">
+                                                        <div class="info-label">
+                                                            <i class="fas fa-info-circle"></i>
+                                                            Status:
+                                                        </div>
+                                                        <div class="info-value">
+                                                            <span class="status-badge {% if donation.status == 'completed' %}status-completed{% else %}status-pending{% endif %}">
+                                                                {{ donation.status|default:"completed"|capfirst }}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {% if donation.notes %}
+                                            <div class="info-row mt-3">
+                                                <div class="info-label">
+                                                    <i class="fas fa-sticky-note"></i>
+                                                    Notes:
+                                                </div>
+                                                <div class="info-value">{{ donation.notes }}</div>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="no-history">
+                                <i class="fas fa-heart-broken"></i>
+                                <h4>No Donation History Found</h4>
+                                <p>You haven't made any blood donations yet. Start saving lives today!</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Filter functionality
+    document.querySelector('.btn-filter').addEventListener('click', function() {
+        const fromDate = document.getElementById('fromDate').value;
+        const toDate = document.getElementById('toDate').value;
+        const status = document.getElementById('statusFilter').value;
+
+        // Here you would typically make an AJAX call to filter the data
+        console.log('Filtering with:', { fromDate, toDate, status });
+
+        // For now, just show a loading state
+        this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Filtering...';
+
+        setTimeout(() => {
+            this.innerHTML = '<i class="fas fa-filter me-2"></i>Filter';
+        }, 1000);
+    });
+
+    // Calculate lives saved (typically 1 donation = 3 lives saved)
+    const totalDonations = {{ total_donations|default:0 }};
+    const livesSaved = totalDonations * 3;
+    if (document.querySelector('.stat-number')) {
+        const livesSavedElement = document.querySelectorAll('.stat-number')[1];
+        if (livesSavedElement) {
+            livesSavedElement.textContent = livesSaved;
+        }
+    }
+</script>
+{% endblock %}

@@ -37,7 +37,7 @@ urlpatterns = [
 
     path('find_blood/', views.find_blood, name='find_blood'),
 
-    path('donation_history/', views.donation_history, name='donation_history'),
+    path('donor_history/', views.donor_history, name='donor_history'),
 
     path('logout/', views.logout, name='logout'),
 

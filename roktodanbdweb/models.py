@@ -4,14 +4,6 @@ from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator, MinLengthValidator
 from django.utils import timezone
 
-user = models.OneToOneField(
-    User,
-    on_delete=models.CASCADE,
-    related_name='donor',
-    null=True,
-    blank=True,
-    help_text="Associated user account"
-)
 
 class Donor(models.Model):
     BLOOD_GROUP_CHOICES = [
@@ -394,7 +386,6 @@ class Recipient(models.Model):
     ]
 
     # Phone number validator
-    # Phone number validator
     phone_regex = RegexValidator(
         regex=r'^\+?1?\d{9,15}$',
         message="Phone number must be entered in the format: '+8801567890123'. Up to 15 digits allowed."
@@ -454,3 +445,32 @@ class Recipient(models.Model):
     @property
     def full_address(self):
         return f"{self.house_holding_no}, {self.road_block}, {self.thana}, {self.post_office}, {self.district}"
+
+
+class DonationHistory(models.Model):
+    STATUS_CHOICES = [
+        ('completed', 'Completed'),
+        ('pending', 'Pending'),
+        ('cancelled', 'Cancelled'),
+    ]
+
+    donor = models.ForeignKey(Donor, on_delete=models.CASCADE, related_name='donations')
+    donation_date = models.DateTimeField(default=timezone.now)
+    recipient_name = models.CharField(max_length=100, blank=True, null=True)
+    hospital_name = models.CharField(max_length=200, blank=True, null=True)
+    location = models.CharField(max_length=200, default="Dhaka, Bangladesh")
+    blood_group = models.CharField(max_length=5)
+    amount = models.IntegerField(default=450, help_text="Amount in ml")
+    contact_number = models.CharField(max_length=15, blank=True, null=True)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='completed')
+    notes = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-donation_date']
+        verbose_name = 'Donation History'
+        verbose_name_plural = 'Donation Histories'
+
+    def __str__(self):
+        return f"{self.donor.user.get_full_name()} - {self.donation_date.strftime('%Y-%m-%d')}"

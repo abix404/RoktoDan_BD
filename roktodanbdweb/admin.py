@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.utils import timezone
 from datetime import datetime, timedelta
 from django.contrib.auth.hashers import make_password
-from .models import Donor, Recipient
+from .models import Donor, Recipient, DonationHistory
 
 
 class DonorInline(admin.StackedInline):
@@ -397,6 +397,64 @@ class RecipientAdmin(admin.ModelAdmin):
             self.message_user(request, f"Errors: {'; '.join(errors)}", level='ERROR')
 
     create_user_accounts_for_selected.short_description = "Create User accounts for selected recipients"
+
+
+@admin.register(DonationHistory)
+class DonationHistoryAdmin(admin.ModelAdmin):
+    list_display = ['get_donor_name', 'donation_date', 'recipient_name', 'blood_group', 'status', 'location', 'amount']
+    list_filter = ['status', 'blood_group', 'donation_date', 'location']
+    search_fields = ['donor__user__first_name', 'donor__user__last_name', 'recipient_name', 'hospital_name', 'location']
+    date_hierarchy = 'donation_date'
+    readonly_fields = ['created_at', 'updated_at']
+    list_per_page = 25
+    ordering = ['-donation_date']
+
+    fieldsets = (
+        ('Donation Information', {
+            'fields': ('donor', 'donation_date', 'blood_group', 'amount', 'status')
+        }),
+        ('Recipient Information', {
+            'fields': ('recipient_name', 'hospital_name', 'location', 'contact_number')
+        }),
+        ('Additional Information', {
+            'fields': ('notes', 'created_at', 'updated_at'),
+            'classes': ('collapse',)
+        }),
+    )
+
+    def get_donor_name(self, obj):
+        if obj.donor and obj.donor.user:
+            return f"{obj.donor.user.first_name} {obj.donor.user.last_name}"
+        elif obj.donor:
+            return f"{obj.donor.first_name} {obj.donor.last_name}" if hasattr(obj.donor,
+                                                                              'first_name') else "Unknown Donor"
+        return "No Donor"
+
+    get_donor_name.short_description = "Donor Name"
+    get_donor_name.admin_order_field = 'donor__user__first_name'
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).select_related('donor__user')
+
+    actions = ['mark_as_completed', 'mark_as_pending', 'export_donation_history']
+
+    def mark_as_completed(self, request, queryset):
+        updated = queryset.update(status='completed')
+        self.message_user(request, f'{updated} donation records marked as completed.')
+
+    mark_as_completed.short_description = "Mark selected donations as completed"
+
+    def mark_as_pending(self, request, queryset):
+        updated = queryset.update(status='pending')
+        self.message_user(request, f'{updated} donation records marked as pending.')
+
+    mark_as_pending.short_description = "Mark selected donations as pending"
+
+    def export_donation_history(self, request, queryset):
+        count = queryset.count()
+        self.message_user(request, f'Export feature for {count} donation records coming soon.')
+
+    export_donation_history.short_description = "Export donation history"
 
 
 class RecipientInline(admin.StackedInline):
