@@ -59,4 +59,8 @@ urlpatterns = [
     path('rewards/', views.rewards, name='rewards'),
 
     path('track-requests/', views.track_requests, name='track_requests'),
+
+    path('matching/', views.matching, name='matching'),
+
+    path('respond-to-request/<int:request_id>/', views.respond_to_request, name='respond_to_request'),
 ]

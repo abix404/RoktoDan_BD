@@ -1,21 +1,18 @@
-from .forms import DonorRegistrationForm
 from .models import *
 from django.contrib.auth import logout as auth_logout
-from django.contrib.auth.decorators import login_required
 from django.views import View
 from .utils import send_registration_email, send_admin_notification
 import logging
 from django.contrib.auth import authenticate, login
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from .forms import RecipientRegistrationForm
+from .forms import RecipientRegistrationForm, DonorResponseForm, DonorRegistrationForm
 from .models import Recipient
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
 from django.utils import timezone
 from datetime import datetime, timedelta
-from .models import Donor
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from .models import Donor, DonationHistory, DonorPoints, DonorBadge, PointTransaction
+
 
 logger = logging.getLogger(__name__)
 
@@ -425,3 +422,269 @@ def register_recipient(request):
 # Success page view
 def recipient_success(request):
     return render(request, 'success.html')
+
+
+@login_required
+def matching(request):
+    """
+    Matching page for donors to see blood requests and respond
+    """
+    try:
+        donor = get_object_or_404(Donor, user=request.user)
+    except Donor.DoesNotExist:
+        messages.error(request, "Donor profile not found. Please complete your registration.")
+        return redirect('donor_registration')
+
+    # Get compatible blood requests
+    compatible_requests = BloodRequest.objects.filter(
+        blood_group_needed=donor.blood_group,
+        thana=donor.thana,
+        status='active'
+    ).exclude(
+        # Exclude requests the donor has already responded to
+        donor_responses__donor=donor
+    ).order_by('-urgency_level', '-created_at')
+
+    # Get recent matches (requests the donor has responded to)
+    recent_responses = DonorResponse.objects.filter(
+        donor=donor
+    ).select_related('blood_request', 'blood_request__recipient').order_by('-response_date')[:10]
+
+    # Get statistics
+    total_responses = DonorResponse.objects.filter(donor=donor).count()
+    accepted_responses = DonorResponse.objects.filter(donor=donor, response='accept').count()
+
+    context = {
+        'donor': donor,
+        'compatible_requests': compatible_requests,
+        'recent_responses': recent_responses,
+        'total_responses': total_responses,
+        'accepted_responses': accepted_responses,
+    }
+
+    return render(request, 'matching.html', context)
+
+
+@login_required
+def respond_to_request(request, request_id):
+    """
+    Handle donor response to blood request
+    """
+    try:
+        donor = get_object_or_404(Donor, user=request.user)
+        blood_request = get_object_or_404(BloodRequest, id=request_id, status='active')
+    except (Donor.DoesNotExist, BloodRequest.DoesNotExist):
+        messages.error(request, "Request not found or invalid.")
+        return redirect('matching')
+
+    # Check if donor has already responded
+    existing_response = DonorResponse.objects.filter(
+        donor=donor,
+        blood_request=blood_request
+    ).first()
+
+    if existing_response:
+        messages.warning(request, "You have already responded to this request.")
+        return redirect('matching')
+
+    if request.method == 'POST':
+        form = DonorResponseForm(request.POST)
+        if form.is_valid():
+            response = form.save(commit=False)
+            response.donor = donor
+            response.blood_request = blood_request
+            response.save()
+
+            if response.response == 'accept':
+                messages.success(request,
+                                 "Thank you for accepting this blood donation request! The recipient will be notified.")
+                # Here you could send email/SMS notification
+            else:
+                messages.info(request, "Response recorded. Thank you for your time.")
+
+            return redirect('matching')
+        else:
+            # Add form errors to messages for debugging
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{field}: {error}")
+    else:
+        form = DonorResponseForm()
+
+    context = {
+        'donor': donor,
+        'blood_request': blood_request,
+        'form': form,  # Make sure this is included
+    }
+
+    return render(request, 'respond_to_request.html', context)
+
+
+def rewards(request):
+    """
+    Rewards page showing points, badges, and withdrawal options
+    """
+    context = {
+        'page_title': 'Rewards & Points',
+    }
+
+    if request.user.is_authenticated and hasattr(request.user, 'donor'):
+        donor = request.user.donor
+
+        # Get or create points account
+        points_account, created = DonorPoints.objects.get_or_create(donor=donor)
+
+        # Count completed donations
+        total_donations = DonationHistory.objects.filter(
+            donor=donor,
+            status='completed'
+        ).count()
+
+        # ✅ Calculate lives saved here
+        lives_saved = total_donations * 3
+
+        # Earned badges
+        earned_badges = DonorBadge.objects.filter(donor=donor).order_by('-earned_date')
+
+        # Current highest badge
+        current_badge = "New Donor"
+        if earned_badges.exists():
+            latest_badge = earned_badges.first()
+            current_badge = latest_badge.get_badge_type_display()
+
+        # Next milestone
+        next_milestone = None
+        milestones = [
+            {'count': 1, 'name': 'First Time Donor'},
+            {'count': 2, 'name': 'Regular Donor'},
+            {'count': 5, 'name': 'Super Donor'},
+            {'count': 10, 'name': 'Top Donor'},
+            {'count': 20, 'name': 'Hero Donor'},
+            {'count': 50, 'name': 'Life Saver'},
+        ]
+        for milestone in milestones:
+            if total_donations < milestone['count']:
+                next_milestone = milestone
+                break
+
+        # Recent transactions
+        recent_transactions = PointTransaction.objects.filter(
+            donor_points=points_account
+        ).order_by('-created_at')[:10]
+
+        # ✅ Badge existence flags for template
+        badge_flags = {
+            "has_first_donor_badge": DonorBadge.objects.filter(donor=donor, badge_type="first_donor").exists(),
+            "has_regular_donor_badge": DonorBadge.objects.filter(donor=donor, badge_type="regular_donor").exists(),
+            "has_super_donor_badge": DonorBadge.objects.filter(donor=donor, badge_type="super_donor").exists(),
+            "has_top_donor_badge": DonorBadge.objects.filter(donor=donor, badge_type="top_donor").exists(),
+            "has_hero_donor_badge": DonorBadge.objects.filter(donor=donor, badge_type="hero_donor").exists(),
+            "has_lifesaver_badge": DonorBadge.objects.filter(donor=donor, badge_type="lifesaver").exists(),
+        }
+
+        context.update({
+            'donor': donor,
+            'total_donations': total_donations,
+            'lives_saved': lives_saved,
+            'current_badge': current_badge,
+            'next_milestone': next_milestone,
+            'recent_transactions': recent_transactions,
+            'earned_badges': earned_badges,
+            **badge_flags,  # add all badge flags
+        })
+
+    return render(request, 'rewards.html', context)
+
+
+@login_required
+def withdraw_points(request):
+    """
+    Handle point withdrawal requests (currently disabled)
+    """
+    if not hasattr(request.user, 'donor'):
+        messages.error(request, "Donor profile not found.")
+        return redirect('rewards')
+
+    donor = request.user.donor
+    points_account, created = DonorPoints.objects.get_or_create(donor=donor)
+
+    if request.method == 'POST':
+        points_to_withdraw = int(request.POST.get('points_to_withdraw', 0))
+
+        if points_to_withdraw < 100:
+            messages.error(request, "Minimum withdrawal amount is 100 RD Points.")
+            return redirect('rewards')
+
+        if points_to_withdraw > points_account.available_points:
+            messages.error(request, "Insufficient points for withdrawal.")
+            return redirect('rewards')
+
+        # Create withdrawal request (SSL Commerce integration will be added later)
+        withdrawal_request = WithdrawalRequest.objects.create(
+            donor=donor,
+            points_requested=points_to_withdraw,
+            amount_bdt=points_to_withdraw * 1.0,  # 1:1 conversion rate
+            status='pending'
+        )
+
+        messages.info(
+            request,
+            f"Withdrawal request for {points_to_withdraw} RD Points has been submitted. "
+            "SSL Commerce integration will be available soon."
+        )
+
+    return redirect('rewards')
+
+
+# Helper function to award points and badges after donation
+def award_donation_rewards(donor):
+    """
+    Award points and badges after successful blood donation
+    Call this function after a donation is recorded
+    """
+    # Get or create points account
+    points_account, created = DonorPoints.objects.get_or_create(donor=donor)
+
+    # Award 100 points for donation
+    points_account.add_points(100, "Blood Donation")
+
+    # Count completed donations
+    donation_count = DonationHistory.objects.filter(
+        donor=donor,
+        status='completed'
+    ).count()
+
+    # Award badges based on donation count
+    badge_thresholds = [
+        (1, 'first_donor', 0),
+        (2, 'regular_donor', 200),
+        (5, 'super_donor', 500),
+        (10, 'top_donor', 1000),
+        (20, 'hero_donor', 2000),
+        (50, 'lifesaver', 5000),
+    ]
+
+    for threshold, badge_type, bonus_points in badge_thresholds:
+        if donation_count >= threshold:
+            # Check if badge already exists
+            existing_badge = DonorBadge.objects.filter(
+                donor=donor,
+                badge_type=badge_type
+            ).first()
+
+            if not existing_badge:
+                # Create new badge
+                DonorBadge.objects.create(
+                    donor=donor,
+                    badge_type=badge_type,
+                    donation_count_when_earned=donation_count
+                )
+
+                # Award bonus points for milestone badges
+                if bonus_points > 0:
+                    points_account.add_points(
+                        bonus_points,
+                        f"Milestone Badge: {badge_type.replace('_', ' ').title()}"
+                    )
+
+    return points_account, donation_count

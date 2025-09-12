@@ -1,12 +1,242 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Matching - RoktoDan BD{% endblock %}
+{% block title %}Blood Matching - RoktoDan BD{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/matching.css' %}">
 {% endblock %}
 
 {% block content %}
+<div class="matching-page">
+    <div class="matching-container">
+    <!-- Header Section -->
+    <div class="matching-header">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h2 class="page-title">
+                    <i class="fas fa-heartbeat me-3"></i>Blood Matching
+                </h2>
+                <p class="page-subtitle">Help save lives by responding to blood donation requests</p>
+            </div>
+            <div class="col-md-4">
+                <div class="donor-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">{{ total_responses }}</span>
+                        <span class="stat-label">Total Responses</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">{{ accepted_responses }}</span>
+                        <span class="stat-label">Accepted</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- Blood Type Badge -->
+    <div class="blood-type-badge mb-4">
+        <span class="badge blood-group-{{ donor.blood_group|lower }}">
+            <i class="fas fa-tint me-2"></i>{{ donor.blood_group }}
+        </span>
+        <span class="location-text">
+            <i class="fas fa-map-marker-alt me-1"></i>{{ donor.thana }}, {{ donor.district }}
+        </span>
+    </div>
+
+    <!-- Active Requests Section -->
+    <div class="requests-section">
+        <div class="section-header">
+            <h3><i class="fas fa-exclamation-circle me-2"></i>Active Blood Requests</h3>
+            <span class="request-count">{{ compatible_requests|length }} matching request{{ compatible_requests|length|pluralize }}</span>
+        </div>
+
+        {% if compatible_requests %}
+            <div class="requests-grid">
+                {% for request in compatible_requests %}
+                <div class="request-card urgency-{{ request.urgency_level }}">
+                    <div class="request-header">
+                        <div class="urgency-badge urgency-{{ request.urgency_level }}">
+                            {% if request.urgency_level == 'critical' %}
+                                <i class="fas fa-exclamation-triangle"></i> CRITICAL
+                            {% elif request.urgency_level == 'high' %}
+                                <i class="fas fa-exclamation-circle"></i> HIGH
+                            {% elif request.urgency_level == 'medium' %}
+                                <i class="fas fa-info-circle"></i> MEDIUM
+                            {% else %}
+                                <i class="fas fa-circle"></i> LOW
+                            {% endif %}
+                        </div>
+                        <div class="blood-group-needed">{{ request.blood_group_needed }}</div>
+                    </div>
+
+                    <div class="request-body">
+                        <div class="patient-info">
+                            <h4>{{ request.patient_name }}</h4>
+                            <p class="patient-details">
+                                <i class="fas fa-user me-1"></i>Age: {{ request.patient_age }} years
+                                {% if request.medical_condition %}
+                                    <br><i class="fas fa-notes-medical me-1"></i>{{ request.medical_condition }}
+                                {% endif %}
+                            </p>
+                        </div>
+
+                        <div class="hospital-info">
+                            <p><i class="fas fa-hospital me-2"></i>{{ request.hospital_name }}</p>
+                            <p><i class="fas fa-map-marker-alt me-2"></i>{{ request.thana }}, {{ request.district }}</p>
+                        </div>
+
+                        <div class="contact-info">
+                            <p><i class="fas fa-user me-2"></i>{{ request.contact_person }}</p>
+                            <p><i class="fas fa-phone me-2"></i>{{ request.contact_number }}</p>
+                        </div>
+
+                        <div class="time-info">
+                            <div class="needed-by">
+                                <i class="fas fa-clock me-1"></i>Needed by:
+                                <strong>{{ request.needed_by_date|date:"M d, Y H:i" }}</strong>
+                            </div>
+                            <div class="time-remaining {{ request.urgency_level }}">
+                                {{ request.time_remaining }} remaining
+                            </div>
+                        </div>
+
+                        {% if request.additional_notes %}
+                        <div class="additional-notes">
+                            <p><i class="fas fa-sticky-note me-1"></i>{{ request.additional_notes }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="request-actions">
+                        <button class="btn btn-accept" onclick="showResponseModal({{ request.id }}, 'accept')">
+                            <i class="fas fa-check me-2"></i>Accept
+                        </button>
+                        <button class="btn btn-refuse" onclick="showResponseModal({{ request.id }}, 'refuse')">
+                            <i class="fas fa-times me-2"></i>Refuse
+                        </button>
+                        <button class="btn btn-details" onclick="toggleDetails({{ request.id }})">
+                            <i class="fas fa-info-circle me-2"></i>Details
+                        </button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="no-requests">
+                <div class="no-requests-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>No Matching Requests</h3>
+                <p>There are currently no active blood requests matching your blood type and location.</p>
+                <p>Thank you for being ready to help when needed!</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Recent Activity Section -->
+    {% if recent_responses %}
+    <div class="recent-activity-section">
+        <div class="section-header">
+            <h3><i class="fas fa-history me-2"></i>Recent Activity</h3>
+        </div>
+
+        <div class="activity-list">
+            {% for response in recent_responses %}
+            <div class="activity-item response-{{ response.response }}">
+                <div class="activity-icon">
+                    {% if response.response == 'accept' %}
+                        <i class="fas fa-check-circle text-success"></i>
+                    {% else %}
+                        <i class="fas fa-times-circle text-danger"></i>
+                    {% endif %}
+                </div>
+                <div class="activity-content">
+                    <div class="activity-main">
+                        <strong>{{ response.response|title }}ed</strong> request for
+                        <strong>{{ response.blood_request.patient_name }}</strong>
+                        at {{ response.blood_request.hospital_name }}
+                    </div>
+                    <div class="activity-meta">
+                        <span class="activity-date">
+                            <i class="fas fa-clock me-1"></i>{{ response.response_date|date:"M d, Y H:i" }}
+                        </span>
+                        <span class="blood-group">{{ response.blood_request.blood_group_needed }}</span>
+                    </div>
+                    {% if response.notes %}
+                    <div class="activity-notes">
+                        <i class="fas fa-comment me-1"></i>{{ response.notes }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Response Modal -->
+<div class="modal fade" id="responseModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="responseModalTitle">Respond to Blood Request</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="responseModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Success/Error Messages -->
+{% if messages %}
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    {% for message in messages %}
+    <div class="toast show" role="alert">
+        <div class="toast-header">
+            <strong class="me-auto">
+                {% if message.tags == 'success' %}
+                    <i class="fas fa-check-circle text-success me-1"></i>Success
+                {% elif message.tags == 'error' %}
+                    <i class="fas fa-exclamation-circle text-danger me-1"></i>Error
+                {% else %}
+                    <i class="fas fa-info-circle text-info me-1"></i>Info
+                {% endif %}
+            </strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body">
+            {{ message }}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+{% endif %}
+
+<script>
+function showResponseModal(requestId, defaultResponse) {
+    // Here you would typically load the response form via AJAX
+    // For now, redirect to the response page
+    window.location.href = `/respond-to-request/${requestId}/`;
+}
+
+function toggleDetails(requestId) {
+    // Toggle additional details for the request
+    console.log('Toggle details for request:', requestId);
+}
+
+// Auto-hide toasts after 5 seconds
+document.addEventListener('DOMContentLoaded', function() {
+    const toasts = document.querySelectorAll('.toast');
+    toasts.forEach(toast => {
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 5000);
+    });
+});
+</script>
 {% endblock %}

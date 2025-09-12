@@ -6,8 +6,8 @@ from django.urls import reverse
 from django.utils import timezone
 from datetime import datetime, timedelta
 from django.contrib.auth.hashers import make_password
-from .models import Donor, Recipient, DonationHistory
-
+from .models import Donor, Recipient, DonationHistory, BloodRequest, DonorResponse
+from .models import DonorPoints, PointTransaction, DonorBadge, WithdrawalRequest
 
 class DonorInline(admin.StackedInline):
     """
@@ -483,6 +483,250 @@ class CustomUserAdmin(BaseUserAdmin):
 
         return inline_instances
 
+@admin.register(BloodRequest)
+class BloodRequestAdmin(admin.ModelAdmin):
+    list_display = ['patient_name', 'blood_group_needed', 'hospital_name', 'urgency_level', 'status', 'created_at']
+    list_filter = ['blood_group_needed', 'urgency_level', 'status', 'thana', 'created_at']
+    search_fields = ['patient_name', 'hospital_name', 'contact_person']
+    ordering = ['-created_at']
+    readonly_fields = ['created_at', 'updated_at']
+
+@admin.register(DonorResponse)
+class DonorResponseAdmin(admin.ModelAdmin):
+    list_display = ['donor', 'blood_request', 'response', 'response_date']
+    list_filter = ['response', 'response_date']
+    search_fields = ['donor__user__first_name', 'donor__user__last_name', 'blood_request__patient_name']
+    ordering = ['-response_date']
+
+
+@admin.register(DonorPoints)
+class DonorPointsAdmin(admin.ModelAdmin):
+    list_display = [
+        'get_donor_name',
+        'total_points',
+        'available_points',
+        'withdrawn_points',
+        'last_updated'
+    ]
+    list_filter = ['last_updated']
+    search_fields = ['donor__user__first_name', 'donor__user__last_name', 'donor__phone_number']
+    readonly_fields = ['last_updated', 'get_donor_info', 'get_transaction_summary']
+
+    fieldsets = (
+        ('Donor Information', {
+            'fields': ('donor', 'get_donor_info')
+        }),
+        ('Points Summary', {
+            'fields': (
+                'total_points',
+                'available_points',
+                'withdrawn_points',
+                'get_transaction_summary'
+            )
+        }),
+        ('Timestamps', {
+            'fields': ('last_updated',),
+            'classes': ('collapse',)
+        }),
+    )
+
+    def get_donor_name(self, obj):
+        return obj.donor.full_name
+
+    get_donor_name.short_description = "Donor Name"
+    get_donor_name.admin_order_field = 'donor__user__first_name'
+
+    def get_donor_info(self, obj):
+        donor_link = reverse('admin:myapp_donor_change', args=[obj.donor.pk])
+        return format_html(
+            '<a href="{}" target="_blank">{} ({})</a>',
+            donor_link,
+            obj.donor.full_name,
+            obj.donor.blood_group
+        )
+
+    get_donor_info.short_description = "Donor Details"
+
+    def get_transaction_summary(self, obj):
+        earned_count = obj.transactions.filter(transaction_type='earned').count()
+        withdrawn_count = obj.transactions.filter(transaction_type='withdrawn').count()
+        return format_html(
+            '<div>Earned Transactions: <strong>{}</strong></div>'
+            '<div>Withdrawn Transactions: <strong>{}</strong></div>',
+            earned_count, withdrawn_count
+        )
+
+    get_transaction_summary.short_description = "Transaction Summary"
+
+    actions = ['award_bonus_points', 'reset_points']
+
+    def award_bonus_points(self, request, queryset):
+        count = queryset.count()
+        self.message_user(request, f'Bonus points feature for {count} donors coming soon.')
+
+    award_bonus_points.short_description = "Award bonus points"
+
+    def reset_points(self, request, queryset):
+        count = queryset.count()
+        self.message_user(request, f'Point reset feature for {count} donors coming soon.')
+
+    reset_points.short_description = "Reset points (Admin only)"
+
+
+@admin.register(PointTransaction)
+class PointTransactionAdmin(admin.ModelAdmin):
+    list_display = [
+        'get_donor_name',
+        'transaction_type',
+        'points',
+        'description',
+        'created_at'
+    ]
+    list_filter = ['transaction_type', 'created_at']
+    search_fields = [
+        'donor_points__donor__user__first_name',
+        'donor_points__donor__user__last_name',
+        'description'
+    ]
+    readonly_fields = ['created_at']
+
+    fieldsets = (
+        ('Transaction Details', {
+            'fields': (
+                'donor_points',
+                'transaction_type',
+                'points',
+                'description'
+            )
+        }),
+        ('Timestamp', {
+            'fields': ('created_at',),
+            'classes': ('collapse',)
+        }),
+    )
+
+    def get_donor_name(self, obj):
+        return obj.donor_points.donor.full_name
+
+    get_donor_name.short_description = "Donor"
+    get_donor_name.admin_order_field = 'donor_points__donor__user__first_name'
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).select_related(
+            'donor_points__donor__user'
+        )
+
+
+@admin.register(DonorBadge)
+class DonorBadgeAdmin(admin.ModelAdmin):
+    list_display = [
+        'get_donor_name',
+        'get_badge_display',
+        'donation_count_when_earned',
+        'earned_date'
+    ]
+    list_filter = ['badge_type', 'earned_date']
+    search_fields = [
+        'donor__user__first_name',
+        'donor__user__last_name',
+        'donor__phone_number'
+    ]
+    readonly_fields = ['earned_date', 'get_badge_icon']
+
+    fieldsets = (
+        ('Badge Information', {
+            'fields': (
+                'donor',
+                'badge_type',
+                'get_badge_icon',
+                'donation_count_when_earned'
+            )
+        }),
+        ('Timestamp', {
+            'fields': ('earned_date',),
+            'classes': ('collapse',)
+        }),
+    )
+
+    def get_donor_name(self, obj):
+        return obj.donor.full_name
+
+    get_donor_name.short_description = "Donor Name"
+    get_donor_name.admin_order_field = 'donor__user__first_name'
+
+    def get_badge_display(self, obj):
+        return format_html(
+            '<span class="badge badge-{}" style="background: #{}; color: white; padding: 5px 10px; border-radius: 15px;">'
+            '<i class="fas {}"></i> {}</span>',
+            obj.badge_type,
+            self.get_badge_color_hex(obj.badge_type),
+            obj.badge_icon,
+            obj.get_badge_type_display()
+        )
+
+    get_badge_display.short_description = "Badge"
+
+    def get_badge_icon(self, obj):
+        return format_html(
+            '<i class="fas {} fa-2x" style="color: {};"></i>',
+            obj.badge_icon,
+            self.get_badge_color_hex(obj.badge_type)
+        )
+
+    get_badge_icon.short_description = "Badge Icon"
+
+    def get_badge_color_hex(self, badge_type):
+        colors = {
+            'first_donor': '28a745',  # Green for first donation
+            'regular_donor': '17a2b8',  # Blue for regular donor
+            'milestone_donor': 'ffc107',  # Yellow for milestone
+            'super_donor': 'dc3545',  # Red for super donor
+            'legendary_donor': '6f42c1'  # Purple for legendary donor
+        }
+        return colors.get(badge_type, '6c757d')  # Default to grey if badge_type not found
+
+
+
+@admin.register(WithdrawalRequest)
+class WithdrawalRequestAdmin(admin.ModelAdmin):
+    list_display = [
+        'get_donor_name',
+        'points_requested',
+        'status',
+        'requested_at',
+        'processed_at'
+    ]
+    list_filter = ['status', 'requested_at']
+    search_fields = [
+        'donor_points__donor__user__first_name',
+        'donor_points__donor__user__last_name',
+        'donor_points__donor__phone_number'
+    ]
+    readonly_fields = ['requested_at', 'processed_at']
+
+    fieldsets = (
+        ('Withdrawal Details', {
+            'fields': (
+                'donor_points',
+                'points_requested',
+                'status',
+            )
+        }),
+        ('Timestamps', {
+            'fields': ('requested_at', 'processed_at'),
+            'classes': ('collapse',)
+        }),
+    )
+
+    def get_donor_name(self, obj):
+        return obj.donor_points.donor.full_name
+    get_donor_name.short_description = "Donor"
+    get_donor_name.admin_order_field = 'donor_points__donor__user__first_name'
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).select_related(
+            'donor_points__donor__user'
+        )
 
 # Unregister the default User admin and register our custom one
 admin.site.unregister(User)

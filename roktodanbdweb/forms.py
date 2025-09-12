@@ -513,6 +513,39 @@ class DonorProfileUpdateForm(forms.ModelForm):
                 raise forms.ValidationError("Year must be a number.")
         return year
 
+class DonorResponseForm(forms.ModelForm):
+    class Meta:
+        model = DonorResponse
+        fields = ['response', 'notes', 'preferred_donation_time', 'availability_notes']
+        widgets = {
+            'response': forms.RadioSelect(attrs={
+                'class': 'form-check-input',
+            }),
+            'notes': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 3,
+                'placeholder': 'Any additional notes or comments...'
+            }),
+            'preferred_donation_time': forms.DateTimeInput(attrs={
+                'class': 'form-control',
+                'type': 'datetime-local'
+            }),
+            'availability_notes': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 2,
+                'placeholder': 'When are you available for donation?'
+            })
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['response'].choices = [
+            ('accept', 'Accept - I can donate'),
+            ('refuse', 'Refuse - Cannot donate at this time')
+        ]
+        self.fields['notes'].required = False
+        self.fields['preferred_donation_time'].required = False
+        self.fields['availability_notes'].required = False
 
 class RecipientRegistrationForm(forms.ModelForm):
     # Add user fields
