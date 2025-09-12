@@ -8,115 +8,255 @@
 {% endblock %}
 
 {% block content %}
-<!-- Main Hero Section -->
-<section class="hero">
-    <div class="hero-content">
-        <div class="hero-shape"></div>
-        <div class="container">
-            <div class="hero-text">
-                <h1>Save Life Donate Blood</h1>
-                <p>Through timely and accessible donations, you help save lives when every second counts.
-                    By donating blood, you not only reduce the burden on blood banks and ease dependency
-                    on others, but also become part of a smarter, connected network that values and
-                    recognizes every selfless act. Join the movement — donate regularly, empower
-                    communities, and build a culture where saving lives is everyone's mission.</p>
-                <a href="{% url 'find_blood' %}" class="cta-btn">Get Blood Now</a>
-            </div>
+    <!-- Loading Screen -->
+    <div class="loading-overlay">
+        <div class="loading-content">
+            <img src="{% static 'images/logo_2.png' %}" class="loading-image" alt="Blood Donation Logo">
+            <span class="loading-text">RoktoDan BD</span>
         </div>
     </div>
-</section>
 
-<!-- How to get Blood Section -->
-<section class="how-to-get-blood">
-    <div class="container">
-        <h2>How to get Blood?</h2>
+    <!-- Floating Background Elements -->
+    <div class="floating-elements">
+        <svg class="floating-element" width="60" height="60" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <svg class="floating-element" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <svg class="floating-element" width="80" height="80" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+    </div>
 
-        <div class="steps-container">
-            <!-- Heart with EKG line -->
-            <div class="heart-section">
-                <div class="ekg-line">
-                    <svg class="heartbeat" viewBox="0 0 500 100">
-                        <path d="M0,50 L100,50 L110,20 L120,80 L130,20 L140,50 L180,50 L190,30 L200,70 L210,30 L220,50 L260,50 L270,35 L280,65 L290,35 L300,50 L500,50"
-                              stroke="#c53856" stroke-width="2" fill="none"/>
-                    </svg>
-                    <div class="heart-icon">
-                        <svg viewBox="0 0 24 24" fill="#8b1538">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-visual">
+                    <div class="hero-shape">
+                        <svg class="hero-icon" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                         </svg>
                     </div>
                 </div>
+                <div class="hero-text">
+                    <h1>Save Life<br>Donate Blood</h1>
+                    <p>Through timely and accessible donations, you help save lives when every second counts. By donating blood, you not only reduce the burden on blood banks and ease dependency on others, but also become part of a smarter, connected network that values and recognizes every selfless act.</p>
+                    <a href="#" class="cta-btn">
+                        <span>Get Blood Now</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to get Blood Section -->
+    <section class="how-to-get-blood">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2>How to get Blood?</h2>
+                <div class="heartbeat-line">
+                    <svg class="heartbeat-svg" viewBox="0 0 500 60">
+                        <path class="heartbeat-path" d="M0,30 L100,30 L110,10 L120,50 L130,10 L140,30 L180,30 L190,20 L200,40 L210,20 L220,30 L260,30 L270,25 L280,35 L290,25 L300,30 L500,30"/>
+                    </svg>
+                </div>
             </div>
 
-            <!-- Steps -->
             <div class="steps-grid">
-                <!-- Step 1 -->
-                <div class="step-item step-1">
-                    <div class="step-number">
-                        <span>1</span>
-                    </div>
+                <div class="step-card animate-on-scroll" style="animation-delay: 0.1s">
+                    <div class="step-number">1</div>
                     <div class="step-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <path d="M7.5 4.21l4.5 2.6 4.5-2.6m-9 15.58V14.6L3 12m18 0l-4.5 2.6v5.19M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/>
                         </svg>
                     </div>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                    <h3>Register & Search</h3>
+                    <p>Create your profile and search for available blood donors in your area using our smart matching system.</p>
                 </div>
 
-                <!-- Step 2 -->
-                <div class="step-item step-2">
-                    <div class="step-number">
-                        <span>2</span>
-                    </div>
+                <div class="step-card animate-on-scroll" style="animation-delay: 0.2s">
+                    <div class="step-number">2</div>
                     <div class="step-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                         </svg>
                     </div>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                    <h3>Connect & Verify</h3>
+                    <p>Connect with verified donors through our platform and confirm availability for immediate or scheduled donations.</p>
                 </div>
 
-                <!-- Step 3 -->
-                <div class="step-item step-3">
-                    <div class="step-number">
-                        <span>3</span>
-                    </div>
+                <div class="step-card animate-on-scroll" style="animation-delay: 0.3s">
+                    <div class="step-number">3</div>
                     <div class="step-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                         </svg>
                     </div>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                    <h3>Save Lives</h3>
+                    <p>Complete the donation process safely at certified centers and help save precious lives in your community.</p>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Mission Section -->
-<section class="mission">
-    <div class="container">
-        <h2>Our Mission</h2>
-        <p>To save valuable time during emergencies by building a smart and accessible blood network
-            that empowers selfless donors through recognition and credits, reduces dependency on others,
-            lessens the burden on blood banks, and fosters a culture of regular blood donation.</p>
-    </div>
-</section>
-
-<!-- Collaborators Section -->
-<section class="collaborators">
-    <div class="container">
-        <h2>Our Collaborators</h2>
-        <div class="collaborators-grid">
-            <div class="collaborator-item">
-                <span class="collaborator-name">NCC</span>
-            </div>
-            <div class="collaborator-item">
-                <span class="collaborator-name">NSS</span>
-            </div>
-            <div class="collaborator-item">
-                <span class="collaborator-name">YMCA</span>
+    <!-- Mission Section -->
+    <section class="mission">
+        <div class="container">
+            <div class="mission-content animate-on-scroll">
+                <h2>Our Mission</h2>
+                <p>To save valuable time during emergencies by building a smart and accessible blood network that empowers selfless donors through recognition and credits, reduces dependency on others, lessens the burden on blood banks, and fosters a culture of regular blood donation.</p>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!-- Collaborators Section -->
+    <section class="collaborators">
+        <div class="container">
+            <h2 class="animate-on-scroll">Our Collaborators</h2>
+            <div class="collaborators-grid">
+                <div class="collaborator-card animate-on-scroll" style="animation-delay: 0.1s">
+                    <div class="collaborator-name">NCC</div>
+                </div>
+                <div class="collaborator-card animate-on-scroll" style="animation-delay: 0.2s">
+                    <div class="collaborator-name">NSS</div>
+                </div>
+                <div class="collaborator-card animate-on-scroll" style="animation-delay: 0.3s">
+                    <div class="collaborator-name">YMCA</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animate-on-scroll class
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for CTA button
+        document.querySelector('.cta-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.querySelector('.how-to-get-blood').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Dynamic heartbeat animation trigger
+        const heartbeatObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const path = entry.target.querySelector('.heartbeat-path');
+                    if (path) {
+                        path.style.animation = 'none';
+                        setTimeout(() => {
+                            path.style.animation = 'drawHeartbeat 3s ease-in-out infinite';
+                        }, 100);
+                    }
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const heartbeatSection = document.querySelector('.heartbeat-line');
+        if (heartbeatSection) {
+            heartbeatObserver.observe(heartbeatSection);
+        }
+
+        // Add hover effect to step cards
+        document.querySelectorAll('.step-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Stagger animation for collaborator cards
+        const collaboratorCards = document.querySelectorAll('.collaborator-card');
+        collaboratorCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        // Loading screen removal
+        setTimeout(() => {
+            document.querySelector('.loading-overlay').style.display = 'none';
+        }, 2500);
+
+        // Add random floating animation to background elements
+        document.querySelectorAll('.floating-element').forEach(element => {
+            const randomDelay = Math.random() * 10;
+            const randomDuration = 15 + Math.random() * 10;
+            element.style.animationDelay = `${randomDelay}s`;
+            element.style.animationDuration = `${randomDuration}s`;
+        });
+
+        // Add click ripple effect to buttons
+        document.querySelector('.cta-btn').addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+
+            ripple.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                left: ${x}px;
+                top: ${y}px;
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 0.6s ease-out;
+                pointer-events: none;
+            `;
+
+            this.appendChild(ripple);
+
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+
+        // Add CSS for ripple animation
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+    </script>
 {% endblock %}
