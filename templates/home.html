@@ -11,7 +11,7 @@
     <!-- Loading Screen -->
     <div class="loading-overlay">
         <div class="loading-content">
-            <img src="{% static 'images/logo_2.png' %}" class="loading-image" alt="Blood Donation Logo">
+            <img src="{% static 'images/bangladesh_logo.png' %}" class="loading-image" alt="Blood Donation Logo">
             <span class="loading-text">RoktoDan BD</span>
         </div>
     </div>
@@ -43,7 +43,7 @@
                 <div class="hero-text">
                     <h1>Save Life<br>Donate Blood</h1>
                     <p>Through timely and accessible donations, you help save lives when every second counts. By donating blood, you not only reduce the burden on blood banks and ease dependency on others, but also become part of a smarter, connected network that values and recognizes every selfless act.</p>
-                    <a href="#" class="cta-btn">
+                    <a href="{% url 'find_blood' %}" class="cta-btn">
                         <span>Get Blood Now</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -132,6 +132,121 @@
         </div>
     </section>
 
+    <!-- Image Slider Section -->
+    <section class="image-slider-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2>Our Impact Gallery</h2>
+                <p>Witness the lives we've touched through blood donation</p>
+            </div>
+
+            <div class="slider-container">
+                <div class="slider-wrapper">
+                    <div class="slider-track" id="sliderTrack">
+                        <div class="slide active">
+                            <img src="{% static 'images/slider_doctor_1.png' %}" alt="Blood donation drive">
+                            <div class="slide-overlay">
+                                <h3>Community Blood Drive</h3>
+                                <p>Saving lives together</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="{% static 'images/slider_5.png' %}" alt="Medical team">
+                            <div class="slide-overlay">
+                                <h3>Medical Excellence</h3>
+                                <p>Professional care always</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="{% static 'images/slider_7.png' %}" alt="Donor appreciation">
+                            <div class="slide-overlay">
+                                <h3>Hero Recognition</h3>
+                                <p>Celebrating our donors</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="{% static 'images/slider_donation_1.png' %}" alt="Blood donation">
+                            <div class="slide-overlay">
+                                <h3>Life Saving Moment</h3>
+                                <p>Every drop counts</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=300&fit=crop" alt="Hospital care">
+                            <div class="slide-overlay">
+                                <h3>Emergency Response</h3>
+                                <p>Ready when needed</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="{% static 'images/slider_2.png' %}" alt="Volunteer team">
+                            <div class="slide-overlay">
+                                <h3>Volunteer Spirit</h3>
+                                <p>United for a cause</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="{% static 'images/slider_6.png' %}" alt="Blood bank">
+                            <div class="slide-overlay">
+                                <h3>Safe Storage</h3>
+                                <p>Maintaining quality</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="{% static 'images/slider_4.png' %}" alt="Community event">
+                            <div class="slide-overlay">
+                                <h3>Community Events</h3>
+                                <p>Building awareness</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="{% static 'images/slider_3.png' %}" alt="Success story">
+                            <div class="slide-overlay">
+                                <h3>Success Stories</h3>
+                                <p>Lives transformed</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=300&fit=crop" alt="Future vision">
+                            <div class="slide-overlay">
+                                <h3>Future Vision</h3>
+                                <p>Expanding our reach</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="slider-controls">
+                    <button class="slider-btn prev-btn" id="prevBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    <button class="slider-btn next-btn" id="nextBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Dots Indicator -->
+                <div class="slider-dots" id="sliderDots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                    <span class="dot" data-slide="3"></span>
+                    <span class="dot" data-slide="4"></span>
+                    <span class="dot" data-slide="5"></span>
+                    <span class="dot" data-slide="6"></span>
+                    <span class="dot" data-slide="7"></span>
+                    <span class="dot" data-slide="8"></span>
+                    <span class="dot" data-slide="9"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script>
         // Intersection Observer for scroll animations
         const observerOptions = {
@@ -153,12 +268,18 @@
         });
 
         // Smooth scrolling for CTA button
-        document.querySelector('.cta-btn').addEventListener('click', (e) => {
-            e.preventDefault();
-            document.querySelector('.how-to-get-blood').scrollIntoView({
-                behavior: 'smooth'
+        const ctaBtn = document.querySelector('.cta-btn');
+        if (ctaBtn) {
+            ctaBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const howToSection = document.querySelector('.how-to-get-blood');
+                if (howToSection) {
+                    howToSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             });
-        });
+        }
 
         // Parallax effect for hero section
         window.addEventListener('scroll', () => {
@@ -208,7 +329,10 @@
 
         // Loading screen removal
         setTimeout(() => {
-            document.querySelector('.loading-overlay').style.display = 'none';
+            const loadingOverlay = document.querySelector('.loading-overlay');
+            if (loadingOverlay) {
+                loadingOverlay.style.display = 'none';
+            }
         }, 2500);
 
         // Add random floating animation to background elements
@@ -220,32 +344,35 @@
         });
 
         // Add click ripple effect to buttons
-        document.querySelector('.cta-btn').addEventListener('click', function(e) {
-            const ripple = document.createElement('span');
-            const rect = this.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
+        const rippleBtn = document.querySelector('.cta-btn');
+        if (rippleBtn) {
+            rippleBtn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
 
-            ripple.style.cssText = `
-                position: absolute;
-                width: ${size}px;
-                height: ${size}px;
-                left: ${x}px;
-                top: ${y}px;
-                background: rgba(255, 255, 255, 0.3);
-                border-radius: 50%;
-                transform: scale(0);
-                animation: ripple 0.6s ease-out;
-                pointer-events: none;
-            `;
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s ease-out;
+                    pointer-events: none;
+                `;
 
-            this.appendChild(ripple);
+                this.appendChild(ripple);
 
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-        });
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        }
 
         // Add CSS for ripple animation
         const rippleStyle = document.createElement('style');
@@ -258,5 +385,84 @@
             }
         `;
         document.head.appendChild(rippleStyle);
+
+        // Image Slider Functionality
+        let currentSlide = 0;
+        const totalSlides = 10;
+        let slidesToShow = window.innerWidth <= 480 ? 1 : window.innerWidth <= 768 ? 2 : 4;
+        let maxSlideIndex = totalSlides - slidesToShow;
+
+        const sliderTrack = document.getElementById('sliderTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dots = document.querySelectorAll('.dot');
+
+        function updateSlider() {
+            if (!sliderTrack) return;
+
+            const translateX = -(currentSlide * (100 / slidesToShow));
+            sliderTrack.style.transform = `translateX(${translateX}%)`;
+
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = currentSlide >= maxSlideIndex ? 0 : currentSlide + 1;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentSlide = currentSlide <= 0 ? maxSlideIndex : currentSlide - 1;
+            updateSlider();
+        }
+
+        // Event listeners for slider
+        if (nextBtn) {
+            nextBtn.addEventListener('click', nextSlide);
+        }
+        if (prevBtn) {
+            prevBtn.addEventListener('click', prevSlide);
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = Math.min(index, maxSlideIndex);
+                updateSlider();
+            });
+        });
+
+        // Auto-scroll for slider
+        let autoSlideInterval = setInterval(nextSlide, 5000);
+
+        // Pause auto-scroll on hover
+        const sliderContainer = document.querySelector('.slider-container');
+        if (sliderContainer) {
+            sliderContainer.addEventListener('mouseenter', () => {
+                clearInterval(autoSlideInterval);
+            });
+
+            sliderContainer.addEventListener('mouseleave', () => {
+                autoSlideInterval = setInterval(nextSlide, 5000);
+            });
+        }
+
+        // Handle window resize for responsive slider
+        window.addEventListener('resize', () => {
+            slidesToShow = window.innerWidth <= 480 ? 1 : window.innerWidth <= 768 ? 2 : 4;
+            maxSlideIndex = totalSlides - slidesToShow;
+
+            // Adjust current slide if needed
+            if (currentSlide > maxSlideIndex) {
+                currentSlide = maxSlideIndex;
+            }
+
+            updateSlider();
+        });
+
+        // Initialize slider
+        updateSlider();
     </script>
 {% endblock %}
