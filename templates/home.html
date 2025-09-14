@@ -15,6 +15,16 @@
             <span class="loading-text">RoktoDan BD</span>
         </div>
     </div>
+    <!-- Background Music -->
+    <audio id="bg-music" autoplay loop>
+        <source src="{% static 'audio/background.mp3' %}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music control button -->
+    <button id="music-btn" onclick="toggleMusic()" class="music-btn">
+        <span id="music-icon">🔊</span>
+    </button>
 
     <!-- Floating Background Elements -->
     <div class="floating-elements">
@@ -464,5 +474,30 @@
 
         // Initialize slider
         updateSlider();
+    // Music
+     const music = document.getElementById("bg-music");
+        const icon = document.getElementById("music-icon");
+
+        // Try to autoplay when page loads
+        window.addEventListener("load", () => {
+            music.play().then(() => {
+                icon.textContent = "🔊"; // playing
+            }).catch(() => {
+                // Autoplay blocked, set to muted until user clicks
+                music.muted = true;
+                icon.textContent = "🔇";
+            });
+        });
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                music.muted = false;
+                icon.textContent = "🔊";
+            } else {
+                music.pause();
+                icon.textContent = "🔇";
+            }
+        }
     </script>
 {% endblock %}
