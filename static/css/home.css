@@ -8,7 +8,7 @@
 }
 
 :root {
-    --primary-red: #ef4444;
+    --primary-red: #a32929;
     --primary-dark: #dc2626;
     --secondary-red: #fef2f2;
     --accent: #f97316;
@@ -697,8 +697,8 @@ body {
 }
 
 .loading-image {
-    width: 80px;
-    height: 80px;
+    width: 145px;
+    height: 120px;
     animation: imagePulse 1s ease-in-out infinite;
 }
 
