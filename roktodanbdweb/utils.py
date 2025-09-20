@@ -1,3 +1,4 @@
+# roktodanbdweb/utils.py
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
@@ -7,125 +8,123 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-def send_registration_email(recipient):
-    """Send registration confirmation email to recipient"""
+def send_donor_welcome_email(donor):
+    """
+    Send welcome email to newly registered donor
+    """
     try:
-        subject = 'Welcome to RoktoDan BD - Recipient Registration Confirmed'
+        subject = 'Welcome to RoktoDan BD - Donor Registration Successful!'
 
-        # Create HTML email content
-        html_content = render_to_string('emails/recipient_registration.html', {
-            'recipient': recipient,
-            'site_name': 'RoktoDan BD'
-        })
-
-        # Create plain text version
-        text_content = strip_tags(html_content)
-
-        # Create email message
-        msg = EmailMultiAlternatives(
-            subject=subject,
-            body=text_content,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            to=[recipient.email]
-        )
-        msg.attach_alternative(html_content, "text/html")
-
-        # Send email
-        msg.send()
-
-        logger.info(f"Registration email sent successfully to {recipient.email}")
-        return True
-
-    except Exception as e:
-        logger.error(f"Failed to send registration email to {recipient.email}: {str(e)}")
-        return False
-
-
-def send_simple_registration_email(recipient):
-    """Simple text-based registration email"""
-    try:
-        subject = 'Welcome to RoktoDan BD - Recipient Registration Confirmed'
+        # Simple text email for now
         message = f"""
-Dear {recipient.full_name},
+        Dear {donor.full_name},
 
-Thank you for registering as a blood recipient with RoktoDan BD!
+        Welcome to RoktoDan BD! Your donor registration has been completed successfully.
 
-Your Registration Details:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- Name: {recipient.full_name}
-- Required Blood Group: {recipient.blood_group}
-- Phone Number: {recipient.phone_number}
-- Email: {recipient.email}
-- Location: {recipient.full_address}
-{f'• Age: {recipient.age}' if recipient.age else ''}
+        Your Details:
+        - Name: {donor.full_name}
+        - Blood Group: {donor.blood_group}
+        - Location: {donor.thana}, Dhaka
 
-What's Next?
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✓ Your registration is now active
-✓ We will search for compatible donors in your area
-✓ You'll receive notifications when donors are available
-✓ Keep your phone accessible for urgent blood requests
+        Thank you for joining our life-saving mission!
 
-Important Notes:
-- Ensure your contact information is always up to date
-- Response time is crucial in emergency situations
-- You can update your information anytime through our platform
-
-Need Help?
-If you have any questions or need to update your information, please contact us.
-
-Best regards,
-RoktoDan BD Team
-Supporting Life, One Drop at a Time
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-This is an automated message. Please do not reply to this email.
+        Best regards,
+        RoktoDan BD Team
         """
 
         send_mail(
-            subject=subject,
-            message=message,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[recipient.email],
+            subject,
+            message,
+            settings.DEFAULT_FROM_EMAIL,
+            [donor.email],
             fail_silently=False,
         )
 
-        logger.info(f"Simple registration email sent to {recipient.email}")
+        logger.info(f"Welcome email sent to donor: {donor.email}")
         return True
 
     except Exception as e:
-        logger.error(f"Failed to send email to {recipient.email}: {str(e)}")
+        logger.error(f"Failed to send welcome email to donor {donor.email}: {str(e)}")
         return False
 
 
-def send_admin_notification(recipient):
-    """Send notification to admin about new recipient registration"""
+def send_recipient_welcome_email(recipient):
+    """
+    Send welcome email to newly registered recipient
+    """
     try:
-        subject = f'New Recipient Registration - {recipient.blood_group} Blood Type'
+        subject = 'Welcome to RoktoDan BD - Recipient Registration Successful!'
+
         message = f"""
-New recipient has registered on RoktoDan BD:
+        Dear {recipient.full_name},
 
-Name: {recipient.full_name}
-Blood Group: {recipient.blood_group}
-Phone: {recipient.phone_number}
-Email: {recipient.email}
-Location: {recipient.full_address}
-Registration Time: {recipient.created_at}
+        Welcome to RoktoDan BD! Your recipient account has been created successfully.
 
-Please review and activate the account if necessary.
+        Your Details:
+        - Name: {recipient.full_name}
+        - Blood Group: {recipient.blood_group}
+        - Location: {recipient.thana}, Dhaka
+
+        You can now search for blood donors in your area.
+
+        Best regards,
+        RoktoDan BD Team
         """
 
-        admin_emails = ['admin@roktodan.bd']  # Add admin emails here
-
         send_mail(
-            subject=subject,
-            message=message,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=admin_emails,
-            fail_silently=True,
+            subject,
+            message,
+            settings.DEFAULT_FROM_EMAIL,
+            [recipient.user_email],
+            fail_silently=False,
         )
 
+        logger.info(f"Welcome email sent to recipient: {recipient.user_email}")
         return True
+
+    except Exception as e:
+        logger.error(f"Failed to send welcome email to recipient {recipient.user_email}: {str(e)}")
+        return False
+
+
+def send_admin_notification(user_type, user_data):
+    """
+    Send notification to admin about new registration
+    """
+    try:
+        subject = f'New {user_type.title()} Registration - RoktoDan BD'
+
+        message = f"""
+        A new {user_type} has registered on RoktoDan BD:
+
+        Name: {user_data.get('name', 'N/A')}
+        Email: {user_data.get('email', 'N/A')}
+        Blood Group: {user_data.get('blood_group', 'N/A')}
+        Location: {user_data.get('location', 'N/A')}
+        Phone: {user_data.get('phone', 'N/A')}
+        """
+
+        send_mail(
+            subject,
+            message,
+            settings.DEFAULT_FROM_EMAIL,
+            [settings.ADMIN_EMAIL],
+            fail_silently=False,
+        )
+
+        logger.info(f"Admin notification sent for new {user_type}")
+        return True
+
     except Exception as e:
         logger.error(f"Failed to send admin notification: {str(e)}")
         return False
+
+
+# Legacy function names for backward compatibility
+def send_registration_email(user_type, user_data):
+    """Legacy function - redirects to appropriate welcome email"""
+    if user_type == 'donor':
+        return send_donor_welcome_email(user_data)
+    elif user_type == 'recipient':
+        return send_recipient_welcome_email(user_data)
+    return False

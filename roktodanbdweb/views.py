@@ -37,12 +37,27 @@ def register_donor(request):
     if request.method == 'POST':
         form = DonorRegistrationForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect('success')
+            try:
+                donor = form.save()
+                messages.success(
+                    request,
+                    f'Registration successful! Welcome {donor.full_name}. '
+                    'A confirmation email has been sent to your email address.'
+                )
+                return redirect('success')
+            except Exception as e:
+                logger.error(f"Donor registration error: {str(e)}")
+                messages.error(request, 'Registration failed. Please try again.')
+        else:
+            # Display form errors
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f'{field}: {error}')
     else:
         form = DonorRegistrationForm()
 
     return render(request, 'register_donor.html', {'form': form})
+
 
 
 def registration_success(request):
@@ -403,10 +418,12 @@ def register_recipient(request):
                 recipient = form.save()
                 messages.success(
                     request,
-                    f'Registration successful! Welcome {recipient.full_name}. You can now log in.'
+                    f'Registration successful! Welcome {recipient.full_name}. '
+                    'A confirmation email has been sent to your email address.'
                 )
                 return redirect('login')  # Redirect to login page
             except Exception as e:
+                logger.error(f"Recipient registration error: {str(e)}")
                 messages.error(request, f'Registration failed: {str(e)}')
         else:
             # Display form errors

@@ -1,0 +1,156 @@
+<!-- recipient_welcome.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to RoktoDan BD</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+            margin: -30px -30px 30px -30px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        .heart-icon {
+            font-size: 40px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .welcome-message {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .profile-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .profile-info h3 {
+            color: #28a745;
+            margin-top: 0;
+        }
+        .info-item {
+            margin: 10px 0;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #495057;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 14px;
+        }
+        .social-links {
+            margin: 15px 0;
+        }
+        .social-links a {
+            color: #28a745;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="heart-icon">💚</div>
+            <h1>Welcome to RoktoDan BD</h1>
+            <p>Your gateway to finding blood donors</p>
+        </div>
+
+        <div class="welcome-message">
+            <strong>Dear {{ recipient_name }},</strong>
+        </div>
+
+        <p>Welcome to RoktoDan BD! Your recipient account has been created successfully. You now have access to Bangladesh's largest network of verified blood donors.</p>
+
+        <div class="profile-info">
+            <h3>Your Registration Details</h3>
+            <div class="info-item">
+                <span class="info-label">Name:</span> {{ recipient_name }}
+            </div>
+            <div class="info-item">
+                <span class="info-label">Blood Group Needed:</span> {{ blood_group }}
+            </div>
+            <div class="info-item">
+                <span class="info-label">Location:</span> {{ thana }}, Dhaka
+            </div>
+            <div class="info-item">
+                <span class="info-label">Registration Date:</span> {{ recipient.created_at|date:"F d, Y" }}
+            </div>
+        </div>
+
+        <h3>How RoktoDan BD Helps You:</h3>
+        <ul>
+            <li><strong>Find Donors Fast:</strong> Search for available donors by blood group and location</li>
+            <li><strong>Verified Network:</strong> All donors are verified with complete profiles</li>
+            <li><strong>Emergency Support:</strong> 24/7 access to our donor network</li>
+            <li><strong>Direct Contact:</strong> Get donor contact information instantly</li>
+        </ul>
+
+        <div style="text-align: center;">
+            <a href="#" class="cta-button">Find Blood Donors Now</a>
+        </div>
+
+        <div style="background: #d4edda; padding: 15px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #28a745;">
+            <strong>Quick Tip:</strong>
+            <p>Complete your profile with hospital details and medical information to get better assistance from our donors and support team.</p>
+        </div>
+
+        <h3>Need Help?</h3>
+        <p>Our support team is here to help you navigate the platform and connect with donors. Don't hesitate to reach out if you need any assistance.</p>
+
+        <div class="footer">
+            <p><strong>RoktoDan BD</strong> - Connecting Blood Donors with Recipients</p>
+            <div class="social-links">
+                <a href="#">Facebook</a> |
+                <a href="#">Twitter</a> |
+                <a href="#">Website</a>
+            </div>
+            <p>Need help? Contact us at: <strong>{{ settings.ADMIN_EMAIL }}</strong></p>
+            <p style="font-size: 12px; color: #999;">
+                You received this email because you registered as a recipient on RoktoDan BD.
+                If you did not register, please contact us immediately.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -4,6 +4,7 @@ from datetime import datetime
 from .models import *
 from .models import Recipient
 from django.core.exceptions import ValidationError
+from .utils import *
 
 
 class DonorRegistrationForm(forms.ModelForm):
@@ -308,6 +309,7 @@ class DonorRegistrationForm(forms.ModelForm):
                 raise forms.ValidationError("Year must be a number.")
         return year
 
+
     def save(self, commit=True):
         if commit:
             # Create the User first
@@ -323,7 +325,7 @@ class DonorRegistrationForm(forms.ModelForm):
             donor = super().save(commit=False)
             donor.user = user
 
-            # Set additional fields from form that aren't in the model's Meta fields
+            # Set additional fields from form
             if hasattr(donor, 'weight'):
                 donor.weight = self.cleaned_data['weight']
             if hasattr(donor, 'house_holding_no'):
@@ -338,6 +340,19 @@ class DonorRegistrationForm(forms.ModelForm):
                 donor.district = self.cleaned_data['district']
 
             donor.save()
+
+            # Send welcome email
+            send_donor_welcome_email(donor)
+
+            # Send admin notification
+            send_admin_notification('donor', {
+                'name': donor.full_name,
+                'email': donor.email,
+                'blood_group': donor.blood_group,
+                'location': f"{donor.thana}, {donor.district}",
+                'phone': donor.phone_number,
+            })
+
             return donor
         else:
             return super().save(commit=False)
@@ -615,6 +630,19 @@ class RecipientRegistrationForm(forms.ModelForm):
             recipient = super().save(commit=False)
             recipient.user = user
             recipient.save()
+
+            # Send welcome email
+            send_recipient_welcome_email(recipient)
+
+            # Send admin notification
+            send_admin_notification('recipient', {
+                'name': recipient.full_name,
+                'email': recipient.user_email,
+                'blood_group': recipient.blood_group,
+                'location': f"{recipient.thana}, {recipient.district}",
+                'phone': recipient.phone_number,
+            })
+
             return recipient
         else:
             return super().save(commit=False)

@@ -1,0 +1,158 @@
+<!-- donor_welcome.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to RoktoDan BD</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #dc3545, #e74c3c);
+            color: white;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+            margin: -30px -30px 30px -30px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        .blood-drop {
+            font-size: 40px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .welcome-message {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .profile-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .profile-info h3 {
+            color: #dc3545;
+            margin-top: 0;
+        }
+        .info-item {
+            margin: 10px 0;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #495057;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #dc3545;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 14px;
+        }
+        .social-links {
+            margin: 15px 0;
+        }
+        .social-links a {
+            color: #dc3545;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="blood-drop">🩸</div>
+            <h1>Welcome to RoktoDan BD</h1>
+            <p>Thank you for becoming a life saver!</p>
+        </div>
+
+        <div class="welcome-message">
+            <strong>Dear {{ donor_name }},</strong>
+        </div>
+
+        <p>Congratulations! Your donor registration with RoktoDan BD has been completed successfully. You are now part of Bangladesh's largest blood donation network, ready to save lives!</p>
+
+        <div class="profile-info">
+            <h3>Your Registration Details</h3>
+            <div class="info-item">
+                <span class="info-label">Name:</span> {{ donor_name }}
+            </div>
+            <div class="info-item">
+                <span class="info-label">Blood Group:</span> {{ blood_group }}
+            </div>
+            <div class="info-item">
+                <span class="info-label">Location:</span> {{ thana }}, Dhaka
+            </div>
+            <div class="info-item">
+                <span class="info-label">Registration Date:</span> {{ donor.registration_date|date:"F d, Y" }}
+            </div>
+        </div>
+
+        <h3>What's Next?</h3>
+        <ul>
+            <li><strong>Complete your profile:</strong> Add more details to help recipients find you easily</li>
+            <li><strong>Stay active:</strong> We'll notify you when someone in your area needs blood</li>
+            <li><strong>Earn RD Points:</strong> Get rewards for each donation and achieve badges</li>
+            <li><strong>Save lives:</strong> One donation can save up to 3 lives!</li>
+        </ul>
+
+        <div style="text-align: center;">
+            <a href="#" class="cta-button">Login to Your Dashboard</a>
+        </div>
+
+        <div style="background: #fff3cd; padding: 15px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #ffc107;">
+            <strong>Important Reminder:</strong>
+            <ul>
+                <li>Maintain good health and proper diet</li>
+                <li>Minimum 3-month gap between donations</li>
+                <li>Age 18-65 and weight minimum 50kg required</li>
+                <li>Keep your contact information updated</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p><strong>RoktoDan BD</strong> - Connecting Blood Donors with Recipients</p>
+            <div class="social-links">
+                <a href="#">Facebook</a> |
+                <a href="#">Twitter</a> |
+                <a href="#">Website</a>
+            </div>
+            <p>Need help? Contact us at: <strong>{{ settings.ADMIN_EMAIL }}</strong></p>
+            <p style="font-size: 12px; color: #999;">
+                You received this email because you registered as a donor on RoktoDan BD.
+                If you did not register, please contact us immediately.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

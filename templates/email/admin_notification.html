@@ -1,0 +1,111 @@
+<!-- admin_notification.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New {{ user_type|title }} Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            background: #007bff;
+            color: white;
+            padding: 20px;
+            border-radius: 8px 8px 0 0;
+            margin: -30px -30px 30px -30px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .user-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #007bff;
+        }
+        .info-row {
+            display: flex;
+            margin: 8px 0;
+        }
+        .info-label {
+            font-weight: bold;
+            min-width: 120px;
+            color: #495057;
+        }
+        .info-value {
+            color: #212529;
+        }
+        .timestamp {
+            text-align: center;
+            color: #6c757d;
+            font-size: 14px;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>New {{ user_type|title }} Registration</h1>
+            <p>RoktoDan BD Admin Notification</p>
+        </div>
+
+        <p>A new {{ user_type }} has registered on the platform. Here are the details:</p>
+
+        <div class="user-info">
+            <h3>{{ user_type|title }} Information</h3>
+            <div class="info-row">
+                <div class="info-label">Name:</div>
+                <div class="info-value">{{ user_data.name }}</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Email:</div>
+                <div class="info-value">{{ user_data.email }}</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Phone:</div>
+                <div class="info-value">{{ user_data.phone }}</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Blood Group:</div>
+                <div class="info-value">{{ user_data.blood_group }}</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Location:</div>
+                <div class="info-value">{{ user_data.location }}</div>
+            </div>
+        </div>
+
+        {% if user_type == 'donor' %}
+        <div style="background: #d4edda; padding: 15px; border-radius: 5px; border-left: 4px solid #28a745;">
+            <strong>Action Required:</strong>
+            <p>Please verify the donor's information and activate their profile in the admin panel.</p>
+        </div>
+        {% endif %}
+
+        <div class="timestamp">
+            <p>Registration completed at: {{ "now"|date:"F d, Y g:i A" }} (Bangladesh Time)</p>
+            <p><strong>RoktoDan BD</strong> - Admin Panel</p>
+        </div>
+    </div>
+</body>
+</html>
