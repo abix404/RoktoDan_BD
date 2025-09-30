@@ -429,68 +429,76 @@
             </div>
             <div class="modal-body" id="requestModalBody">
                 <!-- Content will be loaded here via AJAX -->
-                <div class="text-center py-5">
-                    <div class="spinner-border text-danger" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <p class="mt-3 text-muted">Loading request form...</p>
-                </div>
             </div>
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<!-- Bootstrap JS Bundle (if not already in base.html) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
 // Function to open Request Blood modal
 function openRequestModal(donorId) {
-    const modal = new bootstrap.Modal(document.getElementById('requestBloodModal'));
+    console.log('Opening request modal for donor:', donorId);
+
+    const modalElement = document.getElementById('requestBloodModal');
+    if (!modalElement) {
+        console.error('Modal element not found!');
+        alert('Error: Modal not found');
+        return;
+    }
+
+    const modal = new bootstrap.Modal(modalElement);
     const modalBody = document.getElementById('requestModalBody');
 
     // Show loading spinner
-    modalBody.innerHTML = `
-        <div class="text-center py-5">
-            <div class="spinner-border text-danger" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-            <p class="mt-3 text-muted">Loading request form...</p>
-        </div>
-    `;
+    modalBody.innerHTML = '<div class="text-center py-5">' +
+        '<div class="spinner-border text-danger" role="status">' +
+        '<span class="visually-hidden">Loading...</span>' +
+        '</div>' +
+        '<p class="mt-3 text-muted">Loading request form...</p>' +
+        '</div>';
 
     modal.show();
 
     // Load the form via AJAX
-    fetch(\`/show-request-form/\${donorId}/\`)
-        .then(response => {
+    fetch('/show-request-form/' + donorId + '/')
+        .then(function(response) {
+            console.log('Response status:', response.status);
             if (!response.ok) {
-                throw new Error('Failed to load form');
+                throw new Error('HTTP error! status: ' + response.status);
             }
             return response.text();
         })
-        .then(html => {
+        .then(function(html) {
+            console.log('Form loaded successfully');
             modalBody.innerHTML = html;
         })
-        .catch(error => {
-            modalBody.innerHTML = `
-                <div class="alert alert-danger">
-                    <i class="bi bi-exclamation-triangle me-2"></i>
-                    Failed to load the request form. Please try again.
-                </div>
-                <div class="text-center">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            `;
-            console.error('Error:', error);
+        .catch(function(error) {
+            console.error('Error loading form:', error);
+            modalBody.innerHTML = '<div class="alert alert-danger">' +
+                '<i class="bi bi-exclamation-triangle me-2"></i>' +
+                'Failed to load the request form. Please try again.' +
+                '<br><small>Error: ' + error.message + '</small>' +
+                '</div>' +
+                '<div class="text-center">' +
+                '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>' +
+                '</div>';
         });
 }
 
 // Placeholder function for chat functionality
 function openChat(donorId, donorName) {
-    alert(\`Chat feature coming soon!\nWould open chat with: \${donorName} (ID: \${donorId})\`);
-    // Future implementation: Open chat modal or redirect to chat page
+    alert('Chat feature coming soon!\nWould open chat with: ' + donorName + ' (ID: ' + donorId + ')');
 }
 
 // Form enhancement
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded - find_blood.html scripts loaded');
+
     // Add loading state to search button
     const searchForm = document.querySelector('.blood-search-form');
     const searchBtn = document.querySelector('.search-btn');

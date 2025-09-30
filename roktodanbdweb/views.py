@@ -524,109 +524,107 @@ def respond_to_request(request, request_id):
 
 
 # ==================== BLOOD REQUEST FROM DONOR ====================
+@login_required
+def show_request_form(request, donor_id):
+    """
+    Load the blood request form for a specific donor via AJAX
+    """
+    donor = get_object_or_404(Donor, id=donor_id)
+
+    # Get recipient info
+    try:
+        recipient = Recipient.objects.get(user=request.user)
+    except Recipient.DoesNotExist:
+        return render(request, 'error_message.html', {
+            'error': 'Recipient profile not found. Please register as a recipient first.'
+        })
+
+    context = {
+        'donor': donor,
+        'recipient': recipient,
+    }
+
+    return render(request, 'request_blood_form.html', context)
+
 
 @login_required
 def request_blood_from_donor(request, donor_id):
-    """Handle blood request from recipient to specific donor"""
+    """
+    Handle blood request submission
+    """
     if request.method != 'POST':
-        messages.error(request, "Invalid request method.")
-        return redirect('find_blood')
-
-    try:
-        recipient = get_object_or_404(Recipient, user=request.user)
-    except Recipient.DoesNotExist:
-        messages.error(request, "Recipient profile not found. Please complete your registration.")
-        return redirect('register_recipient')
+        return JsonResponse({
+            'success': False,
+            'error': 'Invalid request method'
+        })
 
     donor = get_object_or_404(Donor, id=donor_id)
 
-    # Get form data
-    patient_name = request.POST.get('patient_name', recipient.full_name)
-    patient_age = request.POST.get('patient_age', recipient.age if hasattr(recipient, 'age') else 0)
-    hospital_name = request.POST.get('hospital_name', '')
-    hospital_address = request.POST.get('hospital_address', '')
-    medical_condition = request.POST.get('medical_condition', '')
-    urgency_level = request.POST.get('urgency_level', 'medium')
-    units_needed = request.POST.get('units_needed', 1)
-    needed_by_date_str = request.POST.get('needed_by_date')
-    additional_notes = request.POST.get('additional_notes', '')
-    contact_person = request.POST.get('contact_person', recipient.full_name)
-    contact_number = request.POST.get('contact_number', recipient.phone_number)
-    alternative_contact = request.POST.get('alternative_contact', '')
-
-    # Validate required fields
-    if not all([hospital_name, hospital_address, needed_by_date_str]):
-        messages.error(request, "Please fill in all required fields.")
-        return redirect('find_blood')
+    # Get recipient
+    try:
+        recipient = Recipient.objects.get(user=request.user)
+    except Recipient.DoesNotExist:
+        return JsonResponse({
+            'success': False,
+            'error': 'Recipient profile not found'
+        })
 
     try:
-        # Parse needed by date
-        needed_by_date = datetime.strptime(needed_by_date_str, '%Y-%m-%dT%H:%M')
-        needed_by_date = timezone.make_aware(needed_by_date)
+        # Parse the needed_by_date
+        needed_by_str = request.POST.get('needed_by_date')
+        needed_by_date = timezone.datetime.fromisoformat(needed_by_str.replace('T', ' '))
 
-        # Set expiration date (24 hours after needed by date)
-        expires_at = needed_by_date + timedelta(hours=24)
+        # Make it timezone-aware if needed
+        if timezone.is_naive(needed_by_date):
+            needed_by_date = timezone.make_aware(needed_by_date)
 
-        # Create the blood request
+        # Calculate expiry (7 days from now or needed_by_date, whichever is earlier)
+        expires_at = min(
+            timezone.now() + timedelta(days=7),
+            needed_by_date
+        )
+
+        # Create blood request
         blood_request = BloodRequest.objects.create(
             recipient=recipient,
+            patient_name=request.POST.get('patient_name'),
+            patient_age=int(request.POST.get('patient_age')),
             blood_group_needed=donor.blood_group,
-            units_needed=int(units_needed),
-            urgency_level=urgency_level,
-            hospital_name=hospital_name,
-            hospital_address=hospital_address,
+            medical_condition=request.POST.get('medical_condition', ''),
+            hospital_name=request.POST.get('hospital_name'),
+            hospital_address=request.POST.get('hospital_address'),
             thana=donor.thana,
             district=donor.district,
-            patient_name=patient_name,
-            patient_age=int(patient_age),
-            medical_condition=medical_condition,
+            units_needed=int(request.POST.get('units_needed', 1)),
+            urgency_level=request.POST.get('urgency_level', 'medium'),
             needed_by_date=needed_by_date,
-            additional_notes=additional_notes,
-            contact_person=contact_person,
-            contact_number=contact_number,
-            alternative_contact=alternative_contact,
-            expires_at=expires_at,
-            status='active'
+            contact_person=request.POST.get('contact_person'),
+            contact_number=request.POST.get('contact_number'),
+            alternative_contact=request.POST.get('alternative_contact', ''),
+            additional_notes=request.POST.get('additional_notes', ''),
+            status='active',
+            expires_at=expires_at
         )
 
         # Send email notification to donor
-        send_blood_request_email_to_donor(donor, blood_request, recipient)
+        email_sent = send_blood_request_email_to_donor(donor, blood_request, recipient)
 
-        messages.success(
-            request,
-            f'Blood request sent successfully to {donor.full_name}! '
-            'The donor will be notified via email.'
-        )
+        return JsonResponse({
+            'success': True,
+            'message': 'Blood request sent successfully!' + (
+                ' Email notification sent to donor.' if email_sent else ' (Email notification failed)')
+        })
 
-        return redirect('find_blood')
-
-    except ValueError as e:
-        logger.error(f"Date parsing error: {str(e)}")
-        messages.error(request, "Invalid date format. Please try again.")
-        return redirect('find_blood')
     except Exception as e:
-        logger.error(f"Blood request creation error: {str(e)}")
-        messages.error(request, f'Failed to send blood request: {str(e)}')
-        return redirect('find_blood')
+        # Log the error for debugging
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.error(f"Error creating blood request: {str(e)}")
 
-
-@login_required
-def show_request_form(request, donor_id):
-    """Show the blood request form modal"""
-    try:
-        recipient = get_object_or_404(Recipient, user=request.user)
-        donor = get_object_or_404(Donor, id=donor_id)
-
-        context = {
-            'donor': donor,
-            'recipient': recipient,
-        }
-
-        return render(request, 'request_blood_form.html', context)
-    except Exception as e:
-        return JsonResponse({'error': str(e)}, status=400)
-
-
+        return JsonResponse({
+            'success': False,
+            'error': f'Failed to create blood request: {str(e)}'
+        })
 # ==================== REWARDS ====================
 
 def rewards(request):

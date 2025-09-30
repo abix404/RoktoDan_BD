@@ -55,3 +55,198 @@ INFO 2025-10-01 02:08:44,488 basehttp "GET /static/images/logo_3.png HTTP/1.1" 2
 INFO 2025-10-01 02:08:44,489 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
 INFO 2025-10-01 02:08:44,584 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
 INFO 2025-10-01 02:08:44,652 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-01 02:18:58,597 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36407
+INFO 2025-10-01 02:18:58,609 basehttp "GET /static/css/find_blood.css HTTP/1.1" 200 18202
+INFO 2025-10-01 02:18:58,610 basehttp "GET /media/donor_images/takia_orni.jpg HTTP/1.1" 200 68179
+INFO 2025-10-01 02:18:58,611 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-01 02:18:58,611 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-01 02:18:58,809 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-01 02:18:58,888 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-01 02:19:07,040 basehttp "GET / HTTP/1.1" 200 42730
+INFO 2025-10-01 02:19:15,119 basehttp "GET /find_blood/ HTTP/1.1" 200 34163
+INFO 2025-10-01 02:19:15,132 basehttp - Broken pipe from ('127.0.0.1', 55922)
+INFO 2025-10-01 02:19:28,880 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36407
+INFO 2025-10-01 02:21:19,855 autoreload F:\Project\RoktoDan_BD\roktodanbd\urls.py changed, reloading.
+INFO 2025-10-01 02:21:20,519 autoreload Watching for file changes with StatReloader
+INFO 2025-10-01 02:21:22,687 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36306
+INFO 2025-10-01 02:21:22,770 basehttp "GET /static/css/find_blood.css HTTP/1.1" 200 18202
+INFO 2025-10-01 02:21:22,774 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-01 02:21:22,776 basehttp "GET /media/donor_images/takia_orni.jpg HTTP/1.1" 200 68179
+INFO 2025-10-01 02:21:22,777 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-01 02:21:22,860 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-01 02:21:22,928 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-01 02:21:27,530 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36306
+INFO 2025-10-01 02:21:27,541 basehttp "GET /static/css/find_blood.css HTTP/1.1" 200 18202
+INFO 2025-10-01 02:21:27,542 basehttp "GET /media/donor_images/takia_orni.jpg HTTP/1.1" 200 68179
+INFO 2025-10-01 02:21:27,543 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-01 02:21:27,544 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-01 02:21:27,613 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-01 02:21:27,664 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-01 03:06:25,135 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36306
+INFO 2025-10-01 03:06:25,144 basehttp "GET /media/donor_images/takia_orni.jpg HTTP/1.1" 304 0
+INFO 2025-10-01 03:06:25,144 basehttp "GET /static/css/find_blood.css HTTP/1.1" 304 0
+INFO 2025-10-01 03:06:36,077 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36306
+INFO 2025-10-01 03:06:36,126 basehttp "GET /media/donor_images/takia_orni.jpg HTTP/1.1" 200 68179
+INFO 2025-10-01 03:06:36,134 basehttp "GET /static/css/find_blood.css HTTP/1.1" 200 18202
+INFO 2025-10-01 03:06:36,168 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-01 03:06:36,176 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-01 03:06:36,499 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-01 03:06:36,757 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-01 03:09:31,750 autoreload F:\Project\RoktoDan_BD\roktodanbd\urls.py changed, reloading.
+INFO 2025-10-01 03:09:38,016 autoreload Watching for file changes with StatReloader
+INFO 2025-10-01 03:09:44,650 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36306
+INFO 2025-10-01 03:09:44,745 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36306
+INFO 2025-10-01 03:10:15,074 autoreload F:\Project\RoktoDan_BD\roktodanbdweb\views.py changed, reloading.
+INFO 2025-10-01 03:10:15,748 autoreload Watching for file changes with StatReloader
+INFO 2025-10-01 03:10:19,558 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36306
+INFO 2025-10-01 03:27:27,753 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36306
+INFO 2025-10-01 03:27:27,839 basehttp "GET /static/css/find_blood.css HTTP/1.1" 200 18202
+INFO 2025-10-01 03:27:27,839 basehttp "GET /media/donor_images/takia_orni.jpg HTTP/1.1" 200 68179
+INFO 2025-10-01 03:27:27,841 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-01 03:27:27,842 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-01 03:27:28,002 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-01 03:27:28,073 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+ERROR 2025-10-01 03:27:45,241 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 796, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-01 03:27:45,262 basehttp "GET /track-requests/ HTTP/1.1" 500 82704
+WARNING 2025-10-01 03:27:45,305 log Not Found: /favicon.ico
+WARNING 2025-10-01 03:27:45,305 basehttp "GET /favicon.ico HTTP/1.1" 404 6097
+INFO 2025-10-01 03:28:03,914 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36306
+INFO 2025-10-01 03:28:03,926 basehttp "GET /static/css/find_blood.css HTTP/1.1" 200 18202
+INFO 2025-10-01 03:28:03,929 basehttp "GET /media/donor_images/takia_orni.jpg HTTP/1.1" 200 68179
+INFO 2025-10-01 03:28:03,931 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-01 03:28:03,932 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-01 03:28:04,064 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-01 03:28:04,134 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-01 05:05:04,993 autoreload Watching for file changes with StatReloader
+INFO 2025-10-01 05:05:14,320 basehttp "GET / HTTP/1.1" 200 41595
+INFO 2025-10-01 05:05:19,065 basehttp "GET /login/ HTTP/1.1" 200 21966
+INFO 2025-10-01 05:05:19,082 basehttp - Broken pipe from ('127.0.0.1', 49840)
+INFO 2025-10-01 05:05:19,103 basehttp "GET /static/css/login.css HTTP/1.1" 304 0
+INFO 2025-10-01 05:05:37,094 views Login attempt with: islaedinmaisie@gmail.com
+INFO 2025-10-01 05:05:38,398 views Email authentication result: islaedinmaisie@gmail.com
+INFO 2025-10-01 05:05:38,602 views Login successful for user: islaedinmaisie@gmail.com
+INFO 2025-10-01 05:05:38,680 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-10-01 05:05:38,744 basehttp "GET / HTTP/1.1" 200 42605
+INFO 2025-10-01 05:05:38,871 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-01 05:05:46,588 basehttp "GET /matching/ HTTP/1.1" 200 24327
+INFO 2025-10-01 05:05:46,620 basehttp "GET /static/css/matching.css HTTP/1.1" 304 0
+INFO 2025-10-01 05:06:00,291 basehttp "GET /rewards/ HTTP/1.1" 200 25959
+INFO 2025-10-01 05:06:00,312 basehttp "GET /static/images/rewards-hero.png HTTP/1.1" 304 0
+INFO 2025-10-01 05:06:00,321 basehttp "GET /static/css/rewards.css HTTP/1.1" 304 0
+INFO 2025-10-01 05:06:09,959 basehttp "GET /about_us/ HTTP/1.1" 200 23517
+INFO 2025-10-01 05:06:11,104 basehttp "GET / HTTP/1.1" 200 42605
+INFO 2025-10-01 05:06:11,162 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-01 05:06:19,876 basehttp "GET /donor_history/ HTTP/1.1" 200 26166
+INFO 2025-10-01 05:06:19,887 basehttp "GET /static/css/donor_history.css HTTP/1.1" 304 0
+INFO 2025-10-01 05:06:24,516 basehttp "GET /logout/ HTTP/1.1" 200 11397
+WARNING 2025-10-01 05:06:24,611 log Not Found: /favicon.ico
+WARNING 2025-10-01 05:06:24,611 basehttp "GET /favicon.ico HTTP/1.1" 404 6097
+INFO 2025-10-01 05:06:27,418 basehttp "GET /login/ HTTP/1.1" 200 21966
+INFO 2025-10-01 05:06:51,958 views Login attempt with: abidmuhammad2012@gmail.com
+INFO 2025-10-01 05:06:52,390 views Email authentication result: abidmuhammad2012@gmail.com
+INFO 2025-10-01 05:06:52,549 views Login successful for user: abidmuhammad2012@gmail.com
+INFO 2025-10-01 05:06:52,627 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-10-01 05:06:52,637 basehttp "GET / HTTP/1.1" 200 42629
+INFO 2025-10-01 05:06:52,731 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-01 05:06:59,741 basehttp "GET /find-blood/ HTTP/1.1" 200 34062
+INFO 2025-10-01 05:06:59,750 basehttp "GET /static/css/find_blood.css HTTP/1.1" 304 0
+INFO 2025-10-01 05:07:13,133 basehttp "GET /find-blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36306
+INFO 2025-10-01 05:07:13,167 basehttp "GET /media/donor_images/takia_orni.jpg HTTP/1.1" 200 68179
+INFO 2025-10-01 05:09:36,748 autoreload F:\Project\RoktoDan_BD\roktodanbd\urls.py changed, reloading.
+INFO 2025-10-01 05:09:37,723 autoreload Watching for file changes with StatReloader
+WARNING 2025-10-01 05:09:49,894 log Not Found: /find-blood/
+WARNING 2025-10-01 05:09:49,895 basehttp "GET /find-blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 404 6217
+WARNING 2025-10-01 05:09:50,880 log Not Found: /find-blood/
+WARNING 2025-10-01 05:09:50,881 basehttp "GET /find-blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 404 6217
+WARNING 2025-10-01 05:09:51,581 log Not Found: /find-blood/
+WARNING 2025-10-01 05:09:51,582 basehttp "GET /find-blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 404 6217
+WARNING 2025-10-01 05:09:51,804 log Not Found: /find-blood/
+WARNING 2025-10-01 05:09:51,804 basehttp "GET /find-blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 404 6217
+WARNING 2025-10-01 05:09:52,019 log Not Found: /find-blood/
+WARNING 2025-10-01 05:09:52,019 basehttp "GET /find-blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 404 6217
+WARNING 2025-10-01 05:09:54,458 log Not Found: /find-blood/
+WARNING 2025-10-01 05:09:54,459 basehttp "GET /find-blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 404 6217
+WARNING 2025-10-01 05:09:54,485 log Not Found: /favicon.ico
+WARNING 2025-10-01 05:09:54,486 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+WARNING 2025-10-01 05:10:00,798 log Not Found: /find-blood/
+WARNING 2025-10-01 05:10:00,799 basehttp "GET /find-blood/ HTTP/1.1" 404 6135
+WARNING 2025-10-01 05:10:01,578 log Not Found: /find-blood/
+WARNING 2025-10-01 05:10:01,579 basehttp "GET /find-blood/ HTTP/1.1" 404 6135
+WARNING 2025-10-01 05:10:01,794 log Not Found: /find-blood/
+WARNING 2025-10-01 05:10:01,795 basehttp "GET /find-blood/ HTTP/1.1" 404 6135
+INFO 2025-10-01 05:10:05,050 basehttp "GET / HTTP/1.1" 200 42629
+INFO 2025-10-01 05:10:05,169 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-01 05:10:08,858 basehttp "GET /find_blood/ HTTP/1.1" 200 34062
+INFO 2025-10-01 05:10:20,947 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36306
+INFO 2025-10-01 05:13:47,435 autoreload F:\Project\RoktoDan_BD\roktodanbdweb\views.py changed, reloading.
+INFO 2025-10-01 05:13:48,439 autoreload Watching for file changes with StatReloader
+INFO 2025-10-01 05:14:35,029 autoreload F:\Project\RoktoDan_BD\roktodanbdweb\views.py changed, reloading.
+INFO 2025-10-01 05:14:36,076 autoreload Watching for file changes with StatReloader
+INFO 2025-10-01 05:16:59,561 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 35987
+INFO 2025-10-01 05:17:05,511 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 35987
+INFO 2025-10-01 05:17:05,588 basehttp "GET /media/donor_images/takia_orni.jpg HTTP/1.1" 200 68179
+INFO 2025-10-01 05:17:05,598 basehttp "GET /static/css/find_blood.css HTTP/1.1" 200 18202
+INFO 2025-10-01 05:17:05,651 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-01 05:17:05,710 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-01 05:17:05,719 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-01 05:17:05,776 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-01 05:17:06,576 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 35987
+INFO 2025-10-01 05:17:06,589 basehttp "GET /static/css/find_blood.css HTTP/1.1" 200 18202
+INFO 2025-10-01 05:17:06,590 basehttp "GET /media/donor_images/takia_orni.jpg HTTP/1.1" 200 68179
+INFO 2025-10-01 05:17:06,591 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-01 05:17:06,592 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-01 05:17:06,718 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-01 05:17:06,803 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+WARNING 2025-10-01 05:17:35,331 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-01 05:17:35,332 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6246
+INFO 2025-10-01 05:17:44,807 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 35987
+WARNING 2025-10-01 05:17:44,859 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-01 05:17:44,860 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6246
+WARNING 2025-10-01 05:18:17,684 log Not Found: /quick_register_recipient/
+WARNING 2025-10-01 05:18:17,686 basehttp "GET /quick_register_recipient/ HTTP/1.1" 404 6177
+WARNING 2025-10-01 05:18:17,733 log Not Found: /favicon.ico
+WARNING 2025-10-01 05:18:17,733 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+INFO 2025-10-01 05:18:24,740 basehttp "GET / HTTP/1.1" 200 42629
+INFO 2025-10-01 05:18:29,600 basehttp "GET /find_blood/ HTTP/1.1" 200 33743
+INFO 2025-10-01 05:18:29,612 basehttp - Broken pipe from ('127.0.0.1', 60685)
+INFO 2025-10-01 05:18:29,619 basehttp "GET /static/css/find_blood.css HTTP/1.1" 304 0
+INFO 2025-10-01 05:18:40,699 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 35987
+INFO 2025-10-01 05:18:40,727 basehttp "GET /media/donor_images/takia_orni.jpg HTTP/1.1" 304 0
+WARNING 2025-10-01 05:18:45,750 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-01 05:18:45,751 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6246
+INFO 2025-10-01 05:18:51,797 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 35987
+WARNING 2025-10-01 05:18:51,843 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-01 05:18:51,844 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6246
+INFO 2025-10-01 05:23:46,653 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 33782
+INFO 2025-10-01 05:23:46,671 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-01 05:23:46,674 basehttp "GET /media/donor_images/takia_orni.jpg HTTP/1.1" 200 68179
+INFO 2025-10-01 05:23:46,676 basehttp "GET /static/css/find_blood.css HTTP/1.1" 200 18202
+WARNING 2025-10-01 05:23:46,758 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-01 05:23:46,758 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6246
+INFO 2025-10-01 05:23:46,761 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-01 05:23:46,905 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-01 05:23:47,221 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-01 05:25:02,098 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36608
+INFO 2025-10-01 05:25:02,114 basehttp "GET /static/css/find_blood.css HTTP/1.1" 200 18202
+WARNING 2025-10-01 05:25:02,120 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-01 05:25:02,121 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6246
+INFO 2025-10-01 05:25:02,122 basehttp "GET /media/donor_images/takia_orni.jpg HTTP/1.1" 200 68179
+INFO 2025-10-01 05:25:02,123 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-01 05:25:02,124 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-01 05:25:02,336 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-01 05:25:02,425 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-01 05:25:04,350 basehttp "GET /show-request-form/1/ HTTP/1.1" 200 6778
