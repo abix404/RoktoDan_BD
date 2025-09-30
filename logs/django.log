@@ -1,0 +1,57 @@
+INFO 2025-10-01 01:42:27,737 autoreload Watching for file changes with StatReloader
+INFO 2025-10-01 01:42:31,812 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36306
+INFO 2025-10-01 01:42:31,901 basehttp "GET /static/css/find_blood.css HTTP/1.1" 200 18202
+INFO 2025-10-01 01:42:31,910 basehttp "GET /media/donor_images/takia_orni.jpg HTTP/1.1" 200 68179
+INFO 2025-10-01 01:42:31,923 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-01 01:42:31,924 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-01 01:42:31,943 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-01 01:42:32,044 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+ERROR 2025-10-01 01:42:53,259 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 797, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-01 01:42:53,263 basehttp "GET /track-requests/ HTTP/1.1" 500 82695
+WARNING 2025-10-01 01:42:53,314 log Not Found: /favicon.ico
+WARNING 2025-10-01 01:42:53,315 basehttp "GET /favicon.ico HTTP/1.1" 404 6145
+INFO 2025-10-01 01:47:58,894 autoreload F:\Project\RoktoDan_BD\roktodanbd\urls.py changed, reloading.
+INFO 2025-10-01 01:47:59,819 autoreload Watching for file changes with StatReloader
+INFO 2025-10-01 01:49:55,499 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36306
+INFO 2025-10-01 01:49:55,586 basehttp "GET /static/css/find_blood.css HTTP/1.1" 200 18202
+INFO 2025-10-01 01:49:55,601 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-01 01:49:55,614 basehttp "GET /media/donor_images/takia_orni.jpg HTTP/1.1" 200 68179
+INFO 2025-10-01 01:49:55,617 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-01 01:49:55,856 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-01 01:49:55,934 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-01 01:50:02,745 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36306
+INFO 2025-10-01 01:50:02,762 basehttp "GET /static/css/find_blood.css HTTP/1.1" 200 18202
+INFO 2025-10-01 01:50:02,763 basehttp "GET /media/donor_images/takia_orni.jpg HTTP/1.1" 200 68179
+INFO 2025-10-01 01:50:02,764 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-01 01:50:02,765 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-01 01:50:02,888 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-01 01:50:03,197 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-01 01:50:11,104 basehttp "GET /about_us/ HTTP/1.1" 200 23541
+INFO 2025-10-01 01:50:12,276 basehttp "GET /find_blood/ HTTP/1.1" 200 34062
+INFO 2025-10-01 01:50:26,462 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36306
+INFO 2025-10-01 01:59:02,659 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36306
+INFO 2025-10-01 01:59:02,667 basehttp "GET /static/css/find_blood.css HTTP/1.1" 304 0
+INFO 2025-10-01 01:59:02,669 basehttp "GET /media/donor_images/takia_orni.jpg HTTP/1.1" 304 0
+INFO 2025-10-01 02:07:38,751 autoreload F:\Project\RoktoDan_BD\roktodanbd\urls.py changed, reloading.
+INFO 2025-10-01 02:07:39,459 autoreload Watching for file changes with StatReloader
+INFO 2025-10-01 02:08:44,399 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36306
+INFO 2025-10-01 02:08:44,455 basehttp "GET /static/css/find_blood.css HTTP/1.1" 200 18202
+INFO 2025-10-01 02:08:44,485 basehttp "GET /media/donor_images/takia_orni.jpg HTTP/1.1" 200 68179
+INFO 2025-10-01 02:08:44,488 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-01 02:08:44,489 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-01 02:08:44,584 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-01 02:08:44,652 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022

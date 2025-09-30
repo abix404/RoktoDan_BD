@@ -26,7 +26,7 @@ urlpatterns = [
 
     # Donor Registration & Dashboard
     path('register_donor/', views.register_donor, name='register_donor'),
-    path('sucess/', views.registration_success, name='success'),   # (typo: maybe should be "success")
+    path('success/', views.registration_success, name='success'),
     path('dashboard/', views.donor_dashboard, name='donor_dashboard'),
     path('profile/update/', views.donor_profile_update, name='donor_profile_update'),
     path('donor_history/', views.donor_history, name='donor_history'),
@@ -45,6 +45,10 @@ urlpatterns = [
     # Rewards & Matching
     path('rewards/', views.rewards, name='rewards'),
     path('matching/', views.matching, name='matching'),
+
+    # Blood request URLs
+    path('show-request-form/<int:donor_id>/', views.show_request_form, name='show_request_form'),
+    path('request-blood/<int:donor_id>/', views.request_blood_from_donor, name='request_blood_from_donor'),
 ]
 
 # Serve media files (profile images, uploads) during development

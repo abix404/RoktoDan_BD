@@ -387,6 +387,15 @@
                                 <i class="bi bi-chat-dots"></i>
                                 Chat Now
                             </button>
+
+                            <!-- Request Blood Button -->
+                            <button type="button"
+                                    class="request-blood-btn"
+                                    onclick="openRequestModal({{ donor.id }})"
+                                    {% if not donor.can_donate %}disabled{% endif %}>
+                                <i class="bi bi-heart-pulse"></i>
+                                Request Blood
+                            </button>
                         </div>
                     </div>
                     {% endfor %}
@@ -408,10 +417,75 @@
     {% endif %}
 </div>
 
+<!-- Blood Request Modal -->
+<div class="modal fade" id="requestBloodModal" tabindex="-1" aria-labelledby="requestBloodModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="requestBloodModalLabel">
+                    <i class="bi bi-heart-pulse me-2"></i>Request Blood Donation
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="requestModalBody">
+                <!-- Content will be loaded here via AJAX -->
+                <div class="text-center py-5">
+                    <div class="spinner-border text-danger" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-3 text-muted">Loading request form...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
+// Function to open Request Blood modal
+function openRequestModal(donorId) {
+    const modal = new bootstrap.Modal(document.getElementById('requestBloodModal'));
+    const modalBody = document.getElementById('requestModalBody');
+
+    // Show loading spinner
+    modalBody.innerHTML = `
+        <div class="text-center py-5">
+            <div class="spinner-border text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-3 text-muted">Loading request form...</p>
+        </div>
+    `;
+
+    modal.show();
+
+    // Load the form via AJAX
+    fetch(\`/show-request-form/\${donorId}/\`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to load form');
+            }
+            return response.text();
+        })
+        .then(html => {
+            modalBody.innerHTML = html;
+        })
+        .catch(error => {
+            modalBody.innerHTML = `
+                <div class="alert alert-danger">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    Failed to load the request form. Please try again.
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            `;
+            console.error('Error:', error);
+        });
+}
+
 // Placeholder function for chat functionality
 function openChat(donorId, donorName) {
-    alert(`Chat feature coming soon!\nWould open chat with: ${donorName} (ID: ${donorId})`);
+    alert(\`Chat feature coming soon!\nWould open chat with: \${donorName} (ID: \${donorId})\`);
     // Future implementation: Open chat modal or redirect to chat page
 }
 

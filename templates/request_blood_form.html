@@ -1,0 +1,227 @@
+<!-- request_blood_form.html -->
+<!-- This template is loaded into the modal via AJAX, so NO extends/base -->
+{% load static %}
+
+<form method="POST" action="{% url 'request_blood_from_donor' donor.id %}" id="bloodRequestForm">
+    {% csrf_token %}
+
+    <div class="alert alert-info">
+        <i class="bi bi-info-circle me-2"></i>
+        <strong>Requesting blood from: {{ donor.full_name }}</strong><br>
+        Blood Group: <strong>{{ donor.blood_group }}</strong> | Location: {{ donor.thana }}, {{ donor.district }}
+    </div>
+
+    <!-- Patient Information -->
+    <h6 class="mb-3 text-primary">
+        <i class="bi bi-person me-2"></i>Patient Information
+    </h6>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="patient_name" class="form-label">Patient Name *</label>
+            <input type="text" class="form-control" id="patient_name" name="patient_name"
+                   value="{{ recipient.full_name }}" required>
+        </div>
+        <div class="col-md-6">
+            <label for="patient_age" class="form-label">Patient Age *</label>
+            <input type="number" class="form-control" id="patient_age" name="patient_age"
+                   min="0" max="120" value="{{ recipient.age|default:'25' }}" required>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="medical_condition" class="form-label">Medical Condition/Reason *</label>
+        <textarea class="form-control" id="medical_condition" name="medical_condition"
+                  rows="2" placeholder="e.g., Surgery, Accident, Thalassemia, etc." required></textarea>
+    </div>
+
+    <!-- Hospital Information -->
+    <h6 class="mb-3 text-primary">
+        <i class="bi bi-hospital me-2"></i>Hospital Information
+    </h6>
+
+    <div class="mb-3">
+        <label for="hospital_name" class="form-label">Hospital Name *</label>
+        <input type="text" class="form-control" id="hospital_name" name="hospital_name"
+               placeholder="e.g., Dhaka Medical College Hospital" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="hospital_address" class="form-label">Hospital Address *</label>
+        <textarea class="form-control" id="hospital_address" name="hospital_address"
+                  rows="2" placeholder="Full hospital address" required></textarea>
+    </div>
+
+    <!-- Blood Requirement -->
+    <h6 class="mb-3 text-primary">
+        <i class="bi bi-droplet me-2"></i>Blood Requirement
+    </h6>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="units_needed" class="form-label">Units/Bags Needed *</label>
+            <input type="number" class="form-control" id="units_needed" name="units_needed"
+                   min="1" max="10" value="1" required>
+        </div>
+        <div class="col-md-6">
+            <label for="urgency_level" class="form-label">Urgency Level *</label>
+            <select class="form-select" id="urgency_level" name="urgency_level" required>
+                <option value="low">Low - Within a week</option>
+                <option value="medium" selected>Medium - Within 2-3 days</option>
+                <option value="high">High - Within 24 hours</option>
+                <option value="critical">Critical - Emergency (ASAP)</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="needed_by_date" class="form-label">Blood Needed By *</label>
+        <input type="datetime-local" class="form-control" id="needed_by_date"
+               name="needed_by_date" required>
+    </div>
+
+    <!-- Contact Information -->
+    <h6 class="mb-3 text-primary">
+        <i class="bi bi-telephone me-2"></i>Contact Information
+    </h6>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="contact_person" class="form-label">Contact Person *</label>
+            <input type="text" class="form-control" id="contact_person" name="contact_person"
+                   value="{{ recipient.full_name }}" required>
+        </div>
+        <div class="col-md-6">
+            <label for="contact_number" class="form-label">Contact Number *</label>
+            <input type="tel" class="form-control" id="contact_number" name="contact_number"
+                   value="{{ recipient.phone_number }}" pattern="[0-9]{11}"
+                   placeholder="01XXXXXXXXX" required>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="alternative_contact" class="form-label">Alternative Contact (Optional)</label>
+        <input type="tel" class="form-control" id="alternative_contact"
+               name="alternative_contact" pattern="[0-9]{11}" placeholder="01XXXXXXXXX">
+    </div>
+
+    <!-- Additional Notes -->
+    <div class="mb-3">
+        <label for="additional_notes" class="form-label">Additional Notes (Optional)</label>
+        <textarea class="form-control" id="additional_notes" name="additional_notes"
+                  rows="3" placeholder="Any special instructions or additional information..."></textarea>
+    </div>
+
+    <!-- Important Notice -->
+    <div class="alert alert-warning">
+        <i class="bi bi-exclamation-triangle me-2"></i>
+        <strong>Important:</strong> Make sure all information is accurate. The donor will receive an email
+        notification with these details.
+    </div>
+
+    <!-- Form Actions -->
+    <div class="d-flex justify-content-end gap-2">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <i class="bi bi-x-circle me-2"></i>Cancel
+        </button>
+        <button type="submit" class="btn btn-danger">
+            <i class="bi bi-heart-pulse me-2"></i>Send Blood Request
+        </button>
+    </div>
+</form>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const neededByInput = document.getElementById('needed_by_date');
+    if (neededByInput) {
+        const now = new Date();
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+        neededByInput.min = now.toISOString().slice(0, 16);
+
+        const defaultDate = new Date();
+        defaultDate.setDate(defaultDate.getDate() + 2);
+        defaultDate.setMinutes(defaultDate.getMinutes() - defaultDate.getTimezoneOffset());
+        neededByInput.value = defaultDate.toISOString().slice(0, 16);
+    }
+
+    const form = document.getElementById('bloodRequestForm');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Sending...';
+
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => {
+                if (response.redirected) {
+                    window.location.href = response.url;
+                } else {
+                    return response.text();
+                }
+            })
+            .then(text => {
+                if (text) {
+                    document.getElementById('requestModalBody').innerHTML = text;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to send blood request. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            });
+        });
+    }
+
+    // Phone validation
+    const phoneInputs = document.querySelectorAll('input[type="tel"]');
+    phoneInputs.forEach(input => {
+        input.addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11);
+        });
+    });
+});
+</script>
+
+<style scoped>
+.form-label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+.form-control:focus,
+.form-select:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+.text-primary {
+    color: #dc3545 !important;
+}
+.btn-danger {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    border: none;
+}
+.btn-danger:hover {
+    background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+.alert {
+    border-radius: 8px;
+}
+h6 {
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+</style>

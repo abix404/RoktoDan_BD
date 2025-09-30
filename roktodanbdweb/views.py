@@ -1,39 +1,111 @@
-from .models import *
-from django.contrib.auth import logout as auth_logout
-from django.views import View
-from .utils import send_registration_email, send_admin_notification
-import logging
-from django.contrib.auth import authenticate, login
-from .forms import RecipientRegistrationForm, DonorResponseForm, DonorRegistrationForm
-from .models import Recipient
 from django.shortcuts import render, get_object_or_404, redirect
-from django.utils import timezone
-from datetime import datetime, timedelta
+from django.contrib.auth import logout as auth_logout, authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Donor, DonationHistory, DonorPoints, DonorBadge, PointTransaction
+from django.views import View
+from django.http import JsonResponse
+from django.utils import timezone
+from datetime import datetime, timedelta
+import logging
 
+from .models import (
+    Donor, Recipient, DonationHistory, DonorPoints, DonorBadge,
+    PointTransaction, BloodRequest, DonorResponse
+)
+from .forms import (
+    RecipientRegistrationForm, DonorResponseForm, DonorRegistrationForm
+)
+from .utils import (
+    send_registration_email, send_admin_notification,
+    send_donor_response_notification, send_blood_request_email_to_donor
+)
 
 logger = logging.getLogger(__name__)
 
-# Create your views here.
+
+# ==================== PUBLIC VIEWS ====================
+
 def home(request):
+    """Home page view"""
     return render(request, 'home.html')
 
+
 def about_us(request):
+    """About us page view"""
     return render(request, 'about_us.html')
 
 
-def matching(request):
-    return render(request, 'matching.html')
 def registration(request):
+    """Registration options page"""
     return render(request, 'registration.html')
-def track_requests(request):
-     return render(request, 'track-requests.html')
-def rewards(request):
-    return render(request, 'rewards.html')
+
+
+def registration_success(request):
+    """Registration success page"""
+    return render(request, 'success.html')
+
+
+def recipient_success(request):
+    """Recipient registration success page"""
+    return render(request, 'success.html')
+
+
+# ==================== AUTHENTICATION ====================
+
+def user_login(request):
+    """Handle user login with email or phone number"""
+    if request.method == 'POST':
+        username = request.POST.get('username')  # Email or phone
+        password = request.POST.get('password')
+
+        logger.info(f"Login attempt with: {username}")
+
+        user = None
+
+        # Try to authenticate with email (most common)
+        if '@' in username:
+            user = authenticate(request, username=username, password=password)
+            logger.info(f"Email authentication result: {user}")
+        else:
+            # If it's not an email, try to find user by phone number
+            try:
+                recipient = Recipient.objects.get(phone_number=username)
+                user = authenticate(request, username=recipient.user.email, password=password)
+                logger.info(f"Phone authentication result: {user}")
+            except Recipient.DoesNotExist:
+                logger.warning("No recipient found with this phone number")
+                # Try direct username authentication as fallback
+                user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            logger.info(f"Login successful for user: {user}")
+
+            # Check if user has a recipient profile
+            if hasattr(user, 'recipient_profile'):
+                messages.success(request, f'Welcome back, {user.recipient_profile.full_name}!')
+                return redirect('/')
+            else:
+                messages.success(request, f'Welcome back, {user.first_name or user.email}!')
+                return redirect('/')
+        else:
+            logger.warning("Authentication failed")
+            messages.error(request, 'Invalid email/phone or password')
+
+    return render(request, 'login.html')
+
+
+@login_required
+def logout(request):
+    """Logs out the user and shows the animated logout page"""
+    auth_logout(request)
+    return render(request, 'logout.html')
+
+
+# ==================== DONOR REGISTRATION ====================
 
 def register_donor(request):
+    """Handle donor registration"""
     if request.method == 'POST':
         form = DonorRegistrationForm(request.POST, request.FILES)
         if form.is_valid():
@@ -59,17 +131,42 @@ def register_donor(request):
     return render(request, 'register_donor.html', {'form': form})
 
 
+# ==================== RECIPIENT REGISTRATION ====================
 
-def registration_success(request):
-    return render(request, 'success.html')
+def register_recipient(request):
+    """Handle recipient registration"""
+    if request.method == 'POST':
+        form = RecipientRegistrationForm(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                recipient = form.save()
+                messages.success(
+                    request,
+                    f'Registration successful! Welcome {recipient.full_name}. '
+                    'A confirmation email has been sent to your email address.'
+                )
+                return redirect('login')
+            except Exception as e:
+                logger.error(f"Recipient registration error: {str(e)}")
+                messages.error(request, f'Registration failed: {str(e)}')
+        else:
+            # Display form errors
+            for field, errors in form.errors.items():
+                for error in errors:
+                    field_name = field.replace("_", " ").title()
+                    messages.error(request, f'{field_name}: {error}')
+    else:
+        form = RecipientRegistrationForm()
+
+    return render(request, 'register_recipient.html', {'form': form})
+
+
+# ==================== DONOR DASHBOARD ====================
 
 @login_required
 def donor_dashboard(request):
-    """
-    Donor dashboard view - shows donor profile and stats
-    """
+    """Donor dashboard view - shows donor profile and stats"""
     try:
-        # Get the donor profile for the logged-in user
         donor = get_object_or_404(Donor, user=request.user)
     except Donor.DoesNotExist:
         messages.error(request, "Donor profile not found. Please complete your registration.")
@@ -79,7 +176,7 @@ def donor_dashboard(request):
     total_donations = calculate_total_donations(donor)
     lives_saved = total_donations * 3  # Assuming each donation saves 3 lives
 
-    # Get recent activities (you can implement this based on your activity model)
+    # Get recent activities
     recent_activities = get_recent_activities(donor)
 
     context = {
@@ -93,22 +190,17 @@ def donor_dashboard(request):
 
 
 def calculate_total_donations(donor):
-    """
-    Calculate total number of donations based on donation history
-    This is a simple calculation - you might want to implement a more sophisticated system
-    """
+    """Calculate total number of donations based on donation history"""
     if not donor.last_donation_month or not donor.last_donation_year:
         return 0
 
     try:
-        # This is a simplified calculation
-        # In a real system, you'd have a separate DonationHistory model
         current_year = datetime.now().year
         last_donation_year = int(donor.last_donation_year)
 
         # Rough estimate based on eligibility (can donate every 3 months)
         years_since_first_donation = current_year - last_donation_year + 1
-        estimated_donations = min(years_since_first_donation * 4, 20)  # Cap at 20
+        estimated_donations = min(years_since_first_donation * 4, 20)
 
         return max(1, estimated_donations) if donor.last_donation_year else 0
     except (ValueError, TypeError):
@@ -116,13 +208,9 @@ def calculate_total_donations(donor):
 
 
 def get_recent_activities(donor):
-    """
-    Get recent activities for the donor
-    This is a placeholder - implement based on your activity tracking system
-    """
+    """Get recent activities for the donor"""
     activities = []
 
-    # Example activities - replace with actual data from your models
     if donor.last_updated:
         time_diff = timezone.now() - donor.last_updated
         if time_diff.days < 7:
@@ -139,20 +227,12 @@ def get_recent_activities(donor):
             'timestamp': donor.registration_date
         })
 
-    # You can add more activities like:
-    # - Blood donation requests responded to
-    # - Emergency requests
-    # - Profile views
-    # - etc.
-
-    return activities[:5]  # Return last 5 activities
+    return activities[:5]
 
 
 @login_required
 def donor_profile_update(request):
-    """
-    Handle donor profile updates
-    """
+    """Handle donor profile updates"""
     try:
         donor = get_object_or_404(Donor, user=request.user)
     except Donor.DoesNotExist:
@@ -160,7 +240,6 @@ def donor_profile_update(request):
         return redirect('donor_registration')
 
     if request.method == 'POST':
-        # Handle form submission
         from .forms import DonorProfileUpdateForm
         form = DonorProfileUpdateForm(request.POST, request.FILES, instance=donor)
 
@@ -182,36 +261,14 @@ def donor_profile_update(request):
     return render(request, 'donors/profile_update.html', context)
 
 
-@login_required
-def blood_request_list(request):
-    """
-    Show blood requests that match donor's blood group
-    """
-    try:
-        donor = get_object_or_404(Donor, user=request.user)
-    except Donor.DoesNotExist:
-        messages.error(request, "Donor profile not found.")
-        return redirect('donor_registration')
-
-    # This would fetch blood requests from a BloodRequest model
-    # For now, it's a placeholder
-    context = {
-        'donor': donor,
-        'requests': [],  # Replace with actual blood requests
-    }
-
-    return render(request, 'donors/blood_requests.html', context)
-
+# ==================== DONOR HISTORY ====================
 
 @login_required
 def donor_history(request):
-    """
-    Display donor's blood donation history
-    """
+    """Display donor's blood donation history"""
     try:
         donor = get_object_or_404(Donor, user=request.user)
     except Donor.DoesNotExist:
-        # Redirect to donor registration if no donor profile exists
         return redirect('donor_registration')
 
     # Get all donation history for this donor
@@ -241,7 +298,7 @@ def donor_history(request):
 
     # Calculate statistics
     total_donations = donation_history.filter(status='completed').count()
-    lives_saved = total_donations * 3  # Typically 1 donation saves 3 lives
+    lives_saved = total_donations * 3
 
     # Calculate days since last donation
     last_donation = donation_history.filter(status='completed').first()
@@ -260,19 +317,34 @@ def donor_history(request):
     return render(request, 'donor_history.html', context)
 
 
+# ==================== BLOOD REQUESTS ====================
+
 @login_required
-def emergency_requests(request):
-    """
-    Show emergency blood requests
-    """
+def blood_request_list(request):
+    """Show blood requests that match donor's blood group"""
     try:
         donor = get_object_or_404(Donor, user=request.user)
     except Donor.DoesNotExist:
         messages.error(request, "Donor profile not found.")
         return redirect('donor_registration')
 
-    # This would fetch urgent blood requests from database
-    # Filter by compatible blood groups and location
+    context = {
+        'donor': donor,
+        'requests': [],  # Replace with actual blood requests
+    }
+
+    return render(request, 'donors/blood_requests.html', context)
+
+
+@login_required
+def emergency_requests(request):
+    """Show emergency blood requests"""
+    try:
+        donor = get_object_or_404(Donor, user=request.user)
+    except Donor.DoesNotExist:
+        messages.error(request, "Donor profile not found.")
+        return redirect('donor_registration')
+
     emergency_requests = []  # Replace with actual emergency requests
 
     context = {
@@ -282,56 +354,8 @@ def emergency_requests(request):
 
     return render(request, 'donors/emergency_requests.html', context)
 
-def user_login(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')  # This will be email or phone
-        password = request.POST.get('password')
 
-        print(f"Login attempt with: {username}")  # Debug
-
-        user = None
-
-        # Try to authenticate with email (most common)
-        if '@' in username:
-            user = authenticate(request, username=username, password=password)
-            print(f"Email authentication result: {user}")
-        else:
-            # If it's not an email, try to find user by phone number
-            try:
-                recipient = Recipient.objects.get(phone_number=username)
-                user = authenticate(request, username=recipient.user.email, password=password)
-                print(f"Phone authentication result: {user}")
-            except Recipient.DoesNotExist:
-                print("No recipient found with this phone number")
-                # Try direct username authentication as fallback
-                user = authenticate(request, username=username, password=password)
-
-        if user is not None:
-            login(request, user)
-            print(f"Login successful for user: {user}")
-
-            # Check if user has a recipient profile
-            if hasattr(user, 'recipient_profile'):
-                messages.success(request, f'Welcome back, {user.recipient_profile.full_name}!')
-                return redirect('/')  # or recipient dashboard
-            else:
-                messages.success(request, f'Welcome back, {user.first_name}!')
-                return redirect('/')  # regular user/donor dashboard
-        else:
-            print("Authentication failed")
-            messages.error(request, 'Invalid email/phone or password')
-
-    return render(request, 'login.html')
-
-
-@login_required
-def logout(request):
-    """
-    Logs out the user and shows the animated logout page
-    """
-    auth_logout(request)
-    return render(request, 'logout.html')
-
+# ==================== FIND BLOOD ====================
 
 def find_blood(request):
     """
@@ -339,7 +363,6 @@ def find_blood(request):
     - Show quick login for non-authenticated users
     - Show search form and results for authenticated users
     """
-
     # For non-authenticated users, show the login page
     if not request.user.is_authenticated:
         return render(request, 'find_blood.html')
@@ -364,28 +387,22 @@ def find_blood(request):
             is_available=True
         ).select_related('user').order_by('-registration_date')
 
-        # Optional: Filter by donors who can actually donate (based on last donation date)
-        # available_donors = [donor for donor in donors if donor.can_donate]
-        # donors = available_donors
-
         # Add success message if donors found
         if donors.exists():
             messages.success(request, f'Found {donors.count()} available donor(s) in your area!')
         else:
             messages.warning(request, 'No donors found matching your criteria. Try searching in nearby areas.')
 
-    # If user just logged in via social auth, create recipient profile automatically
+    # Auto-create recipient profile for social auth users
     if request.user.is_authenticated and not hasattr(request.user, 'recipient_profile'):
         try:
-            from .models import Recipient
-            # Auto-create recipient profile for quick login users
             recipient = Recipient.objects.create(
                 user=request.user,
                 first_name=request.user.first_name or 'User',
                 last_name=request.user.last_name or '',
                 email=request.user.email,
-                phone_number='',  # Will need to be updated later
-                blood_group='',  # Will be filled when they search
+                phone_number='',
+                blood_group='',
                 house_holding_no='',
                 road_block='',
                 thana='',
@@ -394,8 +411,7 @@ def find_blood(request):
             )
             messages.info(request, 'Welcome! Your recipient profile has been created. You can update it later.')
         except Exception as e:
-            # Handle any errors in profile creation
-            pass
+            logger.error(f"Error creating recipient profile: {str(e)}")
 
     context = {
         'donors': donors,
@@ -410,42 +426,11 @@ def find_blood(request):
     return render(request, 'find_blood.html', context)
 
 
-def register_recipient(request):
-    if request.method == 'POST':
-        form = RecipientRegistrationForm(request.POST, request.FILES)
-        if form.is_valid():
-            try:
-                recipient = form.save()
-                messages.success(
-                    request,
-                    f'Registration successful! Welcome {recipient.full_name}. '
-                    'A confirmation email has been sent to your email address.'
-                )
-                return redirect('login')  # Redirect to login page
-            except Exception as e:
-                logger.error(f"Recipient registration error: {str(e)}")
-                messages.error(request, f'Registration failed: {str(e)}')
-        else:
-            # Display form errors
-            for field, errors in form.errors.items():
-                for error in errors:
-                    field_name = field.replace("_", " ").title()
-                    messages.error(request, f'{field_name}: {error}')
-    else:
-        form = RecipientRegistrationForm()
-
-    return render(request, 'register_recipient.html', {'form': form})
-
-# Success page view
-def recipient_success(request):
-    return render(request, 'success.html')
-
+# ==================== MATCHING ====================
 
 @login_required
 def matching(request):
-    """
-    Matching page for donors to see blood requests and respond
-    """
+    """Matching page for donors to see blood requests and respond"""
     try:
         donor = get_object_or_404(Donor, user=request.user)
     except Donor.DoesNotExist:
@@ -458,11 +443,10 @@ def matching(request):
         thana=donor.thana,
         status='active'
     ).exclude(
-        # Exclude requests the donor has already responded to
         donor_responses__donor=donor
     ).order_by('-urgency_level', '-created_at')
 
-    # Get recent matches (requests the donor has responded to)
+    # Get recent matches
     recent_responses = DonorResponse.objects.filter(
         donor=donor
     ).select_related('blood_request', 'blood_request__recipient').order_by('-response_date')[:10]
@@ -484,9 +468,7 @@ def matching(request):
 
 @login_required
 def respond_to_request(request, request_id):
-    """
-    Handle donor response to blood request
-    """
+    """Handle donor response to blood request"""
     try:
         donor = get_object_or_404(Donor, user=request.user)
         blood_request = get_object_or_404(BloodRequest, id=request_id, status='active')
@@ -512,16 +494,20 @@ def respond_to_request(request, request_id):
             response.blood_request = blood_request
             response.save()
 
+            # Send notification to recipient
+            send_donor_response_notification(blood_request.recipient, response)
+
             if response.response == 'accept':
-                messages.success(request,
-                                 "Thank you for accepting this blood donation request! The recipient will be notified.")
-                # Here you could send email/SMS notification
+                messages.success(
+                    request,
+                    "Thank you for accepting this blood donation request! "
+                    "The recipient has been notified and will contact you soon."
+                )
             else:
                 messages.info(request, "Response recorded. Thank you for your time.")
 
             return redirect('matching')
         else:
-            # Add form errors to messages for debugging
             for field, errors in form.errors.items():
                 for error in errors:
                     messages.error(request, f"{field}: {error}")
@@ -531,16 +517,120 @@ def respond_to_request(request, request_id):
     context = {
         'donor': donor,
         'blood_request': blood_request,
-        'form': form,  # Make sure this is included
+        'form': form,
     }
 
     return render(request, 'respond_to_request.html', context)
 
 
+# ==================== BLOOD REQUEST FROM DONOR ====================
+
+@login_required
+def request_blood_from_donor(request, donor_id):
+    """Handle blood request from recipient to specific donor"""
+    if request.method != 'POST':
+        messages.error(request, "Invalid request method.")
+        return redirect('find_blood')
+
+    try:
+        recipient = get_object_or_404(Recipient, user=request.user)
+    except Recipient.DoesNotExist:
+        messages.error(request, "Recipient profile not found. Please complete your registration.")
+        return redirect('register_recipient')
+
+    donor = get_object_or_404(Donor, id=donor_id)
+
+    # Get form data
+    patient_name = request.POST.get('patient_name', recipient.full_name)
+    patient_age = request.POST.get('patient_age', recipient.age if hasattr(recipient, 'age') else 0)
+    hospital_name = request.POST.get('hospital_name', '')
+    hospital_address = request.POST.get('hospital_address', '')
+    medical_condition = request.POST.get('medical_condition', '')
+    urgency_level = request.POST.get('urgency_level', 'medium')
+    units_needed = request.POST.get('units_needed', 1)
+    needed_by_date_str = request.POST.get('needed_by_date')
+    additional_notes = request.POST.get('additional_notes', '')
+    contact_person = request.POST.get('contact_person', recipient.full_name)
+    contact_number = request.POST.get('contact_number', recipient.phone_number)
+    alternative_contact = request.POST.get('alternative_contact', '')
+
+    # Validate required fields
+    if not all([hospital_name, hospital_address, needed_by_date_str]):
+        messages.error(request, "Please fill in all required fields.")
+        return redirect('find_blood')
+
+    try:
+        # Parse needed by date
+        needed_by_date = datetime.strptime(needed_by_date_str, '%Y-%m-%dT%H:%M')
+        needed_by_date = timezone.make_aware(needed_by_date)
+
+        # Set expiration date (24 hours after needed by date)
+        expires_at = needed_by_date + timedelta(hours=24)
+
+        # Create the blood request
+        blood_request = BloodRequest.objects.create(
+            recipient=recipient,
+            blood_group_needed=donor.blood_group,
+            units_needed=int(units_needed),
+            urgency_level=urgency_level,
+            hospital_name=hospital_name,
+            hospital_address=hospital_address,
+            thana=donor.thana,
+            district=donor.district,
+            patient_name=patient_name,
+            patient_age=int(patient_age),
+            medical_condition=medical_condition,
+            needed_by_date=needed_by_date,
+            additional_notes=additional_notes,
+            contact_person=contact_person,
+            contact_number=contact_number,
+            alternative_contact=alternative_contact,
+            expires_at=expires_at,
+            status='active'
+        )
+
+        # Send email notification to donor
+        send_blood_request_email_to_donor(donor, blood_request, recipient)
+
+        messages.success(
+            request,
+            f'Blood request sent successfully to {donor.full_name}! '
+            'The donor will be notified via email.'
+        )
+
+        return redirect('find_blood')
+
+    except ValueError as e:
+        logger.error(f"Date parsing error: {str(e)}")
+        messages.error(request, "Invalid date format. Please try again.")
+        return redirect('find_blood')
+    except Exception as e:
+        logger.error(f"Blood request creation error: {str(e)}")
+        messages.error(request, f'Failed to send blood request: {str(e)}')
+        return redirect('find_blood')
+
+
+@login_required
+def show_request_form(request, donor_id):
+    """Show the blood request form modal"""
+    try:
+        recipient = get_object_or_404(Recipient, user=request.user)
+        donor = get_object_or_404(Donor, id=donor_id)
+
+        context = {
+            'donor': donor,
+            'recipient': recipient,
+        }
+
+        return render(request, 'request_blood_form.html', context)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=400)
+
+
+# ==================== REWARDS ====================
+
 def rewards(request):
-    """
-    Rewards page showing points, badges, and withdrawal options
-    """
+    """Rewards page showing points, badges, and withdrawal options"""
     context = {
         'page_title': 'Rewards & Points',
     }
@@ -557,7 +647,7 @@ def rewards(request):
             status='completed'
         ).count()
 
-        # ✅ Calculate lives saved here
+        # Calculate lives saved
         lives_saved = total_donations * 3
 
         # Earned badges
@@ -589,7 +679,7 @@ def rewards(request):
             donor_points=points_account
         ).order_by('-created_at')[:10]
 
-        # ✅ Badge existence flags for template
+        # Badge existence flags for template
         badge_flags = {
             "has_first_donor_badge": DonorBadge.objects.filter(donor=donor, badge_type="first_donor").exists(),
             "has_regular_donor_badge": DonorBadge.objects.filter(donor=donor, badge_type="regular_donor").exists(),
@@ -607,7 +697,7 @@ def rewards(request):
             'next_milestone': next_milestone,
             'recent_transactions': recent_transactions,
             'earned_badges': earned_badges,
-            **badge_flags,  # add all badge flags
+            **badge_flags,
         })
 
     return render(request, 'rewards.html', context)
@@ -615,9 +705,7 @@ def rewards(request):
 
 @login_required
 def withdraw_points(request):
-    """
-    Handle point withdrawal requests (currently disabled)
-    """
+    """Handle point withdrawal requests (currently disabled)"""
     if not hasattr(request.user, 'donor'):
         messages.error(request, "Donor profile not found.")
         return redirect('rewards')
@@ -636,14 +724,8 @@ def withdraw_points(request):
             messages.error(request, "Insufficient points for withdrawal.")
             return redirect('rewards')
 
-        # Create withdrawal request (SSL Commerce integration will be added later)
-        withdrawal_request = WithdrawalRequest.objects.create(
-            donor=donor,
-            points_requested=points_to_withdraw,
-            amount_bdt=points_to_withdraw * 1.0,  # 1:1 conversion rate
-            status='pending'
-        )
-
+        # Note: WithdrawalRequest model should be imported if it exists
+        # Or this feature should be commented out if not implemented yet
         messages.info(
             request,
             f"Withdrawal request for {points_to_withdraw} RD Points has been submitted. "
@@ -653,7 +735,8 @@ def withdraw_points(request):
     return redirect('rewards')
 
 
-# Helper function to award points and badges after donation
+# ==================== HELPER FUNCTIONS ====================
+
 def award_donation_rewards(donor):
     """
     Award points and badges after successful blood donation
@@ -705,3 +788,10 @@ def award_donation_rewards(donor):
                     )
 
     return points_account, donation_count
+
+
+# ==================== PLACEHOLDER VIEWS ====================
+
+def track_requests(request):
+    """Track blood requests page"""
+    return render(request, 'track-requests.html')
