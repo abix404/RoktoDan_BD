@@ -1,15 +1,11 @@
-.matching-page {
-
-}
-
-.matching-page .matching-container {
+.matching-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 40px 20px;
 }
 
 /* Header Section */
-.matching-page .matching-header {
+.matching-container .matching-header {
     background: linear-gradient(135deg, #dc3545, #e74c3c);
     color: white;
     padding: 30px;
@@ -18,81 +14,85 @@
     box-shadow: 0 8px 32px rgba(220, 53, 69, 0.3);
 }
 
-.matching-page .page-title {
+.matching-container .page-title {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 10px;
 }
 
-.matching-page .page-subtitle {
+.matching-container .page-subtitle {
     font-size: 1.1rem;
     opacity: 0.9;
     margin-bottom: 0;
 }
 
-.matching-page .donor-stats {
+.matching-container .donor-stats {
     display: flex;
     gap: 30px;
     justify-content: flex-end;
 }
 
-.matching-page .stat-item {
+.matching-container .stat-item {
     text-align: center;
 }
 
-.matching-page .stat-number {
+.matching-container .stat-number {
     display: block;
     font-size: 2rem;
     font-weight: 700;
     color: #fff;
 }
 
-.matching-page .stat-label {
+.matching-container .stat-label {
     font-size: 0.9rem;
     opacity: 0.8;
 }
 
 /* Blood Type Badge */
-.matching-page .blood-type-badge {
+.matching-container .blood-type-badge {
     display: flex;
     align-items: center;
     gap: 15px;
     margin-bottom: 20px;
 }
 
-.matching-page .badge {
+.matching-container .badge {
     font-size: 1.1rem;
     padding: 10px 20px;
     border-radius: 25px;
 }
 
-.matching-page .blood-group-a, .matching-page .blood-group-a- {
+.matching-container .blood-group-a,
+.matching-container .blood-group-a- {
     background-color: #e74c3c;
     color: white;
 }
 
-.matching-page .blood-group-b, .matching-page .blood-group-b- {
+.matching-container .blood-group-b,
+.matching-container .blood-group-b- {
     background-color: #3498db;
     color: white;
 }
 
-.matching-page .blood-group-ab, .matching-page .blood-group-ab- {
+.matching-container .blood-group-ab,
+.matching-container .blood-group-ab- {
     background-color: #9b59b6;
     color: white;
 }
 
-.matching-page .blood-group-o, .matching-page .blood-group-o- {
+.matching-container .blood-group-o,
+.matching-container .blood-group-o- {
     background-color: #e67e22;
     color: white;
 }
 
-.matching-page .location-text {
+.matching-container .location-text {
     color: #666;
     font-size: 1rem;
 }
 
 /* Section Headers */
-.matching-page .section-header {
+.matching-container .section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -101,13 +101,13 @@
     border-bottom: 2px solid #eee;
 }
 
-.matching-page .section-header h3 {
+.matching-container .section-header h3 {
     color: #2c3e50;
     margin: 0;
     font-weight: 600;
 }
 
-.matching-page .request-count {
+.matching-container .request-count {
     background: #ecf0f1;
     padding: 5px 15px;
     border-radius: 20px;
@@ -116,7 +116,7 @@
 }
 
 /* Requests Grid */
-.matching-page .requests-grid {
+.matching-container .requests-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 20px;
@@ -124,7 +124,7 @@
 }
 
 /* Request Cards */
-.matching-page .request-card {
+.matching-container .request-card {
     background: white;
     border-radius: 15px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -133,31 +133,31 @@
     border-left: 5px solid #ddd;
 }
 
-.matching-page .request-card:hover {
+.matching-container .request-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
-.matching-page .request-card.urgency-critical {
+.matching-container .request-card.urgency-critical {
     border-left-color: #e74c3c;
     box-shadow: 0 4px 20px rgba(231, 76, 60, 0.2);
 }
 
-.matching-page .request-card.urgency-high {
+.matching-container .request-card.urgency-high {
     border-left-color: #f39c12;
     box-shadow: 0 4px 20px rgba(243, 156, 18, 0.2);
 }
 
-.matching-page .request-card.urgency-medium {
+.matching-container .request-card.urgency-medium {
     border-left-color: #f1c40f;
 }
 
-.matching-page .request-card.urgency-low {
+.matching-container .request-card.urgency-low {
     border-left-color: #2ecc71;
 }
 
 /* Request Header */
-.matching-page .request-header {
+.matching-container .request-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -165,7 +165,7 @@
     background: #f8f9fa;
 }
 
-.matching-page .urgency-badge {
+.matching-container .urgency-badge {
     padding: 5px 12px;
     border-radius: 15px;
     font-size: 0.8rem;
@@ -173,27 +173,27 @@
     text-transform: uppercase;
 }
 
-.matching-page .urgency-badge.urgency-critical {
+.matching-container .urgency-badge.urgency-critical {
     background: #e74c3c;
     color: white;
 }
 
-.matching-page .urgency-badge.urgency-high {
+.matching-container .urgency-badge.urgency-high {
     background: #f39c12;
     color: white;
 }
 
-.matching-page .urgency-badge.urgency-medium {
+.matching-container .urgency-badge.urgency-medium {
     background: #f1c40f;
     color: #333;
 }
 
-.matching-page .urgency-badge.urgency-low {
+.matching-container .urgency-badge.urgency-low {
     background: #2ecc71;
     color: white;
 }
 
-.matching-page .blood-group-needed {
+.matching-container .blood-group-needed {
     font-size: 1.5rem;
     font-weight: 700;
     color: #e74c3c;
@@ -204,45 +204,47 @@
 }
 
 /* Request Body */
-.matching-page .request-body {
+.matching-container .request-body {
     padding: 20px;
 }
 
-.matching-page .patient-info h4 {
+.matching-container .patient-info h4 {
     color: #2c3e50;
     margin-bottom: 8px;
     font-weight: 600;
 }
 
-.matching-page .patient-details {
+.matching-container .patient-details {
     color: #7f8c8d;
     margin-bottom: 15px;
     line-height: 1.4;
 }
 
-.matching-page .hospital-info, .matching-page .contact-info {
+.matching-container .hospital-info,
+.matching-container .contact-info {
     margin-bottom: 15px;
 }
 
-.matching-page .hospital-info p, .matching-page .contact-info p {
+.matching-container .hospital-info p,
+.matching-container .contact-info p {
     margin-bottom: 5px;
     color: #555;
     font-size: 0.95rem;
 }
 
-.matching-page .time-info {
+.matching-container .time-info {
     background: #f8f9fa;
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 15px;
 }
 
-.matching-page .needed-by {
+.matching-container .needed-by {
     margin-bottom: 8px;
     color: #666;
 }
 
-.matching-page .time-remaining {
+.matching-container .time-remaining {
     font-weight: 600;
     padding: 5px 10px;
     border-radius: 12px;
@@ -250,22 +252,22 @@
     font-size: 0.9rem;
 }
 
-.matching-page .time-remaining.critical {
+.matching-container .time-remaining.critical {
     background: #e74c3c;
     color: white;
 }
 
-.matching-page .time-remaining.high {
+.matching-container .time-remaining.high {
     background: #f39c12;
     color: white;
 }
 
-.matching-page .time-remaining.medium {
+.matching-container .time-remaining.medium {
     background: #f1c40f;
     color: #333;
 }
 
-.matching-page .additional-notes {
+.matching-container .additional-notes {
     background: #e8f4f8;
     padding: 10px;
     border-radius: 8px;
@@ -273,14 +275,14 @@
     border-left: 3px solid #3498db;
 }
 
-.matching-page .additional-notes p {
+.matching-container .additional-notes p {
     margin: 0;
     color: #2c3e50;
     font-style: italic;
 }
 
 /* Request Actions */
-.matching-page .request-actions {
+.matching-container .request-actions {
     display: flex;
     gap: 10px;
     padding: 15px 20px;
@@ -288,7 +290,7 @@
     border-top: 1px solid #eee;
 }
 
-.matching-page .request-actions .btn {
+.matching-container .request-actions .btn {
     flex: 1;
     padding: 10px 15px;
     border: none;
@@ -299,71 +301,71 @@
     transition: all 0.3s ease;
 }
 
-.matching-page .btn-accept {
+.matching-container .btn-accept {
     background: #2ecc71;
     color: white;
 }
 
-.matching-page .btn-accept:hover {
+.matching-container .btn-accept:hover {
     background: #27ae60;
     transform: translateY(-2px);
 }
 
-.matching-page .btn-refuse {
+.matching-container .btn-refuse {
     background: #e74c3c;
     color: white;
 }
 
-.matching-page .btn-refuse:hover {
+.matching-container .btn-refuse:hover {
     background: #c0392b;
     transform: translateY(-2px);
 }
 
-.matching-page .btn-details {
+.matching-container .btn-details {
     background: #3498db;
     color: white;
 }
 
-.matching-page .btn-details:hover {
+.matching-container .btn-details:hover {
     background: #2980b9;
     transform: translateY(-2px);
 }
 
 /* No Requests State */
-.matching-page .no-requests {
+.matching-container .no-requests {
     text-align: center;
     padding: 60px 20px;
     color: #7f8c8d;
 }
 
-.matching-page .no-requests-icon {
+.matching-container .no-requests-icon {
     font-size: 4rem;
     color: #e74c3c;
     margin-bottom: 20px;
 }
 
-.matching-page .no-requests h3 {
+.matching-container .no-requests h3 {
     color: #2c3e50;
     margin-bottom: 15px;
 }
 
-.matching-page .no-requests p {
+.matching-container .no-requests p {
     font-size: 1.1rem;
     line-height: 1.6;
 }
 
 /* Recent Activity Section */
-.matching-page .recent-activity-section {
+.matching-container .recent-activity-section {
     margin-top: 40px;
 }
 
-.matching-page .activity-list {
+.matching-container .activity-list {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.matching-page .activity-item {
+.matching-container .activity-item {
     display: flex;
     align-items: flex-start;
     gap: 15px;
@@ -374,30 +376,30 @@
     border-left: 4px solid #ddd;
 }
 
-.matching-page .activity-item.response-accept {
+.matching-container .activity-item.response-accept {
     border-left-color: #2ecc71;
 }
 
-.matching-page .activity-item.response-refuse {
+.matching-container .activity-item.response-refuse {
     border-left-color: #e74c3c;
 }
 
-.matching-page .activity-icon {
+.matching-container .activity-icon {
     font-size: 1.5rem;
     margin-top: 2px;
 }
 
-.matching-page .activity-content {
+.matching-container .activity-content {
     flex: 1;
 }
 
-.matching-page .activity-main {
+.matching-container .activity-main {
     font-size: 1rem;
     color: #2c3e50;
     margin-bottom: 8px;
 }
 
-.matching-page .activity-meta {
+.matching-container .activity-meta {
     display: flex;
     gap: 15px;
     font-size: 0.9rem;
@@ -405,7 +407,7 @@
     margin-bottom: 5px;
 }
 
-.matching-page .blood-group {
+.matching-container .blood-group {
     background: #e74c3c;
     color: white;
     padding: 2px 8px;
@@ -414,7 +416,7 @@
     font-size: 0.8rem;
 }
 
-.matching-page .activity-notes {
+.matching-container .activity-notes {
     background: #f8f9fa;
     padding: 8px 12px;
     border-radius: 6px;
@@ -423,123 +425,91 @@
     font-size: 0.9rem;
 }
 
-/* Modal Styles */
-.matching-page .modal-content {
-    border-radius: 15px;
-    border: none;
-    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.15);
-}
-
-.matching-page .modal-header {
-    background: linear-gradient(135deg, #dc3545, #e74c3c);
-    color: white;
-    border-radius: 15px 15px 0 0;
-    padding: 20px;
-}
-
-.matching-page .modal-title {
-    font-weight: 600;
-    margin: 0;
-}
-
-.matching-page .btn-close {
-    background: rgba(255, 255, 255, 0.3);
-    border: none;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    opacity: 1;
-}
-
-.matching-page .modal-body {
-    padding: 30px;
-}
-
 /* Toast Notifications */
-.matching-page .toast-container {
+.toast-container {
     z-index: 9999;
 }
 
-.matching-page .toast {
+.toast {
     border: none;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     margin-bottom: 10px;
 }
 
-.matching-page .toast-header {
+.toast-header {
     background: #f8f9fa;
     border-bottom: 1px solid #dee2e6;
     font-weight: 600;
 }
 
-.matching-page .toast-body {
+.toast-body {
     padding: 15px;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .matching-page .matching-container {
-        padding: 10px;
+    .matching-container {
+        padding: 20px 10px;
     }
 
-    .matching-page .matching-header {
+    .matching-container .matching-header {
         padding: 20px;
         text-align: center;
     }
 
-    .matching-page .page-title {
+    .matching-container .page-title {
         font-size: 2rem;
     }
 
-    .matching-page .donor-stats {
+    .matching-container .donor-stats {
         justify-content: center;
         margin-top: 20px;
     }
 
-    .matching-page .requests-grid {
+    .matching-container .requests-grid {
         grid-template-columns: 1fr;
         gap: 15px;
     }
 
-    .matching-page .request-actions {
+    .matching-container .request-actions {
         flex-direction: column;
     }
 
-    .matching-page .request-actions .btn {
+    .matching-container .request-actions .btn {
         margin-bottom: 5px;
     }
 
-    .matching-page .activity-item {
+    .matching-container .activity-item {
         padding: 15px;
     }
 
-    .matching-page .activity-meta {
+    .matching-container .activity-meta {
         flex-direction: column;
         gap: 5px;
     }
 }
 
 @media (max-width: 480px) {
-    .matching-page .blood-type-badge {
+    .matching-container .blood-type-badge {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
     }
 
-    .matching-page .section-header {
+    .matching-container .section-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
     }
 
-    .matching-page .request-card {
+    .matching-container .request-card {
         margin-bottom: 15px;
     }
 }
 
-/* Animation Classes */
-@keyframes matchingFadeInUp {
+/* Animation */
+@keyframes fadeInUp {
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -550,61 +520,10 @@
     }
 }
 
-.matching-page .request-card {
-    animation: matchingFadeInUp 0.5s ease forwards;
+.matching-container .request-card {
+    animation: fadeInUp 0.5s ease forwards;
 }
 
-.matching-page .activity-item {
-    animation: matchingFadeInUp 0.5s ease forwards;
-}
-
-/* Loading States */
-.matching-page .loading-spinner {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    border-top-color: #fff;
-    animation: matchingSpin 1s ease-in-out infinite;
-}
-
-@keyframes matchingSpin {
-    to { transform: rotate(360deg); }
-}
-
-/* Utility Classes */
-.matching-page .text-urgent {
-    color: #e74c3c;
-    font-weight: 600;
-}
-
-.matching-page .text-success {
-    color: #2ecc71;
-}
-
-.matching-page .text-warning {
-    color: #f39c12;
-}
-
-.matching-page .text-info {
-    color: #3498db;
-}
-
-.matching-page .badge-urgent {
-    background: #e74c3c;
-    color: white;
-    animation: matchingPulse 2s infinite;
-}
-
-@keyframes matchingPulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(231, 76, 60, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0);
-    }
+.matching-container .activity-item {
+    animation: fadeInUp 0.5s ease forwards;
 }

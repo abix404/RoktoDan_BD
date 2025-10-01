@@ -3,24 +3,48 @@
 <head>
 {% load static %}
 <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
- <meta charset="UTF-8">
-    <meta name="viewpoint" content="width=device-width, initial-scale=1">
-    <title>{% block title %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{% endblock %}</title>
 
- {% endblock %} </title>
- {% block extra_css %}
+<!-- common style block -->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
- {% endblock %}
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+    }
 
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    main {
+        flex: 1;
+    }
+</style>
+
+{% block extra_css %}{% endblock %}
 </head>
 <body>
 {% include 'navbar.html' %}
 
-    {% block content %}
+<main>
+    {% block content %}{% endblock %}
+</main>
 
-
-    {% endblock %}
-    {% block extra_js %} {% endblock %}
 {% include 'footer.html' %}
+
+{% block extra_js %}{% endblock %}
 </body>
 </html>

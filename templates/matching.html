@@ -8,8 +8,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="matching-page">
-    <div class="matching-container">
+<div class="matching-container">
     <!-- Header Section -->
     <div class="matching-header">
         <div class="row align-items-center">
@@ -174,20 +173,10 @@
         </div>
     </div>
     {% endif %}
-</div>
 
-<!-- Response Modal -->
-<div class="modal fade" id="responseModal" tabindex="-1">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="responseModalTitle">Respond to Blood Request</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body" id="responseModalBody">
-                <!-- Content will be loaded here -->
-            </div>
-        </div>
+    <!-- Thank You Section -->
+    <div style="text-align: center; padding: 60px 0 40px 0;">
+        <h2>Thank you for being with us!</h2>
     </div>
 </div>
 
@@ -214,22 +203,17 @@
     </div>
     {% endfor %}
 </div>
-</div>
 {% endif %}
 
 <script>
 function showResponseModal(requestId, defaultResponse) {
-    // Here you would typically load the response form via AJAX
-    // For now, redirect to the response page
     window.location.href = `/respond-to-request/${requestId}/`;
 }
 
 function toggleDetails(requestId) {
-    // Toggle additional details for the request
     console.log('Toggle details for request:', requestId);
 }
 
-// Auto-hide toasts after 5 seconds
 document.addEventListener('DOMContentLoaded', function() {
     const toasts = document.querySelectorAll('.toast');
     toasts.forEach(toast => {
@@ -239,4 +223,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+
 {% endblock %}
