@@ -224,7 +224,7 @@ if not DEBUG:
     CSRF_COOKIE_SECURE = True
     X_FRAME_OPTIONS = 'DENY'
 else:
-    # Development settings
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    # Development settings (smtp.EmailBackend (real emails) and console.EmailBackend (testing))
+    EMAIL_BACKEND = config('EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

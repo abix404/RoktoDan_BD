@@ -560,7 +560,6 @@ def request_blood_from_donor(request, donor_id):
 
     donor = get_object_or_404(Donor, id=donor_id)
 
-    # Get recipient
     try:
         recipient = Recipient.objects.get(user=request.user)
     except Recipient.DoesNotExist:
@@ -609,14 +608,20 @@ def request_blood_from_donor(request, donor_id):
         # Send email notification to donor
         email_sent = send_blood_request_email_to_donor(donor, blood_request, recipient)
 
-        return JsonResponse({
-            'success': True,
-            'message': 'Blood request sent successfully!' + (
-                ' Email notification sent to donor.' if email_sent else ' (Email notification failed)')
-        })
+        # Check if it's an AJAX request
+        if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            return JsonResponse({
+                'success': True,
+                'message': 'Blood request sent successfully!' + (
+                    ' Email notification sent to donor.' if email_sent else '')
+            })
+        else:
+            # Regular form submission - render success page
+            message = 'Your blood request has been sent successfully!' + (
+                ' The donor will receive an email notification.' if email_sent else '')
+            return render(request, 'blood_request_success.html', {'message': message})
 
     except Exception as e:
-        # Log the error for debugging
         import logging
         logger = logging.getLogger(__name__)
         logger.error(f"Error creating blood request: {str(e)}")

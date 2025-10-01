@@ -250,3 +250,68 @@ INFO 2025-10-01 05:25:02,124 basehttp "GET /static/images/logo_2.png HTTP/1.1" 2
 INFO 2025-10-01 05:25:02,336 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
 INFO 2025-10-01 05:25:02,425 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
 INFO 2025-10-01 05:25:04,350 basehttp "GET /show-request-form/1/ HTTP/1.1" 200 6778
+INFO 2025-10-01 05:27:53,872 utils Blood request notification sent to donor: islaedinmaisie@gmail.com
+INFO 2025-10-01 05:27:53,873 basehttp "POST /request-blood/1/ HTTP/1.1" 200 98
+WARNING 2025-10-01 05:27:53,897 log Not Found: /favicon.ico
+WARNING 2025-10-01 05:27:53,898 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+INFO 2025-10-01 05:30:33,548 utils Blood request notification sent to donor: islaedinmaisie@gmail.com
+INFO 2025-10-01 05:30:33,549 basehttp "POST /request-blood/1/ HTTP/1.1" 200 98
+INFO 2025-10-01 05:30:36,793 utils Blood request notification sent to donor: islaedinmaisie@gmail.com
+INFO 2025-10-01 05:30:36,794 basehttp "POST /request-blood/1/ HTTP/1.1" 200 98
+WARNING 2025-10-01 05:30:36,809 log Not Found: /favicon.ico
+WARNING 2025-10-01 05:30:36,810 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+INFO 2025-10-01 05:35:40,921 autoreload F:\Project\RoktoDan_BD\roktodanbdweb\views.py changed, reloading.
+INFO 2025-10-01 05:35:41,988 autoreload Watching for file changes with StatReloader
+INFO 2025-10-01 05:37:07,674 autoreload F:\Project\RoktoDan_BD\roktodanbdweb\views.py changed, reloading.
+INFO 2025-10-01 05:37:08,557 autoreload Watching for file changes with StatReloader
+INFO 2025-10-01 05:37:15,128 utils Blood request notification sent to donor: islaedinmaisie@gmail.com
+INFO 2025-10-01 05:37:15,140 basehttp "POST /request-blood/1/ HTTP/1.1" 200 3654
+WARNING 2025-10-01 05:37:15,374 log Not Found: /favicon.ico
+WARNING 2025-10-01 05:37:15,375 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+INFO 2025-10-01 05:37:20,387 basehttp "GET / HTTP/1.1" 200 42634
+INFO 2025-10-01 05:37:25,083 basehttp "GET /find_blood/ HTTP/1.1" 200 34305
+INFO 2025-10-01 05:37:25,115 basehttp - Broken pipe from ('127.0.0.1', 50447)
+INFO 2025-10-01 05:38:43,439 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36549
+INFO 2025-10-01 05:38:46,836 basehttp "GET /show-request-form/1/ HTTP/1.1" 200 6778
+INFO 2025-10-01 05:39:39,350 utils Blood request notification sent to donor: islaedinmaisie@gmail.com
+INFO 2025-10-01 05:39:39,351 basehttp "POST /request-blood/1/ HTTP/1.1" 200 3654
+INFO 2025-10-01 05:39:44,385 basehttp "GET / HTTP/1.1" 200 42634
+INFO 2025-10-01 05:39:47,808 basehttp "GET /about_us/ HTTP/1.1" 200 23546
+INFO 2025-10-01 05:39:47,818 basehttp - Broken pipe from ('127.0.0.1', 59719)
+INFO 2025-10-01 05:44:59,503 autoreload F:\Project\RoktoDan_BD\roktodanbd\settings.py changed, reloading.
+INFO 2025-10-01 05:45:00,332 autoreload Watching for file changes with StatReloader
+INFO 2025-10-01 05:45:52,030 basehttp "GET /find_blood/ HTTP/1.1" 200 34305
+INFO 2025-10-01 05:46:06,561 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36549
+INFO 2025-10-01 05:46:11,368 basehttp "GET /show-request-form/1/ HTTP/1.1" 200 6778
+INFO 2025-10-01 05:46:50,107 utils Blood request notification sent to donor: islaedinmaisie@gmail.com
+INFO 2025-10-01 05:46:50,110 basehttp "POST /request-blood/1/ HTTP/1.1" 200 3654
+INFO 2025-10-01 05:46:52,485 basehttp "GET / HTTP/1.1" 200 42634
+INFO 2025-10-01 05:46:55,506 basehttp "GET /about_us/ HTTP/1.1" 200 23546
+INFO 2025-10-01 05:46:55,520 basehttp - Broken pipe from ('127.0.0.1', 55479)
+INFO 2025-10-01 05:47:59,864 basehttp "GET /find_blood/ HTTP/1.1" 200 34305
+INFO 2025-10-01 05:50:49,368 autoreload F:\Project\RoktoDan_BD\roktodanbd\settings.py changed, reloading.
+INFO 2025-10-01 05:50:50,432 autoreload Watching for file changes with StatReloader
+INFO 2025-10-01 05:51:21,025 autoreload F:\Project\RoktoDan_BD\roktodanbd\settings.py changed, reloading.
+INFO 2025-10-01 05:51:21,860 autoreload Watching for file changes with StatReloader
+INFO 2025-10-01 05:54:40,635 autoreload F:\Project\RoktoDan_BD\roktodanbd\settings.py changed, reloading.
+INFO 2025-10-01 05:54:41,458 autoreload Watching for file changes with StatReloader
+INFO 2025-10-01 05:54:50,971 basehttp "GET /find_blood/ HTTP/1.1" 200 34305
+INFO 2025-10-01 05:54:51,027 basehttp "GET /static/css/find_blood.css HTTP/1.1" 200 18202
+INFO 2025-10-01 05:54:51,032 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-01 05:54:51,065 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-01 05:54:51,198 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-01 05:54:51,508 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-01 05:55:04,492 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 36549
+INFO 2025-10-01 05:55:04,510 basehttp "GET /media/donor_images/takia_orni.jpg HTTP/1.1" 304 0
+INFO 2025-10-01 05:55:07,298 basehttp "GET /show-request-form/1/ HTTP/1.1" 200 6778
+INFO 2025-10-01 05:56:06,013 utils Blood request notification sent to donor: islaedinmaisie@gmail.com
+INFO 2025-10-01 05:56:06,016 basehttp "POST /request-blood/1/ HTTP/1.1" 200 3654
+WARNING 2025-10-01 05:56:06,042 log Not Found: /favicon.ico
+WARNING 2025-10-01 05:56:06,043 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+INFO 2025-10-01 05:56:11,048 basehttp "GET / HTTP/1.1" 200 42634
+INFO 2025-10-01 05:56:11,124 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-01 05:56:14,302 basehttp "GET /about_us/ HTTP/1.1" 200 23546
+INFO 2025-10-01 05:57:06,824 basehttp "GET /logout/ HTTP/1.1" 200 11397
+INFO 2025-10-01 05:57:12,454 basehttp "GET / HTTP/1.1" 200 41600
+INFO 2025-10-01 05:57:12,536 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-01 05:57:15,747 basehttp "GET /about_us/ HTTP/1.1" 200 22512
