@@ -1234,3 +1234,819 @@ INFO 2025-10-01 07:27:59,344 basehttp "GET /about_us/ HTTP/1.1" 200 24163
 INFO 2025-10-01 07:28:01,594 basehttp "GET /find_blood/ HTTP/1.1" 200 34923
 INFO 2025-10-01 07:28:03,563 basehttp "GET /about_us/ HTTP/1.1" 200 24163
 INFO 2025-10-01 07:28:05,127 basehttp "GET /find_blood/ HTTP/1.1" 200 34923
+INFO 2025-10-02 01:15:15,970 autoreload Watching for file changes with StatReloader
+INFO 2025-10-02 01:15:26,186 basehttp "GET / HTTP/1.1" 200 43251
+INFO 2025-10-02 01:15:28,348 basehttp - Broken pipe from ('127.0.0.1', 49949)
+INFO 2025-10-02 01:15:33,940 basehttp "GET / HTTP/1.1" 200 43251
+ERROR 2025-10-02 01:15:42,034 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-02 01:15:42,061 basehttp "GET /track-requests/ HTTP/1.1" 500 82196
+INFO 2025-10-02 01:15:42,122 basehttp - Broken pipe from ('127.0.0.1', 49186)
+WARNING 2025-10-02 01:15:42,181 log Not Found: /favicon.ico
+WARNING 2025-10-02 01:15:42,182 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+INFO 2025-10-02 01:15:53,612 basehttp "GET /find_blood/ HTTP/1.1" 200 34923
+INFO 2025-10-02 01:15:53,628 basehttp "GET /static/css/find_blood.css HTTP/1.1" 304 0
+INFO 2025-10-02 01:16:12,872 basehttp "GET /about_us/ HTTP/1.1" 200 24163
+INFO 2025-10-02 01:40:11,226 basehttp "GET / HTTP/1.1" 200 43251
+INFO 2025-10-02 01:40:20,212 basehttp "GET /about_us/ HTTP/1.1" 200 35010
+INFO 2025-10-02 01:40:20,222 basehttp - Broken pipe from ('127.0.0.1', 58926)
+WARNING 2025-10-02 01:40:20,265 basehttp "GET /static/images/developer.jpg HTTP/1.1" 404 1874
+INFO 2025-10-02 01:40:45,287 basehttp "GET /about_us/ HTTP/1.1" 200 35010
+WARNING 2025-10-02 01:40:45,303 basehttp "GET /static/images/developer.jpg HTTP/1.1" 404 1874
+INFO 2025-10-02 01:40:45,303 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 01:40:45,375 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-02 01:40:45,385 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 01:40:45,399 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 01:40:45,421 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 01:40:46,178 basehttp "GET /about_us/ HTTP/1.1" 200 35010
+WARNING 2025-10-02 01:40:46,193 basehttp "GET /static/images/developer.jpg HTTP/1.1" 404 1874
+INFO 2025-10-02 01:40:46,194 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 01:40:46,196 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 01:40:46,196 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 01:40:46,205 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-02 01:40:46,532 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 01:40:48,091 basehttp "GET / HTTP/1.1" 200 43251
+INFO 2025-10-02 01:40:48,174 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-02 01:40:51,304 basehttp "GET /about_us/ HTTP/1.1" 200 35010
+INFO 2025-10-02 01:40:51,323 basehttp "GET /static/css/about_us.css HTTP/1.1" 304 0
+WARNING 2025-10-02 01:40:51,330 basehttp "GET /static/images/developer.jpg HTTP/1.1" 404 1874
+INFO 2025-10-02 01:42:10,655 basehttp "GET /find_blood/ HTTP/1.1" 200 34923
+INFO 2025-10-02 01:42:14,354 basehttp "GET /about_us/ HTTP/1.1" 200 35010
+INFO 2025-10-02 01:42:14,370 basehttp "GET /static/css/about_us.css HTTP/1.1" 304 0
+WARNING 2025-10-02 01:42:14,373 basehttp "GET /static/images/developer.jpg HTTP/1.1" 404 1874
+INFO 2025-10-02 01:47:49,861 basehttp "GET / HTTP/1.1" 200 43251
+INFO 2025-10-02 01:47:58,525 basehttp "GET /about_us/ HTTP/1.1" 200 35010
+INFO 2025-10-02 01:47:58,531 basehttp - Broken pipe from ('127.0.0.1', 50973)
+INFO 2025-10-02 01:47:58,536 basehttp "GET /static/css/about_us.css HTTP/1.1" 304 0
+WARNING 2025-10-02 01:47:58,542 basehttp "GET /static/images/developer.jpg HTTP/1.1" 404 1874
+INFO 2025-10-02 01:55:17,292 basehttp "GET /about_us/ HTTP/1.1" 200 35010
+WARNING 2025-10-02 01:55:17,304 basehttp "GET /static/images/developer.jpg HTTP/1.1" 404 1874
+INFO 2025-10-02 01:55:17,304 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18516
+INFO 2025-10-02 01:55:17,305 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 01:55:17,306 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 01:55:17,311 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-02 01:55:17,325 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 01:55:18,267 basehttp "GET /about_us/ HTTP/1.1" 200 35010
+WARNING 2025-10-02 01:55:18,279 basehttp "GET /static/images/developer.jpg HTTP/1.1" 404 1874
+INFO 2025-10-02 01:55:18,279 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18516
+INFO 2025-10-02 01:55:18,280 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 01:55:18,281 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 01:55:18,286 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-02 01:55:18,293 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 01:55:19,029 basehttp "GET /about_us/ HTTP/1.1" 200 35010
+WARNING 2025-10-02 01:55:19,041 basehttp "GET /static/images/developer.jpg HTTP/1.1" 404 1874
+INFO 2025-10-02 01:55:19,041 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18516
+INFO 2025-10-02 01:55:19,043 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 01:55:19,043 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 01:55:19,049 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-02 01:55:19,054 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 01:55:21,433 basehttp "GET /about_us/ HTTP/1.1" 200 35010
+INFO 2025-10-02 01:55:21,442 basehttp "GET /static/css/about_us.css HTTP/1.1" 304 0
+WARNING 2025-10-02 01:55:21,444 basehttp "GET /static/images/developer.jpg HTTP/1.1" 404 1874
+INFO 2025-10-02 01:55:22,165 basehttp "GET /about_us/ HTTP/1.1" 200 35010
+INFO 2025-10-02 01:55:22,177 basehttp "GET /static/css/about_us.css HTTP/1.1" 304 0
+WARNING 2025-10-02 01:55:22,177 basehttp "GET /static/images/developer.jpg HTTP/1.1" 404 1874
+INFO 2025-10-02 01:55:23,267 basehttp "GET /about_us/ HTTP/1.1" 200 35010
+WARNING 2025-10-02 01:55:23,279 basehttp "GET /static/images/developer.jpg HTTP/1.1" 404 1874
+INFO 2025-10-02 01:55:23,280 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18516
+INFO 2025-10-02 01:55:23,281 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 01:55:23,283 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 01:55:23,286 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-02 01:55:23,293 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 01:55:23,995 basehttp "GET /about_us/ HTTP/1.1" 200 35010
+WARNING 2025-10-02 01:55:24,008 basehttp "GET /static/images/developer.jpg HTTP/1.1" 404 1874
+INFO 2025-10-02 01:55:24,009 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18516
+INFO 2025-10-02 01:55:24,010 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 01:55:24,011 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 01:55:24,016 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-02 01:55:24,021 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 01:56:29,339 basehttp "GET /about_us/ HTTP/1.1" 200 35010
+WARNING 2025-10-02 01:56:29,353 basehttp "GET /static/images/developer.jpg HTTP/1.1" 404 1874
+INFO 2025-10-02 01:56:29,354 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 01:56:29,355 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 01:56:29,356 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 01:56:29,360 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-02 01:56:29,665 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 01:56:41,817 basehttp "GET /static/css/about_us.css HTTP/1.1" 304 0
+WARNING 2025-10-02 01:56:41,832 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-02 01:56:41,832 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6246
+WARNING 2025-10-02 01:57:07,034 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-02 01:57:07,035 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6246
+INFO 2025-10-02 01:58:33,368 basehttp "GET /about_us/ HTTP/1.1" 200 35010
+WARNING 2025-10-02 01:58:33,379 basehttp "GET /static/images/developer.jpg HTTP/1.1" 404 1874
+INFO 2025-10-02 01:58:33,380 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 01:58:33,381 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 01:58:33,382 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 01:58:33,387 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-02 01:58:33,392 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 01:58:34,258 basehttp "GET /about_us/ HTTP/1.1" 200 35010
+WARNING 2025-10-02 01:58:34,271 basehttp "GET /static/images/developer.jpg HTTP/1.1" 404 1874
+INFO 2025-10-02 01:58:34,271 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 01:58:34,272 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 01:58:34,273 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 01:58:34,278 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-02 01:58:34,283 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 01:59:52,528 basehttp "GET /about_us/ HTTP/1.1" 200 35012
+WARNING 2025-10-02 01:59:52,540 basehttp "GET /static/images/developer.jpg HTTP/1.1" 404 1874
+INFO 2025-10-02 01:59:52,540 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 01:59:52,542 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 01:59:52,543 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 01:59:52,547 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-02 01:59:52,554 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 02:05:01,063 basehttp "GET /about_us/ HTTP/1.1" 200 35012
+INFO 2025-10-02 02:05:01,073 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 02:05:01,075 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 02:05:01,076 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 02:05:01,081 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 02:05:01,082 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-02 02:05:01,114 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 02:21:10,603 basehttp "GET /about_us/ HTTP/1.1" 200 57510
+INFO 2025-10-02 02:21:10,614 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 02:21:10,615 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 02:21:10,617 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 02:21:10,622 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 02:21:10,658 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 02:21:12,950 basehttp "GET /about_us/ HTTP/1.1" 200 57510
+INFO 2025-10-02 02:21:12,960 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 02:21:12,961 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 02:21:12,962 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 02:21:12,967 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 02:21:13,282 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 02:21:36,240 basehttp "GET /about_us/ HTTP/1.1" 200 40760
+INFO 2025-10-02 02:21:36,250 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 02:21:36,251 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 02:21:36,253 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 02:21:36,258 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 02:21:36,291 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 02:21:56,291 basehttp "GET /about_us/ HTTP/1.1" 200 57511
+INFO 2025-10-02 02:21:56,301 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 02:21:56,302 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 02:21:56,303 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 02:21:56,309 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 02:21:56,324 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 02:21:57,165 basehttp "GET /about_us/ HTTP/1.1" 200 57511
+INFO 2025-10-02 02:21:57,176 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 02:21:57,177 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 02:21:57,178 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 02:21:57,183 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 02:21:57,195 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 02:22:18,395 basehttp "GET /about_us/ HTTP/1.1" 200 35012
+INFO 2025-10-02 02:22:18,409 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 02:22:18,410 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 02:22:18,411 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 02:22:18,415 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 02:22:18,418 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-02 02:22:18,426 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 02:23:04,208 basehttp "GET /about_us/ HTTP/1.1" 200 35012
+INFO 2025-10-02 02:23:21,160 basehttp "GET /find_blood/ HTTP/1.1" 200 34923
+ERROR 2025-10-02 02:23:22,649 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-02 02:23:22,650 basehttp "GET /track-requests/ HTTP/1.1" 500 82207
+WARNING 2025-10-02 02:23:22,689 log Not Found: /favicon.ico
+WARNING 2025-10-02 02:23:22,690 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+INFO 2025-10-02 02:41:55,542 basehttp "GET /about_us/ HTTP/1.1" 200 59864
+INFO 2025-10-02 02:41:55,552 basehttp "GET /static/css/about_us.css HTTP/1.1" 304 0
+INFO 2025-10-02 02:41:55,552 basehttp "GET /static/images/developer.png HTTP/1.1" 304 0
+INFO 2025-10-02 02:41:59,117 basehttp "GET /about_us/ HTTP/1.1" 200 59864
+INFO 2025-10-02 02:41:59,129 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 02:41:59,131 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 02:41:59,132 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 02:41:59,136 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 02:41:59,147 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 02:42:01,273 basehttp "GET /about_us/ HTTP/1.1" 200 59864
+INFO 2025-10-02 02:42:01,285 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 02:42:01,287 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 02:42:01,288 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 02:42:01,292 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 02:42:01,302 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 02:42:03,177 basehttp "GET /about_us/ HTTP/1.1" 200 59864
+INFO 2025-10-02 02:42:03,189 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 02:42:03,191 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 02:42:03,192 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 02:42:03,197 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 02:42:03,206 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 02:42:11,143 basehttp "GET /about_us/ HTTP/1.1" 200 59864
+INFO 2025-10-02 02:42:14,138 basehttp "GET / HTTP/1.1" 200 68103
+INFO 2025-10-02 02:42:18,003 basehttp "GET /about_us/ HTTP/1.1" 200 59864
+INFO 2025-10-02 02:42:18,011 basehttp - Broken pipe from ('127.0.0.1', 51367)
+INFO 2025-10-02 02:42:44,696 autoreload Watching for file changes with StatReloader
+INFO 2025-10-02 02:42:47,602 basehttp "GET /about_us/ HTTP/1.1" 200 59864
+INFO 2025-10-02 02:42:47,679 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 02:42:47,689 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 02:42:47,691 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 02:42:47,692 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 02:42:47,733 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 02:42:52,310 basehttp "GET / HTTP/1.1" 200 68103
+INFO 2025-10-02 02:42:52,364 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-02 02:43:24,009 basehttp "GET /find_blood/ HTTP/1.1" 200 59775
+INFO 2025-10-02 02:44:06,329 basehttp "GET /find_blood/ HTTP/1.1" 200 59775
+INFO 2025-10-02 02:44:06,340 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 02:44:06,342 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 02:44:06,638 basehttp "GET /static/css/find_blood.css HTTP/1.1" 200 18202
+INFO 2025-10-02 02:44:06,793 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 02:44:07,740 basehttp "GET /find_blood/ HTTP/1.1" 200 59775
+INFO 2025-10-02 02:44:07,749 basehttp "GET /static/css/find_blood.css HTTP/1.1" 200 18202
+INFO 2025-10-02 02:44:07,750 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 02:44:07,751 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 02:44:07,948 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+ERROR 2025-10-02 02:44:51,242 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-02 02:44:51,244 basehttp "GET /track-requests/ HTTP/1.1" 500 82207
+WARNING 2025-10-02 02:44:51,294 log Not Found: /favicon.ico
+WARNING 2025-10-02 02:44:51,294 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+INFO 2025-10-02 02:44:54,660 basehttp "GET /about_us/ HTTP/1.1" 200 59809
+INFO 2025-10-02 02:47:05,176 basehttp "GET /about_us/ HTTP/1.1" 200 35012
+INFO 2025-10-02 02:47:05,189 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 02:47:05,191 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 02:47:05,193 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 02:47:05,198 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-02 02:47:05,199 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 02:47:05,211 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 02:52:07,396 basehttp "GET /about_us/ HTTP/1.1" 200 59881
+INFO 2025-10-02 02:52:07,408 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 02:52:07,410 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 02:52:07,411 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 02:52:07,416 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 02:52:07,435 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 02:52:09,561 basehttp "GET /about_us/ HTTP/1.1" 200 59881
+INFO 2025-10-02 02:52:09,569 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 02:52:09,572 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 02:52:09,573 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 02:52:09,578 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 02:52:09,587 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 02:52:14,999 basehttp "GET /about_us/ HTTP/1.1" 200 59881
+ERROR 2025-10-02 02:54:08,163 log Internal Server Error: /about_us/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\defaulttags.py", line 1035, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'extra_js'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 35, in about_us
+    return render(request, 'about_us.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader_tags.py", line 199, in render
+    template = context.template.engine.select_template(template_name)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\engine.py", line 208, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\defaulttags.py", line 1097, in load
+    lib = find_library(parser, name)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\defaulttags.py", line 1037, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: 'extra_js' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+cache
+i18n
+l10n
+log
+static
+tz
+ERROR 2025-10-02 02:54:08,178 basehttp "GET /about_us/ HTTP/1.1" 500 199364
+WARNING 2025-10-02 02:54:08,229 log Not Found: /favicon.ico
+WARNING 2025-10-02 02:54:08,229 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+ERROR 2025-10-02 02:54:09,155 log Internal Server Error: /about_us/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\defaulttags.py", line 1035, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'extra_js'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 35, in about_us
+    return render(request, 'about_us.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader_tags.py", line 199, in render
+    template = context.template.engine.select_template(template_name)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\engine.py", line 208, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\defaulttags.py", line 1097, in load
+    lib = find_library(parser, name)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\defaulttags.py", line 1037, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: 'extra_js' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+cache
+i18n
+l10n
+log
+static
+tz
+ERROR 2025-10-02 02:54:09,159 basehttp "GET /about_us/ HTTP/1.1" 500 199364
+WARNING 2025-10-02 02:54:09,201 log Not Found: /favicon.ico
+WARNING 2025-10-02 02:54:09,201 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+INFO 2025-10-02 02:54:25,786 basehttp "GET /about_us/ HTTP/1.1" 200 59881
+WARNING 2025-10-02 02:54:34,971 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-02 02:54:34,972 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6246
+INFO 2025-10-02 02:55:00,634 basehttp "GET /about_us/ HTTP/1.1" 200 59881
+INFO 2025-10-02 02:55:00,646 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 02:55:00,648 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 02:55:00,649 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+WARNING 2025-10-02 02:55:00,654 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-02 02:55:00,655 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6246
+INFO 2025-10-02 02:55:00,661 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 02:55:00,692 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+WARNING 2025-10-02 02:55:18,357 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-02 02:55:18,357 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6246
+INFO 2025-10-02 02:56:46,736 basehttp "GET /about_us/ HTTP/1.1" 200 59957
+INFO 2025-10-02 02:56:46,746 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+WARNING 2025-10-02 02:56:46,753 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-02 02:56:46,754 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6246
+INFO 2025-10-02 02:56:46,755 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 02:56:46,756 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 02:56:46,762 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 02:56:46,774 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 02:56:48,359 basehttp "GET /about_us/ HTTP/1.1" 200 59957
+WARNING 2025-10-02 02:56:48,381 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-02 02:56:48,382 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6246
+INFO 2025-10-02 02:56:48,383 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 02:56:48,384 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 02:56:48,385 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 02:56:48,390 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 02:56:48,405 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 02:57:50,629 basehttp "GET /about_us/ HTTP/1.1" 200 25580
+WARNING 2025-10-02 02:57:50,645 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-02 02:57:50,645 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6246
+INFO 2025-10-02 02:57:50,646 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 02:57:50,647 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 02:57:50,652 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 02:57:50,666 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 03:02:23,118 basehttp "GET /about_us/ HTTP/1.1" 200 57162
+WARNING 2025-10-02 03:02:23,132 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-02 03:02:23,133 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6246
+INFO 2025-10-02 03:02:23,133 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 03:02:23,136 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 03:02:23,137 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 03:02:23,142 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 03:02:23,162 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 03:02:24,594 basehttp "GET /about_us/ HTTP/1.1" 200 57162
+WARNING 2025-10-02 03:02:24,608 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-02 03:02:24,609 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6246
+INFO 2025-10-02 03:02:24,610 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 03:02:24,611 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 03:02:24,613 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 03:02:24,618 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 03:02:24,631 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 03:02:33,161 basehttp "GET /about_us/ HTTP/1.1" 200 57162
+WARNING 2025-10-02 03:02:33,176 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-02 03:02:33,178 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6246
+INFO 2025-10-02 03:02:33,178 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 03:02:33,180 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 03:02:33,182 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 03:02:33,187 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 03:02:33,201 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 03:02:34,059 basehttp "GET /about_us/ HTTP/1.1" 200 57162
+WARNING 2025-10-02 03:02:34,073 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-02 03:02:34,074 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6246
+INFO 2025-10-02 03:02:34,075 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 03:02:34,076 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 03:02:34,077 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 03:02:34,094 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 03:02:34,099 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+WARNING 2025-10-02 03:02:39,922 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-02 03:02:39,923 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6246
+INFO 2025-10-02 03:03:06,069 basehttp "GET /about_us/ HTTP/1.1" 200 57162
+INFO 2025-10-02 03:03:06,079 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 03:03:06,081 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 03:03:06,081 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 03:03:06,086 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 03:03:06,403 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 03:03:14,286 basehttp "GET / HTTP/1.1" 200 65401
+INFO 2025-10-02 03:03:18,197 basehttp "GET /about_us/ HTTP/1.1" 200 57162
+INFO 2025-10-02 03:03:18,204 basehttp - Broken pipe from ('127.0.0.1', 63441)
+WARNING 2025-10-02 03:03:52,171 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-02 03:03:52,171 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6246
+INFO 2025-10-02 03:03:54,045 basehttp "GET /about_us/ HTTP/1.1" 200 57162
+INFO 2025-10-02 03:03:54,054 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+WARNING 2025-10-02 03:03:54,060 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-02 03:03:54,061 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6246
+INFO 2025-10-02 03:03:54,062 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 03:03:54,064 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 03:03:54,069 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 03:03:54,094 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 03:04:55,330 basehttp "GET /about_us/ HTTP/1.1" 200 28901
+WARNING 2025-10-02 03:04:55,346 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-02 03:04:55,346 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 6246
+INFO 2025-10-02 03:04:55,347 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 03:04:55,349 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 03:04:55,356 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 03:04:55,385 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 03:07:53,376 basehttp "GET /about_us/ HTTP/1.1" 200 57188
+INFO 2025-10-02 03:07:53,383 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 03:07:53,387 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 03:07:53,388 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 03:07:53,393 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 03:07:53,401 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 03:12:43,059 basehttp "GET /about_us/ HTTP/1.1" 200 40651
+INFO 2025-10-02 03:12:43,068 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 03:12:43,073 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 03:12:43,074 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 03:12:43,078 basehttp "GET /static/images/footer-background-2.jpg HTTP/1.1" 200 111200
+INFO 2025-10-02 03:12:43,080 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 03:12:43,097 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 03:15:29,468 basehttp "GET /about_us/ HTTP/1.1" 200 27543
+INFO 2025-10-02 03:15:29,478 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 03:15:29,479 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 03:15:29,481 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-02 03:15:29,486 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 03:15:29,499 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+ERROR 2025-10-02 03:17:51,381 log Internal Server Error: /about_us/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 35, in about_us
+    return render(request, 'about_us.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'contact' not found. 'contact' is not a valid view function or pattern name.
+ERROR 2025-10-02 03:17:51,384 basehttp "GET /about_us/ HTTP/1.1" 500 158776
+WARNING 2025-10-02 03:17:51,449 log Not Found: /favicon.ico
+WARNING 2025-10-02 03:17:51,449 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+INFO 2025-10-02 03:17:57,529 basehttp "GET /about_us HTTP/1.1" 301 0
+ERROR 2025-10-02 03:17:57,556 log Internal Server Error: /about_us/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 35, in about_us
+    return render(request, 'about_us.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'contact' not found. 'contact' is not a valid view function or pattern name.
+ERROR 2025-10-02 03:17:57,560 basehttp "GET /about_us/ HTTP/1.1" 500 158360
+ERROR 2025-10-02 03:18:22,861 log Internal Server Error: /about_us/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 35, in about_us
+    return render(request, 'about_us.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'contact' not found. 'contact' is not a valid view function or pattern name.
+ERROR 2025-10-02 03:18:22,864 basehttp "GET /about_us/ HTTP/1.1" 500 158404
+WARNING 2025-10-02 03:18:22,904 log Not Found: /favicon.ico
+WARNING 2025-10-02 03:18:22,904 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+INFO 2025-10-02 03:18:46,624 basehttp "GET /about_us/ HTTP/1.1" 200 27296
+INFO 2025-10-02 03:18:46,634 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 03:18:46,635 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 03:18:46,640 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 03:18:46,660 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 03:19:31,394 basehttp "GET /about_us/ HTTP/1.1" 200 27295
+INFO 2025-10-02 03:19:31,407 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 03:19:31,408 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 03:19:31,414 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 03:19:31,421 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 03:20:00,545 basehttp "GET /about_us/ HTTP/1.1" 200 27299
+INFO 2025-10-02 03:20:00,552 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 03:20:00,556 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 03:20:00,561 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 03:20:00,567 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 03:20:15,971 basehttp "GET /find_blood/ HTTP/1.1" 200 27210
+INFO 2025-10-02 03:20:23,259 basehttp "GET / HTTP/1.1" 200 35538
+INFO 2025-10-02 03:20:53,079 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-02 03:24:06,618 basehttp "GET /about_us/ HTTP/1.1" 200 27423
+INFO 2025-10-02 03:24:12,068 basehttp "GET /about_us/ HTTP/1.1" 200 27423
+INFO 2025-10-02 03:24:12,077 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 03:24:12,078 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 03:24:12,084 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 03:24:12,200 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 03:24:13,093 basehttp "GET /about_us/ HTTP/1.1" 200 27423
+INFO 2025-10-02 03:24:13,103 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 03:24:13,104 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 03:24:13,109 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 03:24:13,292 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 03:24:13,791 basehttp "GET /about_us/ HTTP/1.1" 200 27423
+INFO 2025-10-02 03:24:13,801 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 03:24:13,802 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 03:24:13,807 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 03:24:13,922 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 03:29:41,406 basehttp "GET /about_us/ HTTP/1.1" 200 27429
+INFO 2025-10-02 03:29:41,414 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-02 03:29:41,418 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 03:29:41,421 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-02 03:29:41,839 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
