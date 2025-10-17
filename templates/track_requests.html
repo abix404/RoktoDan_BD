@@ -1,12 +1,465 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Track Request - RoktoDan BD{% endblock %}
+{% block title %}Track Blood Requests - RoktoDan BD{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/track_requests.css' %}">
 {% endblock %}
 
 {% block content %}
+<div class="track-requests-container">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1 class="page-title">
+                        <i class="fas fa-clipboard-list"></i>
+                        Track Blood Requests
+                    </h1>
+                    <p class="page-subtitle">Monitor and manage all your blood donation requests</p>
+                </div>
+                <div class="header-right">
+                    <a href="{% url 'find_blood' %}" class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        New Request
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- Statistics Cards -->
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon active-icon">
+                    <i class="fas fa-hourglass-half"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 class="stat-value">{{ active_requests_count|default:0 }}</h3>
+                    <p class="stat-label">Active Requests</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon fulfilled-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 class="stat-value">{{ fulfilled_requests_count|default:0 }}</h3>
+                    <p class="stat-label">Fulfilled Requests</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon response-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 class="stat-value">{{ total_responses_count|default:0 }}</h3>
+                    <p class="stat-label">Total Responses</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon pending-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 class="stat-value">{{ expired_requests_count|default:0 }}</h3>
+                    <p class="stat-label">Expired Requests</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="filter-header">
+                <h3><i class="fas fa-filter"></i> Filter Requests</h3>
+            </div>
+            <form method="get" class="filter-form">
+                <div class="filter-row">
+                    <div class="filter-item">
+                        <label for="status">Status</label>
+                        <select name="status" id="status" class="form-control">
+                            <option value="">All Status</option>
+                            <option value="active" {% if request.GET.status == 'active' %}selected{% endif %}>Active</option>
+                            <option value="fulfilled" {% if request.GET.status == 'fulfilled' %}selected{% endif %}>Fulfilled</option>
+                            <option value="expired" {% if request.GET.status == 'expired' %}selected{% endif %}>Expired</option>
+                            <option value="cancelled" {% if request.GET.status == 'cancelled' %}selected{% endif %}>Cancelled</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-item">
+                        <label for="urgency">Urgency Level</label>
+                        <select name="urgency" id="urgency" class="form-control">
+                            <option value="">All Levels</option>
+                            <option value="critical" {% if request.GET.urgency == 'critical' %}selected{% endif %}>Critical</option>
+                            <option value="high" {% if request.GET.urgency == 'high' %}selected{% endif %}>High</option>
+                            <option value="medium" {% if request.GET.urgency == 'medium' %}selected{% endif %}>Medium</option>
+                            <option value="low" {% if request.GET.urgency == 'low' %}selected{% endif %}>Low</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-item">
+                        <label for="from_date">From Date</label>
+                        <input type="date" name="from_date" id="from_date" class="form-control" value="{{ request.GET.from_date }}">
+                    </div>
+
+                    <div class="filter-item">
+                        <label for="to_date">To Date</label>
+                        <input type="date" name="to_date" id="to_date" class="form-control" value="{{ request.GET.to_date }}">
+                    </div>
+
+                    <div class="filter-actions">
+                        <button type="submit" class="btn btn-filter">
+                            <i class="fas fa-search"></i> Apply
+                        </button>
+                        <a href="{% url 'track_requests' %}" class="btn btn-reset">
+                            <i class="fas fa-redo"></i> Reset
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Blood Requests List -->
+        <div class="requests-section">
+            {% if blood_requests %}
+                {% for request in blood_requests %}
+                <div class="request-card {% if request.urgency_level == 'critical' %}critical{% elif request.urgency_level == 'high' %}high-urgency{% endif %}">
+                    <!-- Request Header -->
+                    <div class="request-header">
+                        <div class="request-title-section">
+                            <h3 class="patient-name">
+                                <i class="fas fa-user-injured"></i>
+                                {{ request.patient_name }}
+                            </h3>
+                            <div class="request-meta">
+                                <span class="blood-group-badge blood-{{ request.blood_group_needed|lower }}">
+                                    <i class="fas fa-tint"></i> {{ request.blood_group_needed }}
+                                </span>
+                                <span class="urgency-badge urgency-{{ request.urgency_level }}">
+                                    {% if request.urgency_level == 'critical' %}
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    {% elif request.urgency_level == 'high' %}
+                                        <i class="fas fa-exclamation-circle"></i>
+                                    {% else %}
+                                        <i class="fas fa-info-circle"></i>
+                                    {% endif %}
+                                    {{ request.get_urgency_level_display }}
+                                </span>
+                                <span class="status-badge status-{{ request.status }}">
+                                    {% if request.status == 'active' %}
+                                        <i class="fas fa-spinner fa-pulse"></i>
+                                    {% elif request.status == 'fulfilled' %}
+                                        <i class="fas fa-check-circle"></i>
+                                    {% elif request.status == 'expired' %}
+                                        <i class="fas fa-clock"></i>
+                                    {% else %}
+                                        <i class="fas fa-ban"></i>
+                                    {% endif %}
+                                    {{ request.get_status_display }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="request-actions">
+                            <button class="btn-icon" onclick="toggleRequestDetails({{ request.id }})">
+                                <i class="fas fa-chevron-down" id="icon-{{ request.id }}"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Request Info (Always Visible) -->
+                    <div class="request-info">
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <i class="fas fa-hospital"></i>
+                                <div class="info-content">
+                                    <span class="info-label">Hospital</span>
+                                    <span class="info-value">{{ request.hospital_name }}</span>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div class="info-content">
+                                    <span class="info-label">Location</span>
+                                    <span class="info-value">{{ request.thana }}, {{ request.district }}</span>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <div class="info-content">
+                                    <span class="info-label">Needed By</span>
+                                    <span class="info-value">{{ request.needed_by_date|date:"M d, Y h:i A" }}</span>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-clock"></i>
+                                <div class="info-content">
+                                    <span class="info-label">Time Remaining</span>
+                                    <span class="info-value time-remaining">{{ request.time_remaining }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Expandable Details -->
+                    <div class="request-details" id="details-{{ request.id }}" style="display: none;">
+                        <div class="details-section">
+                            <h4><i class="fas fa-info-circle"></i> Patient Details</h4>
+                            <div class="details-grid">
+                                <div class="detail-item">
+                                    <strong>Age:</strong> {{ request.patient_age }} years
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Units Needed:</strong> {{ request.units_needed }} unit(s)
+                                </div>
+                                {% if request.medical_condition %}
+                                <div class="detail-item full-width">
+                                    <strong>Medical Condition:</strong> {{ request.medical_condition }}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="details-section">
+                            <h4><i class="fas fa-map-marked-alt"></i> Hospital Details</h4>
+                            <p class="hospital-address">{{ request.hospital_address }}</p>
+                        </div>
+
+                        <div class="details-section">
+                            <h4><i class="fas fa-phone"></i> Contact Information</h4>
+                            <div class="details-grid">
+                                <div class="detail-item">
+                                    <strong>Contact Person:</strong> {{ request.contact_person }}
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Phone:</strong> <a href="tel:{{ request.contact_number }}">{{ request.contact_number }}</a>
+                                </div>
+                                {% if request.alternative_contact %}
+                                <div class="detail-item">
+                                    <strong>Alternative:</strong> <a href="tel:{{ request.alternative_contact }}">{{ request.alternative_contact }}</a>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        {% if request.additional_notes %}
+                        <div class="details-section">
+                            <h4><i class="fas fa-sticky-note"></i> Additional Notes</h4>
+                            <p>{{ request.additional_notes }}</p>
+                        </div>
+                        {% endif %}
+
+                        <!-- Donor Responses -->
+                        <div class="details-section">
+                            <h4><i class="fas fa-users"></i> Donor Responses ({{ request.donor_responses.count }})</h4>
+                            {% if request.donor_responses.all %}
+                                <div class="responses-list">
+                                    {% for response in request.donor_responses.all %}
+                                    <div class="response-item response-{{ response.response }}">
+                                        <div class="response-header">
+                                            <div class="donor-info">
+                                                {% if response.donor.profile_image %}
+                                                    <img src="{{ response.donor.profile_image.url }}" alt="{{ response.donor.full_name }}" class="donor-avatar">
+                                                {% else %}
+                                                    <div class="donor-avatar-placeholder">
+                                                        {{ response.donor.first_name.0 }}{{ response.donor.last_name.0 }}
+                                                    </div>
+                                                {% endif %}
+                                                <div class="donor-details">
+                                                    <strong>{{ response.donor.full_name }}</strong>
+                                                    <span class="donor-blood">{{ response.donor.blood_group }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="response-status">
+                                                {% if response.response == 'accept' %}
+                                                    <span class="badge badge-success">
+                                                        <i class="fas fa-check"></i> Accepted
+                                                    </span>
+                                                {% else %}
+                                                    <span class="badge badge-danger">
+                                                        <i class="fas fa-times"></i> Declined
+                                                    </span>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="response-info">
+                                            <span class="response-date">
+                                                <i class="far fa-clock"></i> {{ response.response_date|date:"M d, Y h:i A" }}
+                                            </span>
+                                            {% if response.notes %}
+                                                <p class="response-notes">{{ response.notes }}</p>
+                                            {% endif %}
+                                            {% if response.response == 'accept' and response.preferred_donation_time %}
+                                                <p class="preferred-time">
+                                                    <i class="fas fa-calendar-check"></i> Preferred Time: {{ response.preferred_donation_time|date:"M d, Y h:i A" }}
+                                                </p>
+                                            {% endif %}
+                                        </div>
+                                        {% if response.response == 'accept' %}
+                                        <div class="response-actions">
+                                            <a href="tel:{{ response.donor.phone_number }}" class="btn btn-sm btn-call">
+                                                <i class="fas fa-phone"></i> Call Donor
+                                            </a>
+                                            <a href="mailto:{{ response.donor.email }}" class="btn btn-sm btn-email">
+                                                <i class="fas fa-envelope"></i> Email
+                                            </a>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                <p class="no-responses">No donor responses yet. Please wait for donors to respond.</p>
+                            {% endif %}
+                        </div>
+
+                        <!-- Request Management Actions -->
+                        <div class="request-management">
+                            {% if request.status == 'active' %}
+                                <button class="btn btn-success" onclick="markAsFulfilled({{ request.id }})">
+                                    <i class="fas fa-check"></i> Mark as Fulfilled
+                                </button>
+                                <button class="btn btn-danger" onclick="cancelRequest({{ request.id }})">
+                                    <i class="fas fa-ban"></i> Cancel Request
+                                </button>
+                            {% endif %}
+                            <button class="btn btn-secondary" onclick="printRequest({{ request.id }})">
+                                <i class="fas fa-print"></i> Print Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <!-- Pagination -->
+                {% if is_paginated %}
+                <div class="pagination-container">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page=1{% if request.GET.status %}&status={{ request.GET.status }}{% endif %}">
+                                        <i class="fas fa-angle-double-left"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if request.GET.status %}&status={{ request.GET.status }}{% endif %}">
+                                        <i class="fas fa-angle-left"></i>
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                            {% for num in page_obj.paginator.page_range %}
+                                {% if page_obj.number == num %}
+                                    <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ num }}{% if request.GET.status %}&status={{ request.GET.status }}{% endif %}">{{ num }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if page_obj.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if request.GET.status %}&status={{ request.GET.status }}{% endif %}">
+                                        <i class="fas fa-angle-right"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}{% if request.GET.status %}&status={{ request.GET.status }}{% endif %}">
+                                        <i class="fas fa-angle-double-right"></i>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+                {% endif %}
+
+            {% else %}
+                <!-- Empty State -->
+                <div class="empty-state">
+                    <div class="empty-icon">
+                        <i class="fas fa-inbox"></i>
+                    </div>
+                    <h3>No Blood Requests Found</h3>
+                    <p>You haven't made any blood donation requests yet.</p>
+                    <a href="{% url 'find_blood' %}" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Create New Request
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+function toggleRequestDetails(requestId) {
+    const details = document.getElementById('details-' + requestId);
+    const icon = document.getElementById('icon-' + requestId);
+
+    if (details.style.display === 'none') {
+        details.style.display = 'block';
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
+    } else {
+        details.style.display = 'none';
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
+    }
+}
+
+function markAsFulfilled(requestId) {
+    if (confirm('Are you sure you want to mark this request as fulfilled?')) {
+        // Send AJAX request to update status
+        fetch(`/update-request-status/${requestId}/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({ status: 'fulfilled' })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                location.reload();
+            } else {
+                alert('Failed to update request status');
+            }
+        });
+    }
+}
+
+function cancelRequest(requestId) {
+    if (confirm('Are you sure you want to cancel this request?')) {
+        fetch(`/update-request-status/${requestId}/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({ status: 'cancelled' })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                location.reload();
+            } else {
+                alert('Failed to cancel request');
+            }
+        });
+    }
+}
+
+function printRequest(requestId) {
+    window.print();
+}
+</script>
 {% endblock %}

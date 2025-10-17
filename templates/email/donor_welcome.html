@@ -6,152 +6,429 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to RoktoDan BD</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #2d3748;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+        }
+
+        .email-wrapper {
             max-width: 600px;
             margin: 0 auto;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .container {
             background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
+
         .header {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            padding: 50px 30px;
             text-align: center;
-            background: linear-gradient(135deg, #dc3545, #e74c3c);
-            color: white;
-            padding: 20px;
-            border-radius: 10px 10px 0 0;
-            margin: -30px -30px 30px -30px;
+            position: relative;
+            overflow: hidden;
         }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 30px); }
+        }
+
+        .blood-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
         .header h1 {
-            margin: 0;
-            font-size: 28px;
-        }
-        .blood-drop {
-            font-size: 40px;
-            color: #fff;
-            margin-bottom: 10px;
-        }
-        .welcome-message {
-            font-size: 18px;
-            margin-bottom: 20px;
-            color: #2c3e50;
-        }
-        .profile-info {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-        .profile-info h3 {
-            color: #dc3545;
-            margin-top: 0;
-        }
-        .info-item {
-            margin: 10px 0;
-        }
-        .info-label {
-            font-weight: bold;
-            color: #495057;
-        }
-        .cta-button {
-            display: inline-block;
-            background: #dc3545;
             color: white;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin: 20px 0;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
         }
-        .footer {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            color: #666;
+
+        .header p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .greeting {
+            font-size: 20px;
+            color: #1a202c;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .intro-text {
+            color: #4a5568;
+            margin-bottom: 30px;
+            font-size: 15px;
+        }
+
+        .profile-card {
+            background: linear-gradient(135deg, #fef3f2 0%, #fee2e2 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 4px solid #ef4444;
+        }
+
+        .profile-card h3 {
+            color: #dc2626;
+            margin-bottom: 20px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-size: 14px;
         }
+
+        .info-icon {
+            width: 32px;
+            height: 32px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #374151;
+            min-width: 100px;
+        }
+
+        .info-value {
+            color: #6b7280;
+        }
+
+        .section-title {
+            color: #1a202c;
+            font-size: 20px;
+            margin: 30px 0 15px;
+            font-weight: 600;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .feature-card {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            color: #374151;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .feature-desc {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 35px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            padding: 16px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .reminder-box {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #f59e0b;
+            margin: 30px 0;
+        }
+
+        .reminder-box h4 {
+            color: #92400e;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+        }
+
+        .reminder-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .reminder-list li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: #78350f;
+            font-size: 14px;
+        }
+
+        .reminder-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #f59e0b;
+            font-weight: bold;
+        }
+
+        .footer {
+            background: #f9fafb;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .footer-logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #dc2626;
+            margin-bottom: 8px;
+        }
+
+        .footer-tagline {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
         .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 8px;
+            padding: 10px 20px;
+            background: white;
+            color: #dc2626;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info {
+            color: #6b7280;
+            font-size: 14px;
             margin: 15px 0;
         }
-        .social-links a {
-            color: #dc3545;
-            text-decoration: none;
-            margin: 0 10px;
+
+        .contact-info strong {
+            color: #dc2626;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #9ca3af;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .header {
+                padding: 40px 20px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-button {
+                display: block;
+                padding: 14px 30px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="email-wrapper">
+        <!-- Header -->
         <div class="header">
-            <div class="blood-drop">🩸</div>
+            <div class="blood-icon">🩸</div>
             <h1>Welcome to RoktoDan BD</h1>
             <p>Thank you for becoming a life saver!</p>
         </div>
 
-        <div class="welcome-message">
-            <strong>Dear {{ donor_name }},</strong>
+        <!-- Content -->
+        <div class="content">
+            <div class="greeting">Dear {{ donor_name }},</div>
+
+            <p class="intro-text">
+                Congratulations! Your donor registration with RoktoDan BD has been completed successfully.
+                You are now part of Bangladesh's largest blood donation network, ready to save lives!
+            </p>
+
+            <!-- Profile Card -->
+            <div class="profile-card">
+                <h3>📋 Your Registration Details</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-icon">👤</div>
+                        <span class="info-label">Name:</span>
+                        <span class="info-value">{{ donor_name }}</span>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">🩸</div>
+                        <span class="info-label">Blood Group:</span>
+                        <span class="info-value">{{ blood_group }}</span>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <span class="info-label">Location:</span>
+                        <span class="info-value">{{ thana }}, Dhaka</span>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">📅</div>
+                        <span class="info-label">Registered:</span>
+                        <span class="info-value">{{ donor.registration_date|date:"F d, Y" }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <h3 class="section-title">What's Next?</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">✏️</div>
+                    <div class="feature-title">Complete Profile</div>
+                    <div class="feature-desc">Add details to help recipients find you</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <div class="feature-title">Stay Active</div>
+                    <div class="feature-desc">Get notified when blood is needed</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <div class="feature-title">Earn Rewards</div>
+                    <div class="feature-desc">Get RD Points and badges</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">❤️</div>
+                    <div class="feature-title">Save Lives</div>
+                    <div class="feature-desc">One donation saves 3 lives</div>
+                </div>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="cta-section">
+                <a href="#" class="cta-button">Login to Your Dashboard →</a>
+            </div>
+
+            <!-- Reminder Box -->
+            <div class="reminder-box">
+                <h4>⚠️ Important Reminder</h4>
+                <ul class="reminder-list">
+                    <li>Maintain good health and proper diet</li>
+                    <li>Minimum 3-month gap between donations</li>
+                    <li>Age 18-65 and weight minimum 50kg required</li>
+                    <li>Keep your contact information updated</li>
+                </ul>
+            </div>
         </div>
 
-        <p>Congratulations! Your donor registration with RoktoDan BD has been completed successfully. You are now part of Bangladesh's largest blood donation network, ready to save lives!</p>
-
-        <div class="profile-info">
-            <h3>Your Registration Details</h3>
-            <div class="info-item">
-                <span class="info-label">Name:</span> {{ donor_name }}
-            </div>
-            <div class="info-item">
-                <span class="info-label">Blood Group:</span> {{ blood_group }}
-            </div>
-            <div class="info-item">
-                <span class="info-label">Location:</span> {{ thana }}, Dhaka
-            </div>
-            <div class="info-item">
-                <span class="info-label">Registration Date:</span> {{ donor.registration_date|date:"F d, Y" }}
-            </div>
-        </div>
-
-        <h3>What's Next?</h3>
-        <ul>
-            <li><strong>Complete your profile:</strong> Add more details to help recipients find you easily</li>
-            <li><strong>Stay active:</strong> We'll notify you when someone in your area needs blood</li>
-            <li><strong>Earn RD Points:</strong> Get rewards for each donation and achieve badges</li>
-            <li><strong>Save lives:</strong> One donation can save up to 3 lives!</li>
-        </ul>
-
-        <div style="text-align: center;">
-            <a href="#" class="cta-button">Login to Your Dashboard</a>
-        </div>
-
-        <div style="background: #fff3cd; padding: 15px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #ffc107;">
-            <strong>Important Reminder:</strong>
-            <ul>
-                <li>Maintain good health and proper diet</li>
-                <li>Minimum 3-month gap between donations</li>
-                <li>Age 18-65 and weight minimum 50kg required</li>
-                <li>Keep your contact information updated</li>
-            </ul>
-        </div>
-
+        <!-- Footer -->
         <div class="footer">
-            <p><strong>RoktoDan BD</strong> - Connecting Blood Donors with Recipients</p>
+            <div class="footer-logo">RoktoDan BD</div>
+            <div class="footer-tagline">Connecting Blood Donors with Recipients</div>
+
             <div class="social-links">
-                <a href="#">Facebook</a> |
-                <a href="#">Twitter</a> |
+                <a href="#">Facebook</a>
                 <a href="#">Website</a>
+                <a href="#">Support</a>
             </div>
-            <p>Need help? Contact us at: <strong>{{ settings.ADMIN_EMAIL }}</strong></p>
-            <p style="font-size: 12px; color: #999;">
+
+            <div class="contact-info">
+                Need help? Contact us at: <strong>{{ settings.ADMIN_EMAIL }}</strong>
+            </div>
+
+            <div class="disclaimer">
                 You received this email because you registered as a donor on RoktoDan BD.
                 If you did not register, please contact us immediately.
-            </p>
+            </div>
         </div>
     </div>
 </body>

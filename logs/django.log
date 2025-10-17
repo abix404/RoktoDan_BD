@@ -2599,3 +2599,915 @@ INFO 2025-10-17 15:52:42,171 basehttp "GET /media/donor_images/sadman.jpg HTTP/1
 INFO 2025-10-17 15:52:42,206 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
 INFO 2025-10-17 15:52:42,643 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
 INFO 2025-10-17 15:52:45,172 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 30173
+ERROR 2025-10-17 15:55:19,838 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 15:55:19,857 basehttp "GET /track-requests/ HTTP/1.1" 500 82574
+WARNING 2025-10-17 15:55:19,926 log Not Found: /favicon.ico
+WARNING 2025-10-17 15:55:19,927 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+ERROR 2025-10-17 15:55:27,338 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 15:55:27,340 basehttp "GET /track-requests/ HTTP/1.1" 500 82574
+INFO 2025-10-17 15:56:07,762 basehttp "GET /about_us/ HTTP/1.1" 200 27435
+INFO 2025-10-17 15:56:07,772 basehttp "GET /static/css/about_us.css HTTP/1.1" 304 0
+INFO 2025-10-17 15:56:07,773 basehttp "GET /static/images/developer.png HTTP/1.1" 304 0
+INFO 2025-10-17 15:56:09,302 basehttp "GET / HTTP/1.1" 200 35674
+INFO 2025-10-17 15:56:17,650 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-17 15:56:18,918 basehttp "GET /about_us/ HTTP/1.1" 200 27435
+INFO 2025-10-17 15:56:25,764 basehttp "GET /find_blood/ HTTP/1.1" 200 27688
+INFO 2025-10-17 15:56:25,775 basehttp "GET /static/css/find_blood.css HTTP/1.1" 304 0
+INFO 2025-10-17 16:18:35,326 autoreload Watching for file changes with StatReloader
+INFO 2025-10-17 16:18:44,562 basehttp "GET / HTTP/1.1" 200 35674
+INFO 2025-10-17 16:18:59,783 basehttp - Broken pipe from ('127.0.0.1', 54458)
+INFO 2025-10-17 16:23:35,795 basehttp "GET / HTTP/1.1" 200 35674
+INFO 2025-10-17 16:23:35,818 basehttp "GET /static/css/home.css HTTP/1.1" 200 18216
+INFO 2025-10-17 16:23:35,819 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-17 16:23:36,097 basehttp "GET /static/images/slider_donation_1.png HTTP/1.1" 200 176663
+INFO 2025-10-17 16:23:36,115 basehttp "GET /static/images/slider_5.png HTTP/1.1" 200 431358
+INFO 2025-10-17 16:23:36,119 basehttp "GET /static/images/slider_6.png HTTP/1.1" 200 478116
+INFO 2025-10-17 16:23:36,177 basehttp "GET /static/images/bangladesh_logo2.png HTTP/1.1" 200 186712
+INFO 2025-10-17 16:23:36,222 basehttp "GET /static/images/slider_3.png HTTP/1.1" 200 1023221
+INFO 2025-10-17 16:23:36,237 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-17 16:23:36,277 basehttp "GET /static/images/slider_7.png HTTP/1.1" 200 1349446
+INFO 2025-10-17 16:23:36,284 basehttp "GET /static/images/slider_doctor_1.png HTTP/1.1" 200 1943495
+INFO 2025-10-17 16:23:36,320 basehttp "GET /static/images/slider_4.png HTTP/1.1" 200 1495129
+INFO 2025-10-17 16:23:36,340 basehttp "GET /static/images/slider_2.png HTTP/1.1" 200 878280
+INFO 2025-10-17 16:23:36,347 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+ERROR 2025-10-17 16:23:42,574 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 16:23:42,577 basehttp "GET /track-requests/ HTTP/1.1" 500 82190
+WARNING 2025-10-17 16:23:42,633 log Not Found: /favicon.ico
+WARNING 2025-10-17 16:23:42,633 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+ERROR 2025-10-17 17:06:29,595 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:06:29,596 basehttp "GET /track-requests/ HTTP/1.1" 500 82455
+WARNING 2025-10-17 17:06:29,629 log Not Found: /favicon.ico
+WARNING 2025-10-17 17:06:29,629 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+ERROR 2025-10-17 17:06:30,524 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:06:30,526 basehttp "GET /track-requests/ HTTP/1.1" 500 82455
+WARNING 2025-10-17 17:06:30,557 log Not Found: /favicon.ico
+WARNING 2025-10-17 17:06:30,557 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+ERROR 2025-10-17 17:06:31,030 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:06:31,032 basehttp "GET /track-requests/ HTTP/1.1" 500 82455
+WARNING 2025-10-17 17:06:31,063 log Not Found: /favicon.ico
+WARNING 2025-10-17 17:06:31,063 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+ERROR 2025-10-17 17:06:31,888 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:06:31,890 basehttp "GET /track-requests/ HTTP/1.1" 500 82455
+WARNING 2025-10-17 17:06:31,920 log Not Found: /favicon.ico
+WARNING 2025-10-17 17:06:31,920 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+INFO 2025-10-17 17:06:40,279 basehttp "GET / HTTP/1.1" 200 35674
+ERROR 2025-10-17 17:06:43,765 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:06:43,766 basehttp "GET /track-requests/ HTTP/1.1" 500 82190
+INFO 2025-10-17 17:06:43,807 basehttp - Broken pipe from ('127.0.0.1', 59522)
+ERROR 2025-10-17 17:08:29,439 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:08:29,441 basehttp "GET /track-requests/ HTTP/1.1" 500 82455
+WARNING 2025-10-17 17:08:29,473 log Not Found: /favicon.ico
+WARNING 2025-10-17 17:08:29,474 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+ERROR 2025-10-17 17:08:30,326 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:08:30,328 basehttp "GET /track-requests/ HTTP/1.1" 500 82455
+WARNING 2025-10-17 17:08:30,357 log Not Found: /favicon.ico
+WARNING 2025-10-17 17:08:30,357 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+ERROR 2025-10-17 17:08:32,249 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:08:32,251 basehttp "GET /track-requests/ HTTP/1.1" 500 82327
+ERROR 2025-10-17 17:08:32,872 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:08:32,874 basehttp "GET /track-requests/ HTTP/1.1" 500 82327
+ERROR 2025-10-17 17:08:33,064 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:08:33,065 basehttp "GET /track-requests/ HTTP/1.1" 500 82327
+ERROR 2025-10-17 17:08:33,259 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:08:33,260 basehttp "GET /track-requests/ HTTP/1.1" 500 82327
+ERROR 2025-10-17 17:08:33,483 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:08:33,484 basehttp "GET /track-requests/ HTTP/1.1" 500 82327
+ERROR 2025-10-17 17:09:32,242 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:09:32,243 basehttp "GET /track-requests/ HTTP/1.1" 500 82327
+ERROR 2025-10-17 17:09:32,895 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:09:32,897 basehttp "GET /track-requests/ HTTP/1.1" 500 82327
+ERROR 2025-10-17 17:09:33,084 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:09:33,085 basehttp "GET /track-requests/ HTTP/1.1" 500 82327
+ERROR 2025-10-17 17:09:33,311 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:09:33,313 basehttp "GET /track-requests/ HTTP/1.1" 500 82327
+ERROR 2025-10-17 17:09:37,391 log Internal Server Error: /find_blood/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 426, in find_blood
+    return render(request, 'find_blood.html', context)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'track_requests.html' not found. 'track_requests.html' is not a valid view function or pattern name.
+ERROR 2025-10-17 17:09:37,420 basehttp "GET /find_blood/ HTTP/1.1" 500 192566
+ERROR 2025-10-17 17:09:51,699 log Internal Server Error: /about_us/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 35, in about_us
+    return render(request, 'about_us.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'track_requests.html' not found. 'track_requests.html' is not a valid view function or pattern name.
+ERROR 2025-10-17 17:09:51,703 basehttp "GET /about_us/ HTTP/1.1" 500 187197
+INFO 2025-10-17 17:11:24,545 basehttp "GET /about_us/ HTTP/1.1" 200 27435
+ERROR 2025-10-17 17:11:26,432 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:11:26,433 basehttp "GET /track-requests/ HTTP/1.1" 500 82199
+ERROR 2025-10-17 17:13:03,653 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:13:03,654 basehttp "GET /track-requests/ HTTP/1.1" 500 82464
+WARNING 2025-10-17 17:13:03,683 log Not Found: /favicon.ico
+WARNING 2025-10-17 17:13:03,684 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+ERROR 2025-10-17 17:13:04,608 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:13:04,609 basehttp "GET /track-requests/ HTTP/1.1" 500 82464
+WARNING 2025-10-17 17:13:04,637 log Not Found: /favicon.ico
+WARNING 2025-10-17 17:13:04,638 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+ERROR 2025-10-17 17:13:05,227 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:13:05,229 basehttp "GET /track-requests/ HTTP/1.1" 500 82464
+WARNING 2025-10-17 17:13:05,259 log Not Found: /favicon.ico
+WARNING 2025-10-17 17:13:05,260 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+INFO 2025-10-17 17:14:40,524 autoreload F:\Project\RoktoDan_BD\roktodanbd\urls.py changed, reloading.
+INFO 2025-10-17 17:14:40,547 autoreload F:\Project\RoktoDan_BD\roktodanbd\urls.py changed, reloading.
+INFO 2025-10-17 17:14:41,321 autoreload Watching for file changes with StatReloader
+INFO 2025-10-17 17:14:41,334 autoreload Watching for file changes with StatReloader
+WARNING 2025-10-17 17:14:44,458 log Not Found: /track-requests/
+WARNING 2025-10-17 17:14:44,459 basehttp "GET /track-requests/ HTTP/1.1" 404 6147
+WARNING 2025-10-17 17:14:44,473 log Not Found: /favicon.ico
+WARNING 2025-10-17 17:14:44,473 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+WARNING 2025-10-17 17:14:45,443 log Not Found: /track-requests/
+WARNING 2025-10-17 17:14:45,444 basehttp "GET /track-requests/ HTTP/1.1" 404 6147
+WARNING 2025-10-17 17:14:45,456 log Not Found: /favicon.ico
+WARNING 2025-10-17 17:14:45,457 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+WARNING 2025-10-17 17:14:46,395 log Not Found: /track-requests/
+WARNING 2025-10-17 17:14:46,396 basehttp "GET /track-requests/ HTTP/1.1" 404 6147
+WARNING 2025-10-17 17:14:46,407 log Not Found: /favicon.ico
+WARNING 2025-10-17 17:14:46,407 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+INFO 2025-10-17 17:15:13,527 autoreload F:\Project\RoktoDan_BD\roktodanbd\urls.py changed, reloading.
+INFO 2025-10-17 17:15:13,655 autoreload F:\Project\RoktoDan_BD\roktodanbd\urls.py changed, reloading.
+INFO 2025-10-17 17:15:14,227 autoreload Watching for file changes with StatReloader
+INFO 2025-10-17 17:15:14,383 autoreload Watching for file changes with StatReloader
+ERROR 2025-10-17 17:15:27,097 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:15:27,099 basehttp "GET /track-requests/ HTTP/1.1" 500 82464
+WARNING 2025-10-17 17:15:27,128 log Not Found: /favicon.ico
+WARNING 2025-10-17 17:15:27,129 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+ERROR 2025-10-17 17:15:28,107 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:15:28,109 basehttp "GET /track-requests/ HTTP/1.1" 500 82464
+WARNING 2025-10-17 17:15:28,137 log Not Found: /favicon.ico
+WARNING 2025-10-17 17:15:28,137 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+ERROR 2025-10-17 17:15:36,995 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:15:36,996 basehttp "GET /track-requests/ HTTP/1.1" 500 82336
+ERROR 2025-10-17 17:16:51,897 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:16:51,899 basehttp "GET /track-requests/ HTTP/1.1" 500 82336
+ERROR 2025-10-17 17:16:52,654 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:16:52,655 basehttp "GET /track-requests/ HTTP/1.1" 500 82336
+ERROR 2025-10-17 17:16:52,858 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:16:52,860 basehttp "GET /track-requests/ HTTP/1.1" 500 82336
+ERROR 2025-10-17 17:16:53,096 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:16:53,098 basehttp "GET /track-requests/ HTTP/1.1" 500 82336
+ERROR 2025-10-17 17:16:53,330 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:16:53,332 basehttp "GET /track-requests/ HTTP/1.1" 500 82336
+ERROR 2025-10-17 17:16:53,567 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:16:53,569 basehttp "GET /track-requests/ HTTP/1.1" 500 82336
+ERROR 2025-10-17 17:16:53,842 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:16:53,843 basehttp "GET /track-requests/ HTTP/1.1" 500 82336
+ERROR 2025-10-17 17:16:54,064 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:16:54,066 basehttp "GET /track-requests/ HTTP/1.1" 500 82336
+ERROR 2025-10-17 17:16:55,148 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:16:55,149 basehttp "GET /track-requests/ HTTP/1.1" 500 82464
+WARNING 2025-10-17 17:16:55,177 log Not Found: /favicon.ico
+WARNING 2025-10-17 17:16:55,178 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+ERROR 2025-10-17 17:16:55,988 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:16:55,989 basehttp "GET /track-requests/ HTTP/1.1" 500 82464
+WARNING 2025-10-17 17:16:56,018 log Not Found: /favicon.ico
+WARNING 2025-10-17 17:16:56,018 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+ERROR 2025-10-17 17:16:57,806 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-17 17:16:57,807 basehttp "GET /track-requests/ HTTP/1.1" 500 82336
+INFO 2025-10-17 17:18:07,532 autoreload F:\Project\RoktoDan_BD\roktodanbdweb\views.py changed, reloading.
+INFO 2025-10-17 17:18:07,535 autoreload F:\Project\RoktoDan_BD\roktodanbdweb\views.py changed, reloading.
+INFO 2025-10-17 17:18:08,247 autoreload Watching for file changes with StatReloader
+INFO 2025-10-17 17:18:08,260 autoreload Watching for file changes with StatReloader
+INFO 2025-10-17 17:21:58,727 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:21:58,766 basehttp "GET /static/css/track_requests.css HTTP/1.1" 200 18111
+INFO 2025-10-17 17:21:59,905 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:22:00,277 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:22:00,497 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:22:18,661 basehttp "GET /about_us/ HTTP/1.1" 200 27435
+INFO 2025-10-17 17:22:20,006 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:22:28,610 basehttp "GET /find_blood/ HTTP/1.1" 200 27688
+INFO 2025-10-17 17:22:28,620 basehttp "GET /static/css/find_blood.css HTTP/1.1" 304 0
+INFO 2025-10-17 17:22:30,504 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:23:40,688 autoreload F:\Project\RoktoDan_BD\roktodanbdweb\views.py changed, reloading.
+INFO 2025-10-17 17:23:40,931 autoreload F:\Project\RoktoDan_BD\roktodanbdweb\views.py changed, reloading.
+INFO 2025-10-17 17:23:41,415 autoreload Watching for file changes with StatReloader
+INFO 2025-10-17 17:23:41,620 autoreload Watching for file changes with StatReloader
+INFO 2025-10-17 17:23:48,970 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:23:49,020 basehttp "GET /static/css/track_requests.css HTTP/1.1" 200 18111
+INFO 2025-10-17 17:23:49,026 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-17 17:23:49,097 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-17 17:24:02,579 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:24:04,774 basehttp "GET /find_blood/ HTTP/1.1" 200 27688
+INFO 2025-10-17 17:24:06,746 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:25:43,663 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:25:43,672 basehttp "GET /static/css/track_requests.css HTTP/1.1" 200 18111
+INFO 2025-10-17 17:25:43,673 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-17 17:25:43,871 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-17 17:25:44,815 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:25:44,825 basehttp "GET /static/css/track_requests.css HTTP/1.1" 200 18111
+INFO 2025-10-17 17:25:44,826 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-17 17:25:44,899 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-17 17:25:45,842 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:25:45,850 basehttp "GET /static/css/track_requests.css HTTP/1.1" 200 18111
+INFO 2025-10-17 17:25:45,852 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-17 17:25:45,927 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-17 17:25:46,624 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:25:46,635 basehttp "GET /static/css/track_requests.css HTTP/1.1" 200 18111
+INFO 2025-10-17 17:25:46,635 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-17 17:25:46,731 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-17 17:25:47,411 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:25:47,419 basehttp "GET /static/css/track_requests.css HTTP/1.1" 200 18111
+INFO 2025-10-17 17:25:47,421 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-17 17:25:47,502 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-17 17:25:59,201 basehttp "GET /track-requests/ HTTP/1.1" 200 21001
+WARNING 2025-10-17 17:25:59,212 basehttp "GET /static/css/track_request.css HTTP/1.1" 404 1877
+INFO 2025-10-17 17:25:59,213 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-17 17:25:59,285 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-17 17:26:00,086 basehttp "GET /track-requests/ HTTP/1.1" 200 21001
+WARNING 2025-10-17 17:26:00,097 basehttp "GET /static/css/track_request.css HTTP/1.1" 404 1877
+INFO 2025-10-17 17:26:00,098 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-17 17:26:00,178 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-17 17:26:15,745 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:26:15,754 basehttp "GET /static/css/track_requests.css HTTP/1.1" 200 18111
+INFO 2025-10-17 17:26:15,757 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-17 17:26:15,830 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-17 17:26:16,518 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:26:16,526 basehttp "GET /static/css/track_requests.css HTTP/1.1" 200 18111
+INFO 2025-10-17 17:26:16,528 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-17 17:26:16,637 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-17 17:39:25,918 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:39:25,927 basehttp "GET /static/css/track_requests.css HTTP/1.1" 200 7836
+INFO 2025-10-17 17:39:26,966 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:39:26,975 basehttp "GET /static/css/track_requests.css HTTP/1.1" 304 0
+INFO 2025-10-17 17:39:27,183 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:39:30,692 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:39:30,701 basehttp "GET /static/css/track_requests.css HTTP/1.1" 200 7836
+INFO 2025-10-17 17:39:30,702 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-17 17:39:30,845 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-17 17:39:31,531 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:39:31,539 basehttp "GET /static/css/track_requests.css HTTP/1.1" 200 7836
+INFO 2025-10-17 17:39:31,540 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-17 17:39:31,672 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-17 17:43:20,229 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:43:20,238 basehttp "GET /static/css/track_requests.css HTTP/1.1" 200 18111
+INFO 2025-10-17 17:43:37,867 basehttp "GET /find_blood/ HTTP/1.1" 200 27688
+INFO 2025-10-17 17:43:37,878 basehttp "GET /static/css/find_blood.css HTTP/1.1" 304 0
+INFO 2025-10-17 17:43:43,395 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
+INFO 2025-10-17 17:43:43,406 basehttp "GET /static/css/track_requests.css HTTP/1.1" 304 0

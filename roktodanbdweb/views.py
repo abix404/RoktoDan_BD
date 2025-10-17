@@ -793,8 +793,8 @@ def award_donation_rewards(donor):
     return points_account, donation_count
 
 
-# ==================== PLACEHOLDER VIEWS ====================
+# ==================== OTHERS VIEWS ====================
 
 def track_requests(request):
     """Track blood requests page"""
-    return render(request, 'track-requests.html')
+    return render(request, 'track_requests.html')
