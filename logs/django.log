@@ -2050,3 +2050,552 @@ INFO 2025-10-02 03:29:41,414 basehttp "GET /static/css/about_us.css HTTP/1.1" 20
 INFO 2025-10-02 03:29:41,418 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
 INFO 2025-10-02 03:29:41,421 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
 INFO 2025-10-02 03:29:41,839 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 03:32:17,415 basehttp "GET / HTTP/1.1" 200 35668
+ERROR 2025-10-02 03:32:37,241 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-02 03:32:37,243 basehttp "GET /track-requests/ HTTP/1.1" 500 82196
+WARNING 2025-10-02 03:32:37,288 log Not Found: /favicon.ico
+WARNING 2025-10-02 03:32:37,289 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+INFO 2025-10-02 03:32:47,760 basehttp "GET /logout/ HTTP/1.1" 200 11397
+INFO 2025-10-02 03:32:50,101 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-02 03:32:57,627 basehttp "GET /about_us/ HTTP/1.1" 200 26178
+INFO 2025-10-02 03:33:00,012 basehttp "GET /find_blood/ HTTP/1.1" 200 17548
+INFO 2025-10-02 03:33:29,311 basehttp "GET /about_us/ HTTP/1.1" 200 26178
+INFO 2025-10-02 03:33:30,343 basehttp "GET /find_blood/ HTTP/1.1" 200 17548
+INFO 2025-10-02 03:33:33,608 basehttp "GET /register_donor/ HTTP/1.1" 200 31342
+INFO 2025-10-02 03:33:35,481 basehttp "GET /register_recipient/ HTTP/1.1" 200 25415
+INFO 2025-10-02 03:33:35,517 basehttp "GET /static/css/register_recipient.css HTTP/1.1" 200 9871
+INFO 2025-10-02 03:33:37,737 basehttp "GET /about_us/ HTTP/1.1" 200 26178
+INFO 2025-10-02 03:33:38,707 basehttp "GET /find_blood/ HTTP/1.1" 200 17548
+INFO 2025-10-02 03:33:40,686 basehttp "GET /register_donor/ HTTP/1.1" 200 31342
+INFO 2025-10-02 03:33:42,360 basehttp "GET /register_recipient/ HTTP/1.1" 200 25415
+INFO 2025-10-02 03:33:44,546 basehttp "GET /about_us/ HTTP/1.1" 200 26178
+INFO 2025-10-02 03:33:57,463 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-02 03:34:05,292 basehttp "GET /about_us/ HTTP/1.1" 200 26178
+INFO 2025-10-02 03:35:05,372 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-02 03:35:09,403 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-02 03:35:09,418 basehttp "GET /static/css/home.css HTTP/1.1" 200 18227
+INFO 2025-10-02 03:35:09,419 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 03:35:09,618 basehttp "GET /static/images/slider_donation_1.png HTTP/1.1" 200 176663
+INFO 2025-10-02 03:35:09,644 basehttp "GET /static/images/bangladesh_logo2.png HTTP/1.1" 200 186712
+INFO 2025-10-02 03:35:09,852 basehttp "GET /static/images/slider_5.png HTTP/1.1" 200 431358
+INFO 2025-10-02 03:35:09,924 basehttp "GET /static/images/slider_doctor_1.png HTTP/1.1" 200 1943495
+INFO 2025-10-02 03:35:09,938 basehttp "GET /static/images/slider_2.png HTTP/1.1" 200 878280
+INFO 2025-10-02 03:35:09,994 basehttp - Broken pipe from ('127.0.0.1', 62991)
+INFO 2025-10-02 03:35:09,995 basehttp - Broken pipe from ('127.0.0.1', 62992)
+INFO 2025-10-02 03:35:10,005 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-02 03:35:10,030 basehttp "GET /static/images/slider_6.png HTTP/1.1" 200 478116
+INFO 2025-10-02 03:35:10,310 basehttp "GET /static/images/slider_3.png HTTP/1.1" 200 1023221
+INFO 2025-10-02 03:35:10,415 basehttp "GET /static/images/slider_7.png HTTP/1.1" 200 1349446
+INFO 2025-10-02 03:35:10,449 basehttp "GET /static/images/slider_4.png HTTP/1.1" 200 1495129
+INFO 2025-10-02 03:35:10,453 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 03:35:16,122 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-02 03:35:16,133 basehttp "GET /static/css/home.css HTTP/1.1" 200 18227
+INFO 2025-10-02 03:35:16,141 basehttp "GET /static/images/bangladesh_logo2.png HTTP/1.1" 200 186712
+INFO 2025-10-02 03:35:16,142 basehttp "GET /static/images/slider_donation_1.png HTTP/1.1" 200 176663
+INFO 2025-10-02 03:35:16,142 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 03:35:16,143 basehttp "GET /static/images/slider_5.png HTTP/1.1" 200 431358
+INFO 2025-10-02 03:35:16,152 basehttp "GET /static/images/slider_6.png HTTP/1.1" 200 478116
+INFO 2025-10-02 03:35:16,153 basehttp "GET /static/images/slider_7.png HTTP/1.1" 200 1349446
+INFO 2025-10-02 03:35:16,155 basehttp "GET /static/images/slider_2.png HTTP/1.1" 200 878280
+INFO 2025-10-02 03:35:16,157 basehttp "GET /static/images/slider_doctor_1.png HTTP/1.1" 200 1943495
+INFO 2025-10-02 03:35:16,158 basehttp "GET /static/images/slider_3.png HTTP/1.1" 200 1023221
+INFO 2025-10-02 03:35:16,159 basehttp "GET /static/images/slider_4.png HTTP/1.1" 200 1495129
+INFO 2025-10-02 03:35:16,395 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 03:35:40,622 basehttp "GET /about_us/ HTTP/1.1" 200 26178
+INFO 2025-10-02 03:35:42,246 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-02 03:35:42,257 basehttp "GET /static/css/home.css HTTP/1.1" 304 0
+INFO 2025-10-02 03:35:42,289 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-02 03:35:46,416 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-02 03:35:46,434 basehttp "GET /static/css/home.css HTTP/1.1" 200 18227
+INFO 2025-10-02 03:35:46,438 basehttp "GET /static/images/bangladesh_logo2.png HTTP/1.1" 200 186712
+INFO 2025-10-02 03:35:46,439 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 03:35:46,440 basehttp "GET /static/images/slider_donation_1.png HTTP/1.1" 200 176663
+INFO 2025-10-02 03:35:46,440 basehttp "GET /static/images/slider_5.png HTTP/1.1" 200 431358
+INFO 2025-10-02 03:35:46,446 basehttp "GET /static/images/slider_7.png HTTP/1.1" 200 1349446
+INFO 2025-10-02 03:35:46,448 basehttp "GET /static/images/slider_6.png HTTP/1.1" 200 478116
+INFO 2025-10-02 03:35:46,451 basehttp "GET /static/images/slider_2.png HTTP/1.1" 200 878280
+INFO 2025-10-02 03:35:46,452 basehttp "GET /static/images/slider_doctor_1.png HTTP/1.1" 200 1943495
+INFO 2025-10-02 03:35:46,454 basehttp "GET /static/images/slider_3.png HTTP/1.1" 200 1023221
+INFO 2025-10-02 03:35:46,456 basehttp "GET /static/images/slider_4.png HTTP/1.1" 200 1495129
+INFO 2025-10-02 03:35:46,639 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-02 03:35:46,849 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 03:36:36,873 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-02 03:36:36,882 basehttp "GET /static/css/home.css HTTP/1.1" 200 18228
+INFO 2025-10-02 03:36:36,890 basehttp "GET /static/images/bangladesh_logo2.png HTTP/1.1" 200 186712
+INFO 2025-10-02 03:36:36,890 basehttp "GET /static/images/slider_donation_1.png HTTP/1.1" 200 176663
+INFO 2025-10-02 03:36:36,891 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-02 03:36:36,892 basehttp "GET /static/images/slider_5.png HTTP/1.1" 200 431358
+INFO 2025-10-02 03:36:36,900 basehttp "GET /static/images/slider_6.png HTTP/1.1" 200 478116
+INFO 2025-10-02 03:36:36,903 basehttp "GET /static/images/slider_7.png HTTP/1.1" 200 1349446
+INFO 2025-10-02 03:36:36,903 basehttp "GET /static/images/slider_2.png HTTP/1.1" 200 878280
+INFO 2025-10-02 03:36:36,906 basehttp "GET /static/images/slider_doctor_1.png HTTP/1.1" 200 1943495
+INFO 2025-10-02 03:36:36,907 basehttp "GET /static/images/slider_4.png HTTP/1.1" 200 1495129
+INFO 2025-10-02 03:36:36,908 basehttp "GET /static/images/slider_3.png HTTP/1.1" 200 1023221
+INFO 2025-10-02 03:36:37,194 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-02 03:36:37,284 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-02 03:36:50,471 basehttp "GET /about_us/ HTTP/1.1" 200 26178
+INFO 2025-10-02 03:37:17,864 basehttp "GET /login/ HTTP/1.1" 200 14788
+INFO 2025-10-02 03:37:26,550 basehttp "GET /find_blood/ HTTP/1.1" 200 17548
+INFO 2025-10-06 11:31:05,638 autoreload Watching for file changes with StatReloader
+INFO 2025-10-06 11:31:41,190 basehttp "GET / HTTP/1.1" 200 35668
+INFO 2025-10-06 11:31:41,258 basehttp "GET /static/images/logo_3.png HTTP/1.1" 304 0
+INFO 2025-10-06 11:31:41,270 basehttp "GET /static/images/bangladesh_logo2.png HTTP/1.1" 304 0
+INFO 2025-10-06 11:31:41,282 basehttp "GET /static/images/slider_2.png HTTP/1.1" 304 0
+INFO 2025-10-06 11:31:41,286 basehttp "GET /static/images/slider_doctor_1.png HTTP/1.1" 304 0
+INFO 2025-10-06 11:31:41,287 basehttp "GET /static/images/slider_5.png HTTP/1.1" 304 0
+INFO 2025-10-06 11:31:41,292 basehttp "GET /static/images/slider_donation_1.png HTTP/1.1" 304 0
+INFO 2025-10-06 11:31:41,296 basehttp "GET /static/images/slider_6.png HTTP/1.1" 304 0
+INFO 2025-10-06 11:31:41,297 basehttp "GET /static/images/slider_4.png HTTP/1.1" 304 0
+INFO 2025-10-06 11:31:41,298 basehttp "GET /static/images/slider_3.png HTTP/1.1" 304 0
+INFO 2025-10-06 11:31:41,304 basehttp "GET /static/images/slider_7.png HTTP/1.1" 304 0
+INFO 2025-10-06 11:31:41,347 basehttp "GET /static/css/home.css HTTP/1.1" 200 18216
+INFO 2025-10-06 11:31:42,389 basehttp - Broken pipe from ('127.0.0.1', 61077)
+INFO 2025-10-06 11:31:48,825 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-06 11:31:48,864 basehttp "GET /static/css/home.css HTTP/1.1" 200 18216
+INFO 2025-10-06 11:31:48,880 basehttp "GET /static/images/logo_3.png HTTP/1.1" 304 0
+INFO 2025-10-06 11:31:48,883 basehttp "GET /static/images/bangladesh_logo2.png HTTP/1.1" 304 0
+INFO 2025-10-06 11:31:48,888 basehttp "GET /static/images/slider_doctor_1.png HTTP/1.1" 304 0
+INFO 2025-10-06 11:31:48,889 basehttp "GET /static/images/slider_donation_1.png HTTP/1.1" 304 0
+INFO 2025-10-06 11:31:48,889 basehttp "GET /static/images/slider_7.png HTTP/1.1" 304 0
+INFO 2025-10-06 11:31:48,889 basehttp "GET /static/images/slider_5.png HTTP/1.1" 304 0
+INFO 2025-10-06 11:31:48,896 basehttp "GET /static/images/slider_2.png HTTP/1.1" 304 0
+INFO 2025-10-06 11:31:48,896 basehttp "GET /static/images/slider_6.png HTTP/1.1" 304 0
+INFO 2025-10-06 11:31:48,898 basehttp "GET /static/images/slider_4.png HTTP/1.1" 304 0
+INFO 2025-10-06 11:31:48,904 basehttp "GET /static/images/slider_3.png HTTP/1.1" 304 0
+INFO 2025-10-06 11:31:54,596 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-06 11:31:54,609 basehttp "GET /static/images/favicon.ico HTTP/1.1" 304 0
+INFO 2025-10-06 11:32:02,821 basehttp "GET /register_recipient/ HTTP/1.1" 200 25415
+INFO 2025-10-06 11:32:02,844 basehttp "GET /static/css/register_recipient.css HTTP/1.1" 304 0
+INFO 2025-10-06 11:35:51,029 basehttp "POST /register_recipient/ HTTP/1.1" 200 25654
+ERROR 2025-10-06 11:37:17,901 views Recipient registration error: UNIQUE constraint failed: roktodanbdweb_recipient.email
+INFO 2025-10-06 11:37:17,903 basehttp "POST /register_recipient/ HTTP/1.1" 200 25666
+INFO 2025-10-06 11:37:21,638 basehttp "GET /login/ HTTP/1.1" 200 14788
+INFO 2025-10-06 11:37:21,652 basehttp "GET /static/css/login.css HTTP/1.1" 304 0
+INFO 2025-10-06 11:37:21,664 basehttp "GET /static/images/logo_2.png HTTP/1.1" 304 0
+INFO 2025-10-06 11:39:09,398 views Login attempt with: abidmuhammad2012@gmail.com
+INFO 2025-10-06 11:39:10,272 views Email authentication result: None
+WARNING 2025-10-06 11:39:10,272 views Authentication failed
+INFO 2025-10-06 11:39:10,305 basehttp "POST /login/ HTTP/1.1" 200 14788
+INFO 2025-10-06 11:39:18,714 views Login attempt with: abidmuhammad2012@gmail.com
+INFO 2025-10-06 11:39:19,131 views Email authentication result: abidmuhammad2012@gmail.com
+INFO 2025-10-06 11:39:19,321 views Login successful for user: abidmuhammad2012@gmail.com
+INFO 2025-10-06 11:39:19,399 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-10-06 11:39:19,407 basehttp "GET / HTTP/1.1" 200 35668
+INFO 2025-10-06 11:39:19,543 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-06 11:39:26,351 basehttp "GET /find_blood/ HTTP/1.1" 200 27340
+INFO 2025-10-06 11:39:26,379 basehttp "GET /static/css/find_blood.css HTTP/1.1" 304 0
+INFO 2025-10-06 11:39:37,145 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 29584
+INFO 2025-10-06 11:39:37,160 basehttp "GET /media/donor_images/takia_orni.jpg HTTP/1.1" 304 0
+INFO 2025-10-06 11:39:40,510 basehttp "GET /show-request-form/1/ HTTP/1.1" 200 6778
+INFO 2025-10-06 11:40:35,630 utils Blood request notification sent to donor: islaedinmaisie@gmail.com
+INFO 2025-10-06 11:40:35,670 basehttp "POST /request-blood/1/ HTTP/1.1" 200 3654
+WARNING 2025-10-06 11:40:35,745 log Not Found: /favicon.ico
+WARNING 2025-10-06 11:40:35,747 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+INFO 2025-10-06 11:40:39,244 basehttp "GET / HTTP/1.1" 200 35668
+INFO 2025-10-06 11:40:39,311 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-06 11:42:04,082 basehttp "GET /find_blood/ HTTP/1.1" 200 27340
+INFO 2025-10-06 11:42:23,046 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 29584
+INFO 2025-10-06 11:44:55,046 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-06 11:44:55,115 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-06 11:44:55,127 basehttp "GET /static/css/home.css HTTP/1.1" 200 18216
+INFO 2025-10-06 11:44:55,137 basehttp "GET /static/images/bangladesh_logo2.png HTTP/1.1" 200 186712
+INFO 2025-10-06 11:44:55,189 basehttp "GET /static/images/slider_5.png HTTP/1.1" 200 431358
+INFO 2025-10-06 11:44:55,222 basehttp "GET /static/images/slider_doctor_1.png HTTP/1.1" 200 1943495
+INFO 2025-10-06 11:44:55,248 basehttp "GET /static/images/slider_7.png HTTP/1.1" 200 1349446
+INFO 2025-10-06 11:44:55,280 basehttp "GET /static/images/slider_donation_1.png HTTP/1.1" 200 176663
+INFO 2025-10-06 11:44:55,397 basehttp "GET /static/images/slider_2.png HTTP/1.1" 200 878280
+INFO 2025-10-06 11:44:55,502 basehttp "GET /static/images/slider_6.png HTTP/1.1" 200 478116
+INFO 2025-10-06 11:44:55,547 basehttp "GET /static/images/slider_4.png HTTP/1.1" 200 1495129
+INFO 2025-10-06 11:44:55,570 basehttp "GET /static/images/slider_3.png HTTP/1.1" 200 1023221
+INFO 2025-10-06 11:44:56,178 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-06 11:44:56,197 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-06 11:44:58,872 basehttp "GET /find_blood/ HTTP/1.1" 200 17548
+INFO 2025-10-06 11:44:58,930 basehttp "GET /static/images/logo_2.png HTTP/1.1" 200 397993
+INFO 2025-10-06 11:44:58,937 basehttp "GET /static/css/find_blood.css HTTP/1.1" 200 18202
+INFO 2025-10-06 11:45:00,960 basehttp "GET /oauth/login/google-oauth2/?next=/find_blood/ HTTP/1.1" 302 0
+INFO 2025-10-06 11:45:25,783 basehttp "GET /oauth/login/google-oauth2/?next=/find_blood/ HTTP/1.1" 302 0
+INFO 2025-10-06 11:45:49,573 basehttp "GET /oauth/login/google-oauth2/?next=/find_blood/ HTTP/1.1" 302 0
+INFO 2025-10-06 11:46:11,895 basehttp "GET /oauth/complete/google-oauth2/?state=FdOahDZGzOUg4EZh57E1VfmABESc0NPl&code=4%2F0AVGzR1DnJE1-7b64Lw_pmJRvo1dA26pcgD6hCFtHu2PY08noLPQj9igNcFdvsMhgY5868Q&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=consent HTTP/1.1" 302 0
+WARNING 2025-10-06 11:46:11,902 log Not Found: /find-blood/
+WARNING 2025-10-06 11:46:11,902 basehttp "GET /find-blood/?next=/find_blood/ HTTP/1.1" 404 6153
+INFO 2025-10-06 11:46:22,207 basehttp "GET / HTTP/1.1" 200 35351
+INFO 2025-10-06 11:46:28,654 basehttp "GET /find_blood/ HTTP/1.1" 200 27339
+INFO 2025-10-06 11:46:28,666 basehttp - Broken pipe from ('127.0.0.1', 65128)
+INFO 2025-10-06 11:47:16,250 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 29583
+INFO 2025-10-06 11:47:16,307 basehttp "GET /media/donor_images/takia_orni.jpg HTTP/1.1" 200 68179
+INFO 2025-10-06 11:47:18,934 basehttp "GET /show-request-form/1/ HTTP/1.1" 200 6765
+INFO 2025-10-06 11:47:28,348 basehttp "GET /logout/ HTTP/1.1" 200 11397
+INFO 2025-10-06 11:47:30,995 basehttp "GET /login/ HTTP/1.1" 200 14788
+INFO 2025-10-06 11:47:31,046 basehttp "GET /static/css/login.css HTTP/1.1" 200 1739
+INFO 2025-10-06 11:47:32,420 basehttp "GET /login/ HTTP/1.1" 200 14788
+INFO 2025-10-06 11:47:34,238 basehttp "GET /login/ HTTP/1.1" 200 14788
+INFO 2025-10-06 11:47:41,994 views Login attempt with: islaedinmaisie@gmail.com
+INFO 2025-10-06 11:47:42,405 views Email authentication result: islaedinmaisie@gmail.com
+INFO 2025-10-06 11:47:42,564 views Login successful for user: islaedinmaisie@gmail.com
+INFO 2025-10-06 11:47:42,631 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-10-06 11:47:42,640 basehttp "GET / HTTP/1.1" 200 35633
+INFO 2025-10-06 11:47:42,725 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-06 11:47:52,920 basehttp "GET /matching/ HTTP/1.1" 200 35708
+INFO 2025-10-06 11:47:52,987 basehttp "GET /static/css/matching.css HTTP/1.1" 200 10783
+INFO 2025-10-06 11:48:04,753 basehttp "GET /respond-to-request/8/ HTTP/1.1" 200 25229
+INFO 2025-10-06 12:08:03,700 autoreload Watching for file changes with StatReloader
+INFO 2025-10-06 12:08:05,782 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-06 12:08:06,177 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-06 12:08:12,535 basehttp "GET /login/ HTTP/1.1" 200 14788
+INFO 2025-10-06 12:08:12,545 basehttp "GET /static/images/logo_2.png HTTP/1.1" 304 0
+INFO 2025-10-06 12:08:12,545 basehttp "GET /static/css/login.css HTTP/1.1" 304 0
+INFO 2025-10-06 12:09:03,029 autoreload Watching for file changes with StatReloader
+INFO 2025-10-06 12:13:31,161 autoreload Watching for file changes with StatReloader
+INFO 2025-10-06 12:13:35,389 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-06 12:13:39,313 basehttp "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-10-06 12:13:39,456 basehttp "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4182
+INFO 2025-10-06 12:13:39,466 basehttp - Broken pipe from ('127.0.0.1', 51751)
+INFO 2025-10-06 12:13:39,477 basehttp "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:39,479 basehttp "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:39,482 basehttp "GET /static/admin/css/login.css HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:39,483 basehttp "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:39,483 basehttp "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:39,483 basehttp "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:39,487 basehttp "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+WARNING 2025-10-06 12:13:39,527 log Not Found: /favicon.ico
+WARNING 2025-10-06 12:13:39,528 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+INFO 2025-10-06 12:13:45,968 basehttp "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-10-06 12:13:46,030 basehttp "GET /admin/ HTTP/1.1" 200 15248
+INFO 2025-10-06 12:13:46,049 basehttp "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:46,049 basehttp "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:46,049 basehttp "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:49,767 basehttp "GET /admin/roktodanbdweb/donor/ HTTP/1.1" 200 19901
+INFO 2025-10-06 12:13:49,782 basehttp "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:49,789 basehttp "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:49,789 basehttp "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:49,790 basehttp "GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:49,790 basehttp "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:49,793 basehttp "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:49,794 basehttp "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:49,794 basehttp "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:49,794 basehttp "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:49,797 basehttp "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:49,800 basehttp "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:49,801 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-10-06 12:13:49,816 basehttp "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:49,816 basehttp "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:52,526 basehttp "GET /admin/roktodanbdweb/recipient/ HTTP/1.1" 200 19458
+INFO 2025-10-06 12:13:52,541 basehttp "GET /static/admin/css/forms.css HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:52,545 basehttp "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+INFO 2025-10-06 12:13:52,548 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-10-06 12:13:56,223 basehttp "POST /admin/logout/ HTTP/1.1" 302 0
+INFO 2025-10-06 12:13:56,227 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-06 12:13:56,292 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-06 12:14:05,409 basehttp "GET /register_donor/ HTTP/1.1" 200 31342
+INFO 2025-10-06 12:14:05,431 basehttp "GET /static/css/register_donor.css HTTP/1.1" 304 0
+INFO 2025-10-06 12:17:54,525 utils Welcome email sent to donor: 22101103@uap-bd.edu
+INFO 2025-10-06 12:17:58,928 utils Admin notification sent for new donor
+INFO 2025-10-06 12:17:58,929 basehttp "POST /register_donor/ HTTP/1.1" 302 0
+INFO 2025-10-06 12:17:58,968 basehttp "GET /success/ HTTP/1.1" 200 17934
+INFO 2025-10-06 12:18:01,321 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-06 12:18:01,386 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-06 12:18:09,004 basehttp "GET /login/ HTTP/1.1" 200 14788
+INFO 2025-10-06 12:18:11,648 basehttp "GET /register_recipient/ HTTP/1.1" 200 25695
+INFO 2025-10-06 12:19:41,915 utils Welcome email sent to recipient: 22101124@uap-bd.edu
+INFO 2025-10-06 12:19:45,413 utils Admin notification sent for new recipient
+INFO 2025-10-06 12:19:45,414 basehttp "POST /register_recipient/ HTTP/1.1" 302 0
+INFO 2025-10-06 12:19:45,420 basehttp "GET /login/ HTTP/1.1" 200 14788
+INFO 2025-10-06 12:20:42,615 views Login attempt with: 22101124@uap-bd.edu
+INFO 2025-10-06 12:20:43,018 views Email authentication result: 22101124@uap-bd.edu
+INFO 2025-10-06 12:20:43,554 views Login successful for user: 22101124@uap-bd.edu
+INFO 2025-10-06 12:20:43,621 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-10-06 12:20:43,630 basehttp "GET / HTTP/1.1" 200 35669
+INFO 2025-10-06 12:20:43,699 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-06 12:20:50,231 basehttp "GET /find_blood/ HTTP/1.1" 200 27341
+INFO 2025-10-06 12:21:01,342 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 29580
+INFO 2025-10-06 12:21:01,360 basehttp "GET /media/donor_images/mukit.jpg HTTP/1.1" 200 32644
+INFO 2025-10-06 12:21:06,253 basehttp "GET /show-request-form/1/ HTTP/1.1" 200 6781
+INFO 2025-10-06 12:23:03,824 utils Blood request notification sent to donor: 22101103@uap-bd.edu
+INFO 2025-10-06 12:23:03,827 basehttp "POST /request-blood/1/ HTTP/1.1" 200 3654
+INFO 2025-10-06 12:23:06,893 basehttp "GET / HTTP/1.1" 200 35669
+INFO 2025-10-06 12:23:06,959 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+ERROR 2025-10-06 12:23:22,236 log Internal Server Error: /track-requests/
+Traceback (most recent call last):
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\Project\RoktoDan_BD\roktodanbdweb\views.py", line 800, in track_requests
+    return render(request, 'track-requests.html')
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "F:\Project\RoktoDan_BD\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: track-requests.html
+ERROR 2025-10-06 12:23:22,239 basehttp "GET /track-requests/ HTTP/1.1" 500 82589
+INFO 2025-10-06 12:23:23,944 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-06 12:23:28,124 basehttp "GET /logout/ HTTP/1.1" 200 11397
+INFO 2025-10-06 12:23:30,562 basehttp "GET /login/ HTTP/1.1" 200 14788
+INFO 2025-10-06 12:23:59,391 views Login attempt with: 22101103@uap-bd.edu
+INFO 2025-10-06 12:23:59,789 views Email authentication result: 22101103@uap-bd.edu
+INFO 2025-10-06 12:24:00,723 views Login successful for user: 22101103@uap-bd.edu
+INFO 2025-10-06 12:24:00,792 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-10-06 12:24:00,801 basehttp "GET / HTTP/1.1" 200 35634
+INFO 2025-10-06 12:24:00,859 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-06 12:24:16,082 basehttp "GET /matching/ HTTP/1.1" 200 20509
+INFO 2025-10-06 12:24:16,099 basehttp "GET /static/css/matching.css HTTP/1.1" 304 0
+INFO 2025-10-06 12:25:21,391 basehttp "GET /respond-to-request/1/ HTTP/1.1" 200 25234
+INFO 2025-10-06 12:25:43,141 utils Donor response notification sent to 22101124@uap-bd.edu
+INFO 2025-10-06 12:25:43,144 basehttp "POST /respond-to-request/1/ HTTP/1.1" 302 0
+INFO 2025-10-06 12:25:43,156 basehttp "GET /matching/ HTTP/1.1" 200 17931
+INFO 2025-10-06 12:25:47,278 basehttp "GET /rewards/ HTTP/1.1" 200 20349
+INFO 2025-10-06 12:25:47,302 basehttp "GET /static/images/rewards-hero.png HTTP/1.1" 304 0
+INFO 2025-10-06 12:25:47,328 basehttp "GET /static/css/rewards.css HTTP/1.1" 304 0
+INFO 2025-10-06 12:25:52,295 basehttp "GET /matching/ HTTP/1.1" 200 17314
+INFO 2025-10-06 12:25:53,541 basehttp "GET /rewards/ HTTP/1.1" 200 20349
+INFO 2025-10-06 12:25:54,943 basehttp "GET /donor_history/ HTTP/1.1" 200 19195
+INFO 2025-10-06 12:25:54,969 basehttp "GET /static/css/donor_history.css HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:03,794 autoreload Watching for file changes with StatReloader
+INFO 2025-10-13 11:49:10,499 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-13 11:49:10,516 basehttp "GET /static/css/home.css HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:10,528 basehttp "GET /static/images/logo_3.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:10,536 basehttp "GET /static/images/bangladesh_logo2.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:10,546 basehttp "GET /static/images/slider_doctor_1.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:10,546 basehttp "GET /static/images/slider_donation_1.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:10,558 basehttp "GET /static/images/slider_6.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:10,558 basehttp "GET /static/images/slider_2.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:10,558 basehttp "GET /static/images/slider_7.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:10,558 basehttp "GET /static/images/slider_5.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:10,614 basehttp "GET /static/images/slider_4.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:10,632 basehttp "GET /static/images/slider_3.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:10,869 basehttp "GET /static/images/favicon.ico HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:19,631 basehttp "GET /login/ HTTP/1.1" 200 14788
+INFO 2025-10-13 11:49:19,639 basehttp - Broken pipe from ('127.0.0.1', 58872)
+INFO 2025-10-13 11:49:19,644 basehttp "GET /static/css/login.css HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:19,672 basehttp "GET /static/images/logo_2.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:30,931 basehttp "GET / HTTP/1.1" 200 35634
+INFO 2025-10-13 11:49:30,951 basehttp "GET /static/css/home.css HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:30,959 basehttp "GET /static/images/logo_3.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:30,960 basehttp "GET /static/images/bangladesh_logo2.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:30,962 basehttp "GET /static/images/slider_doctor_1.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:30,964 basehttp "GET /static/images/slider_5.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:30,964 basehttp "GET /static/images/slider_7.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:30,964 basehttp "GET /static/images/slider_donation_1.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:30,973 basehttp "GET /static/images/slider_2.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:30,973 basehttp "GET /static/images/slider_6.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:30,974 basehttp "GET /static/images/slider_4.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:30,976 basehttp "GET /static/images/slider_3.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:31,175 basehttp "GET /static/images/favicon.ico HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:31,195 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-13 11:49:38,380 basehttp "GET /about_us/ HTTP/1.1" 200 27395
+INFO 2025-10-13 11:49:38,396 basehttp "GET /static/css/about_us.css HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:38,416 basehttp "GET /static/images/developer.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:43,613 basehttp "GET /matching/ HTTP/1.1" 200 17314
+INFO 2025-10-13 11:49:43,656 basehttp "GET /static/css/matching.css HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:50,884 basehttp "GET /logout/ HTTP/1.1" 200 11397
+WARNING 2025-10-13 11:49:50,970 log Not Found: /favicon.ico
+WARNING 2025-10-13 11:49:50,970 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+INFO 2025-10-13 11:49:53,599 basehttp "GET /login/ HTTP/1.1" 200 14788
+INFO 2025-10-13 11:49:53,612 basehttp "GET /static/css/login.css HTTP/1.1" 304 0
+INFO 2025-10-13 11:49:53,612 basehttp "GET /static/images/logo_2.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:50:02,710 views Login attempt with: 22101103@uap-bd.edu
+INFO 2025-10-13 11:50:03,688 views Email authentication result: 22101103@uap-bd.edu
+INFO 2025-10-13 11:50:03,856 views Login successful for user: 22101103@uap-bd.edu
+INFO 2025-10-13 11:50:03,978 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-10-13 11:50:03,985 basehttp "GET / HTTP/1.1" 200 35634
+INFO 2025-10-13 11:50:04,044 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-13 11:50:13,040 basehttp "GET /rewards/ HTTP/1.1" 200 20349
+INFO 2025-10-13 11:50:13,056 basehttp "GET /static/images/rewards-hero.png HTTP/1.1" 304 0
+INFO 2025-10-13 11:50:13,080 basehttp "GET /static/css/rewards.css HTTP/1.1" 304 0
+INFO 2025-10-13 11:50:15,523 basehttp "GET /logout/ HTTP/1.1" 200 11397
+INFO 2025-10-13 11:50:18,024 basehttp "GET /login/ HTTP/1.1" 200 14788
+INFO 2025-10-13 11:50:32,439 basehttp "GET /register_donor/ HTTP/1.1" 200 31342
+INFO 2025-10-13 11:50:32,452 basehttp "GET /static/css/register_donor.css HTTP/1.1" 304 0
+INFO 2025-10-13 11:54:09,007 basehttp "POST /register_donor/ HTTP/1.1" 200 31342
+INFO 2025-10-13 11:54:20,971 basehttp "POST /register_donor/ HTTP/1.1" 200 31342
+INFO 2025-10-13 11:54:21,008 basehttp "GET /static/css/register_donor.css HTTP/1.1" 200 9459
+INFO 2025-10-13 11:54:21,038 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-13 11:54:21,401 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-13 11:54:24,681 basehttp "POST /register_donor/ HTTP/1.1" 200 31342
+INFO 2025-10-13 11:54:24,691 basehttp "GET /static/css/register_donor.css HTTP/1.1" 200 9459
+INFO 2025-10-13 11:54:24,693 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-13 11:54:24,940 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-13 11:56:00,837 basehttp "POST /register_donor/ HTTP/1.1" 200 31342
+INFO 2025-10-13 11:56:02,912 basehttp "GET /login/ HTTP/1.1" 200 14788
+INFO 2025-10-13 11:56:05,862 basehttp "GET /oauth/login/google-oauth2/ HTTP/1.1" 302 0
+INFO 2025-10-13 11:56:09,396 basehttp "GET /oauth/complete/google-oauth2/?state=dZ4lBc7bG6C0oMBUdG0N5JGolRBjHz3F&code=4%2F0AVGzR1AJnbyGzWheIuz6ComINgb3c9RzjjbiyRCtMa174vN3inC7qhatbZ7Uw3gorkcqsg&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=none HTTP/1.1" 302 0
+WARNING 2025-10-13 11:56:09,401 log Not Found: /find-blood/
+WARNING 2025-10-13 11:56:09,402 basehttp "GET /find-blood/ HTTP/1.1" 404 6135
+WARNING 2025-10-13 11:56:09,429 log Not Found: /favicon.ico
+WARNING 2025-10-13 11:56:09,430 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+INFO 2025-10-13 11:58:18,952 autoreload Watching for file changes with StatReloader
+INFO 2025-10-13 11:58:20,858 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-13 11:58:24,030 basehttp - Broken pipe from ('127.0.0.1', 64416)
+INFO 2025-10-13 11:59:07,519 autoreload Watching for file changes with StatReloader
+INFO 2025-10-13 11:59:16,531 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-13 11:59:22,400 basehttp "GET /register_donor/ HTTP/1.1" 200 31342
+INFO 2025-10-13 11:59:22,407 basehttp - Broken pipe from ('127.0.0.1', 65164)
+INFO 2025-10-13 12:00:57,585 utils Welcome email sent to donor: 22101124@uap-bd.edu
+INFO 2025-10-13 12:01:01,123 utils Admin notification sent for new donor
+INFO 2025-10-13 12:01:01,124 basehttp "POST /register_donor/ HTTP/1.1" 302 0
+INFO 2025-10-13 12:01:01,162 basehttp "GET /success/ HTTP/1.1" 200 17934
+INFO 2025-10-13 12:01:05,139 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-13 12:01:15,777 basehttp "GET /register_recipient/ HTTP/1.1" 200 25700
+INFO 2025-10-13 12:01:15,780 basehttp - Broken pipe from ('127.0.0.1', 62466)
+INFO 2025-10-13 12:01:15,787 basehttp "GET /static/css/register_recipient.css HTTP/1.1" 304 0
+INFO 2025-10-13 12:02:53,247 utils Welcome email sent to recipient: 22101131@uap-bd.edu
+INFO 2025-10-13 12:02:56,657 utils Admin notification sent for new recipient
+INFO 2025-10-13 12:02:56,658 basehttp "POST /register_recipient/ HTTP/1.1" 302 0
+INFO 2025-10-13 12:02:56,672 basehttp "GET /login/ HTTP/1.1" 200 14788
+INFO 2025-10-13 12:03:22,779 views Login attempt with: 22101124@uap-bd.edu
+INFO 2025-10-13 12:03:23,211 views Email authentication result: 22101124@uap-bd.edu
+INFO 2025-10-13 12:03:23,370 views Login successful for user: 22101124@uap-bd.edu
+INFO 2025-10-13 12:03:23,437 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-10-13 12:03:23,443 basehttp "GET / HTTP/1.1" 200 35639
+INFO 2025-10-13 12:03:23,489 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-13 12:03:31,271 basehttp "GET /logout/ HTTP/1.1" 200 11397
+WARNING 2025-10-13 12:03:31,291 log Not Found: /favicon.ico
+WARNING 2025-10-13 12:03:31,292 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+INFO 2025-10-13 12:03:34,456 basehttp "GET /login/ HTTP/1.1" 200 14788
+INFO 2025-10-13 12:09:10,782 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-13 12:09:14,950 basehttp "GET /login/ HTTP/1.1" 200 14788
+INFO 2025-10-13 12:09:14,958 basehttp - Broken pipe from ('127.0.0.1', 57806)
+INFO 2025-10-13 12:09:32,723 views Login attempt with: 22101131@uap-bd.edu
+INFO 2025-10-13 12:09:33,126 views Email authentication result: 22101131@uap-bd.edu
+INFO 2025-10-13 12:09:33,287 views Login successful for user: 22101131@uap-bd.edu
+INFO 2025-10-13 12:09:33,355 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-10-13 12:09:33,361 basehttp "GET / HTTP/1.1" 200 35674
+INFO 2025-10-13 12:09:33,415 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-13 12:09:36,906 basehttp "GET /find_blood/ HTTP/1.1" 200 27346
+INFO 2025-10-13 12:09:36,918 basehttp "GET /static/css/find_blood.css HTTP/1.1" 304 0
+INFO 2025-10-13 12:09:52,844 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 27867
+INFO 2025-10-13 12:10:11,698 basehttp "GET /find_blood/?blood_group=O%2B&thana=New+Market&post_office=New+Market&district=Dhaka HTTP/1.1" 200 29600
+INFO 2025-10-13 12:10:11,711 basehttp "GET /media/donor_images/abid.jpg HTTP/1.1" 200 277473
+INFO 2025-10-13 12:10:14,931 basehttp "GET /show-request-form/1/ HTTP/1.1" 200 6797
+INFO 2025-10-13 12:10:28,674 basehttp "GET /show-request-form/1/ HTTP/1.1" 200 6797
+INFO 2025-10-13 13:04:36,311 basehttp "GET / HTTP/1.1" 200 35674
+INFO 2025-10-13 13:04:45,211 basehttp "GET /logout/ HTTP/1.1" 200 11397
+INFO 2025-10-13 13:04:45,226 basehttp - Broken pipe from ('127.0.0.1', 64772)
+WARNING 2025-10-13 13:04:45,232 log Not Found: /favicon.ico
+WARNING 2025-10-13 13:04:45,233 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+INFO 2025-10-13 13:04:47,597 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-13 13:04:47,638 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-13 13:04:59,030 basehttp "GET /find_blood/ HTTP/1.1" 200 17548
+INFO 2025-10-13 13:05:09,257 basehttp "GET /oauth/login/google-oauth2/?next=/find_blood/ HTTP/1.1" 302 0
+INFO 2025-10-13 13:05:12,680 basehttp "GET /oauth/complete/google-oauth2/?state=ujBDKDxlMrr9f0Qghvo03hPxLKo9wEnW&code=4%2F0AVGzR1DmAo1uDtrEdyv4HmQCj-rRW1PJiO1kMaPr9DoMgWhf9hK-faXOKricfXnpAybyHw&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&prompt=none HTTP/1.1" 302 0
+WARNING 2025-10-13 13:05:12,686 log Not Found: /find-blood/
+WARNING 2025-10-13 13:05:12,687 basehttp "GET /find-blood/?next=/find_blood/ HTTP/1.1" 404 6153
+INFO 2025-10-13 13:05:20,817 basehttp "GET /login/ HTTP/1.1" 200 15724
+INFO 2025-10-13 13:05:48,748 views Login attempt with: 22101124@uap-bd.edu
+INFO 2025-10-13 13:05:49,144 views Email authentication result: None
+WARNING 2025-10-13 13:05:49,144 views Authentication failed
+INFO 2025-10-13 13:05:49,148 basehttp "POST /login/ HTTP/1.1" 200 15724
+INFO 2025-10-13 13:05:55,558 basehttp "GET /logout/ HTTP/1.1" 200 11397
+INFO 2025-10-13 13:05:58,124 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-13 13:05:58,164 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-13 13:06:02,045 basehttp "GET /login/ HTTP/1.1" 200 14788
+INFO 2025-10-13 13:06:22,331 views Login attempt with: 22101124@uap-bd.edu
+INFO 2025-10-13 13:06:22,729 views Email authentication result: None
+WARNING 2025-10-13 13:06:22,730 views Authentication failed
+INFO 2025-10-13 13:06:22,731 basehttp "POST /login/ HTTP/1.1" 200 14788
+INFO 2025-10-13 13:06:46,871 views Login attempt with: 22101124@uap-bd.edu
+INFO 2025-10-13 13:06:47,270 views Email authentication result: None
+WARNING 2025-10-13 13:06:47,270 views Authentication failed
+INFO 2025-10-13 13:06:47,272 basehttp "POST /login/ HTTP/1.1" 200 14788
+INFO 2025-10-13 13:06:57,906 views Login attempt with: 22101124@uap-bd.edu
+INFO 2025-10-13 13:06:58,301 views Email authentication result: 22101124@uap-bd.edu
+INFO 2025-10-13 13:06:58,503 views Login successful for user: 22101124@uap-bd.edu
+INFO 2025-10-13 13:06:58,582 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-10-13 13:06:58,588 basehttp "GET / HTTP/1.1" 200 35639
+INFO 2025-10-13 13:06:58,625 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+WARNING 2025-10-13 13:07:17,906 log Forbidden (CSRF token from POST incorrect.): /login/
+WARNING 2025-10-13 13:07:17,907 basehttp "POST /login/ HTTP/1.1" 403 2503
+INFO 2025-10-13 13:07:24,641 basehttp "GET / HTTP/1.1" 200 35639
+INFO 2025-10-13 13:07:33,308 basehttp "GET / HTTP/1.1" 200 35639
+INFO 2025-10-13 13:07:33,312 basehttp - Broken pipe from ('127.0.0.1', 52255)
+INFO 2025-10-13 13:07:33,350 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+WARNING 2025-10-13 13:07:39,750 log Forbidden (CSRF token from POST incorrect.): /login/
+WARNING 2025-10-13 13:07:39,750 basehttp "POST /login/ HTTP/1.1" 403 2503
+INFO 2025-10-13 13:07:47,023 basehttp "GET / HTTP/1.1" 200 35639
+INFO 2025-10-13 13:07:47,059 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-13 13:07:51,333 basehttp "GET /matching/ HTTP/1.1" 200 18109
+INFO 2025-10-13 13:08:14,116 basehttp "GET /logout/ HTTP/1.1" 200 11397
+INFO 2025-10-13 13:08:18,576 basehttp "GET /login/ HTTP/1.1" 200 14788
+INFO 2025-10-13 13:08:40,648 views Login attempt with: 22101131@uap-bd.edu
+INFO 2025-10-13 13:08:41,046 views Email authentication result: 22101131@uap-bd.edu
+INFO 2025-10-13 13:08:41,205 views Login successful for user: 22101131@uap-bd.edu
+INFO 2025-10-13 13:08:41,294 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-10-13 13:08:41,301 basehttp "GET / HTTP/1.1" 200 35674
+INFO 2025-10-13 13:08:41,342 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-13 13:08:45,919 basehttp "GET /find_blood/ HTTP/1.1" 200 27346
+INFO 2025-10-13 13:11:44,047 basehttp "GET /find_blood/?blood_group=O%2B&thana=New+Market&post_office=New+Market&district=Dhaka HTTP/1.1" 200 29600
+INFO 2025-10-13 13:11:44,058 basehttp "GET /media/donor_images/abid.jpg HTTP/1.1" 304 0
+INFO 2025-10-13 13:11:47,108 basehttp "GET /show-request-form/1/ HTTP/1.1" 200 6797
+INFO 2025-10-13 13:12:21,587 basehttp "GET /logout/ HTTP/1.1" 200 11397
+INFO 2025-10-13 13:12:24,235 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-13 13:12:24,277 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-13 13:12:28,696 basehttp "GET /login/ HTTP/1.1" 200 14788
+INFO 2025-10-13 13:14:22,894 basehttp "GET /register_donor/ HTTP/1.1" 200 31342
+INFO 2025-10-13 13:16:04,462 utils Welcome email sent to donor: 22101106@uap-bd.edu
+INFO 2025-10-13 13:16:08,798 utils Admin notification sent for new donor
+INFO 2025-10-13 13:16:08,799 basehttp "POST /register_donor/ HTTP/1.1" 302 0
+INFO 2025-10-13 13:16:08,802 basehttp "GET /success/ HTTP/1.1" 200 17934
+INFO 2025-10-13 13:16:11,025 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-13 13:16:11,069 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-13 13:16:29,222 basehttp "GET /register_recipient/ HTTP/1.1" 200 25931
+INFO 2025-10-13 13:33:11,080 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-13 13:33:17,398 basehttp "GET /login/ HTTP/1.1" 200 14788
+INFO 2025-10-13 13:33:17,405 basehttp - Broken pipe from ('127.0.0.1', 61040)
+INFO 2025-10-13 13:33:46,194 views Login attempt with: 22101131@uap-bd.edu
+INFO 2025-10-13 13:33:46,595 views Email authentication result: 22101131@uap-bd.edu
+INFO 2025-10-13 13:33:46,757 views Login successful for user: 22101131@uap-bd.edu
+INFO 2025-10-13 13:33:46,825 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-10-13 13:33:46,831 basehttp "GET / HTTP/1.1" 200 35674
+INFO 2025-10-13 13:33:46,881 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-13 13:33:50,075 basehttp "GET /find_blood/ HTTP/1.1" 200 27346
+INFO 2025-10-13 13:35:38,216 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 29589
+INFO 2025-10-13 13:35:38,227 basehttp "GET /media/donor_images/sadman.jpg HTTP/1.1" 200 32644
+INFO 2025-10-13 13:35:41,952 basehttp "GET /show-request-form/2/ HTTP/1.1" 200 6792
+INFO 2025-10-13 13:36:42,320 utils Blood request notification sent to donor: 22101106@uap-bd.edu
+INFO 2025-10-13 13:36:42,364 basehttp "POST /request-blood/2/ HTTP/1.1" 200 3654
+WARNING 2025-10-13 13:36:42,383 log Not Found: /favicon.ico
+WARNING 2025-10-13 13:36:42,384 basehttp "GET /favicon.ico HTTP/1.1" 404 6135
+INFO 2025-10-13 13:36:47,401 basehttp "GET / HTTP/1.1" 200 35674
+INFO 2025-10-13 13:36:47,441 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
+INFO 2025-10-17 15:09:29,386 autoreload Watching for file changes with StatReloader
+INFO 2025-10-17 15:49:08,835 autoreload Watching for file changes with StatReloader
+INFO 2025-10-17 15:49:16,801 basehttp "GET / HTTP/1.1" 200 35674
+INFO 2025-10-17 15:49:16,817 basehttp "GET /static/css/home.css HTTP/1.1" 304 0
+INFO 2025-10-17 15:49:16,837 basehttp "GET /static/images/bangladesh_logo2.png HTTP/1.1" 304 0
+INFO 2025-10-17 15:49:16,839 basehttp "GET /static/images/slider_donation_1.png HTTP/1.1" 304 0
+INFO 2025-10-17 15:49:16,839 basehttp "GET /static/images/slider_5.png HTTP/1.1" 304 0
+INFO 2025-10-17 15:49:16,839 basehttp "GET /static/images/logo_3.png HTTP/1.1" 304 0
+INFO 2025-10-17 15:49:16,839 basehttp "GET /static/images/slider_doctor_1.png HTTP/1.1" 304 0
+INFO 2025-10-17 15:49:16,839 basehttp "GET /static/images/slider_7.png HTTP/1.1" 304 0
+INFO 2025-10-17 15:49:16,841 basehttp "GET /static/images/slider_2.png HTTP/1.1" 304 0
+INFO 2025-10-17 15:49:16,842 basehttp "GET /static/images/slider_6.png HTTP/1.1" 304 0
+INFO 2025-10-17 15:49:16,844 basehttp "GET /static/images/slider_4.png HTTP/1.1" 304 0
+INFO 2025-10-17 15:49:16,847 basehttp "GET /static/images/slider_3.png HTTP/1.1" 304 0
+INFO 2025-10-17 15:49:20,948 basehttp "GET /find_blood/ HTTP/1.1" 200 27688
+INFO 2025-10-17 15:49:20,956 basehttp - Broken pipe from ('127.0.0.1', 64249)
+INFO 2025-10-17 15:49:20,962 basehttp "GET /static/css/find_blood.css HTTP/1.1" 200 19046
+INFO 2025-10-17 15:49:32,993 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 30180
+INFO 2025-10-17 15:49:33,004 basehttp "GET /static/css/find_blood.css HTTP/1.1" 304 0
+INFO 2025-10-17 15:49:33,038 basehttp "GET /media/donor_images/sadman.jpg HTTP/1.1" 304 0
+INFO 2025-10-17 15:52:42,063 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 30173
+INFO 2025-10-17 15:52:42,121 basehttp "GET /static/css/find_blood.css HTTP/1.1" 200 18982
+INFO 2025-10-17 15:52:42,171 basehttp "GET /media/donor_images/sadman.jpg HTTP/1.1" 200 32644
+INFO 2025-10-17 15:52:42,206 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-17 15:52:42,643 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-17 15:52:45,172 basehttp "GET /find_blood/?blood_group=A%2B&thana=Dhanmondi&post_office=Dhanmondi&district=Dhaka HTTP/1.1" 200 30173

@@ -383,10 +383,13 @@
                         </div>
 
                         <div class="donor-actions">
-                            <button class="chat-btn" onclick="openChat('{{ donor.id }}', '{{ donor.full_name }}')">
-                                <i class="bi bi-chat-dots"></i>
+                            <a href="https://wa.me/{{ donor.phone_number|slice:'0:' }}?text=Hi%20{{ donor.first_name }},%20I%20found%20your%20contact%20on%20RoktoDan%20BD.%20I%20need%20{{ donor.blood_group }}%20blood%20donation.%20Can%20you%20help?"
+                               class="chat-btn"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                <i class="bi bi-whatsapp"></i>
                                 Chat Now
-                            </button>
+                            </a>
 
                             <!-- Request Blood Button -->
                             <button type="button"
@@ -490,8 +493,14 @@ function openRequestModal(donorId) {
 }
 
 // Placeholder function for chat functionality
-function openChat(donorId, donorName) {
-    alert('Chat feature coming soon!\nWould open chat with: ' + donorName + ' (ID: ' + donorId + ')');
+// JavaScript to open WhatsApp with custom message:
+function openWhatsAppChat(donorPhone, donorName, bloodGroup) {
+    const formattedPhone = formatPhoneForWhatsApp(donorPhone);
+    const message = `Hi ${donorName}, I found your contact on RoktoDan BD. I need ${bloodGroup} blood donation. Can you help?`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/${formattedPhone}?text=${encodedMessage}`;
+
+    window.open(whatsappURL, '_blank');
 }
 
 // Form enhancement

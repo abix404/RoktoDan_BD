@@ -533,9 +533,9 @@
     gap: 10px;
     margin-top: 15px;
 }
-
 .chat-btn {
-    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--secondary-light) 100%);
+    /* WhatsApp brand colors */
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
     color: white;
     border: none;
     padding: 12px 24px;
@@ -548,23 +548,34 @@
     justify-content: center;
     gap: 8px;
     font-size: 0.95rem;
-    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.2);
+    /* Updated shadow for WhatsApp green */
+    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.25);
     width: 100%;
+    text-decoration: none; /* Important for anchor tag */
 }
 
 .chat-btn:hover {
+    /* Darker WhatsApp green on hover */
+    background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.3);
+    /* Enhanced shadow on hover */
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    color: white; /* Ensure text stays white on hover */
 }
 
 .chat-btn:active {
     transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+}
+
+.chat-btn:focus {
+    outline: 2px solid #25D366;
+    outline-offset: 2px;
 }
 
 .chat-btn i {
     font-size: 1.1rem;
 }
-
         /* Additional styles for Request Blood feature */
         .request-blood-btn {
             background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
@@ -709,6 +720,23 @@
 /* ===========================
    LOADING ANIMATION
    =========================== */
+@keyframes whatsapp-pulse {
+    0%, 100% {
+        box-shadow: 0 2px 8px rgba(37, 211, 102, 0.25);
+    }
+    50% {
+        box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+    }
+}
+
+.chat-btn {
+    animation: whatsapp-pulse 2s ease-in-out infinite;
+}
+
+.chat-btn:hover {
+    animation: none; /* Stop pulse on hover */
+}
+
 @keyframes pulse {
     0%, 100% {
         opacity: 1;
