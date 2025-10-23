@@ -214,3 +214,30 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Python compiled files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.py[cod]
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Secrets
+secrets.json
+credentials.json
+*.key
+*.pem
+*.crt
+
+# Azure credentials
+azure.json
+azuread.json
+
+# Social auth secrets
+social_auth_config.py
+oauth_secrets.py
