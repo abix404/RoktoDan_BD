@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+.venv/
+
+# Django stuff
+*.log
+db.sqlite3
+media/
+staticfiles/
+
+# VSCode / IDE files
+.vscode/
+.idea/
+
+# macOS / Windows system files
+.DS_Store
+Thumbs.db
+
+# Environment / secrets
+.env
+*.env
+
+# PyInstaller
+*.spec
+build/
+dist/
+
+# Coverage / test reports
+.coverage
+htmlcov/
+.tox/
+pytest_cache/
+
+# Migrations (optional, if you don’t want to commit them)
+# */migrations/*.py
+# !*/migrations/__init__.py
