@@ -1,42 +1,159 @@
+cat > .gitignore << 'EOF'
 # Python
-__pycache__/
 *.py[cod]
 *$py.class
+*.so
+.Python
+__pycache__/
+*.pyc
+*.pyo
 
-# Virtual environment
-venv/
-.env/
+# Virtual Environment
 .venv/
+venv/
+ENV/
+env/
+.virtualenv/
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+/media
+/staticfiles
+/static
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Migrations (optional - uncomment if you want to ignore)
+# */migrations/*.py
+# !*/migrations/__init__.py
+
+# Coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
 
 # Django stuff
 *.log
-db.sqlite3
-media/
-staticfiles/
+local_settings.py
 
-# VSCode / IDE files
-.vscode/
-.idea/
+# Flask stuff
+instance/
+.webassets-cache
 
-# macOS / Windows system files
-.DS_Store
-Thumbs.db
+# Scrapy stuff
+.scrapy
 
-# Environment / secrets
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# celery beat schedule file
+celerybeat-schedule
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
 .env
-*.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
-# PyInstaller
-*.spec
-build/
-dist/
+# Spyder project settings
+.spyderproject
+.spyproject
 
-# Coverage / test reports
-.coverage
-htmlcov/
-.tox/
-pytest_cache/
+# Rope project settings
+.ropeproject
 
-# Migrations (optional, if you don’t want to commit them)
-# */migrations/*.py
-# !*/migrations/__init__.py
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# Media files (uploaded by users)
+media/
+
+# Static files (collected)
+staticfiles/
+static_root/
+
+# Backup files
+*.bak
+*.backup
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Node modules (if using frontend tools)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Compiled translations
+*.mo
+
+# Local PostgreSQL data
+pgdata/
+
+# Gunicorn
+gunicorn.log
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+
+# Secrets
+secrets.json
+credentials.json
+EOF
+
