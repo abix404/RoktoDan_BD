@@ -1,0 +1,78 @@
+/* Login Page Specific Styles - Isolated with specific class names */
+.login-page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.login-page-container {
+    max-width: 420px;
+    width: 100%;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    margin: 0 auto;
+}
+
+/* Specific form controls within login container */
+.login-page-container .login-form-control {
+    padding: 10px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.login-page-container .login-btn {
+    padding: 10px;
+    width: 100%;
+    border-radius: 4px;
+}
+
+.login-page-container .login-social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.login-page-container .login-social-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.login-page-container .login-divider {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.login-page-container .login-divider::before,
+.login-page-container .login-divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.login-page-container .login-divider-text {
+    padding: 0 10px;
+    color: #6c757d;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .login-page-container {
+        padding: 20px;
+        box-shadow: none;
+        border: 1px solid #dee2e6;
+    }
+}

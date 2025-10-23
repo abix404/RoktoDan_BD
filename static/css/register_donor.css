@@ -1,0 +1,491 @@
+/* Register Donor CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #9B2A2A 0%, #ED5353 100%);
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+}
+
+.main-wrapper {
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.registration-container {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.registration-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    color: #2c3e50;
+    font-weight: 700;
+    position: relative;
+}
+
+.registration-container h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+    margin: 15px auto;
+    border-radius: 2px;
+}
+
+.donor-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.form-group {
+    flex: 1;
+    min-width: 250px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 0.95rem;
+}
+
+.required {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e6ed;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    transform: translateY(-1px);
+}
+
+.form-group input:invalid {
+    border-color: #e74c3c;
+}
+
+.form-group input:valid {
+    border-color: #27ae60;
+}
+
+/* Password Group Styling */
+.password-group {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 38px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 5px;
+    z-index: 2;
+    transition: transform 0.2s ease;
+}
+
+.password-toggle:hover {
+    transform: scale(1.1);
+}
+
+.password-strength {
+    margin-top: 5px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.password-strength.weak {
+    color: #e74c3c;
+}
+
+.password-strength.medium {
+    color: #f39c12;
+}
+
+.password-strength.strong {
+    color: #27ae60;
+}
+
+.password-requirements {
+    margin-top: 8px;
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 4px solid #667eea;
+}
+
+.password-requirements ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.password-requirements li {
+    font-size: 0.85rem;
+    margin: 3px 0;
+    transition: all 0.3s ease;
+}
+
+.password-requirements li.invalid {
+    color: #e74c3c;
+}
+
+.password-requirements li.invalid::before {
+    content: "✗ ";
+    margin-right: 5px;
+}
+
+.password-requirements li.valid {
+    color: #27ae60;
+}
+
+.password-requirements li.valid::before {
+    content: "✓ ";
+    margin-right: 5px;
+}
+
+.password-match {
+    margin-top: 5px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.password-match.valid {
+    color: #27ae60;
+}
+
+.password-match.invalid {
+    color: #e74c3c;
+}
+
+/* Donation Date Styling */
+.donation-date {
+    display: flex;
+    gap: 10px;
+}
+
+.donation-date select {
+    flex: 1;
+}
+
+/* Image Upload Styling */
+.image-upload {
+    position: relative;
+}
+
+.upload-btn {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px dashed #667eea;
+    background-color: #f8f9ff;
+    color: #667eea;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.upload-btn:hover {
+    background-color: #667eea;
+    color: white;
+    border-style: solid;
+}
+
+.file-name {
+    font-size: 0.9rem;
+    color: #27ae60;
+    font-weight: 600;
+}
+
+/* Health Declaration Styling */
+.health-declaration {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+}
+
+.health-declaration h4 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+    font-size: 1.2rem;
+}
+
+.checkbox-group {
+    margin-bottom: 12px;
+    overflow: visible;
+    padding: 2px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    gap: 10px;
+    padding: 4px 0;
+    overflow: visible;
+    transition: all 0.3s ease;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark ~ * {
+    text-decoration: line-through;
+    color: #6c757d;
+    opacity: 0.7;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    background: #fff;
+    position: relative;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    margin-top: 0;
+    display: block;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+    background: #27ae60;
+    border-color: #27ae60;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Disclaimer Styling */
+.disclaimer {
+    background: #e8f4f8;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #2c3e50;
+    border-left: 4px solid #667eea;
+    line-height: 1.6;
+}
+
+/* Submit Button Styling */
+.submit-btn {
+    width: 100%;
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.submit-btn:hover::before {
+    left: 100%;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Error Styling */
+.age-error,
+.weight-error {
+    color: #e74c3c !important;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+/* Select Styling */
+select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    padding-right: 40px;
+    appearance: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-wrapper {
+        padding: 10px;
+    }
+
+    .registration-container {
+        padding: 20px;
+        margin: 10px;
+        border-radius: 10px;
+    }
+
+    .registration-container h1 {
+        font-size: 2rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .form-group {
+        min-width: unset;
+    }
+
+    .donation-date {
+        flex-direction: column;
+    }
+
+    .image-upload {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .upload-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .registration-container {
+        padding: 15px;
+    }
+
+    .registration-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 10px 12px;
+    }
+
+    .donor-form {
+        gap: 15px;
+    }
+}
+
+/* Animation for form elements */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.registration-container {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.form-group {
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-group:nth-child(3) { animation-delay: 0.3s; }
+.form-group:nth-child(4) { animation-delay: 0.4s; }
+.form-group:nth-child(5) { animation-delay: 0.5s; }
+
+/* Focus states */
+.form-group input:focus,
+.form-group select:focus {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(102, 126, 234, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(102, 126, 234, 0);
+    }
+}
