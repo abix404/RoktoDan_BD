@@ -187,29 +187,25 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'verbose',
         },
-        'file': {
-            'class': 'logging.FileHandler',
-            'filename': BASE_DIR / 'logs' / 'django.log',
-            'formatter': 'verbose',
-        },
     },
     'loggers': {
         'django': {
-            'handlers': ['console', 'file'],
+            'handlers': ['console'],
             'level': config('DJANGO_LOG_LEVEL', default='INFO'),
             'propagate': False,
         },
         'roktodanbdweb': {
-            'handlers': ['console', 'file'],
+            'handlers': ['console'],
             'level': config('APP_LOG_LEVEL', default='INFO'),
             'propagate': False,
         },
     },
 }
 
-# Create logs directory if it doesn't exist
-LOGS_DIR = BASE_DIR / 'logs'
-LOGS_DIR.mkdir(exist_ok=True)
+# Only create logs directory in local development
+if DEBUG:
+    LOGS_DIR = BASE_DIR / 'logs'
+    LOGS_DIR.mkdir(exist_ok=True)
 
 # Security settings for production
 if not DEBUG:
