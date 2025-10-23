@@ -532,7 +532,7 @@ RoktoDan BD Team
                 <p><strong>Needed By:</strong> {blood_request.needed_by_date.strftime('%B %d, %Y at %I:%M %p')}</p>
             </div>
 
-            {f'<div class="info-box"><p class="info-label">DONOR\'S NOTES</p><p>{donor_response.notes}</p></div>' if donor_response.notes else ''}
+            f'<div class="info-box"><p class="info-label">DONOR\'S NOTES</p><p>{donor_response.notes}</p></div>' if donor_response.notes else ''
 
             {f'<div class="info-box"><p class="info-label">PREFERRED DONATION TIME</p><p>{donor_response.preferred_donation_time.strftime("%B %d, %Y at %I:%M %p")}</p></div>' if donor_response.preferred_donation_time else ''}
 

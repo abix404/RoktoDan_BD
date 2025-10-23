@@ -3511,3 +3511,52 @@ INFO 2025-10-17 17:43:37,867 basehttp "GET /find_blood/ HTTP/1.1" 200 27688
 INFO 2025-10-17 17:43:37,878 basehttp "GET /static/css/find_blood.css HTTP/1.1" 304 0
 INFO 2025-10-17 17:43:43,395 basehttp "GET /track-requests/ HTTP/1.1" 200 21002
 INFO 2025-10-17 17:43:43,406 basehttp "GET /static/css/track_requests.css HTTP/1.1" 304 0
+INFO 2025-10-24 02:52:14,310 autoreload Watching for file changes with StatReloader
+INFO 2025-10-24 02:54:09,369 autoreload Watching for file changes with StatReloader
+INFO 2025-10-24 02:56:31,507 autoreload Watching for file changes with StatReloader
+INFO 2025-10-24 03:30:59,191 autoreload Watching for file changes with StatReloader
+INFO 2025-10-24 03:34:03,375 autoreload F:\Project\RoktoDan_BD\roktodanbdweb\utils.py changed, reloading.
+INFO 2025-10-24 03:34:04,023 autoreload Watching for file changes with StatReloader
+INFO 2025-10-24 03:34:06,810 basehttp "GET / HTTP/1.1" 200 34417
+INFO 2025-10-24 03:34:10,657 basehttp "GET /find_blood/ HTTP/1.1" 200 17890
+INFO 2025-10-24 03:34:10,680 basehttp - Broken pipe from ('127.0.0.1', 60258)
+INFO 2025-10-24 03:34:12,073 basehttp "GET /about_us/ HTTP/1.1" 200 26178
+INFO 2025-10-24 03:34:12,083 basehttp "GET /static/css/about_us.css HTTP/1.1" 200 18547
+INFO 2025-10-24 03:34:12,094 basehttp "GET /static/images/developer.png HTTP/1.1" 200 1749452
+INFO 2025-10-24 03:34:13,893 basehttp "GET /login/ HTTP/1.1" 200 14788
+INFO 2025-10-24 03:34:13,910 basehttp "GET /static/css/login.css HTTP/1.1" 200 1739
+INFO 2025-10-24 03:34:27,151 basehttp "GET /register_donor/ HTTP/1.1" 200 31342
+INFO 2025-10-24 03:34:27,165 basehttp "GET /static/css/register_donor.css HTTP/1.1" 200 9459
+INFO 2025-10-24 03:34:28,686 basehttp "GET /login/ HTTP/1.1" 200 14788
+INFO 2025-10-24 03:34:30,744 views Login attempt with: tasnim2@gmail.com
+INFO 2025-10-24 03:34:31,222 views Email authentication result: None
+WARNING 2025-10-24 03:34:31,222 views Authentication failed
+INFO 2025-10-24 03:34:31,222 basehttp "POST /login/ HTTP/1.1" 200 14788
+INFO 2025-10-24 03:34:47,647 views Login attempt with: 22101124@uap-bd.edu
+INFO 2025-10-24 03:34:48,070 views Email authentication result: None
+WARNING 2025-10-24 03:34:48,070 views Authentication failed
+INFO 2025-10-24 03:34:48,072 basehttp "POST /login/ HTTP/1.1" 200 14788
+INFO 2025-10-24 03:34:50,417 views Login attempt with: tasnim2@gmail.com
+INFO 2025-10-24 03:34:50,841 views Email authentication result: None
+WARNING 2025-10-24 03:34:50,841 views Authentication failed
+INFO 2025-10-24 03:34:50,843 basehttp "POST /login/ HTTP/1.1" 200 14788
+INFO 2025-10-24 03:35:01,305 views Login attempt with: 22101124@uap-bd.edu
+INFO 2025-10-24 03:35:01,717 views Email authentication result: 22101124@uap-bd.edu
+INFO 2025-10-24 03:35:01,893 views Login successful for user: 22101124@uap-bd.edu
+INFO 2025-10-24 03:35:01,967 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2025-10-24 03:35:01,981 basehttp "GET / HTTP/1.1" 200 35639
+INFO 2025-10-24 03:35:05,744 basehttp "GET /rewards/ HTTP/1.1" 200 20354
+INFO 2025-10-24 03:35:05,762 basehttp "GET /static/css/rewards.css HTTP/1.1" 200 9094
+INFO 2025-10-24 03:35:05,767 basehttp "GET /static/images/rewards-hero.png HTTP/1.1" 200 1086838
+INFO 2025-10-24 03:35:05,767 basehttp - Broken pipe from ('127.0.0.1', 60081)
+INFO 2025-10-24 03:35:07,679 basehttp "GET /matching/ HTTP/1.1" 200 18109
+INFO 2025-10-24 03:35:07,692 basehttp "GET /static/css/matching.css HTTP/1.1" 200 10783
+INFO 2025-10-24 03:35:12,206 basehttp "GET /matching/ HTTP/1.1" 200 16188
+INFO 2025-10-24 03:35:12,216 basehttp "GET /static/css/matching.css HTTP/1.1" 200 10783
+INFO 2025-10-24 03:35:12,218 basehttp "GET /static/images/logo_3.png HTTP/1.1" 200 232368
+INFO 2025-10-24 03:35:12,311 basehttp "GET /static/images/favicon.ico HTTP/1.1" 200 4022
+INFO 2025-10-24 03:35:17,530 basehttp "GET /donor_history/ HTTP/1.1" 200 19200
+INFO 2025-10-24 03:35:17,540 basehttp "GET /static/css/donor_history.css HTTP/1.1" 200 7076
+INFO 2025-10-24 03:35:20,952 basehttp "GET /about_us/ HTTP/1.1" 200 27400
+INFO 2025-10-24 03:35:31,477 basehttp "GET / HTTP/1.1" 200 35639
+INFO 2025-10-24 03:35:31,534 basehttp "GET /static/audio/background.mp3 HTTP/1.1" 200 6466664
